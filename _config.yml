@@ -1,0 +1,35 @@
+title: "Sprite Render Tool Wiki"
+description: "Documentação do Sprite Render Tool"
+
+# URL base do site (ajuste se usar custom domain)
+url: "https://seu-usuario.github.io"
+baseurl: "/Sprite-Render-Tool-Wiki"
+
+# Tema padrão suportado pelo GitHub Pages
+# Veja a lista em: https://pages.github.com/themes
+theme: minima
+
+# Diretório onde estão os arquivos do site
+source: docs
+
+# Idioma do site
+lang: "pt-BR"
+
+# Opções de navegação (opcional, algumas páginas/temas usam)
+markdown: kramdown
+
+# Informações do autor (opcional)
+author:
+  name: "Sprite Render Tool"
+  email: "lochstar3d@gmail.com"
+
+# Plugins suportados pelo GitHub Pages
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Configurações de build do GitHub Pages
+github:
+  is_project_page: true
+
+
