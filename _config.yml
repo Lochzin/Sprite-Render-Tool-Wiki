@@ -1,19 +1,19 @@
 title: "Sprite Render Tool Wiki"
-description: "Documentação do Sprite Render Tool"
+description: "Sprite Render Tool Documentation"
 
 # URL base do site (ajuste se usar custom domain)
 url: "https://seu-usuario.github.io"
 baseurl: "/Sprite-Render-Tool-Wiki"
 
-# Tema padrão suportado pelo GitHub Pages
-# Veja a lista em: https://pages.github.com/themes
-theme: minima
+# Tema remoto: Just the Docs
+# Repositório: https://github.com/just-the-docs/just-the-docs
+remote_theme: just-the-docs/just-the-docs
 
 # Diretório onde estão os arquivos do site
 source: docs
 
 # Idioma do site
-lang: "pt-BR"
+lang: "en"
 
 # Opções de navegação (opcional, algumas páginas/temas usam)
 markdown: kramdown
@@ -28,8 +28,11 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
+# Configurações específicas do Just the Docs (opcional, básico)
+just_the_docs:
+  logo: "/assets/images/logo.png"   # opcional: ajuste ou remova se não tiver logo
+  color_scheme: "light"             # opções: light, dark
+
 # Configurações de build do GitHub Pages
 github:
   is_project_page: true
-
-
