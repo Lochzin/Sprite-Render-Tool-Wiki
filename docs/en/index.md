@@ -200,4 +200,10 @@ Use this Home page as the main index. Recommended pages (we can create them next
 - **FAQ.md**: common questions and troubleshooting.
 - **Changelog.md**: version history (e.g., 0.2.1, etc.).
 
-Tell me which of these pages you want to create now and I’ll fill them with detailed content.
+Tell me which of these pages you want to create now and I'll fill them with detailed content.
+
+---
+
+## Language / Idioma
+
+**English** | [Português](/pt/)
