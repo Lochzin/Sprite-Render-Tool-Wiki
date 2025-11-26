@@ -206,4 +206,4 @@ Tell me which of these pages you want to create now and I'll fill them with deta
 
 ## Language / Idioma
 
-**English** | [Português](/pt/)
+**English** | [Português]({{ '/pt/' | relative_url }})

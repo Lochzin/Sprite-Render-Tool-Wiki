@@ -8,30 +8,30 @@ permalink: /
 
 Welcome! Choose your language / Bem-vindo! Escolha seu idioma:
 
-- **[English (EN)](/en/)** — Full documentation in English
-- **[Português (PT)](/pt/)** — Documentação completa em português
+- **[English (EN)]({{ '/en/' | relative_url }})** — Full documentation in English
+- **[Português (PT)]({{ '/pt/' | relative_url }})** — Documentação completa em português
 
 ---
 
 ## Quick Links / Links Rápidos
 
 ### English
-- [Home](/en/)
-- [Animations](/en/Animations)
-- [Cameras](/en/Cameras)
-- [Output](/en/Output)
-- [Debug](/en/Debug)
-- [FAQ](/en/FAQ)
-- [License](/en/License)
-- [Changelog](/en/Changelog)
+- [Home]({{ '/en/' | relative_url }})
+- [Animations]({{ '/en/Animations' | relative_url }})
+- [Cameras]({{ '/en/Cameras' | relative_url }})
+- [Output]({{ '/en/Output' | relative_url }})
+- [Debug]({{ '/en/Debug' | relative_url }})
+- [FAQ]({{ '/en/FAQ' | relative_url }})
+- [License]({{ '/en/License' | relative_url }})
+- [Changelog]({{ '/en/Changelog' | relative_url }})
 
 ### Português
-- [Início](/pt/)
-- [Animações](/pt/Animations)
-- [Câmeras](/pt/Cameras)
-- [Saída](/pt/Output)
-- [Debug](/pt/Debug)
-- [FAQ](/pt/FAQ)
-- [Licença](/pt/License)
-- [Changelog](/pt/Changelog)
+- [Início]({{ '/pt/' | relative_url }})
+- [Animações]({{ '/pt/Animations' | relative_url }})
+- [Câmeras]({{ '/pt/Cameras' | relative_url }})
+- [Saída]({{ '/pt/Output' | relative_url }})
+- [Debug]({{ '/pt/Debug' | relative_url }})
+- [FAQ]({{ '/pt/FAQ' | relative_url }})
+- [Licença]({{ '/pt/License' | relative_url }})
+- [Changelog]({{ '/pt/Changelog' | relative_url }})
 

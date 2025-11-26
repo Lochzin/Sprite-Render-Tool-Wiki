@@ -5,9 +5,11 @@
       <strong>{{ tongue | upcase }}</strong>
     {% else %}
       {% if tongue == site.default_lang %}
-        <a href=" {{ page.url | remove_first: '/' | prepend: site.baseurl }}">{{ tongue | upcase }}</a>
+        {% assign url = page.url | remove_first: '/' %}
+        <a href="{{ url | relative_url }}">{{ tongue | upcase }}</a>
       {% else %}
-        <a href="{{ tongue | prepend: '/' | prepend: site.baseurl }}{{ page.url | remove_first: '/' }}">{{ tongue | upcase }}</a>
+        {% assign url = tongue | prepend: '/' | append: page.url | remove_first: '/' %}
+        <a href="{{ url | relative_url }}">{{ tongue | upcase }}</a>
       {% endif %}
     {% endif %}
     {% unless forloop.last %} | {% endunless %}

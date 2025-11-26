@@ -204,5 +204,5 @@ Use esta página inicial como o índice principal. Páginas recomendadas:
 
 ## Idioma / Language
 
-**Português** | [English](/en/)
+**Português** | [English]({{ '/en/' | relative_url }})
 
