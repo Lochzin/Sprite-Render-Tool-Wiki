@@ -30,7 +30,8 @@ plugins:
 # Configuração do Polyglot (suporte a múltiplos idiomas)
 languages: ["en", "pt"]
 default_lang: "en"
-exclude_from_localization: ["javascript", "images", "css", "assets", "_includes", "_layouts"]
+exclude_from_localization: ["javascript", "css", "assets", "_includes", "_layouts"]
+# Nota: "images" foi removido para permitir que favicon e outras imagens sejam acessíveis
 
 # Polyglot: configurações para filtrar navegação por idioma
 # O Polyglot automaticamente filtra site.pages por idioma
@@ -39,6 +40,7 @@ exclude_from_localization: ["javascript", "images", "css", "assets", "_includes"
 # Excluir arquivos do build (arquivos internos/documentação)
 exclude:
   - README-POLYGLOT.md
+  - README-FAVICON.md
   - Gemfile
   - Gemfile.lock
 
