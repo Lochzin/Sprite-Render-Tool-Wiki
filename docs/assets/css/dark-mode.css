@@ -1,0 +1,146 @@
+/* Dark Mode Styles for Read the Docs Theme */
+
+/* Dark mode variables */
+:root {
+  --dark-bg: #1a1a1a;
+  --dark-text: #e0e0e0;
+  --dark-link: #4a9eff;
+  --dark-link-hover: #6bb3ff;
+  --dark-border: #333;
+  --dark-code-bg: #2d2d2d;
+  --dark-code-text: #f8f8f2;
+  --dark-sidebar-bg: #252525;
+  --dark-sidebar-text: #d0d0d0;
+  --dark-sidebar-active: #4a9eff;
+}
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: #fff;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode-toggle svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: var(--dark-bg) !important;
+  color: var(--dark-text) !important;
+}
+
+body.dark-mode .wy-side-nav-search,
+body.dark-mode .wy-nav-side {
+  background-color: var(--dark-sidebar-bg) !important;
+  color: var(--dark-sidebar-text) !important;
+}
+
+body.dark-mode .wy-menu-vertical a {
+  color: var(--dark-sidebar-text) !important;
+}
+
+body.dark-mode .wy-menu-vertical a:hover {
+  background-color: #333 !important;
+}
+
+body.dark-mode .wy-menu-vertical li.current > a {
+  background-color: var(--dark-sidebar-active) !important;
+  color: #fff !important;
+}
+
+body.dark-mode .rst-content {
+  background-color: var(--dark-bg) !important;
+  color: var(--dark-text) !important;
+}
+
+body.dark-mode .rst-content h1,
+body.dark-mode .rst-content h2,
+body.dark-mode .rst-content h3,
+body.dark-mode .rst-content h4,
+body.dark-mode .rst-content h5,
+body.dark-mode .rst-content h6 {
+  color: var(--dark-text) !important;
+}
+
+body.dark-mode .rst-content a {
+  color: var(--dark-link) !important;
+}
+
+body.dark-mode .rst-content a:hover {
+  color: var(--dark-link-hover) !important;
+}
+
+body.dark-mode .rst-content code {
+  background-color: var(--dark-code-bg) !important;
+  color: var(--dark-code-text) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+body.dark-mode .rst-content pre {
+  background-color: var(--dark-code-bg) !important;
+  color: var(--dark-code-text) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+body.dark-mode .rst-content blockquote {
+  border-left: 4px solid var(--dark-border) !important;
+  background-color: #2a2a2a !important;
+  color: var(--dark-text) !important;
+}
+
+body.dark-mode .rst-content table {
+  border-color: var(--dark-border) !important;
+}
+
+body.dark-mode .rst-content table thead {
+  background-color: #2a2a2a !important;
+}
+
+body.dark-mode .rst-content table tbody tr {
+  border-color: var(--dark-border) !important;
+}
+
+body.dark-mode .rst-content table tbody tr:nth-child(even) {
+  background-color: #222 !important;
+}
+
+body.dark-mode .wy-nav-top {
+  background-color: var(--dark-sidebar-bg) !important;
+}
+
+body.dark-mode .dark-mode-toggle {
+  background: var(--dark-sidebar-bg);
+  border-color: var(--dark-border);
+  color: var(--dark-text);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .dark-mode-toggle {
+    bottom: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+  }
+}
+
