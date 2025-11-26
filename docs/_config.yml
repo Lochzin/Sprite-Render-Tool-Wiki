@@ -32,6 +32,12 @@ languages: ["en", "pt"]
 default_lang: "en"
 exclude_from_localization: ["javascript", "images", "css", "assets"]
 
+# Excluir arquivos do build (arquivos internos/documentação)
+exclude:
+  - README-POLYGLOT.md
+  - Gemfile
+  - Gemfile.lock
+
 # Configurações de build do GitHub Pages
 github:
   is_project_page: true
