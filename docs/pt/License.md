@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Licença e Termos Comerciais"
+nav_order: 6
+---
+
 ## Licença e Termos Comerciais
 
 Esta página resume a licença e os termos comerciais do **Sprite Render Tool**, baseado em `LICENSE.md`.

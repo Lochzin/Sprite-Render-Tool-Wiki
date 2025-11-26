@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Changelog — Sprite Render Tool"
+nav_order: 8
+---
+
 ## Changelog — Sprite Render Tool
 
 Esta página é um template sugerido para rastrear mudanças no **Sprite Render Tool** ao longo do tempo.
