@@ -1,5 +1,6 @@
 ---
 layout: default
+title: "Sprite Render Tool Wiki"
 permalink: /
 ---
 

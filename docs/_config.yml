@@ -30,7 +30,11 @@ plugins:
 # Configuração do Polyglot (suporte a múltiplos idiomas)
 languages: ["en", "pt"]
 default_lang: "en"
-exclude_from_localization: ["javascript", "images", "css", "assets"]
+exclude_from_localization: ["javascript", "images", "css", "assets", "_includes", "_layouts"]
+
+# Polyglot: configurações para filtrar navegação por idioma
+# O Polyglot automaticamente filtra site.pages por idioma
+# Certifique-se de que o tema usa site.pages para navegação
 
 # Excluir arquivos do build (arquivos internos/documentação)
 exclude:
