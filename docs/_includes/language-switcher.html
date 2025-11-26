@@ -1,0 +1,16 @@
+<!-- Polyglot Language Switcher -->
+<div class="language-switcher" style="position: fixed; top: 20px; right: 20px; z-index: 1000; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+  {% for tongue in site.languages %}
+    {% if tongue == site.active_lang %}
+      <strong>{{ tongue | upcase }}</strong>
+    {% else %}
+      {% if tongue == site.default_lang %}
+        <a href=" {{ page.url | remove_first: '/' | prepend: site.baseurl }}">{{ tongue | upcase }}</a>
+      {% else %}
+        <a href="{{ tongue | prepend: '/' | prepend: site.baseurl }}{{ page.url | remove_first: '/' }}">{{ tongue | upcase }}</a>
+      {% endif %}
+    {% endif %}
+    {% unless forloop.last %} | {% endunless %}
+  {% endfor %}
+</div>
+

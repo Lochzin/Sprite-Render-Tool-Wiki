@@ -22,9 +22,15 @@ author:
 
 # Plugins suportados pelo GitHub Pages
 plugins:
+  - jekyll-polyglot
   - jekyll-remote-theme
   - jekyll-feed
   - jekyll-seo-tag
+
+# Configuração do Polyglot (suporte a múltiplos idiomas)
+languages: ["en", "pt"]
+default_lang: "en"
+exclude_from_localization: ["javascript", "images", "css", "assets"]
 
 # Configurações de build do GitHub Pages
 github:
