@@ -49,6 +49,21 @@ body.dark-mode {
   color: var(--dark-text) !important;
 }
 
+/* Apply dark background to all main containers */
+body.dark-mode,
+body.dark-mode html,
+body.dark-mode .wy-body-for-nav,
+body.dark-mode .wy-grid-for-nav,
+body.dark-mode .rst-content,
+body.dark-mode .document,
+body.dark-mode .section,
+body.dark-mode .wy-nav-content-wrap,
+body.dark-mode .wy-nav-content {
+  background-color: var(--dark-bg) !important;
+  color: var(--dark-text) !important;
+}
+
+/* Sidebar styles */
 body.dark-mode .wy-side-nav-search,
 body.dark-mode .wy-nav-side {
   background-color: var(--dark-sidebar-bg) !important;
@@ -68,8 +83,18 @@ body.dark-mode .wy-menu-vertical li.current > a {
   color: #fff !important;
 }
 
+/* Main content area - more specific selectors */
 body.dark-mode .rst-content {
   background-color: var(--dark-bg) !important;
+  color: var(--dark-text) !important;
+}
+
+/* Ensure all divs and sections in content area have dark background */
+body.dark-mode .rst-content > *,
+body.dark-mode .rst-content div,
+body.dark-mode .rst-content section,
+body.dark-mode .rst-content article {
+  background-color: transparent !important;
   color: var(--dark-text) !important;
 }
 
@@ -79,6 +104,27 @@ body.dark-mode .rst-content h3,
 body.dark-mode .rst-content h4,
 body.dark-mode .rst-content h5,
 body.dark-mode .rst-content h6 {
+  color: var(--dark-text) !important;
+  background-color: transparent !important;
+}
+
+/* Paragraphs and text elements */
+body.dark-mode .rst-content p,
+body.dark-mode .rst-content li,
+body.dark-mode .rst-content ul,
+body.dark-mode .rst-content ol,
+body.dark-mode .rst-content dd,
+body.dark-mode .rst-content dt,
+body.dark-mode .rst-content dl {
+  color: var(--dark-text) !important;
+  background-color: transparent !important;
+}
+
+/* Strong and emphasis */
+body.dark-mode .rst-content strong,
+body.dark-mode .rst-content em,
+body.dark-mode .rst-content b,
+body.dark-mode .rst-content i {
   color: var(--dark-text) !important;
 }
 
@@ -126,6 +172,56 @@ body.dark-mode .rst-content table tbody tr:nth-child(even) {
 
 body.dark-mode .wy-nav-top {
   background-color: var(--dark-sidebar-bg) !important;
+}
+
+/* Additional elements that might have white background */
+body.dark-mode .wy-body,
+body.dark-mode .wy-grid-for-nav,
+body.dark-mode .wy-nav-content-wrap,
+body.dark-mode .wy-nav-content {
+  background-color: var(--dark-bg) !important;
+}
+
+/* Main wrapper elements */
+body.dark-mode .wy-body-for-nav,
+body.dark-mode .wy-grid-for-nav > section {
+  background-color: var(--dark-bg) !important;
+}
+
+/* Reset specific elements that should have transparent background */
+body.dark-mode .rst-content p,
+body.dark-mode .rst-content div:not(.highlight):not(.admonition),
+body.dark-mode .rst-content span:not(.highlight) {
+  background-color: transparent !important;
+}
+
+/* Force dark background on main content wrapper - more aggressive */
+body.dark-mode .wy-nav-content {
+  background: var(--dark-bg) !important;
+  background-color: var(--dark-bg) !important;
+}
+
+body.dark-mode .wy-nav-content > div {
+  background: var(--dark-bg) !important;
+  background-color: var(--dark-bg) !important;
+}
+
+/* Target any element with white background specifically */
+body.dark-mode [style*="background-color: white"],
+body.dark-mode [style*="background-color: #fff"],
+body.dark-mode [style*="background-color: #ffffff"],
+body.dark-mode [style*="background: white"],
+body.dark-mode [style*="background: #fff"],
+body.dark-mode [style*="background: #ffffff"] {
+  background-color: var(--dark-bg) !important;
+  background: var(--dark-bg) !important;
+}
+
+/* Admonitions and special blocks */
+body.dark-mode .rst-content .admonition {
+  background-color: #2a2a2a !important;
+  border-color: var(--dark-border) !important;
+  color: var(--dark-text) !important;
 }
 
 body.dark-mode .dark-mode-toggle {
