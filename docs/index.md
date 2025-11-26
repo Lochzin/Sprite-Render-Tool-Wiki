@@ -4,10 +4,6 @@ title: "Sprite Render Tool — Official Wiki"
 nav_order: 1
 ---
 
-<!-- Dark Mode Support -->
-<link rel="stylesheet" href="{{ '/assets/css/dark-mode.css' | relative_url }}">
-<script src="{{ '/assets/js/dark-mode.js' | relative_url }}" defer></script>
-
 ## Sprite Render Tool — Official Wiki
 
 Add-on for **Blender** focused on generating 2D sprites from 3D animations, with **multi‑camera support**, **automatic animation detection** (Actions and NLA), and **highly customizable file naming**, ideal for 2D games and sprite pipelines.

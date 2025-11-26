@@ -29,6 +29,3 @@ plugins:
 # Configurações de build do GitHub Pages
 github:
   is_project_page: true
-
-# Incluir arquivos customizados de head (dark mode)
-# O arquivo _includes/head_custom.html será incluído automaticamente pelo Jekyll
