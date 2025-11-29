@@ -4,6 +4,22 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
+## [0.2.3] - 2024
+
+**Highlights:**
+- Added **Output path validation**: The add-on now validates if the output path is configured and exists before rendering
+  - Prevents rendering when output path is empty or invalid
+  - Shows clear error messages when path validation fails
+  - Works in both synchronous and asynchronous rendering modes
+
+**Fixed:**
+- **Blender relative path support**: Fixed handling of Blender's relative paths (starting with `//`)
+  - Now correctly converts relative paths to absolute paths
+  - Prevents issues when Blender saves paths as relative (e.g., `//TestRender\`)
+  - Applied to all path processing methods
+
+---
+
 ## [0.2.2] - 2024
 
 **Highlights:**

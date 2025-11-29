@@ -4,6 +4,22 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
+## [0.2.3] - 2024
+
+**Destaques:**
+- Adicionada **Validação de caminho de saída**: O add-on agora valida se o caminho de saída está configurado e existe antes de renderizar
+  - Previne renderização quando o caminho de saída está vazio ou inválido
+  - Mostra mensagens de erro claras quando a validação do caminho falha
+  - Funciona em ambos os modos de renderização síncrona e assíncrona
+
+**Corrigido:**
+- **Suporte a caminhos relativos do Blender**: Corrigido o tratamento de caminhos relativos do Blender (começando com `//`)
+  - Agora converte corretamente caminhos relativos para caminhos absolutos
+  - Previne problemas quando o Blender salva caminhos como relativos (ex.: `//TestRender\`)
+  - Aplicado a todos os métodos de processamento de caminho
+
+---
+
 ## [0.2.2] - 2024
 
 **Destaques:**
