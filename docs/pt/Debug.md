@@ -1,4 +1,4 @@
-## Debug — Rotação de Luz e Renderização
+# Debug — Rotação de Luz e Renderização
 
 Esta página cobre ferramentas de depuração e padrões integrados ao **Sprite Render Tool**.
 

@@ -1,4 +1,4 @@
-## Debug — Light Rotation and Rendering
+# Debug — Light Rotation and Rendering
 
 This page covers debugging tools and patterns built into the **Sprite Render Tool**.
 

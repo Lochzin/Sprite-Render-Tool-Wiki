@@ -19,6 +19,12 @@ extensions = [
     'sphinx_copybutton',
 ]
 
+# Source file extensions
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'myst_parser',
+}
+
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'README*.md', 'Gemfile*', '_includes', '_layouts', '_config.yml', 'index.md', 'favicon.ico']
 

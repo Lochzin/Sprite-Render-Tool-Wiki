@@ -9,27 +9,27 @@ Add-on for **Blender** focused on generating 2D sprites from 3D animations, with
    :maxdepth: 2
    :caption: English Documentation
 
-   en/index
-   en/Cameras
-   en/Animations
-   en/Output
-   en/Debug
-   en/FAQ
-   en/Changelog
-   en/License
+   en/index.md
+   en/Cameras.md
+   en/Animations.md
+   en/Output.md
+   en/Debug.md
+   en/FAQ.md
+   en/Changelog.md
+   en/License.md
 
 .. toctree::
    :maxdepth: 2
    :caption: Documentação em Português
 
-   pt/index
-   pt/Cameras
-   pt/Animations
-   pt/Output
-   pt/Debug
-   pt/FAQ
-   pt/Changelog
-   pt/License
+   pt/index.md
+   pt/Cameras.md
+   pt/Animations.md
+   pt/Output.md
+   pt/Debug.md
+   pt/FAQ.md
+   pt/Changelog.md
+   pt/License.md
 
 Indices and tables
 ==================

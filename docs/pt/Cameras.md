@@ -1,4 +1,4 @@
-## Câmeras — Configuração e Fluxo de Trabalho
+# Câmeras — Configuração e Fluxo de Trabalho
 
 Esta página explica como configurar câmeras dentro do **Sprite Render Tool** e como a rotação da luz é controlada a partir delas.
 

@@ -1,4 +1,4 @@
-## Changelog — Sprite Render Tool
+# Changelog — Sprite Render Tool
 
 This page tracks changes to the **Sprite Render Tool** over time.
 

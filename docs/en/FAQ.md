@@ -1,4 +1,4 @@
-## FAQ — Frequently Asked Questions
+# FAQ — Frequently Asked Questions
 
 This page lists common questions about using the **Sprite Render Tool** and how to solve typical issues.
 
