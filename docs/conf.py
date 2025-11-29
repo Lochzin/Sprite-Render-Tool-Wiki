@@ -46,6 +46,7 @@ myst_enable_extensions = [
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'sphinx_rtd_theme'
+html_baseurl = 'https://lochzin.github.io/Sprite-Render-Tool-Wiki/'
 html_static_path = ['_static', 'assets']
 html_favicon = 'assets/images/favicon/favicon.ico'
 html_logo = 'assets/images/SpriteRenderTool_Icon.png'

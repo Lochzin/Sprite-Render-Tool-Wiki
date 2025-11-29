@@ -40,7 +40,13 @@ jobs:
       - name: Build with Sphinx
         run: |
           cd docs
-          sphinx-build -b html . _build/html
+          sphinx-build -b html . _build/html -W --keep-going
+          
+      - name: Verify build output
+        run: |
+          cd docs/_build/html
+          ls -la
+          test -f index.html || (echo "ERROR: index.html not found!" && exit 1)
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
