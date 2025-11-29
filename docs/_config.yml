@@ -5,9 +5,9 @@ description: "Sprite Render Tool Documentation"
 url: "https://lochzin.github.io"
 baseurl: "/Sprite-Render-Tool-Wiki"
 
-# Tema remoto: Read the Docs
-# Repositório: https://github.com/JV-conseil/jekyll-theme-read-the-docs
-remote_theme: JV-conseil/jekyll-theme-read-the-docs
+# Tema remoto: Read The Docs Jekyll Theme
+# Repositório: https://github.com/embeddedlog/jekyll-theme-rtd
+remote_theme: embeddedlog/jekyll-theme-rtd
 
 # Idioma do site (padrão)
 lang: "en"
