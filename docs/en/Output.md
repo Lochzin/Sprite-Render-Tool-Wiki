@@ -149,7 +149,7 @@ This can be useful if you are packing multi‑camera frames together in a custom
 
 ## Tips
 
-- Always set `render.filepath` to a **directory**, not a file name; the add‑on will try to clean it, but keeping it as a folder reduces surprises.
+- Always set `render.filepath` to a **directory**, not a file name. The add-on validates the path before rendering and will show a clear error if the path is invalid.
 - Use short, human‑readable names for **Project**, **Object**, animations and cameras to produce clean asset names.
 - If you change folder options mid‑project, be aware that new renders may go to different paths than older ones; keep your game project’s import paths in sync.
 

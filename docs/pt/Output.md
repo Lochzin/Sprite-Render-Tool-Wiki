@@ -149,7 +149,7 @@ Isso pode ser útil se você estiver empacotando frames de múltiplas câmeras j
 
 ## Dicas
 
-- Sempre defina `render.filepath` para um **diretório**, não um nome de arquivo; o add-on tentará limpá-lo, mas mantê-lo como uma pasta reduz surpresas.
+- Sempre defina `render.filepath` para um **diretório**, não um nome de arquivo. O add-on valida o caminho antes de renderizar e mostrará um erro claro se o caminho estiver inválido.
 - Use nomes curtos e legíveis para **Project**, **Object**, animações e câmeras para produzir nomes de assets limpos.
 - Se você alterar opções de pasta no meio do projeto, esteja ciente de que novas renderizações podem ir para caminhos diferentes das mais antigas; mantenha os caminhos de importação do seu projeto de jogo sincronizados.
 
