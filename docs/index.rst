@@ -16,6 +16,7 @@ Add-on for **Blender** focused on generating 2D sprites from 3D animations, with
    en/Debug.md
    en/FAQ.md
    en/Changelog.md
+   en/Future-Features.md
    en/License.md
 
 .. toctree::
@@ -29,6 +30,7 @@ Add-on for **Blender** focused on generating 2D sprites from 3D animations, with
    pt/Debug.md
    pt/FAQ.md
    pt/Changelog.md
+   pt/Future-Features.md
    pt/License.md
 
 Indices and tables
