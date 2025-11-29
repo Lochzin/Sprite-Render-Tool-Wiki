@@ -96,7 +96,7 @@ O botão **Test Cameras** (`sprite_render.test_cameras`) ajuda você a visualiza
 - Se um light pivot estiver definido, ele também aplica a rotação de luz correspondente.
 
 ```python
-# Detalhe técnico: Usa o helper compartilhado apply_light_rotation
+Detalhe técnico: Usa o helper compartilhado apply_light_rotation
 ```
 
 Use isso para:

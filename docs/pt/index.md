@@ -36,7 +36,7 @@ Funciona com Blender **5.0.0+**.
 O painel principal organiza o fluxo de trabalho em seções:
 
 ```python
-# Detalhe técnico: Implementado pela classe SPRITE_RENDER_PT_MainPanel
+Detalhe técnico: Implementado pela classe SPRITE_RENDER_PT_MainPanel
 ```
 
 - **🔖 Projeto**
@@ -73,7 +73,7 @@ O painel principal organiza o fluxo de trabalho em seções:
     - Cada item tem: `enabled`, `name`, `frame_start`, `frame_end`, e opções de sincronização secundária (ainda não implementadas).
 
 ```python
-# Detalhe técnico: Implementado por SPRITE_RENDER_UL_Actions
+Detalhe técnico: Implementado por SPRITE_RENDER_UL_Actions
 ```
   - Botões:
     - `Detect Actions`: lê `bpy.data.actions` e preenche a lista.
@@ -88,7 +88,7 @@ O painel principal organiza o fluxo de trabalho em seções:
     - Cada item: `enabled`, `name` (nome da strip), `track_name`, `frame_start`, `frame_end`.
 
 ```python
-# Detalhe técnico: Implementado por SPRITE_RENDER_UL_NLAStrips
+Detalhe técnico: Implementado por SPRITE_RENDER_UL_NLAStrips
 ```
   - Botões:
     - `Detect NLA Strips`: lê as tracks NLA da armadura alvo.

@@ -96,7 +96,7 @@ The **Test Cameras** button (`sprite_render.test_cameras`) helps you quickly pre
 - If a light pivot is set, it also applies the corresponding light rotation.
 
 ```python
-# Technical detail: Uses the shared apply_light_rotation helper
+Technical detail: Uses the shared apply_light_rotation helper
 ```
 
 Use this to:

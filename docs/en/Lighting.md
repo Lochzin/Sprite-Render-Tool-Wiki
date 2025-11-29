@@ -17,10 +17,10 @@ This standardized lighting approach helps maintain uniform illumination across a
 The **Light Pivot** is a Blender object that acts as a control point for lighting rotation. You can use any Blender object as the pivot, though typically an **empty object** is used (mesh objects can also work, but empty objects are preferred for their simplicity).
 
 ```python
-# Technical details:
-# - The pivot is stored in SpriteRenderSettings.pivot_object
-# - Before rendering each frame, the operator calls:
-#   SPRITE_RENDER_OT_RenderAll.apply_light_rotation(...)
+Technical details:
+- The pivot is stored in SpriteRenderSettings.pivot_object
+- Before rendering each frame, the operator calls:
+  SPRITE_RENDER_OT_RenderAll.apply_light_rotation(...)
 ```
 
 ### Enable Light Pivot Toggle
@@ -44,18 +44,20 @@ Depending on **Enable Full Rotation (XYZ)**:
 
 - **Disabled** (default):
   - Only the Z axis of the pivot is changed.
+  - Ideal for **boomer shooters** and games with **360-degree character/object views**, where all cameras are on the same horizontal plane around the character.
   - Good for top-down / isometric lighting where "around the character" is enough.
   - This is the most common use case for sprite rendering.
 
 - **Enabled**:
   - Full Euler XYZ rotation is applied to the pivot.
+  - Useful for more complex **boomer shooters** where there are **height level differences** (multiple vertical levels, stairs, platforms, etc.).
   - Use this for more complex lighting setups that require rotation in multiple axes.
   - Useful when cameras are positioned at different vertical angles (above, below, diagonal).
 
 ```python
-# Technical details:
-# - Disabled: uses cam_item.light_rotation[2] (Z axis only)
-# - Enabled: applies full cam_item.light_rotation (XYZ)
+Technical details:
+- Disabled: uses cam_item.light_rotation[2] (Z axis only)
+- Enabled: applies full cam_item.light_rotation (XYZ)
 ```
 
 ### Automatic Light Rotation

@@ -18,8 +18,8 @@ When enabled:
   - Any errors that occur while trying to apply rotation.
 
 ```python
-# Technical detail: Implemented in SPRITE_RENDER_OT_RenderAll.apply_light_rotation
-# via report_func calls when debug=True
+Technical detail: Implemented in SPRITE_RENDER_OT_RenderAll.apply_light_rotation
+via report_func calls when debug=True
 ```
 
 ---
@@ -35,7 +35,7 @@ When light rotation debug is active, for the first camera in the ordered list (o
 - The final pivot rotation after applying the change.
 
 ```python
-# Technical detail: The desired rotation comes from cam_item.light_rotation
+Technical detail: The desired rotation comes from cam_item.light_rotation
 ```
 
 In Z‑only mode:

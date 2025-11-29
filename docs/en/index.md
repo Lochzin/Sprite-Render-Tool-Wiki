@@ -36,7 +36,7 @@ It works with Blender **5.0.0+**.
 The main panel organizes the workflow into sections:
 
 ```python
-# Technical detail: Implemented by the SPRITE_RENDER_PT_MainPanel class
+Technical detail: Implemented by the SPRITE_RENDER_PT_MainPanel class
 ```
 
 - **🔖 Project**
@@ -73,7 +73,7 @@ The main panel organizes the workflow into sections:
     - Each item has: `enabled`, `name`, `frame_start`, `frame_end`, and secondary sync options (not yet implemented).
 
 ```python
-# Technical detail: Implemented by SPRITE_RENDER_UL_Actions
+Technical detail: Implemented by SPRITE_RENDER_UL_Actions
 ```
   - Buttons:
     - `Detect Actions`: reads `bpy.data.actions` and populates the list.
@@ -88,7 +88,7 @@ The main panel organizes the workflow into sections:
     - Each item: `enabled`, `name` (strip name), `track_name`, `frame_start`, `frame_end`.
 
 ```python
-# Technical detail: Implemented by SPRITE_RENDER_UL_NLAStrips
+Technical detail: Implemented by SPRITE_RENDER_UL_NLAStrips
 ```
   - Buttons:
     - `Detect NLA Strips`: reads NLA tracks from the target armature.

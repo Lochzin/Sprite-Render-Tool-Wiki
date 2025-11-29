@@ -18,8 +18,8 @@ Quando habilitado:
   - Quaisquer erros que ocorram ao tentar aplicar a rotação.
 
 ```python
-# Detalhe técnico: Implementado em SPRITE_RENDER_OT_RenderAll.apply_light_rotation
-# via chamadas report_func quando debug=True
+Detalhe técnico: Implementado em SPRITE_RENDER_OT_RenderAll.apply_light_rotation
+via chamadas report_func quando debug=True
 ```
 
 ---
@@ -35,7 +35,7 @@ Quando o debug de rotação de luz está ativo, para a primeira câmera na lista
 - A rotação final do pivô após aplicar a mudança.
 
 ```python
-# Detalhe técnico: A rotação desejada vem de cam_item.light_rotation
+Detalhe técnico: A rotação desejada vem de cam_item.light_rotation
 ```
 
 No modo apenas Z:
