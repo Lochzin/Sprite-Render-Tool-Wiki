@@ -93,3 +93,4 @@ Ao comprar a ferramenta você ajuda a apoiar o desenvolvimento independente e me
 
 
 
+
