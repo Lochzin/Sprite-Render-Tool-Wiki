@@ -11,6 +11,7 @@ Add-on for **Blender** focused on generating 2D sprites from 3D animations, with
 
    en/index.md
    en/Cameras.md
+   en/Lighting.md
    en/Animations.md
    en/Output.md
    en/Debug.md
@@ -25,6 +26,7 @@ Add-on for **Blender** focused on generating 2D sprites from 3D animations, with
 
    pt/index.md
    pt/Cameras.md
+   pt/Lighting.md
    pt/Animations.md
    pt/Output.md
    pt/Debug.md

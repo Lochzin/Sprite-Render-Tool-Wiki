@@ -23,6 +23,8 @@ This is implemented in `SPRITE_RENDER_OT_RenderAll.apply_light_rotation` via `re
 
 ## Light Rotation Debug Details
 
+> **Note**: For detailed information about the Light Pivot system and lighting setup, see [Lighting](Lighting.md).
+
 When light rotation debug is active, for the first camera in the ordered list (or the first camera/frame in async mode) the add‑on logs:
 - Original pivot Euler rotation (degrees).
 - The desired rotation coming from `cam_item.light_rotation`.

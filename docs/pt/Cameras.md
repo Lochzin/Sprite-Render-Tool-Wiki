@@ -1,6 +1,6 @@
 # Câmeras — Configuração e Fluxo de Trabalho
 
-Esta página explica como configurar câmeras dentro do **Sprite Render Tool** e como a rotação da luz é controlada a partir delas.
+Esta página explica como configurar câmeras dentro do **Sprite Render Tool**. Para informações sobre iluminação e o sistema Light Pivot, veja [Iluminação](Lighting.md).
 
 ---
 
@@ -36,56 +36,26 @@ são consideradas.
 
 Para cada câmera detectada ele:
 - Define `name` e `output_name` para o nome da câmera do Blender.
-- Calcula uma rotação Z automática para `light_rotation` baseada na posição relativa entre a câmera e o **objeto pivô**.
+- Calcula uma rotação Z automática para `light_rotation` baseada na posição relativa entre a câmera e o **objeto pivô** (se configurado).
 - Atribui `render_order` sequencialmente (0, 1, 2, ...).
 
-> **Importante**: o **Pivot Object** deve ser definido na seção **Light Pivot**; caso contrário, o operador cancelará com um erro.
+> **Importante**: O **Pivot Object** deve ser definido na seção **Light Pivot** se você quiser o cálculo automático de rotação de luz; caso contrário, o operador cancelará com um erro.
 
 ### Limitações da Detecção Automática
 
-O **Detect Cameras** tenta encontrar a rotação ideal do light pivot para cada ângulo de câmera, mas isso **só funciona corretamente para ângulos horizontais** (como em jogos boomer shooter em primeira pessoa, onde as câmeras estão todas no mesmo plano horizontal ao redor do personagem).
+O **Detect Cameras** tenta encontrar a rotação ideal do pivô de luz para cada ângulo de câmera, mas isso **só funciona corretamente para ângulos horizontais** (como em jogos boomer shooter em primeira pessoa, onde as câmeras estão todas no mesmo plano horizontal ao redor do personagem).
 
-Para renderizações que precisam ser feitas em **ângulos diferentes** (de cima, diagonalmente, ou em múltiplos planos), você precisará **ajustar manualmente** o ângulo de rotação do pivot (`Light Rotation`) para cada câmera após usar o Detect Cameras.
+Para renderizações que precisam ser feitas em **ângulos diferentes** (de cima, diagonalmente, ou em múltiplos planos), você precisará **ajustar manualmente** o ângulo de rotação do pivô (`Light Rotation`) para cada câmera após usar o Detect Cameras.
 
-> **Nota**: Futuramente será adicionado um debug visual para ajudar a visualizar e ajustar esses ângulos de rotação do pivot.
+Para mais informações sobre rotação de luz e configuração de iluminação, veja [Iluminação](Lighting.md).
 
 ---
 
-## Light Pivot e Rotação de Luz
+## Rotação de Luz por Câmera
 
-O add-on usa um **objeto pivô** (qualquer objeto do Blender) para controlar a direção da iluminação para cada câmera:
-- O pivô é armazenado em `SpriteRenderSettings.pivot_object`.
-- Antes de renderizar cada frame para uma câmera específica, o operador chama:
-  - `SPRITE_RENDER_OT_RenderAll.apply_light_rotation(...)`
+Cada câmera tem uma propriedade `light_rotation` (rotação Euler XYZ) que controla como o objeto **Light Pivot** é rotacionado para esse ângulo de câmera específico. Isso é configurado no subpainel da câmera na seção **Cameras**.
 
-Dependendo de **Enable Full Rotation (XYZ)**:
-- **Desabilitado** (padrão):
-  - Apenas o eixo Z do pivô é alterado, usando `cam_item.light_rotation[2]`.
-  - Bom para iluminação top-down / isométrica onde "ao redor do personagem" é suficiente.
-- **Habilitado**:
-  - Euler XYZ completo de `cam_item.light_rotation` é aplicado ao pivô.
-  - Use isso para configurações de iluminação mais complexas.
-
-Quando **Light Rotation Debug** está habilitado na seção **Debug**:
-- O operador registra informações detalhadas sobre como a rotação do **objeto pivô** é aplicada:
-  - Nome do objeto pivô.
-  - Nome da câmera.
-  - Valores de rotação solicitados.
-  - Rotação original vs. nova rotação (em graus).
-  - Quaisquer erros que ocorram ao tentar aplicar a rotação.
-
-### 💡 Dica de Iluminação
-
-Você pode usar o **Light Pivot** de forma estratégica para criar um sistema de iluminação mais completo:
-
-- **Luzes dentro do pivô**: Coloque luzes como filhos do objeto pivô (ou agrupe-as com o pivô). Essas luzes **irão rotacionar** junto com as câmeras ao redor do personagem, criando uma iluminação consistente que segue o ponto de vista da câmera.
-
-- **Luzes fora do pivô**: Adicione luzes adicionais que **não** sejam filhos do pivô. Essas luzes permanecerão fixas e podem ser usadas para:
-  - Iluminar áreas naturalmente escuras do personagem ou objeto (como a parte inferior, costas, ou áreas de sombra).
-  - Criar iluminação ambiente ou fill lights que não mudam com a rotação da câmera.
-  - Adicionar highlights ou rim lights estáticos.
-
-Esta combinação permite criar uma iluminação mais rica e controlada, onde a luz principal rotaciona com a câmera enquanto luzes auxiliares preenchem áreas que precisam de iluminação adicional.
+Para informações detalhadas sobre o sistema Light Pivot, estratégias de iluminação e como usar a rotação de luz efetivamente, veja a página [Iluminação](Lighting.md).
 
 ---
 
@@ -128,4 +98,6 @@ O botão **Test Cameras** (`sprite_render.test_cameras`) ajuda você a visualiza
 Use isso para:
 - Percorrer todas as câmeras configuradas.
 - Confirmar que o enquadramento e a iluminação são consistentes antes de iniciar um lote completo de renderização.
+
+> **Dica**: Para informações detalhadas sobre iluminação e o sistema Light Pivot, veja [Iluminação](Lighting.md).
 

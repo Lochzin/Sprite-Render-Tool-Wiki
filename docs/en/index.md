@@ -55,6 +55,7 @@ The main panel is implemented by the `SPRITE_RENDER_PT_MainPanel` class and orga
 - **💡 Light Pivot**
   - `Pivot Object`: object used as the pivot for light rotation.
   - **💡 Tip**: You can place lights as children of the pivot (they will rotate with cameras) and add fixed lights outside the pivot to illuminate dark areas of the character.
+  - For detailed information about lighting setup and strategies, see [Lighting](Lighting.md).
 
 - **🎞️ Animations**
   - `Target Armature`: the armature to animate.

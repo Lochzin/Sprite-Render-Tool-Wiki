@@ -1,6 +1,6 @@
 # Cameras — Setup and Workflow
 
-This page explains how to configure cameras inside the **Sprite Render Tool** and how light rotation is driven from them.
+This page explains how to configure cameras inside the **Sprite Render Tool**. For information about lighting and the Light Pivot system, see [Lighting](Lighting.md).
 
 ---
 
@@ -36,10 +36,10 @@ are considered.
 
 For each detected camera it:
 - Sets `name` and `output_name` to the Blender camera name.
-- Computes an automatic Z rotation for `light_rotation` based on the relative position between the camera and the **pivot object**.
+- Computes an automatic Z rotation for `light_rotation` based on the relative position between the camera and the **pivot object** (if configured).
 - Assigns `render_order` sequentially (0, 1, 2, ...).
 
-> **Important**: the **Pivot Object** must be set in the **Light Pivot** section; otherwise the operator will cancel with an error.
+> **Important**: The **Pivot Object** must be set in the **Light Pivot** section if you want automatic light rotation calculation; otherwise the operator will cancel with an error.
 
 ### Automatic Detection Limitations
 
@@ -47,40 +47,15 @@ For each detected camera it:
 
 For renders that need to be done at **different angles** (from above, diagonally, or in multiple planes), you will need to **manually adjust** the pivot rotation angle (`Light Rotation`) for each camera after using Detect Cameras.
 
-> **Note**: A visual debug tool will be added in the future to help visualize and adjust these pivot rotation angles.
+For more information about light rotation and lighting setup, see [Lighting](Lighting.md).
 
 ---
 
-## Light Pivot and Light Rotation
+## Light Rotation per Camera
 
-The add‑on uses a **pivot object** (any Blender object) to drive lighting direction for each camera:
-- The pivot is stored in `SpriteRenderSettings.pivot_object`.
-- Before rendering each frame for a given camera, the operator calls:
-  - `SPRITE_RENDER_OT_RenderAll.apply_light_rotation(...)`
+Each camera has a `light_rotation` property (Euler rotation XYZ) that controls how the **Light Pivot** object is rotated for that specific camera angle. This is configured in the camera's subpanel in the **Cameras** section.
 
-Depending on **Enable Full Rotation (XYZ)**:
-- **Disabled** (default):
-  - Only the Z axis of the pivot is changed, using `cam_item.light_rotation[2]`.
-  - Good for top‑down / isometric lighting where “around the character” is enough.
-- **Enabled**:
-  - Full Euler XYZ from `cam_item.light_rotation` is applied to the pivot.
-  - Use this for more complex lighting setups.
-
-When **Light Rotation Debug** is enabled in the **Debug** section:
-- The operator logs before‑and‑after pivot rotation (in degrees) to the Blender console for the first camera, so you can verify the values being applied.
-
-### 💡 Lighting Tip
-
-You can use the **Light Pivot** strategically to create a more complete lighting system:
-
-- **Lights inside the pivot**: Place lights as children of the pivot object (or group them with the pivot). These lights **will rotate** along with the cameras around the character, creating consistent lighting that follows the camera's point of view.
-
-- **Lights outside the pivot**: Add additional lights that are **not** children of the pivot. These lights will remain fixed and can be used to:
-  - Illuminate naturally dark areas of the character or object (such as the underside, back, or shadow areas).
-  - Create ambient or fill lighting that doesn't change with camera rotation.
-  - Add static highlights or rim lights.
-
-This combination allows you to create richer, more controlled lighting, where the main light rotates with the camera while auxiliary lights fill areas that need additional illumination.
+For detailed information about the Light Pivot system, lighting strategies, and how to use light rotation effectively, see the [Lighting](Lighting.md) page.
 
 ---
 
@@ -123,5 +98,7 @@ The **Test Cameras** button (`sprite_render.test_cameras`) helps you quickly pre
 Use this to:
 - Walk through all configured cameras.
 - Confirm that framing and lighting are consistent before starting a full render batch.
+
+> **Tip**: For detailed information about lighting and the Light Pivot system, see [Lighting](Lighting.md).
 
 

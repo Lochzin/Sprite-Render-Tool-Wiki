@@ -55,6 +55,7 @@ O painel principal é implementado pela classe `SPRITE_RENDER_PT_MainPanel` e or
 - **💡 Light Pivot**
   - `Pivot Object`: objeto usado como pivô para rotação da luz.
   - **💡 Dica**: Você pode colocar luzes como filhos do pivô (elas rotacionarão com as câmeras) e adicionar luzes fixas fora do pivô para iluminar áreas escuras do personagem.
+  - Para informações detalhadas sobre configuração de iluminação e estratégias, veja [Iluminação](Lighting.md).
 
 - **🎞️ Animações**
   - `Target Armature`: a armadura a ser animada.

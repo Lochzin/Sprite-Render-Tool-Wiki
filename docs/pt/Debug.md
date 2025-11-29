@@ -23,6 +23,8 @@ Isso é implementado em `SPRITE_RENDER_OT_RenderAll.apply_light_rotation` via ch
 
 ## Detalhes do Debug de Rotação de Luz
 
+> **Nota**: Para informações detalhadas sobre o sistema Light Pivot e configuração de iluminação, veja [Iluminação](Lighting.md).
+
 Quando o debug de rotação de luz está ativo, para a primeira câmera na lista ordenada (ou a primeira câmera/frame no modo assíncrono) o add-on registra:
 - Rotação Euler original do pivô (graus).
 - A rotação desejada vinda de `cam_item.light_rotation`.
