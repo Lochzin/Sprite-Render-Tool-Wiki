@@ -6,15 +6,37 @@ nav_order: 7
 
 ## Changelog — Sprite Render Tool
 
-This page is a suggested template for tracking changes to the **Sprite Render Tool** over time.
-
-> **Note:** Only version **0.2.1** is visible in the provided code snippet (`bl_info["version"] = (0, 2, 1)`). Older versions below are examples; adjust or remove them to match your real history.
+This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
-## 0.2.1
+## [0.2.2] - 2024
 
-**Release date:** (fill in)
+### Fixed
+
+- **Output Path Management**: Fixed issue where renders were being saved both inside and outside camera folders when `use_camera_folder` was enabled, causing duplicate files. The base path cleaning now properly removes dynamic folder names (project, object, camera) from the path before reconstructing it.
+
+- **Frame Counter Reset**: Fixed frame counter not resetting between different animations when no folders were configured. The sequential counter now properly resets for each new animation.
+
+- **Camera Folder Frame Counter**: Fixed frame counter not resetting between cameras when `use_camera_folder` is enabled. Now:
+
+  - When `use_camera_folder` is enabled: Frame counter resets to 1 for each camera (each camera gets its own numbered sequence: 1, 2, 3...)
+
+  - When `use_camera_folder` is disabled: Frame counter continues sequentially across cameras and only resets when changing animations
+
+### Technical Changes
+
+- Enhanced `clean_base_path()` method to accept `settings` parameter and remove dynamic folder names from base path
+
+- Updated `build_dir_parts()` to check if `camera_name` is not empty before adding to directory parts
+
+- Modified frame counter logic in both `execute()` and `_render_next_frame()` methods to respect `use_camera_folder` setting
+
+- Added `_previous_cam_index` tracking variable for proper camera change detection in async rendering mode
+
+---
+
+## [0.2.1] - 2024
 
 **Highlights:**
 - Improved multi‑camera workflow with `render_order` per camera.
@@ -34,36 +56,4 @@ This page is a suggested template for tracking changes to the **Sprite Render To
   - **Detect NLA Strips**
 
 ---
-
-## 0.2.0 (example)
-
-**Release date:** (fill in, or remove if not applicable)
-
-**Changes:**
-- Initial integration of NLA‑based rendering.
-- First version of per‑camera handling (without full pivot rotation features).
-- Early progress reporting improvements.
-
----
-
-## 0.1.0 (example)
-
-**Release date:** (fill in, or remove if not applicable)
-
-**Changes:**
-- First public beta of Sprite Render Tool.
-- Basic Action‑based sprite rendering.
-- Initial UI panel in the 3D Viewport sidebar.
-
----
-
-## How to Maintain This File
-
-For each new version:
-- Update `bl_info["version"]` in the add‑on code.
-- Add a new section at the top of this file with:
-  - Version number.
-  - Release date.
-  - Bullet list of key changes (features, fixes, behavior changes, UI changes).
-
 

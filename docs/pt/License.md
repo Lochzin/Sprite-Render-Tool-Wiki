@@ -92,3 +92,4 @@ Do `LICENSE.md` original:
 Ao comprar a ferramenta você ajuda a apoiar o desenvolvimento independente e melhorias futuras do add-on.
 
 
+

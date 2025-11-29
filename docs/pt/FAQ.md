@@ -133,3 +133,4 @@ Sempre leia o `LICENSE.md` e a página **License.md** antes de redistribuir qual
 Para detalhes precisos e casos extremos, consulte o texto da licença oficial.
 
 
+
