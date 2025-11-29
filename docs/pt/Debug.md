@@ -97,3 +97,4 @@ você pode comparar a saída do console entre esses dois modos para garantir que
   - Verifique quais opções **Use Folders** estão habilitadas na seção **Output**.
   - Procure mensagens do console sobre falhas de criação de diretórios (se houver).
 
+

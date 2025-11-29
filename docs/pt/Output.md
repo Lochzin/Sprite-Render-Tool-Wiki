@@ -159,3 +159,4 @@ Isso pode ser útil se você estiver empacotando frames de múltiplas câmeras j
 - Use nomes curtos e legíveis para **Project**, **Object**, animações e câmeras para produzir nomes de assets limpos.
 - Se você alterar opções de pasta no meio do projeto, esteja ciente de que novas renderizações podem ir para caminhos diferentes das mais antigas; mantenha os caminhos de importação do seu projeto de jogo sincronizados.
 
+

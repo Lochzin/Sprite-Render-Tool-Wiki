@@ -66,3 +66,4 @@ Para cada nova versão:
   - Data de lançamento.
   - Lista de mudanças principais (recursos, correções, mudanças de comportamento, mudanças de UI).
 
+

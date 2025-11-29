@@ -187,18 +187,3 @@ Based on `LICENSE.md`:
   - Sharing the purchased download violates the purchase agreement.
 
 For full details, see the dedicated page: **[License](License.md)**.
-
----
-
-## Suggested Wiki Pages
-
-Use this Home page as the main index. Recommended pages (we can create them next):
-- **Cameras.md**: detailed configuration of cameras and light rotation.
-- **Animations.md**: ACTIONS, NLA, and STATIC modes in depth.
-- **Output.md**: examples of `output_template` usage and folder structure.
-- **Debug.md**: using `Light Rotation Debug` and common debugging tips.
-- **Licenca.md**: full/summary commercial license text + GPL notes.
-- **FAQ.md**: common questions and troubleshooting.
-- **Changelog.md**: version history (e.g., 0.2.1, etc.).
-
-Tell me which of these pages you want to create now and I'll fill them with detailed content.

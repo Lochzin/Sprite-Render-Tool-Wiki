@@ -132,3 +132,4 @@ Sempre leia o `LICENSE.md` e a página **License.md** antes de redistribuir qual
 - Estúdio / Comercial: até 5 usuários por licença (extensível mediante solicitação).  
 Para detalhes precisos e casos extremos, consulte o texto da licença oficial.
 
+

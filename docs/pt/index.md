@@ -188,16 +188,3 @@ Baseado em `LICENSE.md`:
 
 Para detalhes completos, consulte a página dedicada: **[Licença](License.md)**.
 
----
-
-## Páginas da Wiki Sugeridas
-
-Use esta página inicial como índice principal. Páginas recomendadas (podemos criá-las a seguir):
-- **Cameras.md**: configuração detalhada de câmeras e rotação de luz.
-- **Animations.md**: modos ACTIONS, NLA e STATIC em profundidade.
-- **Output.md**: exemplos de uso de `output_template` e estrutura de pastas.
-- **Debug.md**: usando `Light Rotation Debug` e dicas comuns de depuração.
-- **License.md**: texto completo/resumo da licença comercial + notas GPL.
-- **FAQ.md**: perguntas frequentes e solução de problemas.
-- **Changelog.md**: histórico de versões (ex.: 0.2.1, etc.).
-
