@@ -1,21 +1,8 @@
-<!-- Favicon - Custom Sprite Render Tool Icon -->
-<link rel="icon" type="image/png" href="{{ '/assets/images/SpriteRenderTool_Icon30x30.png' | prepend: site.baseurl }}">
-<link rel="shortcut icon" type="image/png" href="{{ '/assets/images/SpriteRenderTool_Icon30x30.png' | prepend: site.baseurl }}">
-<link rel="apple-touch-icon" href="{{ '/assets/images/SpriteRenderTool_Icon30x30.png' | prepend: site.baseurl }}">
-<!-- Force favicon update via JavaScript (in case theme loads after) -->
-<script>
-(function() {
-  var favicon = document.createElement('link');
-  favicon.rel = 'icon';
-  favicon.type = 'image/png';
-  favicon.href = '{{ site.baseurl }}/assets/images/SpriteRenderTool_Icon30x30.png';
-  var head = document.head || document.getElementsByTagName('head')[0];
-  var existingFavicon = document.querySelector('link[rel*="icon"]');
-  if (existingFavicon) {
-    head.removeChild(existingFavicon);
-  }
-  head.appendChild(favicon);
-})();
-</script>
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon/favicon.ico' | relative_url }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon/favicon-16x16.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon/favicon-32x32.png' | relative_url }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/favicon/apple-touch-icon.png' | relative_url }}">
+<link rel="manifest" href="{{ '/assets/images/favicon/site.webmanifest' | relative_url }}">
 
 
