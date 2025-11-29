@@ -26,7 +26,7 @@ source_suffix = ['.rst', '.md']
 master_doc = 'index'
 
 templates_path = ['_templates']
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'README*.md', 'Gemfile*', '_includes', '_layouts', '_config.yml', 'index.md', 'favicon.ico']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'README*.md', 'README-TRANSLATION.md', 'Gemfile*', '_includes', '_layouts', '_config.yml', 'index.md', 'favicon.ico']
 
 # -- Options for MyST Parser -------------------------------------------------
 # https://myst-parser.readthedocs.io/en/latest/configuration.html
