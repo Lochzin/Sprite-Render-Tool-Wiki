@@ -17,7 +17,10 @@ Quando habilitado:
   - Rotação original vs. nova rotação (em graus).
   - Quaisquer erros que ocorram ao tentar aplicar a rotação.
 
-Isso é implementado em `SPRITE_RENDER_OT_RenderAll.apply_light_rotation` via chamadas `report_func` quando `debug=True`.
+```python
+# Detalhe técnico: Implementado em SPRITE_RENDER_OT_RenderAll.apply_light_rotation
+# via chamadas report_func quando debug=True
+```
 
 ---
 
@@ -27,9 +30,13 @@ Isso é implementado em `SPRITE_RENDER_OT_RenderAll.apply_light_rotation` via ch
 
 Quando o debug de rotação de luz está ativo, para a primeira câmera na lista ordenada (ou a primeira câmera/frame no modo assíncrono) o add-on registra:
 - Rotação Euler original do pivô (graus).
-- A rotação desejada vinda de `cam_item.light_rotation`.
+- A rotação desejada.
 - Se a rotação XYZ completa está habilitada.
 - A rotação final do pivô após aplicar a mudança.
+
+```python
+# Detalhe técnico: A rotação desejada vem de cam_item.light_rotation
+```
 
 No modo apenas Z:
 - Ele registra Z original e novo Z em graus.

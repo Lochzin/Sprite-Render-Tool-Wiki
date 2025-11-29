@@ -17,7 +17,10 @@ When enabled:
   - Original rotation vs. new rotation (in degrees).
   - Any errors that occur while trying to apply rotation.
 
-This is implemented in `SPRITE_RENDER_OT_RenderAll.apply_light_rotation` via `report_func` calls when `debug=True`.
+```python
+# Technical detail: Implemented in SPRITE_RENDER_OT_RenderAll.apply_light_rotation
+# via report_func calls when debug=True
+```
 
 ---
 
@@ -27,9 +30,13 @@ This is implemented in `SPRITE_RENDER_OT_RenderAll.apply_light_rotation` via `re
 
 When light rotation debug is active, for the first camera in the ordered list (or the first camera/frame in async mode) the add‑on logs:
 - Original pivot Euler rotation (degrees).
-- The desired rotation coming from `cam_item.light_rotation`.
+- The desired rotation.
 - Whether full XYZ rotation is enabled.
 - The final pivot rotation after applying the change.
+
+```python
+# Technical detail: The desired rotation comes from cam_item.light_rotation
+```
 
 In Z‑only mode:
 - It logs original Z and new Z in degrees.

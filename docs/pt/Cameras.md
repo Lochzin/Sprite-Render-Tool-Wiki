@@ -93,7 +93,11 @@ O botão **Test Cameras** (`sprite_render.test_cameras`) ajuda você a visualiza
 - Ele encontra a câmera da cena atual na lista do add-on.
 - Seleciona a **próxima** câmera na lista (ciclicamente).
 - Define a câmera da cena para esse objeto e muda a 3D Viewport para a visualização da câmera.
-- Se um light pivot estiver definido, ele também aplica a rotação de luz correspondente usando o helper compartilhado `apply_light_rotation`.
+- Se um light pivot estiver definido, ele também aplica a rotação de luz correspondente.
+
+```python
+# Detalhe técnico: Usa o helper compartilhado apply_light_rotation
+```
 
 Use isso para:
 - Percorrer todas as câmeras configuradas.

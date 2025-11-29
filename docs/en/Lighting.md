@@ -14,11 +14,14 @@ This standardized lighting approach helps maintain uniform illumination across a
 
 ## Light Pivot Object
 
-The **Light Pivot** is a Blender object that acts as a control point for lighting rotation:
-- The pivot is stored in `SpriteRenderSettings.pivot_object`.
-- You can use any Blender object as the pivot, though typically an **empty object** is used (mesh objects can also work, but empty objects are preferred for their simplicity).
-- Before rendering each frame for a given camera, the operator calls:
-  - `SPRITE_RENDER_OT_RenderAll.apply_light_rotation(...)`
+The **Light Pivot** is a Blender object that acts as a control point for lighting rotation. You can use any Blender object as the pivot, though typically an **empty object** is used (mesh objects can also work, but empty objects are preferred for their simplicity).
+
+```python
+# Technical details:
+# - The pivot is stored in SpriteRenderSettings.pivot_object
+# - Before rendering each frame, the operator calls:
+#   SPRITE_RENDER_OT_RenderAll.apply_light_rotation(...)
+```
 
 ### Enable Light Pivot Toggle
 
@@ -40,14 +43,20 @@ Each camera in the add-on has a `light_rotation` property (Euler rotation XYZ) t
 Depending on **Enable Full Rotation (XYZ)**:
 
 - **Disabled** (default):
-  - Only the Z axis of the pivot is changed, using `cam_item.light_rotation[2]`.
+  - Only the Z axis of the pivot is changed.
   - Good for top-down / isometric lighting where "around the character" is enough.
   - This is the most common use case for sprite rendering.
 
 - **Enabled**:
-  - Full Euler XYZ from `cam_item.light_rotation` is applied to the pivot.
+  - Full Euler XYZ rotation is applied to the pivot.
   - Use this for more complex lighting setups that require rotation in multiple axes.
   - Useful when cameras are positioned at different vertical angles (above, below, diagonal).
+
+```python
+# Technical details:
+# - Disabled: uses cam_item.light_rotation[2] (Z axis only)
+# - Enabled: applies full cam_item.light_rotation (XYZ)
+```
 
 ### Automatic Light Rotation
 

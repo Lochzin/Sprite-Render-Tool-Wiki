@@ -33,7 +33,11 @@ Funciona com Blender **5.0.0+**.
 
 ## Painel Principal (UI)
 
-O painel principal é implementado pela classe `SPRITE_RENDER_PT_MainPanel` e organiza o fluxo de trabalho em seções:
+O painel principal organiza o fluxo de trabalho em seções:
+
+```python
+# Detalhe técnico: Implementado pela classe SPRITE_RENDER_PT_MainPanel
+```
 
 - **🔖 Projeto**
   - `Project Name`
@@ -65,8 +69,12 @@ O painel principal é implementado pela classe `SPRITE_RENDER_PT_MainPanel` e or
     - **STATIC**: renderiza apenas o frame atual.
 
   **Modo ACTIONS:**
-  - Lista `Actions` (`SPRITE_RENDER_UL_Actions`):
+  - Lista `Actions`:
     - Cada item tem: `enabled`, `name`, `frame_start`, `frame_end`, e opções de sincronização secundária (ainda não implementadas).
+
+```python
+# Detalhe técnico: Implementado por SPRITE_RENDER_UL_Actions
+```
   - Botões:
     - `Detect Actions`: lê `bpy.data.actions` e preenche a lista.
     - `Add`, `Remove`: gerencia a lista manualmente.
@@ -76,8 +84,12 @@ O painel principal é implementado pela classe `SPRITE_RENDER_PT_MainPanel` e or
     - Configuração `Custom FPS` + botão `Apply`.
 
   **Modo NLA:**
-  - Lista `NLA Strips` (`SPRITE_RENDER_UL_NLAStrips`):
+  - Lista `NLA Strips`:
     - Cada item: `enabled`, `name` (nome da strip), `track_name`, `frame_start`, `frame_end`.
+
+```python
+# Detalhe técnico: Implementado por SPRITE_RENDER_UL_NLAStrips
+```
   - Botões:
     - `Detect NLA Strips`: lê as tracks NLA da armadura alvo.
     - `Add`, `Remove`: gerencia a lista manualmente.

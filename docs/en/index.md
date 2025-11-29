@@ -33,7 +33,11 @@ It works with Blender **5.0.0+**.
 
 ## Main Panel (UI)
 
-The main panel is implemented by the `SPRITE_RENDER_PT_MainPanel` class and organizes the workflow into sections:
+The main panel organizes the workflow into sections:
+
+```python
+# Technical detail: Implemented by the SPRITE_RENDER_PT_MainPanel class
+```
 
 - **🔖 Project**
   - `Project Name`
@@ -65,8 +69,12 @@ The main panel is implemented by the `SPRITE_RENDER_PT_MainPanel` class and orga
     - **STATIC**: render only the current frame.
 
   **ACTIONS Mode:**
-  - `Actions` list (`SPRITE_RENDER_UL_Actions`):
+  - `Actions` list:
     - Each item has: `enabled`, `name`, `frame_start`, `frame_end`, and secondary sync options (not yet implemented).
+
+```python
+# Technical detail: Implemented by SPRITE_RENDER_UL_Actions
+```
   - Buttons:
     - `Detect Actions`: reads `bpy.data.actions` and populates the list.
     - `Add`, `Remove`: manually manage the list.
@@ -76,8 +84,12 @@ The main panel is implemented by the `SPRITE_RENDER_PT_MainPanel` class and orga
     - `Custom FPS` setting + `Apply` button.
 
   **NLA Mode:**
-  - `NLA Strips` list (`SPRITE_RENDER_UL_NLAStrips`):
+  - `NLA Strips` list:
     - Each item: `enabled`, `name` (strip name), `track_name`, `frame_start`, `frame_end`.
+
+```python
+# Technical detail: Implemented by SPRITE_RENDER_UL_NLAStrips
+```
   - Buttons:
     - `Detect NLA Strips`: reads NLA tracks from the target armature.
     - `Add`, `Remove`: manually manage the list.

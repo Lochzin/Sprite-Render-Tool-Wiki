@@ -14,11 +14,14 @@ Esta abordagem de iluminação padronizada ajuda a manter uma iluminação unifo
 
 ## Objeto Light Pivot
 
-O **Light Pivot** é um objeto do Blender que atua como um ponto de controle para a rotação da iluminação:
-- O pivô é armazenado em `SpriteRenderSettings.pivot_object`.
-- Você pode usar qualquer objeto do Blender como pivô, embora geralmente se use um **empty object** (objetos mesh também funcionam, mas empty objects são preferidos por sua simplicidade).
-- Antes de renderizar cada frame para uma câmera específica, o operador chama:
-  - `SPRITE_RENDER_OT_RenderAll.apply_light_rotation(...)`
+O **Light Pivot** é um objeto do Blender que atua como um ponto de controle para a rotação da iluminação. Você pode usar qualquer objeto do Blender como pivô, embora geralmente se use um **empty object** (objetos mesh também funcionam, mas empty objects são preferidos por sua simplicidade).
+
+```python
+# Detalhes técnicos:
+# - O pivô é armazenado em SpriteRenderSettings.pivot_object
+# - Antes de renderizar cada frame, o operador chama:
+#   SPRITE_RENDER_OT_RenderAll.apply_light_rotation(...)
+```
 
 ### Toggle Enable Light Pivot
 
@@ -40,14 +43,20 @@ Cada câmera no add-on tem uma propriedade `light_rotation` (rotação Euler XYZ
 Dependendo de **Enable Full Rotation (XYZ)**:
 
 - **Desabilitado** (padrão):
-  - Apenas o eixo Z do pivô é alterado, usando `cam_item.light_rotation[2]`.
+  - Apenas o eixo Z do pivô é alterado.
   - Bom para iluminação top-down / isométrica onde "ao redor do personagem" é suficiente.
   - Este é o caso de uso mais comum para renderização de sprites.
 
 - **Habilitado**:
-  - Euler XYZ completo de `cam_item.light_rotation` é aplicado ao pivô.
+  - Euler XYZ completo é aplicado ao pivô.
   - Use isso para configurações de iluminação mais complexas que requerem rotação em múltiplos eixos.
   - Útil quando as câmeras estão posicionadas em diferentes ângulos verticais (de cima, de baixo, diagonal).
+
+```python
+# Detalhes técnicos:
+# - Desabilitado: usa cam_item.light_rotation[2] (apenas eixo Z)
+# - Habilitado: aplica cam_item.light_rotation completo (XYZ)
+```
 
 ### Rotação Automática de Luz
 

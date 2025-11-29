@@ -93,7 +93,11 @@ The **Test Cameras** button (`sprite_render.test_cameras`) helps you quickly pre
 - It finds the current scene camera in the add‑on list.
 - Selects the **next** camera in the list (cyclically).
 - Sets the scene camera to that object and switches the 3D Viewport to camera view.
-- If a light pivot is set, it also applies the corresponding light rotation using the shared `apply_light_rotation` helper.
+- If a light pivot is set, it also applies the corresponding light rotation.
+
+```python
+# Technical detail: Uses the shared apply_light_rotation helper
+```
 
 Use this to:
 - Walk through all configured cameras.
