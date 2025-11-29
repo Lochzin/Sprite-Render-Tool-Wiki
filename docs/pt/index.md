@@ -182,9 +182,3 @@ Baseado em `LICENSE.md`:
 
 Para detalhes completos, consulte a página dedicada: **[Licença](License.md)**.
 
----
-
-## Language / Idioma
-
-[English](../en/index.html) | **Português**
-

@@ -26,7 +26,7 @@ source_suffix = ['.rst', '.md']
 master_doc = 'index'
 
 templates_path = ['_templates']
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'README*.md', 'README-TRANSLATION.md', 'Gemfile*', '_includes', '_layouts', '_config.yml', 'index.md', 'favicon.ico']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'README*.md', 'Gemfile*', '_includes', '_layouts', '_config.yml', 'index.md', 'favicon.ico']
 
 # -- Options for MyST Parser -------------------------------------------------
 # https://myst-parser.readthedocs.io/en/latest/configuration.html
@@ -71,19 +71,7 @@ html_theme_options = {
 # -- Internationalization ----------------------------------------------------
 # https://www.sphinx-doc.org/en/stable/usage/configuration.html#options-for-internationalization
 
-# Primary language (can be overridden by Read the Docs)
-# Read the Docs will automatically detect and build multiple language versions
 language = 'en'
-
-# For gettext-based translations (if you want to use i18n later)
 locale_dirs = ['locale/']
 gettext_compact = False
-
-# Supported languages for Read the Docs
-# Configure these in Read the Docs dashboard: Settings → Versions
-# Create versions named: "latest" (English), "pt" (Portuguese), etc.
-
-# Supported languages (for Read the Docs)
-# Read the Docs will automatically build versions for each language
-# Configure these in Read the Docs dashboard: Settings → Versions
 
