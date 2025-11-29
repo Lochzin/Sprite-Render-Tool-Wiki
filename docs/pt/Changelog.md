@@ -1,9 +1,3 @@
----
-layout: default
-title: "Changelog — Sprite Render Tool"
-nav_order: 7
----
-
 ## Changelog — Sprite Render Tool
 
 Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.

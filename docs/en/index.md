@@ -1,10 +1,4 @@
----
-layout: default
-title: "Sprite Render Tool — Official Wiki"
-nav_order: 1
----
-
-## Sprite Render Tool — Official Wiki
+# Sprite Render Tool — Official Wiki
 
 Add-on for **Blender** focused on generating 2D sprites from 3D animations, with **multi‑camera support**, **automatic animation detection** (Actions and NLA), and **highly customizable file naming**, ideal for 2D games and sprite pipelines.
 

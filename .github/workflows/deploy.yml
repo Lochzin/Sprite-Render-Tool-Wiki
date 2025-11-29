@@ -1,4 +1,4 @@
-name: Deploy Jekyll site
+name: Deploy Sphinx site
 
 on:
   push:
@@ -23,11 +23,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          ruby-version: '3.1'
-          bundler-cache: true
+          python-version: '3.13'
 
       - name: Setup Pages
         id: pages
@@ -36,20 +35,17 @@ jobs:
       - name: Install dependencies
         run: |
           cd docs
-          bundle install --jobs 4 --retry 3
+          pip install -r requirements.txt
 
-      - name: Build with Jekyll
+      - name: Build with Sphinx
         run: |
           cd docs
-          bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}" --trace
-        env:
-          JEKYLL_ENV: production
-          PAGES_REPO_NWO: ${{ github.repository }}
+          sphinx-build -b html . _build/html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/_site
+          path: docs/_build/html
 
   deploy:
     environment:
@@ -61,4 +57,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-

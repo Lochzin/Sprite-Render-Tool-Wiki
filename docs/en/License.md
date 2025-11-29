@@ -1,9 +1,3 @@
----
-layout: default
-title: "License and Commercial Terms"
-nav_order: 8
----
-
 ## License and Commercial Terms
 
 This page summarizes the license and commercial terms for the **Sprite Render Tool**, based on `LICENSE.md`.
