@@ -6,7 +6,9 @@ This page explains how the **Light Pivot** system works in the **Sprite Render T
 
 ## Overview
 
-The add-on uses a **pivot object** (any Blender object) to drive lighting direction for each camera. This allows you to create consistent lighting that rotates with the camera, which is especially useful for isometric and top-down sprite workflows.
+The add-on uses a **light pivot** (typically an empty object) to drive lighting direction for each camera. This allows you to create consistent lighting that rotates with the camera, which is especially useful for **boomer shooters** and games with **360-degree character/object views**. 
+
+This standardized lighting approach helps maintain uniform illumination across all sprites, which is particularly important when working with **normal maps**, as consistent lighting ensures that normal map details are properly visible and consistent across all camera angles during the final render that will be executed during gameplay.
 
 ---
 
@@ -14,7 +16,7 @@ The add-on uses a **pivot object** (any Blender object) to drive lighting direct
 
 The **Light Pivot** is a Blender object that acts as a control point for lighting rotation:
 - The pivot is stored in `SpriteRenderSettings.pivot_object`.
-- You can use any Blender object as the pivot (empty, mesh, etc.).
+- You can use any Blender object as the pivot, though typically an **empty object** is used (mesh objects can also work, but empty objects are preferred for their simplicity).
 - Before rendering each frame for a given camera, the operator calls:
   - `SPRITE_RENDER_OT_RenderAll.apply_light_rotation(...)`
 

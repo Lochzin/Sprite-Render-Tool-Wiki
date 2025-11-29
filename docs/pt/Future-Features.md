@@ -14,6 +14,10 @@ Esta página lista funcionalidades planejadas e melhorias para o **Sprite Render
 
 - **Sincronização de Armadura Secundária**: Implementação completa da funcionalidade de sincronização de armadura secundária. Atualmente, a UI tem placeholders para `sync_secondary`, `secondary_armature` e `secondary_action`, mas a funcionalidade ainda não está totalmente implementada.
 
+### Funcionalidades de Saída
+
+- **Renderização de Normal Maps**: Opção para renderizar normal maps simultaneamente com a renderização normal. Isso permitirá que os usuários gerem tanto as imagens de sprites padrão quanto seus normal maps correspondentes em uma única passada de renderização, garantindo alinhamento perfeito e iluminação consistente entre as duas saídas.
+
 ---
 
 ## Solicitações de Funcionalidades

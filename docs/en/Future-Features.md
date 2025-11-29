@@ -14,6 +14,10 @@ This page lists planned features and improvements for the **Sprite Render Tool**
 
 - **Secondary Armature Sync**: Complete implementation of the secondary armature synchronization feature. Currently, the UI has placeholders for `sync_secondary`, `secondary_armature`, and `secondary_action`, but the functionality is not yet fully implemented.
 
+### Output Features
+
+- **Normal Maps Rendering**: Option to render normal maps simultaneously with the regular render. This will allow users to generate both the standard sprite images and their corresponding normal maps in a single render pass, ensuring perfect alignment and consistent lighting between the two outputs.
+
 ---
 
 ## Feature Requests
