@@ -1,34 +1,4 @@
 <!-- Remove default favicon -->
 <link rel="icon" href="data:,">
 
-<!-- Filter navigation by language - CSS -->
-<style>
-  /* Hide navigation links to other languages */
-  {% if page.url contains '/en/' %}
-    /* When on English pages, hide Portuguese links in navigation */
-    aside a[href*="/pt/"],
-    nav a[href*="/pt/"],
-    .sidebar a[href*="/pt/"],
-    [role="navigation"] a[href*="/pt/"],
-    .wy-menu a[href*="/pt/"],
-    .toctree-wrapper a[href*="/pt/"],
-    li:has(a[href*="/pt/"]) {
-      display: none !important;
-    }
-  {% elsif page.url contains '/pt/' %}
-    /* When on Portuguese pages, hide English links in navigation */
-    aside a[href*="/en/"],
-    nav a[href*="/en/"],
-    .sidebar a[href*="/en/"],
-    [role="navigation"] a[href*="/en/"],
-    .wy-menu a[href*="/en/"],
-    .toctree-wrapper a[href*="/en/"],
-    li:has(a[href*="/en/"]) {
-      display: none !important;
-    }
-  {% endif %}
-</style>
-
-<!-- Filter navigation by language - JavaScript -->
-<script src="{{ '/assets/js/filter-navigation.js' | relative_url }}" defer></script>
 
