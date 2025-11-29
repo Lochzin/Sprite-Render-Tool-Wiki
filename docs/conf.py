@@ -71,7 +71,19 @@ html_theme_options = {
 # -- Internationalization ----------------------------------------------------
 # https://www.sphinx-doc.org/en/stable/usage/configuration.html#options-for-internationalization
 
+# Primary language (can be overridden by Read the Docs)
+# Read the Docs will automatically detect and build multiple language versions
 language = 'en'
+
+# For gettext-based translations (if you want to use i18n later)
 locale_dirs = ['locale/']
 gettext_compact = False
+
+# Supported languages for Read the Docs
+# Configure these in Read the Docs dashboard: Settings → Versions
+# Create versions named: "latest" (English), "pt" (Portuguese), etc.
+
+# Supported languages (for Read the Docs)
+# Read the Docs will automatically build versions for each language
+# Configure these in Read the Docs dashboard: Settings → Versions
 

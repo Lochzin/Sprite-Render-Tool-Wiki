@@ -181,3 +181,9 @@ Based on `LICENSE.md`:
   - Sharing the purchased download violates the purchase agreement.
 
 For full details, see the dedicated page: **[License](License.md)**.
+
+---
+
+## Language / Idioma
+
+**English** | [Português](../pt/index.html)
