@@ -47,6 +47,14 @@ For each detected camera it:
 
 > **Important**: the **Pivot Object** must be set in the **Light Pivot** section; otherwise the operator will cancel with an error.
 
+### Automatic Detection Limitations
+
+**Detect Cameras** attempts to find the ideal light pivot rotation for each camera angle, but this **only works correctly for horizontal angles** (like in boomer shooter first-person games, where cameras are all on the same horizontal plane around the character).
+
+For renders that need to be done at **different angles** (from above, diagonally, or in multiple planes), you will need to **manually adjust** the pivot rotation angle (`Light Rotation`) for each camera after using Detect Cameras.
+
+> **Note**: A visual debug tool will be added in the future to help visualize and adjust these pivot rotation angles.
+
 ---
 
 ## Light Pivot and Light Rotation
@@ -66,6 +74,19 @@ Depending on **Enable Full Rotation (XYZ)**:
 
 When **Light Rotation Debug** is enabled in the **Debug** section:
 - The operator logs before‑and‑after pivot rotation (in degrees) to the Blender console for the first camera, so you can verify the values being applied.
+
+### 💡 Lighting Tip
+
+You can use the **Light Pivot** strategically to create a more complete lighting system:
+
+- **Lights inside the pivot**: Place lights as children of the pivot object (or group them with the pivot). These lights **will rotate** along with the cameras around the character, creating consistent lighting that follows the camera's point of view.
+
+- **Lights outside the pivot**: Add additional lights that are **not** children of the pivot. These lights will remain fixed and can be used to:
+  - Illuminate naturally dark areas of the character or object (such as the underside, back, or shadow areas).
+  - Create ambient or fill lighting that doesn't change with camera rotation.
+  - Add static highlights or rim lights.
+
+This combination allows you to create richer, more controlled lighting, where the main light rotates with the camera while auxiliary lights fill areas that need additional illumination.
 
 ---
 

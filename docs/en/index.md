@@ -20,7 +20,7 @@ Add-on for **Blender** focused on generating 2D sprites from 3D animations, with
 - **Provides an animation test panel**: preview Actions or NLA directly from the add-on.
 - **Shows progress and allows cancelling**: integrated progress bar and cancel button while rendering.
 
-It works with Blender **5.0.0+** (according to the add-on `bl_info`).
+It works with Blender **5.0.0+**.
 
 ---
 
@@ -60,6 +60,7 @@ The main panel is implemented by the `SPRITE_RENDER_PT_MainPanel` class and orga
 
 - **💡 Light Pivot**
   - `Pivot Object`: object used as the pivot for light rotation.
+  - **💡 Tip**: You can place lights as children of the pivot (they will rotate with cameras) and add fixed lights outside the pivot to illuminate dark areas of the character.
 
 - **🎞️ Animations**
   - `Target Armature`: the armature to animate.

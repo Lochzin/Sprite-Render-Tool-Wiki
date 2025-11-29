@@ -20,7 +20,7 @@ Add-on para **Blender** focado em gerar sprites 2D a partir de animações 3D, c
 - **Fornece um painel de teste de animações**: visualiza Actions ou NLA diretamente do add-on.
 - **Mostra progresso e permite cancelamento**: barra de progresso integrada e botão de cancelar durante a renderização.
 
-Funciona com Blender **5.0.0+** (de acordo com o `bl_info` do add-on).
+Funciona com Blender **5.0.0+**.
 
 ---
 
@@ -60,6 +60,7 @@ O painel principal é implementado pela classe `SPRITE_RENDER_PT_MainPanel` e or
 
 - **💡 Light Pivot**
   - `Pivot Object`: objeto usado como pivô para rotação da luz.
+  - **💡 Dica**: Você pode colocar luzes como filhos do pivô (elas rotacionarão com as câmeras) e adicionar luzes fixas fora do pivô para iluminar áreas escuras do personagem.
 
 - **🎞️ Animações**
   - `Target Armature`: a armadura a ser animada.

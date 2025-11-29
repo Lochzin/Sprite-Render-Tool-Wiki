@@ -47,6 +47,14 @@ Para cada câmera detectada ele:
 
 > **Importante**: o **Pivot Object** deve ser definido na seção **Light Pivot**; caso contrário, o operador cancelará com um erro.
 
+### Limitações da Detecção Automática
+
+O **Detect Cameras** tenta encontrar a rotação ideal do light pivot para cada ângulo de câmera, mas isso **só funciona corretamente para ângulos horizontais** (como em jogos boomer shooter em primeira pessoa, onde as câmeras estão todas no mesmo plano horizontal ao redor do personagem).
+
+Para renderizações que precisam ser feitas em **ângulos diferentes** (de cima, diagonalmente, ou em múltiplos planos), você precisará **ajustar manualmente** o ângulo de rotação do pivot (`Light Rotation`) para cada câmera após usar o Detect Cameras.
+
+> **Nota**: Futuramente será adicionado um debug visual para ajudar a visualizar e ajustar esses ângulos de rotação do pivot.
+
 ---
 
 ## Light Pivot e Rotação de Luz
@@ -71,6 +79,19 @@ Quando **Light Rotation Debug** está habilitado na seção **Debug**:
   - Valores de rotação solicitados.
   - Rotação original vs. nova rotação (em graus).
   - Quaisquer erros que ocorram ao tentar aplicar a rotação.
+
+### 💡 Dica de Iluminação
+
+Você pode usar o **Light Pivot** de forma estratégica para criar um sistema de iluminação mais completo:
+
+- **Luzes dentro do pivô**: Coloque luzes como filhos do objeto pivô (ou agrupe-as com o pivô). Essas luzes **irão rotacionar** junto com as câmeras ao redor do personagem, criando uma iluminação consistente que segue o ponto de vista da câmera.
+
+- **Luzes fora do pivô**: Adicione luzes adicionais que **não** sejam filhos do pivô. Essas luzes permanecerão fixas e podem ser usadas para:
+  - Iluminar áreas naturalmente escuras do personagem ou objeto (como a parte inferior, costas, ou áreas de sombra).
+  - Criar iluminação ambiente ou fill lights que não mudam com a rotação da câmera.
+  - Adicionar highlights ou rim lights estáticos.
+
+Esta combinação permite criar uma iluminação mais rica e controlada, onde a luz principal rotaciona com a câmera enquanto luzes auxiliares preenchem áreas que precisam de iluminação adicional.
 
 ---
 
