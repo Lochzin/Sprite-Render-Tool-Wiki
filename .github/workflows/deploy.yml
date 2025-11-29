@@ -35,7 +35,7 @@ jobs:
         run: |
           cd docs
           bundle config set --local path 'vendor/bundle'
-          bundle install
+          bundle install --verbose
 
       - name: Build with Jekyll
         run: |
