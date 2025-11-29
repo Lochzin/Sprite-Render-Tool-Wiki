@@ -9,8 +9,11 @@ baseurl: "/Sprite-Render-Tool-Wiki"
 # Repositório: https://github.com/JV-conseil/jekyll-theme-read-the-docs
 remote_theme: JV-conseil/jekyll-theme-read-the-docs
 
-# Idioma do site
+# Idioma do site (padrão)
 lang: "en"
+
+# Suporte a múltiplos idiomas (manual, sem plugin)
+# Os arquivos estão organizados em pastas en/ e pt/
 
 # Opções de navegação (opcional, algumas páginas/temas usam)
 markdown: kramdown

@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Debug — Light Rotation and Rendering"
+nav_order: 5
+---
+
 ## Debug — Light Rotation and Rendering
 
 This page covers debugging tools and patterns built into the **Sprite Render Tool**.
