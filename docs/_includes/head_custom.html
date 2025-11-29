@@ -1,6 +1,21 @@
 <!-- Favicon - Custom Sprite Render Tool Icon -->
-<link rel="shortcut icon" type="image/png" sizes="30x30" href="{{ site.baseurl }}/favicon.ico">
-<link rel="icon" type="image/png" sizes="30x30" href="{{ site.baseurl }}/favicon.ico">
-<link rel="apple-touch-icon" sizes="30x30" href="{{ site.baseurl }}/assets/images/SpriteRenderTool_Icon30x30.png">
+<link rel="icon" type="image/png" href="{{ '/assets/images/SpriteRenderTool_Icon30x30.png' | prepend: site.baseurl }}">
+<link rel="shortcut icon" type="image/png" href="{{ '/assets/images/SpriteRenderTool_Icon30x30.png' | prepend: site.baseurl }}">
+<link rel="apple-touch-icon" href="{{ '/assets/images/SpriteRenderTool_Icon30x30.png' | prepend: site.baseurl }}">
+<!-- Force favicon update via JavaScript (in case theme loads after) -->
+<script>
+(function() {
+  var favicon = document.createElement('link');
+  favicon.rel = 'icon';
+  favicon.type = 'image/png';
+  favicon.href = '{{ site.baseurl }}/assets/images/SpriteRenderTool_Icon30x30.png';
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var existingFavicon = document.querySelector('link[rel*="icon"]');
+  if (existingFavicon) {
+    head.removeChild(existingFavicon);
+  }
+  head.appendChild(favicon);
+})();
+</script>
 
 
