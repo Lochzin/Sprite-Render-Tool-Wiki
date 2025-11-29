@@ -1,9 +1,3 @@
----
-layout: default
-title: "Animações — Actions, NLA e Static"
-nav_order: 2
----
-
 ## Animações — Actions, NLA e Static
 
 Esta página explica como o **Sprite Render Tool** lida com animações nos três modos: **ACTIONS**, **NLA** e **STATIC**.

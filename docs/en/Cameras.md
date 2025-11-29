@@ -1,9 +1,3 @@
----
-layout: default
-title: "Cameras — Setup and Workflow"
-nav_order: 3
----
-
 ## Cameras — Setup and Workflow
 
 This page explains how to configure cameras inside the **Sprite Render Tool** and how light rotation is driven from them.

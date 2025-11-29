@@ -1,9 +1,3 @@
----
-layout: default
-title: "Debug — Rotação de Luz e Renderização"
-nav_order: 5
----
-
 ## Debug — Rotação de Luz e Renderização
 
 Esta página cobre ferramentas de debug e padrões integrados no **Sprite Render Tool**.

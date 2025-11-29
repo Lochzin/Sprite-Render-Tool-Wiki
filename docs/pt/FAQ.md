@@ -1,9 +1,3 @@
----
-layout: default
-title: "FAQ — Perguntas Frequentes"
-nav_order: 7
----
-
 ## FAQ — Perguntas Frequentes
 
 Esta página lista perguntas comuns sobre o uso do **Sprite Render Tool** e como resolver problemas típicos.

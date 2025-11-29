@@ -1,9 +1,3 @@
----
-layout: default
-title: "Output — Nomenclatura, Pastas e Caminhos de Arquivos"
-nav_order: 4
----
-
 ## Output — Nomenclatura, Pastas e Caminhos de Arquivos
 
 Esta página explica como o **Sprite Render Tool** constrói estruturas de pastas e nomes de arquivos para seus sprites renderizados.

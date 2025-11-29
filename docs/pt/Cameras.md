@@ -1,9 +1,3 @@
----
-layout: default
-title: "Câmeras — Configuração e Fluxo de Trabalho"
-nav_order: 3
----
-
 ## Câmeras — Configuração e Fluxo de Trabalho
 
 Esta página explica como configurar câmeras dentro do **Sprite Render Tool** e como a rotação de luz é controlada a partir delas.

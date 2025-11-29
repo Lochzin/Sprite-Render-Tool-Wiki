@@ -1,9 +1,3 @@
----
-layout: default
-title: "Output — Naming, Folders and File Paths"
-nav_order: 4
----
-
 ## Output — Naming, Folders and File Paths
 
 This page explains how the **Sprite Render Tool** builds folder structures and filenames for your rendered sprites.
