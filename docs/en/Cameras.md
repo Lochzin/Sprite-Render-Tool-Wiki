@@ -1,4 +1,4 @@
-# Cameras — Setup and Workflow
+# Cameras
 
 This page explains how to configure cameras inside the **Sprite Render Tool**. For information about lighting and the Light Pivot system, see [Lighting](Lighting.md).
 
@@ -9,7 +9,7 @@ This page explains how to configure cameras inside the **Sprite Render Tool**. F
 The camera system is backed by the `CameraItem` property group:
 - `name`: camera object name in Blender.
 - `output_name`: name used in the generated filenames (optional, when **Custom Output Names** is enabled).
-- `light_rotation`: Euler rotation (XYZ) used to rotate the **pivot object**.
+- `light_rotation`: Euler rotation (XYZ) used to rotate the **light pivot**.
 - `render_order`: the order in which each camera will be rendered.
 
 In the **Cameras** section of the main panel you will see:
@@ -36,10 +36,10 @@ are considered.
 
 For each detected camera it:
 - Sets `name` and `output_name` to the Blender camera name.
-- Computes an automatic Z rotation for `light_rotation` based on the relative position between the camera and the **pivot object** (if configured).
+- Computes an automatic Z rotation for `light_rotation` based on the relative position between the camera and the **light pivot** (if configured).
 - Assigns `render_order` sequentially (0, 1, 2, ...).
 
-> **Important**: The **Pivot Object** must be set in the **Light Pivot** section if you want automatic light rotation calculation; otherwise the operator will cancel with an error.
+> **Important**: The **Light Pivot** object must be set in the **Light Pivot** section if you want automatic light rotation calculation; otherwise the operator will cancel with an error.
 
 ### Automatic Detection Limitations
 
@@ -53,7 +53,7 @@ For more information about light rotation and lighting setup, see [Lighting](Lig
 
 ## Light Rotation per Camera
 
-Each camera has a `light_rotation` property (Euler rotation XYZ) that controls how the **Light Pivot** object is rotated for that specific camera angle. This is configured in the camera's subpanel in the **Cameras** section.
+Each camera has a `light_rotation` property (Euler rotation XYZ) that controls how the **light pivot** is rotated for that specific camera angle. This is configured in the camera's subpanel in the **Cameras** section.
 
 For detailed information about the Light Pivot system, lighting strategies, and how to use light rotation effectively, see the [Lighting](Lighting.md) page.
 
@@ -93,7 +93,7 @@ The **Test Cameras** button (`sprite_render.test_cameras`) helps you quickly pre
 - It finds the current scene camera in the add‑on list.
 - Selects the **next** camera in the list (cyclically).
 - Sets the scene camera to that object and switches the 3D Viewport to camera view.
-- If a pivot is set, it also applies the corresponding light rotation using the shared `apply_light_rotation` helper.
+- If a light pivot is set, it also applies the corresponding light rotation using the shared `apply_light_rotation` helper.
 
 Use this to:
 - Walk through all configured cameras.

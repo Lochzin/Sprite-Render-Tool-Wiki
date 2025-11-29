@@ -1,4 +1,4 @@
-# Output — Naming, Folders and File Paths
+# Output
 
 This page explains how the **Sprite Render Tool** builds folder structures and filenames for your rendered sprites.
 

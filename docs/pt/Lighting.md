@@ -1,4 +1,4 @@
-# Iluminação — Sistema Light Pivot
+# Iluminação
 
 Esta página explica como o sistema **Light Pivot** funciona no **Sprite Render Tool** e como usá-lo para criar iluminação eficaz para suas renderizações de sprites.
 
@@ -21,17 +21,17 @@ O **Light Pivot** é um objeto do Blender que atua como um ponto de controle par
 ### Toggle Enable Light Pivot
 
 O add-on inclui uma propriedade booleana `enable_light_pivot` para controlar a funcionalidade de pivô de luz:
-- **Quando habilitado** (padrão: `True`): A rotação de luz é aplicada ao objeto pivô durante a renderização.
-- **Quando desabilitado**: A rotação de luz é ignorada, mesmo se um objeto pivô estiver configurado.
-- O campo de seleção do objeto pivô só é visível quando `enable_light_pivot` está habilitado.
+- **Quando habilitado** (padrão: `True`): A rotação de luz é aplicada ao light pivot durante a renderização.
+- **Quando desabilitado**: A rotação de luz é ignorada, mesmo se um light pivot estiver configurado.
+- O campo de seleção do light pivot só é visível quando `enable_light_pivot` está habilitado.
 
-Isso permite que você desabilite temporariamente a rotação de luz sem remover a configuração do objeto pivô.
+Isso permite que você desabilite temporariamente a rotação de luz sem remover a configuração do light pivot.
 
 ---
 
 ## Rotação de Luz
 
-Cada câmera no add-on tem uma propriedade `light_rotation` (rotação Euler XYZ) que controla como o objeto pivô é rotacionado para esse ângulo de câmera específico.
+Cada câmera no add-on tem uma propriedade `light_rotation` (rotação Euler XYZ) que controla como o light pivot é rotacionado para esse ângulo de câmera específico.
 
 ### Modos de Rotação
 
@@ -49,9 +49,9 @@ Dependendo de **Enable Full Rotation (XYZ)**:
 
 ### Rotação Automática de Luz
 
-Ao usar o botão **Detect Cameras**, o add-on calcula automaticamente uma rotação Z para cada câmera baseada na posição relativa entre a câmera e o objeto pivô.
+Ao usar o botão **Detect Cameras**, o add-on calcula automaticamente uma rotação Z para cada câmera baseada na posição relativa entre a câmera e o light pivot.
 
-> **Importante**: O **Pivot Object** deve ser definido na seção **Light Pivot** antes de usar o Detect Cameras; caso contrário, o operador cancelará com um erro.
+> **Importante**: O objeto **Light Pivot** deve ser definido na seção **Light Pivot** antes de usar o Detect Cameras; caso contrário, o operador cancelará com um erro.
 
 #### Limitações da Detecção Automática
 
@@ -66,8 +66,8 @@ Para renderizações que precisam ser feitas em **ângulos diferentes** (de cima
 ## Debug de Rotação de Luz
 
 Quando **Light Rotation Debug** está habilitado na seção **Debug**:
-- O operador registra informações detalhadas sobre como a rotação do objeto pivô é aplicada:
-  - Nome do objeto pivô.
+- O operador registra informações detalhadas sobre como a rotação do light pivot é aplicada:
+  - Nome do objeto light pivot.
   - Nome da câmera.
   - Valores de rotação solicitados.
   - Rotação original vs. nova rotação (em graus).
@@ -83,7 +83,7 @@ Você pode usar o **Light Pivot** estrategicamente para criar um sistema de ilum
 
 ### Luzes Dentro do Pivô
 
-Coloque luzes como **filhos do objeto pivô** (ou agrupe-as com o pivô). Essas luzes **irão rotacionar** junto com as câmeras ao redor do personagem, criando uma iluminação consistente que segue o ponto de vista da câmera.
+Coloque luzes como **filhos do light pivot** (ou agrupe-as com o light pivot). Essas luzes **irão rotacionar** junto com as câmeras ao redor do personagem, criando uma iluminação consistente que segue o ponto de vista da câmera.
 
 **Use isso para:**
 - Luzes principais (key lights) que devem seguir o ângulo da câmera.
@@ -113,7 +113,7 @@ Isso é especialmente útil para:
 
 ## Dicas de Fluxo de Trabalho
 
-1. **Comece simples**: Comece com uma única luz como filho do objeto pivô para entender o comportamento básico de rotação.
+1. **Comece simples**: Comece com uma única luz como filho do light pivot para entender o comportamento básico de rotação.
 
 2. **Adicione fill lights**: Uma vez que a iluminação principal esteja funcionando, adicione luzes fixas fora do pivô para preencher áreas escuras.
 

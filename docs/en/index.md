@@ -53,8 +53,8 @@ The main panel is implemented by the `SPRITE_RENDER_PT_MainPanel` class and orga
     - Fills the list with names, count, and Z rotation based on the pivot object.
 
 - **💡 Light Pivot**
-  - `Pivot Object`: object used as the pivot for light rotation.
-  - **💡 Tip**: You can place lights as children of the pivot (they will rotate with cameras) and add fixed lights outside the pivot to illuminate dark areas of the character.
+  - `Light Pivot Object`: object used as the light pivot for light rotation.
+  - **💡 Tip**: You can place lights as children of the light pivot (they will rotate with cameras) and add fixed lights outside the light pivot to illuminate dark areas of the character.
   - For detailed information about lighting setup and strategies, see [Lighting](Lighting.md).
 
 - **🎞️ Animations**
@@ -123,12 +123,12 @@ The main panel is implemented by the `SPRITE_RENDER_PT_MainPanel` class and orga
   - Set up your character / armature.
   - Create Actions or NLA strips for your animations.
   - Create the cameras that will be used for sprites.
-  - Optionally create a `Pivot` object to control lighting rotation around the character.
+  - Optionally create a **Light Pivot** object to control lighting rotation around the character.
 
 - **2. Configure the Sprite Render panel**
   - In **Project**: set `Project Name` and `Object Name`.
   - In **Cameras**:
-    - Set the `Pivot Object` in the **Light Pivot** section.
+    - Set the **Light Pivot** object in the **Light Pivot** section.
     - Click **Detect Cameras** to auto-fill the list.
     - Adjust `Render Order`, `Output Name`, and `Light Rotation` as needed.
 

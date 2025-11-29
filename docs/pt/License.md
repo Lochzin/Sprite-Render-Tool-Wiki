@@ -1,4 +1,4 @@
-# Licença e Termos Comerciais
+# Licença
 
 Esta página resume a licença e os termos comerciais do **Sprite Render Tool**, baseado em `LICENSE.md`.
 

@@ -1,4 +1,4 @@
-# Lighting — Light Pivot System
+# Lighting
 
 This page explains how the **Light Pivot** system works in the **Sprite Render Tool** and how to use it to create effective lighting for your sprite renders.
 
@@ -21,17 +21,17 @@ The **Light Pivot** is a Blender object that acts as a control point for lightin
 ### Enable Light Pivot Toggle
 
 The add-on includes an `enable_light_pivot` boolean property to control the light pivot feature:
-- **When enabled** (default: `True`): Light rotation is applied to the pivot object during rendering.
-- **When disabled**: Light rotation is ignored, even if a pivot object is configured.
-- The pivot object selection field is only visible when `enable_light_pivot` is enabled.
+- **When enabled** (default: `True`): Light rotation is applied to the light pivot during rendering.
+- **When disabled**: Light rotation is ignored, even if a light pivot is configured.
+- The light pivot selection field is only visible when `enable_light_pivot` is enabled.
 
-This allows you to temporarily disable light rotation without removing the pivot object configuration.
+This allows you to temporarily disable light rotation without removing the light pivot configuration.
 
 ---
 
 ## Light Rotation
 
-Each camera in the add-on has a `light_rotation` property (Euler rotation XYZ) that controls how the pivot object is rotated for that specific camera angle.
+Each camera in the add-on has a `light_rotation` property (Euler rotation XYZ) that controls how the light pivot is rotated for that specific camera angle.
 
 ### Rotation Modes
 
@@ -49,9 +49,9 @@ Depending on **Enable Full Rotation (XYZ)**:
 
 ### Automatic Light Rotation
 
-When using the **Detect Cameras** button, the add-on automatically calculates a Z rotation for each camera based on the relative position between the camera and the pivot object.
+When using the **Detect Cameras** button, the add-on automatically calculates a Z rotation for each camera based on the relative position between the camera and the light pivot.
 
-> **Important**: The **Pivot Object** must be set in the **Light Pivot** section before using Detect Cameras; otherwise the operator will cancel with an error.
+> **Important**: The **Light Pivot** object must be set in the **Light Pivot** section before using Detect Cameras; otherwise the operator will cancel with an error.
 
 #### Automatic Detection Limitations
 
@@ -66,8 +66,8 @@ For renders that need to be done at **different angles** (from above, diagonally
 ## Light Rotation Debug
 
 When **Light Rotation Debug** is enabled in the **Debug** section:
-- The operator logs detailed information about how the pivot object rotation is applied:
-  - Pivot object name.
+- The operator logs detailed information about how the light pivot rotation is applied:
+  - Light pivot object name.
   - Camera name.
   - Requested rotation values.
   - Original vs. new rotation (in degrees).
@@ -83,7 +83,7 @@ You can use the **Light Pivot** strategically to create a more complete lighting
 
 ### Lights Inside the Pivot
 
-Place lights as **children of the pivot object** (or group them with the pivot). These lights **will rotate** along with the cameras around the character, creating consistent lighting that follows the camera's point of view.
+Place lights as **children of the light pivot** (or group them with the light pivot). These lights **will rotate** along with the cameras around the character, creating consistent lighting that follows the camera's point of view.
 
 **Use this for:**
 - Main key lights that should follow the camera angle.
@@ -113,7 +113,7 @@ This is especially useful for:
 
 ## Workflow Tips
 
-1. **Start simple**: Begin with a single light as a child of the pivot object to understand the basic rotation behavior.
+1. **Start simple**: Begin with a single light as a child of the light pivot to understand the basic rotation behavior.
 
 2. **Add fill lights**: Once the main lighting is working, add fixed lights outside the pivot to fill dark areas.
 

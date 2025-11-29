@@ -1,4 +1,4 @@
-# Debug — Rotação de Luz e Renderização
+# Debug
 
 Esta página cobre ferramentas de depuração e padrões integrados ao **Sprite Render Tool**.
 
@@ -10,8 +10,8 @@ No painel principal há uma seção **🐛 Debug** com:
 - `Light Rotation Debug` (alternância)
 
 Quando habilitado:
-- O add-on imprime informações detalhadas no console do Blender sobre como a rotação do **objeto pivô** é aplicada:
-  - Nome do objeto pivô.
+- O add-on imprime informações detalhadas no console do Blender sobre como a rotação do **light pivot** é aplicada:
+  - Nome do objeto light pivot.
   - Nome da câmera.
   - Valores de rotação solicitados.
   - Rotação original vs. nova rotação (em graus).

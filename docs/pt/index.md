@@ -53,8 +53,8 @@ O painel principal é implementado pela classe `SPRITE_RENDER_PT_MainPanel` e or
     - Preenche a lista com nomes, contagem e rotação Z baseada no objeto pivô.
 
 - **💡 Light Pivot**
-  - `Pivot Object`: objeto usado como pivô para rotação da luz.
-  - **💡 Dica**: Você pode colocar luzes como filhos do pivô (elas rotacionarão com as câmeras) e adicionar luzes fixas fora do pivô para iluminar áreas escuras do personagem.
+  - `Light Pivot Object`: objeto usado como light pivot para rotação da luz.
+  - **💡 Dica**: Você pode colocar luzes como filhos do light pivot (elas rotacionarão com as câmeras) e adicionar luzes fixas fora do light pivot para iluminar áreas escuras do personagem.
   - Para informações detalhadas sobre configuração de iluminação e estratégias, veja [Iluminação](Lighting.md).
 
 - **🎞️ Animações**
@@ -123,12 +123,12 @@ O painel principal é implementado pela classe `SPRITE_RENDER_PT_MainPanel` e or
   - Configure seu personagem / armadura.
   - Crie Actions ou NLA strips para suas animações.
   - Crie as câmeras que serão usadas para sprites.
-  - Opcionalmente crie um objeto `Pivot` para controlar a rotação da iluminação ao redor do personagem.
+  - Opcionalmente crie um objeto **Light Pivot** para controlar a rotação da iluminação ao redor do personagem.
 
 - **2. Configure o painel Sprite Render**
   - Em **Project**: defina `Project Name` e `Object Name`.
   - Em **Cameras**:
-    - Defina o `Pivot Object` na seção **Light Pivot**.
+    - Defina o objeto **Light Pivot** na seção **Light Pivot**.
     - Clique em **Detect Cameras** para preencher a lista automaticamente.
     - Ajuste `Render Order`, `Output Name` e `Light Rotation` conforme necessário.
 

@@ -1,4 +1,4 @@
-# Debug — Light Rotation and Rendering
+# Debug
 
 This page covers debugging tools and patterns built into the **Sprite Render Tool**.
 
@@ -10,8 +10,8 @@ In the main panel there is a **🐛 Debug** section with:
 - `Light Rotation Debug` (toggle)
 
 When enabled:
-- The add‑on prints detailed information to the Blender console regarding how the **pivot object** rotation is applied:
-  - Pivot object name.
+- The add‑on prints detailed information to the Blender console regarding how the **light pivot** rotation is applied:
+  - Light pivot object name.
   - Camera name.
   - Requested rotation values.
   - Original rotation vs. new rotation (in degrees).

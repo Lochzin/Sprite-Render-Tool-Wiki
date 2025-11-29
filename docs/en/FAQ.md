@@ -1,4 +1,4 @@
-# FAQ — Frequently Asked Questions
+# FAQ
 
 This page lists common questions about using the **Sprite Render Tool** and how to solve typical issues.
 
@@ -25,7 +25,7 @@ This page lists common questions about using the **Sprite Render Tool** and how 
 
 **Q: Light does not rotate per camera, or looks wrong. How can I debug this?**  
 **A:** Check the following:
-- Ensure a **Pivot Object** is set in the **Light Pivot** section.
+- Ensure a **Light Pivot** object is set in the **Light Pivot** section.
 - Turn on **Light Rotation Debug** in the **Debug** section to see detailed console output.
 - Verify `Enable Full Rotation (XYZ)` is set correctly:
   - Off: only Z axis is used.
@@ -33,7 +33,7 @@ This page lists common questions about using the **Sprite Render Tool** and how 
 
 **Q: The Detect Cameras button does nothing. Why?**  
 **A:** The **Auto-fill Light Rotations** operator requires:
-- A valid **Pivot Object** (otherwise it cancels with an error).
+- A valid **Light Pivot** object (otherwise it cancels with an error).
 - At least one camera that is:
   - of type `CAMERA`
   - not hidden in viewport

@@ -1,4 +1,4 @@
-# Animations — Actions, NLA and Static
+# Animations
 
 This page explains how the **Sprite Render Tool** handles animations in the three modes: **ACTIONS**, **NLA**, and **STATIC**.
 
