@@ -8,7 +8,7 @@ This page lists planned features and improvements for the **Sprite Render Tool**
 
 ### Visual Debug Tools
 
-- **Light Pivot Rotation Visualizer**: A visual debug tool to help visualize and adjust pivot rotation angles for cameras at different angles (not just horizontal). This will make it easier to set up lighting for renders from above, diagonally, or in multiple planes.
+- **Light Pivot Rotation Visualizer**: A visual debug tool to help visualize and adjust pivot rotation angles for cameras at different angles (not just horizontal). This feature was attempted once but could not be implemented due to Blender API limitations. It may be revisited in the future if there is significant user demand.
 
 ### Animation Features
 

@@ -8,7 +8,7 @@ Esta página lista funcionalidades planejadas e melhorias para o **Sprite Render
 
 ### Ferramentas de Debug Visual
 
-- **Visualizador de Rotação do Pivot de Luz**: Uma ferramenta de debug visual para ajudar a visualizar e ajustar ângulos de rotação do pivot para câmeras em diferentes ângulos (não apenas horizontal). Isso facilitará a configuração de iluminação para renderizações de cima, diagonalmente ou em múltiplos planos.
+- **Visualizador de Rotação do Pivot de Luz**: Uma ferramenta de debug visual para ajudar a visualizar e ajustar ângulos de rotação do pivot para câmeras em diferentes ângulos (não apenas horizontal). Esta funcionalidade foi tentada uma vez, mas não pôde ser implementada devido a limitações da API do Blender. Pode ser revisitada no futuro caso haja muita demanda dos usuários.
 
 ### Funcionalidades de Animação
 
