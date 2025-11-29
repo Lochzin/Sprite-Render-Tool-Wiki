@@ -102,6 +102,7 @@ Coloque luzes como **filhos do light pivot** (ou agrupe-as com o light pivot). E
 - Luzes principais (key lights) que devem seguir o ângulo da câmera.
 - Iluminação direcional que precisa rotacionar com cada posição da câmera.
 - Iluminação primária consistente em todos os ângulos da câmera.
+- **Highlights e rim lights**: Se você quiser highlights que funcionem de forma semelhante em todos os ângulos, coloque-os dentro do pivot. Highlights colocados fora do pivot podem ficar muito fortes e estourados quando a câmera se move para trás da posição original.
 
 ### Luzes Fora do Pivô
 
@@ -109,7 +110,6 @@ Adicione luzes adicionais que **não** sejam filhos do pivô. Essas luzes perman
 
 - **Iluminar áreas escuras**: Iluminar áreas naturalmente escuras do personagem ou objeto (como a parte inferior, costas, ou áreas de sombra).
 - **Iluminação ambiente/fill**: Criar iluminação ambiente ou fill lights que não mudam com a rotação da câmera.
-- **Highlights estáticos**: Adicionar highlights ou rim lights estáticos que permanecem constantes independentemente do ângulo da câmera.
 
 ### Combinando Ambas as Abordagens
 
@@ -120,7 +120,6 @@ Esta combinação permite criar uma iluminação mais rica e controlada:
 Isso é especialmente útil para:
 - Personagens com geometria complexa que têm áreas que estão sempre em sombra.
 - Criar iluminação mais realista com múltiplas fontes de luz.
-- Adicionar rim lights ou highlights que devem permanecer estáticos.
 
 ---
 

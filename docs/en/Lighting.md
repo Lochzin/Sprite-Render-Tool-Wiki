@@ -102,6 +102,7 @@ Place lights as **children of the light pivot** (or group them with the light pi
 - Main key lights that should follow the camera angle.
 - Directional lighting that needs to rotate with each camera position.
 - Consistent primary illumination across all camera angles.
+- **Highlights and rim lights**: If you want highlights that work similarly across all angles, place them inside the pivot. Highlights placed outside the pivot can become too strong and overexposed when the camera moves behind the original position.
 
 ### Lights Outside the Pivot
 
@@ -109,7 +110,6 @@ Add additional lights that are **not** children of the pivot. These lights will 
 
 - **Illuminate dark areas**: Light naturally dark areas of the character or object (such as the underside, back, or shadow areas).
 - **Ambient/fill lighting**: Create ambient or fill lighting that doesn't change with camera rotation.
-- **Static highlights**: Add static highlights or rim lights that remain constant regardless of camera angle.
 
 ### Combining Both Approaches
 
@@ -120,7 +120,6 @@ This combination allows you to create richer, more controlled lighting:
 This is especially useful for:
 - Characters with complex geometry that have areas that are always in shadow.
 - Creating more realistic lighting with multiple light sources.
-- Adding rim lights or highlights that should remain static.
 
 ---
 
