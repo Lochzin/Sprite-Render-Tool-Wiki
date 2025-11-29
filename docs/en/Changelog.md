@@ -22,6 +22,3 @@ This page tracks changes to the **Sprite Render Tool** over time.
   - **Detect Cameras**
   - **Detect Actions**
   - **Detect NLA Strips**
-
----
-

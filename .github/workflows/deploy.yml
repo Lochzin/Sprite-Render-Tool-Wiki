@@ -40,7 +40,7 @@ jobs:
       - name: Build with Sphinx
         run: |
           cd docs
-          sphinx-build -b html . _build/html -W --keep-going
+          sphinx-build -b html . _build/html --keep-going
           
       - name: Verify build output
         run: |

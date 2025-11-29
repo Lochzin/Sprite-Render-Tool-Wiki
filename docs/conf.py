@@ -53,7 +53,6 @@ html_logo = 'assets/images/SpriteRenderTool_Icon.png'
 
 html_theme_options = {
     'logo_only': False,
-    'display_version': True,
     'prev_next_buttons_location': 'bottom',
     'style_external_links': False,
     'vcs_pageview_mode': '',
