@@ -12,7 +12,8 @@ Add-on para **Blender** focado em gerar sprites 2D a partir de animações 3D, c
 - **Controla iluminação via um pivô**: usa um objeto pivô para rotacionar a "luz" em relação à câmera (ótimo para sprites isométricos/top‑down).
 - **Gera pastas de saída organizadas**: estrutura diretórios por projeto, objeto, animação e câmera.
 - **Fornece um painel de teste de animações**: visualiza Actions ou NLA diretamente do add-on.
-- **Mostra progresso e permite cancelamento**: barra de progresso integrada e botão de cancelar durante a renderização.
+- **Mostra progresso e permite cancelamento**: barra de progresso integrada, botão de cancelar e suporte à tecla ESC durante a renderização.
+- **Acesso rápido à saída**: botão para abrir a pasta de saída diretamente no explorador de arquivos.
 
 Funciona com Blender **5.0.0+**.
 
@@ -112,6 +113,7 @@ Detalhe técnico: Implementado por SPRITE_RENDER_UL_NLAStrips
     - `Project Folder`, `Object Folder`, `Animation Folder`, `Camera Folder`  
     - Constrói uma hierarquia de pastas baseada nesses níveis.
   - `Output Path` (das configurações de renderização da cena do Blender): pasta base onde tudo será criado.
+  - Botão **📂 Open Output Folder**: abre a pasta de saída no explorador de arquivos do sistema.
 
 - **🐛 Debug**
   - `Light Rotation Debug`: imprime informações de debug sobre a rotação do pivô no console.
@@ -120,6 +122,7 @@ Detalhe técnico: Implementado por SPRITE_RENDER_UL_NLAStrips
   - Mostrado durante a renderização:
     - `[atual/total]`, porcentagem, barra de progresso e mensagem de status.
     - Botão **❌ Cancel Render**.
+    - **Tecla ESC**: pressione ESC para cancelar a renderização a qualquer momento durante o processo.
 
 - **⚙️ Actions (Footer)**
   - `🚀 Render All` (`sprite_render.render_all`):
@@ -166,7 +169,7 @@ Detalhe técnico: Implementado por SPRITE_RENDER_UL_NLAStrips
 - **6. Renderize**
   - Clique em **Render All**.
   - Monitore o progresso na seção **Render Progress**.
-  - Se necessário, use **Cancel Render** para parar (ele parará após o frame atual terminar).
+  - Se necessário, use o botão **Cancel Render** ou pressione **ESC** para parar (ele parará após o frame atual terminar).
 
 ---
 

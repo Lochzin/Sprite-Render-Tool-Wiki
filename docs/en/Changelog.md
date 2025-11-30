@@ -4,6 +4,21 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
+## [0.2.5] - 2024
+
+**Highlights:**
+- Added **ESC key cancellation**: Ability to cancel rendering by pressing ESC key
+  - Modal operator automatically detects ESC key press during rendering
+  - Cancels render immediately when ESC is pressed
+  - Works alongside the existing cancel button
+- Added **Open output folder button**: Button to open output folder in file explorer
+  - Located next to the "Output Path" field in the Output section
+  - Automatically converts Blender relative paths (`//`) to absolute paths
+  - Creates folder if it doesn't exist before opening
+  - Cross-platform support (Windows, macOS, Linux)
+
+---
+
 ## [0.2.4] - 2024
 
 ### Removed

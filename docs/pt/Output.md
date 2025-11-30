@@ -147,6 +147,19 @@ Isso pode ser útil se você estiver empacotando frames de múltiplas câmeras j
 
 ---
 
+## Abrir Pasta de Saída
+
+O botão **Open Output Folder**, localizado ao lado do campo `Output Path` na seção **Output**, fornece acesso rápido ao seu diretório de saída:
+
+- **Abre a pasta**: Abre o explorador de arquivos do sistema (Windows Explorer, macOS Finder ou gerenciador de arquivos Linux) no local do caminho de saída
+- **Conversão automática de caminho**: Converte caminhos relativos do Blender (começando com `//`) para caminhos absolutos antes de abrir
+- **Cria pastas ausentes**: Se a pasta de saída não existir, ela será criada automaticamente antes de abrir
+- **Multiplataforma**: Funciona no Windows, macOS e Linux
+
+Isso é especialmente útil quando você quer verificar rapidamente seus sprites renderizados ou verificar o local de saída sem navegar manualmente pelo sistema de arquivos.
+
+---
+
 ## Dicas
 
 - Sempre defina `render.filepath` para um **diretório**, não um nome de arquivo. O add-on valida o caminho antes de renderizar e mostrará um erro claro se o caminho estiver inválido.

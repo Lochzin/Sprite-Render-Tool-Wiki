@@ -12,7 +12,8 @@ Add-on for **Blender** focused on generating 2D sprites from 3D animations, with
 - **Controls lighting via a pivot**: uses a pivot object to rotate the “light” relative to the camera (great for isometric/top‑down sprites).
 - **Generates organized output folders**: structures directories by project, object, animation, and camera.
 - **Provides an animation test panel**: preview Actions or NLA directly from the add-on.
-- **Shows progress and allows cancelling**: integrated progress bar and cancel button while rendering.
+- **Shows progress and allows cancelling**: integrated progress bar, cancel button, and ESC key support while rendering.
+- **Quick output access**: button to open the output folder directly in your file explorer.
 
 It works with Blender **5.0.0+**.
 
@@ -112,6 +113,7 @@ Technical detail: Implemented by SPRITE_RENDER_UL_NLAStrips
     - `Project Folder`, `Object Folder`, `Animation Folder`, `Camera Folder`  
     - Builds a folder hierarchy based on these levels.
   - `Output Path` (from the Blender scene render settings): base folder where everything will be created.
+  - **📂 Open Output Folder** button: opens the output folder in your system's file explorer.
 
 - **🐛 Debug**
   - `Light Rotation Debug`: prints debug information about pivot rotation to the console.
@@ -120,6 +122,7 @@ Technical detail: Implemented by SPRITE_RENDER_UL_NLAStrips
   - Shown while rendering:
     - `[current/total]`, percentage, progress bar, and status message.
     - **❌ Cancel Render** button.
+    - **ESC key**: press ESC to cancel rendering at any time during the process.
 
 - **⚙️ Actions (Footer)**
   - `🚀 Render All` (`sprite_render.render_all`):
@@ -166,7 +169,7 @@ Technical detail: Implemented by SPRITE_RENDER_UL_NLAStrips
 - **6. Render**
   - Click **Render All**.
   - Monitor progress in the **Render Progress** section.
-  - If needed, use **Cancel Render** to stop (it will stop after the current frame finishes).
+  - If needed, use **Cancel Render** button or press **ESC** to stop (it will stop after the current frame finishes).
 
 ---
 

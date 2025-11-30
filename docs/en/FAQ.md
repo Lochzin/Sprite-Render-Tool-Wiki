@@ -106,9 +106,10 @@ If you see extra `_`, it is likely sanitizing characters or removing accidental 
 - The default **Render All** from the panel, which starts the **async** timer‑based flow, updating UI between frames and allowing cancellation.
 
 **Q: How can I stop a long render batch?**  
-**A:** Use the **Cancel Render** button in the **Render Progress** section:
-- The add‑on sets a cancellation flag.
-- Rendering stops gracefully after the current frame is finished.
+**A:** You can cancel rendering in two ways:
+- **Cancel Render button**: Click the **Cancel Render** button in the **Render Progress** section.
+- **ESC key**: Press the **ESC** key at any time during rendering.
+- Both methods set a cancellation flag, and rendering stops gracefully after the current frame is finished.
 
 ---
 

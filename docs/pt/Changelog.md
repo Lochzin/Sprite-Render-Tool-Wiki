@@ -4,6 +4,21 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
+## [0.2.5] - 2024
+
+**Destaques:**
+- Adicionado **Cancelamento com tecla ESC**: Capacidade de cancelar renderização pressionando a tecla ESC
+  - Operador modal detecta automaticamente o pressionamento da tecla ESC durante a renderização
+  - Cancela a renderização imediatamente quando ESC é pressionado
+  - Funciona junto com o botão de cancelar existente
+- Adicionado **Botão para abrir pasta de saída**: Botão para abrir a pasta de saída no explorador de arquivos
+  - Localizado ao lado do campo "Output Path" na seção Output
+  - Converte automaticamente caminhos relativos do Blender (`//`) para caminhos absolutos
+  - Cria a pasta se ela não existir antes de abrir
+  - Suporte multiplataforma (Windows, macOS, Linux)
+
+---
+
 ## [0.2.4] - 2024
 
 ### Removido

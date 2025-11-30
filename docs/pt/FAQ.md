@@ -106,9 +106,10 @@ Se você vir `_` extras, provavelmente está sanitizando caracteres ou removendo
 - O **Render All** padrão do painel, que inicia o fluxo **assíncrono** baseado em timer, atualizando a UI entre frames e permitindo cancelamento.
 
 **P: Como posso parar um lote de renderização longo?**  
-**R:** Use o botão **Cancel Render** na seção **Render Progress**:
-- O add-on define uma flag de cancelamento.
-- A renderização para graciosamente após o frame atual terminar.
+**R:** Você pode cancelar a renderização de duas formas:
+- **Botão Cancel Render**: Clique no botão **Cancel Render** na seção **Render Progress**.
+- **Tecla ESC**: Pressione a tecla **ESC** a qualquer momento durante a renderização.
+- Ambos os métodos definem uma flag de cancelamento, e a renderização para graciosamente após o frame atual terminar.
 
 ---
 

@@ -147,6 +147,19 @@ This can be useful if you are packing multi‑camera frames together in a custom
 
 ---
 
+## Open Output Folder
+
+The **Open Output Folder** button, located next to the `Output Path` field in the **Output** section, provides quick access to your output directory:
+
+- **Opens the folder**: Launches your system's file explorer (Windows Explorer, macOS Finder, or Linux file manager) at the output path location
+- **Automatic path conversion**: Converts Blender relative paths (starting with `//`) to absolute paths before opening
+- **Creates missing folders**: If the output folder doesn't exist, it will be created automatically before opening
+- **Cross-platform**: Works on Windows, macOS, and Linux
+
+This is especially useful when you want to quickly check your rendered sprites or verify the output location without manually navigating through your file system.
+
+---
+
 ## Tips
 
 - Always set `render.filepath` to a **directory**, not a file name. The add-on validates the path before rendering and will show a clear error if the path is invalid.
