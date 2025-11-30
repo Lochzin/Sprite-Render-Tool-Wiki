@@ -4,6 +4,28 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
+## [0.2.4] - 2024
+
+### Removed
+- **Debug system**: Removed all debug-related features and UI elements
+  - Removed `debug_light_rotation` boolean property
+  - Removed `show_section_debug` toggle property
+  - Removed debug section from UI panel
+  - Removed `update_debug_light_rotation()` callback function
+  - Removed all debug print statements and log messages
+  - Simplified `apply_light_rotation()` method by removing debug parameter and conditional logging
+
+### Changed
+- `apply_light_rotation()` method signature simplified: removed `debug` parameter
+  - Method now only applies rotation without any debug output
+  - All calls to `apply_light_rotation()` updated to use simplified signature
+
+### Technical Details
+- Cleaned up code by removing debug-related conditionals and print statements
+- Improved code maintainability by removing unused debug infrastructure
+
+---
+
 ## [0.2.3] - 2024
 
 **Highlights:**
