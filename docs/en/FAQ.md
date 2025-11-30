@@ -7,11 +7,11 @@ This page lists common questions about using the **Sprite Render Tool** and how 
 ## General
 
 **Q: Which Blender versions are supported?**  
-**A:** The `bl_info` in the add‑on specifies Blender **5.0.0** as the minimum version. It is designed for Blender 5.x and later; earlier versions are not officially supported.
+**A:** The `bl_info` in the add‑on specifies Blender **5.0.0** as the minimum version. It is designed for Blender 5.x and later. The add-on was initially developed for Blender 4.0, so it may work (possibly even fully) on earlier versions, but this has not been tested and is not officially supported.
 
 **Q: Where do I find the Sprite Render Tool panel?**  
 **A:** After enabling the add‑on in Preferences, go to:  
-`3D Viewport > Sidebar (N) > Sprite Render > Sprite Render`.
+`3D Viewport > Sidebar (N) > Sprite Render`.
 
 ---
 
@@ -26,10 +26,10 @@ This page lists common questions about using the **Sprite Render Tool** and how 
 **Q: Light does not rotate per camera, or looks wrong. How can I debug this?**  
 **A:** Check the following:
 - Ensure a **Light Pivot** object is set in the **Light Pivot** section.
-- Turn on **Light Rotation Debug** in the **Debug** section to see detailed console output.
 - Verify `Enable Full Rotation (XYZ)` is set correctly:
   - Off: only Z axis is used.
-  - On: full XYZ from the camera’s `light_rotation` is applied.
+  - On: full XYZ from the camera's `light_rotation` is applied.
+- Make sure `Enable Light Pivot` is enabled in the **Light Pivot** section.
 
 **Q: The Detect Cameras button does nothing. Why?**  
 **A:** The **Auto-fill Light Rotations** operator requires:
