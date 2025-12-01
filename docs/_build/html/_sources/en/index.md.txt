@@ -132,7 +132,9 @@ Technical detail: Implemented by SPRITE_RENDER_UL_NLAStrips
 
 ---
 
-## Basic Workflow
+## Basic Guide
+
+This initial guide presents the basic workflow to get started with the Sprite Render Tool. Follow these steps to set up and render your first sprites.
 
 - **1. Prepare the scene**
   - Set up your character / armature.

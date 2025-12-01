@@ -14,6 +14,14 @@ Esta página lista funcionalidades planejadas e melhorias para o **Sprite Render
 
 - **Sincronização de Armadura Secundária**: Implementação completa da funcionalidade de sincronização de armadura secundária. Atualmente, a UI tem placeholders para `sync_secondary`, `secondary_armature` e `secondary_action`, mas a funcionalidade ainda não está totalmente implementada.
 
+### Funcionalidades de Configuração de Câmeras
+
+- **Presets de Câmeras**: Configurações rápidas para arranjos de câmeras comuns:
+  - Presets para 1, 2, 3, 4 e 5 câmeras com ângulos e rotações pré-configurados
+  - Criação e salvamento de presets customizados para configurações de câmeras frequentemente usadas
+  - Funcionalidade de compartilhamento e importação/exportação de presets
+  - Isso agilizará o fluxo de trabalho para usuários que frequentemente trabalham com arranjos de câmeras padrão (vistas frontal, traseira, lateral, etc.)
+
 ### Funcionalidades de Saída
 
 - **Renderização de Normal Maps**: Opção para renderizar normal maps simultaneamente com a renderização normal. Isso permitirá que os usuários gerem tanto as imagens de sprites padrão quanto seus normal maps correspondentes em uma única passada de renderização, garantindo alinhamento perfeito e iluminação consistente entre as duas saídas.

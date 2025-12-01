@@ -132,7 +132,9 @@ Detalhe técnico: Implementado por SPRITE_RENDER_UL_NLAStrips
 
 ---
 
-## Fluxo de Trabalho Básico
+## Guia Básico
+
+Este guia inicial apresenta o fluxo de trabalho básico para começar a usar o Sprite Render Tool. Siga estes passos para configurar e renderizar seus primeiros sprites.
 
 - **1. Prepare a cena**
   - Configure seu personagem / armadura.

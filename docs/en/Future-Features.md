@@ -14,6 +14,14 @@ This page lists planned features and improvements for the **Sprite Render Tool**
 
 - **Secondary Armature Sync**: Complete implementation of the secondary armature synchronization feature. Currently, the UI has placeholders for `sync_secondary`, `secondary_armature`, and `secondary_action`, but the functionality is not yet fully implemented.
 
+### Camera Setup Features
+
+- **Camera Presets**: Quick setup presets for common camera configurations:
+  - Presets for 1, 2, 3, 4, and 5 cameras with pre-configured angles and rotations
+  - Custom preset creation and saving for frequently used camera setups
+  - Preset sharing and import/export functionality
+  - This will streamline the workflow for users who frequently work with standard camera arrangements (front, back, side views, etc.)
+
 ### Output Features
 
 - **Normal Maps Rendering**: Option to render normal maps simultaneously with the regular render. This will allow users to generate both the standard sprite images and their corresponding normal maps in a single render pass, ensuring perfect alignment and consistent lighting between the two outputs.
