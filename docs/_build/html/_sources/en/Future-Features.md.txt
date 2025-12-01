@@ -12,6 +12,8 @@ This page lists planned features and improvements for the **Sprite Render Tool**
 
 ### Animation Features
 
+- **Sub-Actions Mode**: Support for Blender's sub-actions feature (introduced in Blender 4.4). This new animation mode will allow users to work with sub-actions, which provide a way to organize and manage complex animation hierarchies within a single action. This feature will complement the existing ACTIONS, NLA, and STATIC modes, providing more flexibility for advanced animation workflows.
+
 - **Secondary Armature Sync**: Complete implementation of the secondary armature synchronization feature. Currently, the UI has placeholders for `sync_secondary`, `secondary_armature`, and `secondary_action`, but the functionality is not yet fully implemented.
 
 ### Camera Setup Features
@@ -21,6 +23,16 @@ This page lists planned features and improvements for the **Sprite Render Tool**
   - Custom preset creation and saving for frequently used camera setups
   - Preset sharing and import/export functionality
   - This will streamline the workflow for users who frequently work with standard camera arrangements (front, back, side views, etc.)
+
+### UI/UX Improvements
+
+- **Contextual Help Buttons**: Integration of help/documentation buttons throughout the UI that link directly to relevant sections of the wiki:
+  - **Animation Mode** section: Button linking to the Animations documentation page
+  - **Cameras** section: Button linking to the Cameras documentation page
+  - **Light Pivot** section: Button linking to the Lighting documentation page
+  - **Output** section: Button linking to the Output documentation page
+  - **FAQ** button: Quick access to frequently asked questions
+  - These buttons will provide instant access to detailed documentation without leaving Blender, improving the learning curve for new users and serving as quick reference for experienced users
 
 ### Output Features
 

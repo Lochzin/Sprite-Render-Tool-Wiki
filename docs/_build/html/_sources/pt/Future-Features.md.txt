@@ -12,6 +12,8 @@ Esta página lista funcionalidades planejadas e melhorias para o **Sprite Render
 
 ### Funcionalidades de Animação
 
+- **Modo Sub-Actions**: Suporte para a funcionalidade de sub-actions do Blender (introduzida no Blender 4.4). Este novo modo de animação permitirá que os usuários trabalhem com sub-actions, que fornecem uma forma de organizar e gerenciar hierarquias de animação complexas dentro de uma única action. Esta funcionalidade complementará os modos existentes ACTIONS, NLA e STATIC, fornecendo mais flexibilidade para fluxos de trabalho de animação avançados.
+
 - **Sincronização de Armadura Secundária**: Implementação completa da funcionalidade de sincronização de armadura secundária. Atualmente, a UI tem placeholders para `sync_secondary`, `secondary_armature` e `secondary_action`, mas a funcionalidade ainda não está totalmente implementada.
 
 ### Funcionalidades de Configuração de Câmeras
@@ -21,6 +23,16 @@ Esta página lista funcionalidades planejadas e melhorias para o **Sprite Render
   - Criação e salvamento de presets customizados para configurações de câmeras frequentemente usadas
   - Funcionalidade de compartilhamento e importação/exportação de presets
   - Isso agilizará o fluxo de trabalho para usuários que frequentemente trabalham com arranjos de câmeras padrão (vistas frontal, traseira, lateral, etc.)
+
+### Melhorias de UI/UX
+
+- **Botões de Ajuda Contextual**: Integração de botões de ajuda/documentação em toda a UI que vinculam diretamente às seções relevantes da wiki:
+  - Seção **Animation Mode**: Botão que leva à página de documentação de Animações
+  - Seção **Cameras**: Botão que leva à página de documentação de Câmeras
+  - Seção **Light Pivot**: Botão que leva à página de documentação de Iluminação
+  - Seção **Output**: Botão que leva à página de documentação de Saída
+  - Botão **FAQ**: Acesso rápido a perguntas frequentes
+  - Esses botões fornecerão acesso instantâneo à documentação detalhada sem sair do Blender, melhorando a curva de aprendizado para novos usuários e servindo como referência rápida para usuários experientes
 
 ### Funcionalidades de Saída
 
