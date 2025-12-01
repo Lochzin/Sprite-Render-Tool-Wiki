@@ -1,0 +1,307 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iluminação &mdash; Sprite Render Tool 0.2.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/Lighting.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=000c92bf"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Animações" href="Animations.html" />
+    <link rel="prev" title="Câmeras" href="Cameras.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Sprite Render Tool
+              <img src="../_static/SpriteRenderTool_Icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">English Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../en/index.html">Sprite Render Tool — Official Wiki</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Cameras.html">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Lighting.html">Lighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Animations.html">Animations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Future-Features.html">Future Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/License.html">License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentação em Português</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Sprite Render Tool — Wiki Oficial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cameras.html">Câmeras</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Iluminação</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#visao-geral">Visão Geral</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#objeto-light-pivot">Objeto Light Pivot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#toggle-enable-light-pivot">Toggle Enable Light Pivot</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#rotacao-de-luz">Rotação de Luz</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#modos-de-rotacao">Modos de Rotação</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rotacao-automatica-de-luz">Rotação Automática de Luz</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#limitacoes-da-deteccao-automatica">Limitações da Detecção Automática</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#debug-de-rotacao-de-luz">Debug de Rotação de Luz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#estrategia-avancada-de-iluminacao">💡 Estratégia Avançada de Iluminação</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#luzes-dentro-do-pivo">Luzes Dentro do Pivô</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#luzes-fora-do-pivo">Luzes Fora do Pivô</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#combinando-ambas-as-abordagens">Combinando Ambas as Abordagens</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dicas-de-fluxo-de-trabalho">Dicas de Fluxo de Trabalho</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#topicos-relacionados">Tópicos Relacionados</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Animations.html">Animações</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Future-Features.html">Futuras Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="License.html">Licença</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sprite Render Tool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Iluminação</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/pt/Lighting.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="iluminacao">
+<h1>Iluminação<a class="headerlink" href="#iluminacao" title="Link to this heading"></a></h1>
+<p>Esta página explica como o sistema <strong>Light Pivot</strong> funciona no <strong>Sprite Render Tool</strong> e como usá-lo para criar iluminação eficaz para suas renderizações de sprites.</p>
+<hr class="docutils" />
+<section id="visao-geral">
+<h2>Visão Geral<a class="headerlink" href="#visao-geral" title="Link to this heading"></a></h2>
+<p>O add-on usa um <strong>light pivot</strong> (geralmente um empty object) para controlar a direção da iluminação para cada câmera. Isso permite criar uma iluminação consistente que rotaciona com a câmera, o que é especialmente útil para <strong>boomer shooters</strong> e jogos com <strong>visão 360 graus do personagem/objeto</strong>.</p>
+<p>Esta abordagem de iluminação padronizada ajuda a manter uma iluminação uniforme em todos os sprites, o que é particularmente importante ao trabalhar com <strong>normal maps</strong>, pois a iluminação consistente garante que os detalhes do normal map sejam adequadamente visíveis e consistentes em todos os ângulos da câmera durante o render final que será executado durante o jogo.</p>
+</section>
+<hr class="docutils" />
+<section id="objeto-light-pivot">
+<h2>Objeto Light Pivot<a class="headerlink" href="#objeto-light-pivot" title="Link to this heading"></a></h2>
+<p>O <strong>Light Pivot</strong> é um objeto do Blender que atua como um ponto de controle para a rotação da iluminação. Você pode usar qualquer objeto do Blender como pivô, embora geralmente se use um <strong>empty object</strong> (objetos mesh também funcionam, mas empty objects são preferidos por sua simplicidade).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Detalhes</span> <span class="n">técnicos</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">O</span> <span class="n">pivô</span> <span class="n">é</span> <span class="n">armazenado</span> <span class="n">em</span> <span class="n">SpriteRenderSettings</span><span class="o">.</span><span class="n">pivot_object</span>
+<span class="o">-</span> <span class="n">Antes</span> <span class="n">de</span> <span class="n">renderizar</span> <span class="n">cada</span> <span class="n">frame</span><span class="p">,</span> <span class="n">o</span> <span class="n">operador</span> <span class="n">chama</span><span class="p">:</span>
+  <span class="n">SPRITE_RENDER_OT_RenderAll</span><span class="o">.</span><span class="n">apply_light_rotation</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="toggle-enable-light-pivot">
+<h3>Toggle Enable Light Pivot<a class="headerlink" href="#toggle-enable-light-pivot" title="Link to this heading"></a></h3>
+<p>O add-on inclui uma propriedade booleana <code class="docutils literal notranslate"><span class="pre">enable_light_pivot</span></code> para controlar a funcionalidade de pivô de luz:</p>
+<ul class="simple">
+<li><p><strong>Quando habilitado</strong> (padrão: <code class="docutils literal notranslate"><span class="pre">True</span></code>): A rotação de luz é aplicada ao light pivot durante a renderização.</p></li>
+<li><p><strong>Quando desabilitado</strong>: A rotação de luz é ignorada, mesmo se um light pivot estiver configurado.</p></li>
+<li><p>O campo de seleção do light pivot só é visível quando <code class="docutils literal notranslate"><span class="pre">enable_light_pivot</span></code> está habilitado.</p></li>
+</ul>
+<p>Isso permite que você desabilite temporariamente a rotação de luz sem remover a configuração do light pivot.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="rotacao-de-luz">
+<h2>Rotação de Luz<a class="headerlink" href="#rotacao-de-luz" title="Link to this heading"></a></h2>
+<p>Cada câmera no add-on tem uma propriedade <code class="docutils literal notranslate"><span class="pre">light_rotation</span></code> (rotação Euler XYZ) que controla como o light pivot é rotacionado para esse ângulo de câmera específico.</p>
+<section id="modos-de-rotacao">
+<h3>Modos de Rotação<a class="headerlink" href="#modos-de-rotacao" title="Link to this heading"></a></h3>
+<p>Dependendo de <strong>Enable Full Rotation (XYZ)</strong>:</p>
+<ul class="simple">
+<li><p><strong>Desabilitado</strong> (padrão):</p>
+<ul>
+<li><p>Apenas o eixo Z do pivô é alterado.</p></li>
+<li><p>Ideal para <strong>boomer shooters</strong> e jogos com <strong>visão 360 graus do personagem/objeto</strong>, onde todas as câmeras estão no mesmo plano horizontal ao redor do personagem.</p></li>
+<li><p>Bom para iluminação top-down / isométrica onde “ao redor do personagem” é suficiente.</p></li>
+<li><p>Este é o caso de uso mais comum para renderização de sprites.</p></li>
+</ul>
+</li>
+<li><p><strong>Habilitado</strong>:</p>
+<ul>
+<li><p>Euler XYZ completo é aplicado ao pivô.</p></li>
+<li><p>Útil para <strong>boomer shooters</strong> mais complexos onde há <strong>diferenças de níveis de altura</strong> (múltiplos níveis verticais, escadas, plataformas, etc.).</p></li>
+<li><p>Use isso para configurações de iluminação mais complexas que requerem rotação em múltiplos eixos.</p></li>
+<li><p>Útil quando as câmeras estão posicionadas em diferentes ângulos verticais (de cima, de baixo, diagonal).</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Detalhes</span> <span class="n">técnicos</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">Desabilitado</span><span class="p">:</span> <span class="n">usa</span> <span class="n">cam_item</span><span class="o">.</span><span class="n">light_rotation</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">(</span><span class="n">apenas</span> <span class="n">eixo</span> <span class="n">Z</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">Habilitado</span><span class="p">:</span> <span class="n">aplica</span> <span class="n">cam_item</span><span class="o">.</span><span class="n">light_rotation</span> <span class="n">completo</span> <span class="p">(</span><span class="n">XYZ</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="rotacao-automatica-de-luz">
+<h3>Rotação Automática de Luz<a class="headerlink" href="#rotacao-automatica-de-luz" title="Link to this heading"></a></h3>
+<p>Ao usar o botão <strong>Detect Cameras</strong>, o add-on calcula automaticamente uma rotação Z para cada câmera baseada na posição relativa entre a câmera e o light pivot.</p>
+<blockquote>
+<div><p><strong>Importante</strong>: O objeto <strong>Light Pivot</strong> deve ser definido na seção <strong>Light Pivot</strong> antes de usar o Detect Cameras; caso contrário, o operador cancelará com um erro.</p>
+</div></blockquote>
+<section id="limitacoes-da-deteccao-automatica">
+<h4>Limitações da Detecção Automática<a class="headerlink" href="#limitacoes-da-deteccao-automatica" title="Link to this heading"></a></h4>
+<p>O <strong>Detect Cameras</strong> tenta encontrar a rotação ideal do pivô de luz para cada ângulo de câmera, mas isso <strong>só funciona corretamente para ângulos horizontais</strong> (como em jogos boomer shooter em primeira pessoa, onde as câmeras estão todas no mesmo plano horizontal ao redor do personagem).</p>
+<p>Para renderizações que precisam ser feitas em <strong>ângulos diferentes</strong> (de cima, diagonalmente, ou em múltiplos planos), você precisará <strong>ajustar manualmente</strong> o ângulo de rotação do pivô (<code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Rotation</span></code>) para cada câmera após usar o Detect Cameras.</p>
+<blockquote>
+<div><p><strong>Nota</strong>: Uma ferramenta de debug visual foi tentada, mas não pôde ser implementada devido a limitações da API do Blender. Pode ser revisitada no futuro caso haja muita demanda dos usuários.</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="debug-de-rotacao-de-luz">
+<h2>Debug de Rotação de Luz<a class="headerlink" href="#debug-de-rotacao-de-luz" title="Link to this heading"></a></h2>
+<p>Quando <strong>Light Rotation Debug</strong> está habilitado na seção <strong>Debug</strong>:</p>
+<ul class="simple">
+<li><p>O operador registra informações detalhadas sobre como a rotação do light pivot é aplicada:</p>
+<ul>
+<li><p>Nome do objeto light pivot.</p></li>
+<li><p>Nome da câmera.</p></li>
+<li><p>Valores de rotação solicitados.</p></li>
+<li><p>Rotação original vs. nova rotação (em graus).</p></li>
+<li><p>Quaisquer erros que ocorram ao tentar aplicar a rotação.</p></li>
+</ul>
+</li>
+</ul>
+<p>Isso é útil para solucionar problemas de iluminação e verificar se os valores de rotação corretos estão sendo aplicados.</p>
+</section>
+<hr class="docutils" />
+<section id="estrategia-avancada-de-iluminacao">
+<h2>💡 Estratégia Avançada de Iluminação<a class="headerlink" href="#estrategia-avancada-de-iluminacao" title="Link to this heading"></a></h2>
+<p>Você pode usar o <strong>Light Pivot</strong> estrategicamente para criar um sistema de iluminação mais completo:</p>
+<section id="luzes-dentro-do-pivo">
+<h3>Luzes Dentro do Pivô<a class="headerlink" href="#luzes-dentro-do-pivo" title="Link to this heading"></a></h3>
+<p>Coloque luzes como <strong>filhos do light pivot</strong> (ou agrupe-as com o light pivot). Essas luzes <strong>irão rotacionar</strong> junto com as câmeras ao redor do personagem, criando uma iluminação consistente que segue o ponto de vista da câmera.</p>
+<p><strong>Use isso para:</strong></p>
+<ul class="simple">
+<li><p>Luzes principais (key lights) que devem seguir o ângulo da câmera.</p></li>
+<li><p>Iluminação direcional que precisa rotacionar com cada posição da câmera.</p></li>
+<li><p>Iluminação primária consistente em todos os ângulos da câmera.</p></li>
+<li><p><strong>Highlights e rim lights</strong>: Se você quiser highlights que funcionem de forma semelhante em todos os ângulos, coloque-os dentro do pivot. Highlights colocados fora do pivot podem ficar muito fortes e estourados quando a câmera se move para trás da posição original.</p></li>
+</ul>
+</section>
+<section id="luzes-fora-do-pivo">
+<h3>Luzes Fora do Pivô<a class="headerlink" href="#luzes-fora-do-pivo" title="Link to this heading"></a></h3>
+<p>Adicione luzes adicionais que <strong>não</strong> sejam filhos do pivô. Essas luzes permanecerão fixas e podem ser usadas para:</p>
+<ul class="simple">
+<li><p><strong>Iluminar áreas escuras</strong>: Iluminar áreas naturalmente escuras do personagem ou objeto (como a parte inferior, costas, ou áreas de sombra).</p></li>
+<li><p><strong>Iluminação ambiente/fill</strong>: Criar iluminação ambiente ou fill lights que não mudam com a rotação da câmera.</p></li>
+</ul>
+</section>
+<section id="combinando-ambas-as-abordagens">
+<h3>Combinando Ambas as Abordagens<a class="headerlink" href="#combinando-ambas-as-abordagens" title="Link to this heading"></a></h3>
+<p>Esta combinação permite criar uma iluminação mais rica e controlada:</p>
+<ul class="simple">
+<li><p>A <strong>luz principal</strong> (dentro do pivô) rotaciona com a câmera, fornecendo iluminação primária consistente.</p></li>
+<li><p><strong>Luzes auxiliares</strong> (fora do pivô) preenchem áreas que precisam de iluminação adicional e permanecem constantes.</p></li>
+</ul>
+<p>Isso é especialmente útil para:</p>
+<ul class="simple">
+<li><p>Personagens com geometria complexa que têm áreas que estão sempre em sombra.</p></li>
+<li><p>Criar iluminação mais realista com múltiplas fontes de luz.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="dicas-de-fluxo-de-trabalho">
+<h2>Dicas de Fluxo de Trabalho<a class="headerlink" href="#dicas-de-fluxo-de-trabalho" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Comece simples</strong>: Comece com uma única luz como filho do light pivot para entender o comportamento básico de rotação.</p></li>
+<li><p><strong>Adicione fill lights</strong>: Uma vez que a iluminação principal esteja funcionando, adicione luzes fixas fora do pivô para preencher áreas escuras.</p></li>
+<li><p><strong>Teste com Test Cameras</strong>: Use o botão <strong>Test Cameras</strong> para percorrer as câmeras e verificar se a iluminação está correta em cada ângulo.</p></li>
+<li><p><strong>Ajuste manualmente</strong>: Para câmeras em ângulos não horizontais, ajuste manualmente os valores de <code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Rotation</span></code> após usar o Detect Cameras.</p></li>
+<li><p><strong>Use o modo debug</strong>: Habilite o Light Rotation Debug para verificar se os valores de rotação estão sendo aplicados corretamente.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="topicos-relacionados">
+<h2>Tópicos Relacionados<a class="headerlink" href="#topicos-relacionados" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Veja <a class="reference internal" href="Cameras.html"><span class="std std-doc">Câmeras</span></a> para informações sobre configuração de câmeras e como a rotação de luz é configurada por câmera.</p></li>
+<li><p>Veja <a class="reference internal" href="#Debug.md"><span class="xref myst">Debug</span></a> para informações sobre a funcionalidade Light Rotation Debug.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Cameras.html" class="btn btn-neutral float-left" title="Câmeras" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Animations.html" class="btn btn-neutral float-right" title="Animações" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sprite Render Tool.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

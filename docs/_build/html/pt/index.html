@@ -1,0 +1,439 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sprite Render Tool — Wiki Oficial &mdash; Sprite Render Tool 0.2.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/index.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=000c92bf"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Câmeras" href="Cameras.html" />
+    <link rel="prev" title="License" href="../en/License.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Sprite Render Tool
+              <img src="../_static/SpriteRenderTool_Icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">English Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../en/index.html">Sprite Render Tool — Official Wiki</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Cameras.html">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Lighting.html">Lighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Animations.html">Animations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Future-Features.html">Future Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/License.html">License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentação em Português</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sprite Render Tool — Wiki Oficial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#visao-geral">Visão Geral</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instalacao-rapida">Instalação Rápida</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#painel-principal-ui">Painel Principal (UI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fluxo-de-trabalho-basico">Fluxo de Trabalho Básico</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#estrutura-de-arquivos-gerada">Estrutura de Arquivos Gerada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#licenca-e-termos-comerciais-resumo">Licença e Termos Comerciais (Resumo)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Cameras.html">Câmeras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lighting.html">Iluminação</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animations.html">Animações</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Future-Features.html">Futuras Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="License.html">Licença</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sprite Render Tool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Sprite Render Tool — Wiki Oficial</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/pt/index.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="sprite-render-tool-wiki-oficial">
+<h1>Sprite Render Tool — Wiki Oficial<a class="headerlink" href="#sprite-render-tool-wiki-oficial" title="Link to this heading"></a></h1>
+<p>Add-on para <strong>Blender</strong> focado em gerar sprites 2D a partir de animações 3D, com <strong>suporte multi‑câmera</strong>, <strong>detecção automática de animações</strong> (Actions e NLA), e <strong>nomenclatura de arquivos altamente personalizável</strong>, ideal para jogos 2D e pipelines de sprites.</p>
+<hr class="docutils" />
+<section id="visao-geral">
+<h2>Visão Geral<a class="headerlink" href="#visao-geral" title="Link to this heading"></a></h2>
+<p><strong>Sprite Render Tool</strong> é um add-on que:</p>
+<ul class="simple">
+<li><p><strong>Renderiza animações como sprites</strong>: itera sobre os frames de Actions ou NLA strips e salva cada frame como uma imagem.</p></li>
+<li><p><strong>Suporta múltiplas câmeras</strong>: você define uma lista de câmeras, ordem de renderização e nomes de saída opcionais personalizados.</p></li>
+<li><p><strong>Controla iluminação via um pivô</strong>: usa um objeto pivô para rotacionar a “luz” em relação à câmera (ótimo para sprites isométricos/top‑down).</p></li>
+<li><p><strong>Gera pastas de saída organizadas</strong>: estrutura diretórios por projeto, objeto, animação e câmera.</p></li>
+<li><p><strong>Fornece um painel de teste de animações</strong>: visualiza Actions ou NLA diretamente do add-on.</p></li>
+<li><p><strong>Mostra progresso e permite cancelamento</strong>: barra de progresso integrada, botão de cancelar e suporte à tecla ESC durante a renderização.</p></li>
+<li><p><strong>Acesso rápido à saída</strong>: botão para abrir a pasta de saída diretamente no explorador de arquivos.</p></li>
+</ul>
+<p>Funciona com Blender <strong>5.0.0+</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="instalacao-rapida">
+<h2>Instalação Rápida<a class="headerlink" href="#instalacao-rapida" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Arquivo do add-on</strong>: <code class="docutils literal notranslate"><span class="pre">Sprite</span> <span class="pre">Render</span> <span class="pre">Tool.py</span></code></p></li>
+<li><p><strong>Compatibilidade</strong>: Blender 5.0.0 ou mais recente.</p></li>
+</ul>
+<p><strong>Passos:</strong></p>
+<ul class="simple">
+<li><p><strong>1.</strong> Abra o Blender → <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">&gt;</span> <span class="pre">Preferences...</span> <span class="pre">&gt;</span> <span class="pre">Add-ons</span></code></p></li>
+<li><p><strong>2.</strong> Clique em <strong>Install…</strong> e escolha <code class="docutils literal notranslate"><span class="pre">Sprite</span> <span class="pre">Render</span> <span class="pre">Tool.py</span></code></p></li>
+<li><p><strong>3.</strong> Procure por <strong>Sprite Render Tool</strong> na lista de add-ons e ative-o</p></li>
+<li><p><strong>4.</strong> O painel aparecerá em: <code class="docutils literal notranslate"><span class="pre">View3D</span> <span class="pre">&gt;</span> <span class="pre">Sidebar</span> <span class="pre">(N)</span> <span class="pre">&gt;</span> <span class="pre">Sprite</span> <span class="pre">Render</span> <span class="pre">&gt;</span> <span class="pre">Sprite</span> <span class="pre">Render</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="painel-principal-ui">
+<h2>Painel Principal (UI)<a class="headerlink" href="#painel-principal-ui" title="Link to this heading"></a></h2>
+<p>O painel principal organiza o fluxo de trabalho em seções:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Detalhe</span> <span class="n">técnico</span><span class="p">:</span> <span class="n">Implementado</span> <span class="n">pela</span> <span class="n">classe</span> <span class="n">SPRITE_RENDER_PT_MainPanel</span>
+</pre></div>
+</div>
+<ul>
+<li><p><strong>🔖 Projeto</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">Name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Name</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>🎥 Câmeras</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">Count</span></code>: número de câmeras na lista interna.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">Output</span> <span class="pre">Names</span></code>: usa nomes diferentes dos nomes dos objetos de câmera para saída de arquivos.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">Full</span> <span class="pre">Rotation</span> <span class="pre">(XYZ)</span></code>: controla se o pivô rotaciona em XYZ ou apenas ao redor de Z.</p></li>
+<li><p>Para cada câmera (<code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">2</span></code>, …):</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Name</span></code>: nome do objeto de câmera na cena.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">Name</span></code>: nome usado nos nomes de arquivos (se <code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">Output</span> <span class="pre">Names</span></code> estiver habilitado).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Render</span> <span class="pre">Order</span></code>: ordem em que esta câmera será renderizada.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Rotation</span></code>: rotação da luz/pivô (apenas Z ou XYZ).</p></li>
+</ul>
+</li>
+<li><p>Botão <strong>Detect Cameras</strong> (<code class="docutils literal notranslate"><span class="pre">sprite_render.autofill_light_rotation</span></code>):</p>
+<ul>
+<li><p>Detecta câmeras visíveis na View Layer atual.</p></li>
+<li><p>Preenche a lista com nomes, contagem e rotação Z baseada no objeto pivô.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>💡 Light Pivot</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Pivot</span> <span class="pre">Object</span></code>: objeto usado como light pivot para rotação da luz.</p></li>
+<li><p><strong>💡 Dica</strong>: Você pode colocar luzes como filhos do light pivot (elas rotacionarão com as câmeras) e adicionar luzes fixas fora do light pivot para iluminar áreas escuras do personagem.</p></li>
+<li><p>Para informações detalhadas sobre configuração de iluminação e estratégias, veja <a class="reference internal" href="Lighting.html"><span class="std std-doc">Iluminação</span></a>.</p></li>
+</ul>
+</li>
+<li><p><strong>🎞️ Animações</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Target</span> <span class="pre">Armature</span></code>: a armadura a ser animada.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Animation</span> <span class="pre">Mode</span></code>:</p>
+<ul>
+<li><p><strong>NLA</strong>: usa NLA strips.</p></li>
+<li><p><strong>ACTIONS</strong>: usa Actions listadas dentro do add-on.</p></li>
+<li><p><strong>STATIC</strong>: renderiza apenas o frame atual.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Modo ACTIONS:</strong></p>
+<ul class="simple">
+<li><p>Lista <code class="docutils literal notranslate"><span class="pre">Actions</span></code>:</p>
+<ul>
+<li><p>Cada item tem: <code class="docutils literal notranslate"><span class="pre">enabled</span></code>, <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">frame_start</span></code>, <code class="docutils literal notranslate"><span class="pre">frame_end</span></code>, e opções de sincronização secundária (ainda não implementadas).</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Detalhe</span> <span class="n">técnico</span><span class="p">:</span> <span class="n">Implementado</span> <span class="n">por</span> <span class="n">SPRITE_RENDER_UL_Actions</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Botões:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Detect</span> <span class="pre">Actions</span></code>: lê <code class="docutils literal notranslate"><span class="pre">bpy.data.actions</span></code> e preenche a lista.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Add</span></code>, <code class="docutils literal notranslate"><span class="pre">Remove</span></code>: gerencia a lista manualmente.</p></li>
+</ul>
+</li>
+<li><p><strong>Animations Test (ACTIONS)</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Preview</span> <span class="pre">Action</span></code> / <code class="docutils literal notranslate"><span class="pre">Stop</span> <span class="pre">Preview</span></code></p></li>
+<li><p>Controles de frame (primeiro, anterior, próximo, último).</p></li>
+<li><p>Configuração <code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">FPS</span></code> + botão <code class="docutils literal notranslate"><span class="pre">Apply</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Modo NLA:</strong></p>
+<ul class="simple">
+<li><p>Lista <code class="docutils literal notranslate"><span class="pre">NLA</span> <span class="pre">Strips</span></code>:</p>
+<ul>
+<li><p>Cada item: <code class="docutils literal notranslate"><span class="pre">enabled</span></code>, <code class="docutils literal notranslate"><span class="pre">name</span></code> (nome da strip), <code class="docutils literal notranslate"><span class="pre">track_name</span></code>, <code class="docutils literal notranslate"><span class="pre">frame_start</span></code>, <code class="docutils literal notranslate"><span class="pre">frame_end</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Detalhe</span> <span class="n">técnico</span><span class="p">:</span> <span class="n">Implementado</span> <span class="n">por</span> <span class="n">SPRITE_RENDER_UL_NLAStrips</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Botões:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Detect</span> <span class="pre">NLA</span> <span class="pre">Strips</span></code>: lê as tracks NLA da armadura alvo.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Add</span></code>, <code class="docutils literal notranslate"><span class="pre">Remove</span></code>: gerencia a lista manualmente.</p></li>
+</ul>
+</li>
+<li><p><strong>Animations Test (NLA)</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Preview</span> <span class="pre">NLA</span> <span class="pre">Strip</span></code> / <code class="docutils literal notranslate"><span class="pre">Stop</span> <span class="pre">Preview</span></code></p></li>
+<li><p>Controles de frame (primeiro, anterior, próximo, último).</p></li>
+<li><p>Configuração <code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">FPS</span></code> + botão <code class="docutils literal notranslate"><span class="pre">Apply</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>💾 Output</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">Name</span></code> (<code class="docutils literal notranslate"><span class="pre">output_template</span></code>):</p>
+<ul>
+<li><p>Template padrão:<br />
+<code class="docutils literal notranslate"><span class="pre">$projectName_$objectName_$animation_$camera_$frame</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>Placeholders disponíveis:</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">$projectName</span></code>: nome do projeto.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$objectName</span></code>: nome do objeto/personagem.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$animation</span></code>: nome da Action ou NLA Strip.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$camera</span></code>: nome da câmera ou <code class="docutils literal notranslate"><span class="pre">output_name</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$frame</span></code>: número do frame formatado como <code class="docutils literal notranslate"><span class="pre">0001</span></code>, <code class="docutils literal notranslate"><span class="pre">0002</span></code>, etc.</p></li>
+</ul>
+</li>
+<li><p><strong>Use Folders:</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">Folder</span></code>, <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Folder</span></code>, <code class="docutils literal notranslate"><span class="pre">Animation</span> <span class="pre">Folder</span></code>, <code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">Folder</span></code></p></li>
+<li><p>Constrói uma hierarquia de pastas baseada nesses níveis.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">Path</span></code> (das configurações de renderização da cena do Blender): pasta base onde tudo será criado.</p></li>
+<li><p>Botão <strong>📂 Open Output Folder</strong>: abre a pasta de saída no explorador de arquivos do sistema.</p></li>
+</ul>
+</li>
+<li><p><strong>🐛 Debug</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Rotation</span> <span class="pre">Debug</span></code>: imprime informações de debug sobre a rotação do pivô no console.</p></li>
+</ul>
+</li>
+<li><p><strong>📊 Render Progress</strong></p>
+<ul>
+<li><p>Mostrado durante a renderização:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">[atual/total]</span></code>, porcentagem, barra de progresso e mensagem de status.</p></li>
+<li><p>Botão <strong>❌ Cancel Render</strong>.</p></li>
+<li><p><strong>Tecla ESC</strong>: pressione ESC para cancelar a renderização a qualquer momento durante o processo.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>⚙️ Actions (Footer)</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">🚀</span> <span class="pre">Render</span> <span class="pre">All</span></code> (<code class="docutils literal notranslate"><span class="pre">sprite_render.render_all</span></code>):</p>
+<ul>
+<li><p>Inicia a renderização de todas as animações e câmeras (versão assíncrona usando um timer).</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">🎯</span> <span class="pre">Test</span> <span class="pre">Cameras</span></code> (<code class="docutils literal notranslate"><span class="pre">sprite_render.test_cameras</span></code>):</p>
+<ul>
+<li><p>Percorre as câmeras configuradas para visualização.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="fluxo-de-trabalho-basico">
+<h2>Fluxo de Trabalho Básico<a class="headerlink" href="#fluxo-de-trabalho-basico" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>1. Prepare a cena</strong></p>
+<ul>
+<li><p>Configure seu personagem / armadura.</p></li>
+<li><p>Crie Actions ou NLA strips para suas animações.</p></li>
+<li><p>Crie as câmeras que serão usadas para sprites.</p></li>
+<li><p>Opcionalmente crie um objeto <strong>Light Pivot</strong> para controlar a rotação da iluminação ao redor do personagem.</p></li>
+</ul>
+</li>
+<li><p><strong>2. Configure o painel Sprite Render</strong></p>
+<ul>
+<li><p>Em <strong>Project</strong>: defina <code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">Name</span></code> e <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Name</span></code>.</p></li>
+<li><p>Em <strong>Cameras</strong>:</p>
+<ul>
+<li><p>Defina o objeto <strong>Light Pivot</strong> na seção <strong>Light Pivot</strong>.</p></li>
+<li><p>Clique em <strong>Detect Cameras</strong> para preencher a lista automaticamente.</p></li>
+<li><p>Ajuste <code class="docutils literal notranslate"><span class="pre">Render</span> <span class="pre">Order</span></code>, <code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">Name</span></code> e <code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Rotation</span></code> conforme necessário.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>3. Escolha o modo de animação</strong></p>
+<ul>
+<li><p><strong>ACTIONS</strong>:</p>
+<ul>
+<li><p>Clique em <strong>Detect Actions</strong> para importar todas as Actions.</p></li>
+<li><p>Ajuste <code class="docutils literal notranslate"><span class="pre">frame_start</span></code> e <code class="docutils literal notranslate"><span class="pre">frame_end</span></code> para cada action e habilite apenas as que você deseja renderizar.</p></li>
+</ul>
+</li>
+<li><p><strong>NLA</strong>:</p>
+<ul>
+<li><p>Selecione uma <code class="docutils literal notranslate"><span class="pre">Target</span> <span class="pre">Armature</span></code>.</p></li>
+<li><p>Clique em <strong>Detect NLA Strips</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>STATIC</strong>:</p>
+<ul>
+<li><p>O add-on usa o frame atual para renderizar; útil para thumbnails ou poses.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>4. Configure Output</strong></p>
+<ul>
+<li><p>Ajuste <code class="docutils literal notranslate"><span class="pre">output_template</span></code> se quiser um padrão de nomenclatura diferente.</p></li>
+<li><p>Habilite as opções <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">Folders</span></code> de acordo com como você quer organizar os arquivos.</p></li>
+<li><p>Em <code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">Path</span></code> (Blender Render Properties), escolha a pasta base onde tudo será salvo.</p></li>
+</ul>
+</li>
+<li><p><strong>5. Teste antes de renderizar tudo</strong></p>
+<ul>
+<li><p>Use <strong>Test Cameras</strong> para verificar cada câmera.</p></li>
+<li><p>Use o painel <strong>Animations Test</strong> (Actions ou NLA) para visualizar animações antes de renderizar.</p></li>
+</ul>
+</li>
+<li><p><strong>6. Renderize</strong></p>
+<ul>
+<li><p>Clique em <strong>Render All</strong>.</p></li>
+<li><p>Monitore o progresso na seção <strong>Render Progress</strong>.</p></li>
+<li><p>Se necessário, use o botão <strong>Cancel Render</strong> ou pressione <strong>ESC</strong> para parar (ele parará após o frame atual terminar).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="estrutura-de-arquivos-gerada">
+<h2>Estrutura de Arquivos Gerada<a class="headerlink" href="#estrutura-de-arquivos-gerada" title="Link to this heading"></a></h2>
+<p>A lógica de pastas e nomes de arquivos funciona da seguinte forma:</p>
+<ul class="simple">
+<li><p><strong>Caminho base</strong>: o <code class="docutils literal notranslate"><span class="pre">scene.render.filepath</span></code> limpo (<code class="docutils literal notranslate"><span class="pre">clean_base_path</span></code>) que remove nomes de arquivos e subpastas que poderiam conflitar com os gerados dinamicamente.</p></li>
+<li><p><strong>Níveis de pasta opcionais</strong>: <code class="docutils literal notranslate"><span class="pre">Project</span></code>, <code class="docutils literal notranslate"><span class="pre">Object</span></code>, <code class="docutils literal notranslate"><span class="pre">Animation</span></code>, <code class="docutils literal notranslate"><span class="pre">Camera</span></code> (via <code class="docutils literal notranslate"><span class="pre">build_dir_parts</span></code>).</p></li>
+<li><p><strong>Nome do arquivo</strong>: baseado em <code class="docutils literal notranslate"><span class="pre">output_template</span></code>:</p>
+<ul>
+<li><p>Substitui <code class="docutils literal notranslate"><span class="pre">$projectName</span></code>, <code class="docutils literal notranslate"><span class="pre">$objectName</span></code>, <code class="docutils literal notranslate"><span class="pre">$animation</span></code>, <code class="docutils literal notranslate"><span class="pre">$camera</span></code>, <code class="docutils literal notranslate"><span class="pre">$frame</span></code>.</p></li>
+<li><p>Remove caracteres inválidos para nomes de arquivos.</p></li>
+<li><p>Gera imagens <code class="docutils literal notranslate"><span class="pre">.png</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<p>Se <strong><code class="docutils literal notranslate"><span class="pre">$camera</span></code> não estiver presente</strong> no template, o add-on usa um contador sequencial por animação (em vez do número do frame da timeline) para evitar conflitos de nomes de arquivos entre câmeras.</p>
+</section>
+<hr class="docutils" />
+<section id="licenca-e-termos-comerciais-resumo">
+<h2>Licença e Termos Comerciais (Resumo)<a class="headerlink" href="#licenca-e-termos-comerciais-resumo" title="Link to this heading"></a></h2>
+<p>Baseado em <code class="docutils literal notranslate"><span class="pre">LICENSE.md</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Conformidade GPL</strong>: o código segue os requisitos legais impostos pela API do Blender.</p></li>
+<li><p><strong>Termos de distribuição comercial</strong>:</p>
+<ul>
+<li><p>Uma compra concede direitos de uso (pessoal ou profissional) e acesso a <strong>atualizações</strong> e <strong>suporte oficial</strong>.</p></li>
+<li><p>Redistribuições de terceiros, mesmo que permitidas pelo GPL, <strong>não incluem suporte ou atualizações garantidas</strong>.</p></li>
+<li><p>Compartilhar o download comprado viola o acordo de compra.</p></li>
+</ul>
+</li>
+</ul>
+<p>Para detalhes completos, consulte a página dedicada: <strong><a class="reference internal" href="License.html"><span class="std std-doc">Licença</span></a></strong>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../en/License.html" class="btn btn-neutral float-left" title="License" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Cameras.html" class="btn btn-neutral float-right" title="Câmeras" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sprite Render Tool.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

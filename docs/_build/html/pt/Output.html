@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Output &mdash; Sprite Render Tool 0.2.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/Output.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=000c92bf"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FAQ" href="FAQ.html" />
+    <link rel="prev" title="Animações" href="Animations.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Sprite Render Tool
+              <img src="../_static/SpriteRenderTool_Icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">English Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../en/index.html">Sprite Render Tool — Official Wiki</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Cameras.html">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Lighting.html">Lighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Animations.html">Animations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Future-Features.html">Future Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/License.html">License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentação em Português</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Sprite Render Tool — Wiki Oficial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cameras.html">Câmeras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lighting.html">Iluminação</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animations.html">Animações</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#template-de-saida">Template de Saída</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#placeholders-disponiveis">Placeholders Disponíveis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#limpeza-do-caminho-base">Limpeza do Caminho Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#estrutura-de-pastas-use-folders">Estrutura de Pastas (Use Folders)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#criacao-de-diretorios">Criação de Diretórios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#construcao-do-nome-do-arquivo">Construção do Nome do Arquivo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#caso-especial-camera-ausente">Caso Especial: <code class="docutils literal notranslate"><span class="pre">$camera</span></code> Ausente</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exemplos">Exemplos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#exemplo-1-sequencias-classicas-por-camera">Exemplo 1 — Sequências Clássicas Por Câmera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exemplo-2-sem-camera-no-template">Exemplo 2 — Sem Câmera no Template</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#abrir-pasta-de-saida">Abrir Pasta de Saída</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dicas">Dicas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Future-Features.html">Futuras Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="License.html">Licença</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sprite Render Tool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Output</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/pt/Output.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="output">
+<h1>Output<a class="headerlink" href="#output" title="Link to this heading"></a></h1>
+<p>Esta página explica como o <strong>Sprite Render Tool</strong> constrói estruturas de pastas e nomes de arquivos para seus sprites renderizados.</p>
+<hr class="docutils" />
+<section id="template-de-saida">
+<h2>Template de Saída<a class="headerlink" href="#template-de-saida" title="Link to this heading"></a></h2>
+<p>O núcleo do sistema de nomenclatura é <code class="docutils literal notranslate"><span class="pre">output_template</span></code>:</p>
+<ul class="simple">
+<li><p>Valor padrão:<br />
+<code class="docutils literal notranslate"><span class="pre">$projectName_$objectName_$animation_$camera_$frame</span></code></p></li>
+</ul>
+<p>Esta string é usada tanto para gerar:</p>
+<ul class="simple">
+<li><p>Nomes de pastas (indiretamente, via <code class="docutils literal notranslate"><span class="pre">$animation</span></code> e <code class="docutils literal notranslate"><span class="pre">$camera</span></code> quando as opções de pasta estão habilitadas), quanto</p></li>
+<li><p>O <strong>nome do arquivo</strong> final (antes de adicionar a extensão <code class="docutils literal notranslate"><span class="pre">.png</span></code>).</p></li>
+</ul>
+<section id="placeholders-disponiveis">
+<h3>Placeholders Disponíveis<a class="headerlink" href="#placeholders-disponiveis" title="Link to this heading"></a></h3>
+<p>Você pode usar as seguintes variáveis dentro de <code class="docutils literal notranslate"><span class="pre">output_template</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$projectName</span></code>: obtido de <code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">Name</span></code> na UI.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$objectName</span></code>: obtido de <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Name</span></code> na UI.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$animation</span></code>: animação atual (nome da Action, nome da NLA strip, ou <code class="docutils literal notranslate"><span class="pre">&quot;STATIC&quot;</span></code> no modo Static).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$camera</span></code>: nome da câmera ou output name (veja a documentação de <strong>Cameras</strong>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$frame</span></code>: índice do frame, formatado como <code class="docutils literal notranslate"><span class="pre">0001</span></code>, <code class="docutils literal notranslate"><span class="pre">0002</span></code>, etc.</p></li>
+</ul>
+<p>O helper no painel principal (<code class="docutils literal notranslate"><span class="pre">get_output_example</span></code>) mostra uma visualização ao vivo de como o template ficaria com valores de exemplo.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="limpeza-do-caminho-base">
+<h2>Limpeza do Caminho Base<a class="headerlink" href="#limpeza-do-caminho-base" title="Link to this heading"></a></h2>
+<p>O ponto de partida para toda a saída é o caminho de renderização da cena do Blender:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">context.scene.render.filepath</span></code></p></li>
+</ul>
+<p>Antes de usá-lo, o add-on passa-o por <code class="docutils literal notranslate"><span class="pre">clean_base_path(base_path,</span> <span class="pre">settings)</span></code>:</p>
+<ul class="simple">
+<li><p>Normaliza barras para o separador do SO.</p></li>
+<li><p>Divide em componentes de caminho.</p></li>
+<li><p>Remove o que parece ser um nome de arquivo ou “pasta falsa” no final, por exemplo:</p>
+<ul>
+<li><p>Coisas com extensões de imagem conhecidas (<code class="docutils literal notranslate"><span class="pre">.png</span></code>, <code class="docutils literal notranslate"><span class="pre">.jpg</span></code>, <code class="docutils literal notranslate"><span class="pre">.exr</span></code>, etc.).</p></li>
+<li><p>Partes que contêm tanto <code class="docutils literal notranslate"><span class="pre">.</span></code> quanto <code class="docutils literal notranslate"><span class="pre">_</span></code> e têm uma extensão válida.</p></li>
+<li><p>Partes que parecem nomes de sprites exportados (dígitos e underscores misturados).</p></li>
+</ul>
+</li>
+<li><p>Se <code class="docutils literal notranslate"><span class="pre">settings</span></code> for fornecido, também remove pastas finais que correspondem a:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">project_name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">object_name</span></code></p></li>
+<li><p>Quaisquer nomes de câmera ou output name potenciais</p>
+<ul>
+<li><p>Isso evita duplicar níveis <code class="docutils literal notranslate"><span class="pre">Project/Object/Camera</span></code> quando eles também são adicionados via as opções de pasta.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Se, após a limpeza, o caminho estiver vazio, o diretório home do usuário é usado como fallback.</p>
+</section>
+<hr class="docutils" />
+<section id="estrutura-de-pastas-use-folders">
+<h2>Estrutura de Pastas (Use Folders)<a class="headerlink" href="#estrutura-de-pastas-use-folders" title="Link to this heading"></a></h2>
+<p>As opções de pasta na seção <strong>Output</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">Folder</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Folder</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Animation</span> <span class="pre">Folder</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">Folder</span></code></p></li>
+</ul>
+<p>controlam quais níveis são adicionados após o caminho base limpo. O helper:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">build_dir_parts(settings,</span> <span class="pre">anim_name,</span> <span class="pre">camera_name)</span></code></p></li>
+</ul>
+<p>constrói uma lista nesta ordem:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">project_name</span></code> (se <strong>Project Folder</strong> estiver habilitado)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">object_name</span></code> (se <strong>Object Folder</strong> estiver habilitado)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">anim_name</span></code> (se <strong>Animation Folder</strong> estiver habilitado)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">camera_name</span></code> (se <strong>Camera Folder</strong> estiver habilitado)</p></li>
+</ol>
+<p>O diretório final é:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">final_dir</span> <span class="pre">=</span> <span class="pre">os.path.join(clean_base_path,</span> <span class="pre">*dir_parts)</span></code></p></li>
+</ul>
+<section id="criacao-de-diretorios">
+<h3>Criação de Diretórios<a class="headerlink" href="#criacao-de-diretorios" title="Link to this heading"></a></h3>
+<p>O operador garante que os diretórios existem em duas passagens:</p>
+<ol class="arabic simple">
+<li><p><strong>create_output_directories</strong> (antes de renderizar):</p>
+<ul class="simple">
+<li><p>Usa o modo de animação escolhido (Actions / NLA / Static) para coletar todos os nomes de animação.</p></li>
+<li><p>Para cada animação e (opcionalmente) cada câmera, constrói <code class="docutils literal notranslate"><span class="pre">dir_parts</span></code> e:</p>
+<ul>
+<li><p>Chama <code class="docutils literal notranslate"><span class="pre">os.makedirs(final_dir,</span> <span class="pre">exist_ok=True)</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Isso fornece feedback antecipado se alguns caminhos não puderem ser criados.</p></li>
+</ul>
+</li>
+<li><p><strong>build_output_path_simple</strong> (por frame):</p>
+<ul class="simple">
+<li><p>Repete a mesma lógica de diretório para calcular <code class="docutils literal notranslate"><span class="pre">final_dir</span></code>.</p></li>
+<li><p>Chama <code class="docutils literal notranslate"><span class="pre">os.makedirs(final_dir,</span> <span class="pre">exist_ok=True)</span></code> defensivamente.</p></li>
+<li><p>Constrói o nome do arquivo final dentro desse diretório.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="construcao-do-nome-do-arquivo">
+<h2>Construção do Nome do Arquivo<a class="headerlink" href="#construcao-do-nome-do-arquivo" title="Link to this heading"></a></h2>
+<p>O helper <code class="docutils literal notranslate"><span class="pre">build_output_path_simple(context,</span> <span class="pre">settings,</span> <span class="pre">anim_name,</span> <span class="pre">camera_name,</span> <span class="pre">frame,</span> <span class="pre">original_filepath)</span></code>:</p>
+<ul class="simple">
+<li><p>Usa o <code class="docutils literal notranslate"><span class="pre">render.filepath</span></code> <strong>original</strong> de quando a renderização começou (para evitar deriva).</p></li>
+<li><p>Limpa-o com <code class="docutils literal notranslate"><span class="pre">clean_base_path</span></code> (com <code class="docutils literal notranslate"><span class="pre">settings</span></code>).</p></li>
+<li><p>Constrói <code class="docutils literal notranslate"><span class="pre">final_dir</span></code> conforme descrito acima.</p></li>
+<li><p>Calcula <code class="docutils literal notranslate"><span class="pre">filename</span></code> a partir de <code class="docutils literal notranslate"><span class="pre">output_template</span></code>:</p>
+<ul>
+<li><p>Substitui placeholders com valores reais.</p></li>
+<li><p>Usa <code class="docutils literal notranslate"><span class="pre">os.path.basename(filename)</span></code> para garantir que apenas a última parte se torne o nome do arquivo.</p></li>
+<li><p>Substitui caracteres inválidos (<code class="docutils literal notranslate"><span class="pre">&lt;&gt;:&quot;|?*\/</span></code>) com <code class="docutils literal notranslate"><span class="pre">_</span></code>.</p></li>
+<li><p>Usa <code class="docutils literal notranslate"><span class="pre">&quot;render&quot;</span></code> como fallback se o resultado estiver vazio.</p></li>
+</ul>
+</li>
+<li><p>Retorna <code class="docutils literal notranslate"><span class="pre">os.path.join(final_dir,</span> <span class="pre">filename</span> <span class="pre">+</span> <span class="pre">&quot;.png&quot;)</span></code>.</p></li>
+</ul>
+<section id="caso-especial-camera-ausente">
+<h3>Caso Especial: <code class="docutils literal notranslate"><span class="pre">$camera</span></code> Ausente<a class="headerlink" href="#caso-especial-camera-ausente" title="Link to this heading"></a></h3>
+<p>Se <code class="docutils literal notranslate"><span class="pre">$camera</span></code> <strong>não</strong> estiver presente no template:</p>
+<ul class="simple">
+<li><p>O add-on usa um <strong>contador sequencial por animação</strong> em vez do número do frame da timeline ao construir o valor <code class="docutils literal notranslate"><span class="pre">$frame</span></code>.</p></li>
+<li><p>Isso evita que a câmera A e a câmera B produzam nomes de arquivos idênticos para os mesmos frames.</p></li>
+</ul>
+<p>Se <code class="docutils literal notranslate"><span class="pre">$camera</span></code> <strong>estiver</strong> presente:</p>
+<ul class="simple">
+<li><p>O número real do frame da timeline é usado para <code class="docutils literal notranslate"><span class="pre">$frame</span></code>.</p></li>
+<li><p>Você normalmente obterá uma sequência de imagens separada por câmera, com nomes como:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">MyGame_Hero_walk_front_0001.png</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MyGame_Hero_walk_front_0002.png</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MyGame_Hero_walk_back_0001.png</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="exemplos">
+<h2>Exemplos<a class="headerlink" href="#exemplos" title="Link to this heading"></a></h2>
+<section id="exemplo-1-sequencias-classicas-por-camera">
+<h3>Exemplo 1 — Sequências Clássicas Por Câmera<a class="headerlink" href="#exemplo-1-sequencias-classicas-por-camera" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Configurações:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">Name</span></code>: <code class="docutils literal notranslate"><span class="pre">MyGame</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Name</span></code>: <code class="docutils literal notranslate"><span class="pre">Hero</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_template</span></code>: <code class="docutils literal notranslate"><span class="pre">$projectName_$objectName_$animation_$camera_$frame</span></code></p></li>
+<li><p><strong>Use Folders</strong>:</p>
+<ul>
+<li><p>Project: ON</p></li>
+<li><p>Object: ON</p></li>
+<li><p>Animation: ON</p></li>
+<li><p>Camera: ON</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">render.filepath</span></code>: <code class="docutils literal notranslate"><span class="pre">D:/Sprites/</span></code></p></li>
+</ul>
+</li>
+<li><p>Estrutura resultante (simplificada):</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">D:/Sprites/MyGame/Hero/walk/front/MyGame_Hero_walk_front_0001.png</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">D:/Sprites/MyGame/Hero/walk/front/MyGame_Hero_walk_front_0002.png</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">D:/Sprites/MyGame/Hero/walk/back/MyGame_Hero_walk_back_0001.png</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="exemplo-2-sem-camera-no-template">
+<h3>Exemplo 2 — Sem Câmera no Template<a class="headerlink" href="#exemplo-2-sem-camera-no-template" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">output_template</span></code>: <code class="docutils literal notranslate"><span class="pre">$projectName_$objectName_$animation_$frame</span></code></p></li>
+<li><p>Duas câmeras, <code class="docutils literal notranslate"><span class="pre">front</span></code> e <code class="docutils literal notranslate"><span class="pre">back</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$camera</span></code> não é usado, então o add-on usa um contador sequencial interno por animação:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">MyGame_Hero_walk_0001.png</span></code> (primeira câmera, frame 1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MyGame_Hero_walk_0002.png</span></code> (primeira câmera, frame 2)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MyGame_Hero_walk_0003.png</span></code> (segunda câmera, frame 1)</p></li>
+<li><p>etc.</p></li>
+</ul>
+</li>
+</ul>
+<p>Isso pode ser útil se você estiver empacotando frames de múltiplas câmeras juntos em um pipeline personalizado ou construindo sprite sheets programaticamente.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="abrir-pasta-de-saida">
+<h2>Abrir Pasta de Saída<a class="headerlink" href="#abrir-pasta-de-saida" title="Link to this heading"></a></h2>
+<p>O botão <strong>Open Output Folder</strong>, localizado ao lado do campo <code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">Path</span></code> na seção <strong>Output</strong>, fornece acesso rápido ao seu diretório de saída:</p>
+<ul class="simple">
+<li><p><strong>Abre a pasta</strong>: Abre o explorador de arquivos do sistema (Windows Explorer, macOS Finder ou gerenciador de arquivos Linux) no local do caminho de saída</p></li>
+<li><p><strong>Conversão automática de caminho</strong>: Converte caminhos relativos do Blender (começando com <code class="docutils literal notranslate"><span class="pre">//</span></code>) para caminhos absolutos antes de abrir</p></li>
+<li><p><strong>Cria pastas ausentes</strong>: Se a pasta de saída não existir, ela será criada automaticamente antes de abrir</p></li>
+<li><p><strong>Multiplataforma</strong>: Funciona no Windows, macOS e Linux</p></li>
+</ul>
+<p>Isso é especialmente útil quando você quer verificar rapidamente seus sprites renderizados ou verificar o local de saída sem navegar manualmente pelo sistema de arquivos.</p>
+</section>
+<hr class="docutils" />
+<section id="dicas">
+<h2>Dicas<a class="headerlink" href="#dicas" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Sempre defina <code class="docutils literal notranslate"><span class="pre">render.filepath</span></code> para um <strong>diretório</strong>, não um nome de arquivo. O add-on valida o caminho antes de renderizar e mostrará um erro claro se o caminho estiver inválido.</p></li>
+<li><p>Use nomes curtos e legíveis para <strong>Project</strong>, <strong>Object</strong>, animações e câmeras para produzir nomes de assets limpos.</p></li>
+<li><p>Se você alterar opções de pasta no meio do projeto, esteja ciente de que novas renderizações podem ir para caminhos diferentes das mais antigas; mantenha os caminhos de importação do seu projeto de jogo sincronizados.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Animations.html" class="btn btn-neutral float-left" title="Animações" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="FAQ.html" class="btn btn-neutral float-right" title="FAQ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sprite Render Tool.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animações &mdash; Sprite Render Tool 0.2.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/Animations.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=000c92bf"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Output" href="Output.html" />
+    <link rel="prev" title="Iluminação" href="Lighting.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Sprite Render Tool
+              <img src="../_static/SpriteRenderTool_Icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">English Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../en/index.html">Sprite Render Tool — Official Wiki</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Cameras.html">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Lighting.html">Lighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Animations.html">Animations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Future-Features.html">Future Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/License.html">License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentação em Português</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Sprite Render Tool — Wiki Oficial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cameras.html">Câmeras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lighting.html">Iluminação</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Animações</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#modos-de-animacao">Modos de Animação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracoes-comuns">Configurações Comuns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modo-actions">Modo ACTIONS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lista-de-actions">Lista de Actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#renderizacao-no-modo-actions">Renderização no Modo ACTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modo-nla">Modo NLA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lista-de-nla-strips">Lista de NLA Strips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#helper-de-ativacao-nla">Helper de Ativação NLA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#renderizacao-no-modo-nla">Renderização no Modo NLA</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modo-static">Modo STATIC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#painel-de-teste-de-animacoes">Painel de Teste de Animações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dicas-e-melhores-praticas">Dicas e Melhores Práticas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Future-Features.html">Futuras Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="License.html">Licença</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sprite Render Tool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Animações</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/pt/Animations.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="animacoes">
+<h1>Animações<a class="headerlink" href="#animacoes" title="Link to this heading"></a></h1>
+<p>Esta página explica como o <strong>Sprite Render Tool</strong> lida com animações nos três modos: <strong>ACTIONS</strong>, <strong>NLA</strong> e <strong>STATIC</strong>.</p>
+<hr class="docutils" />
+<section id="modos-de-animacao">
+<h2>Modos de Animação<a class="headerlink" href="#modos-de-animacao" title="Link to this heading"></a></h2>
+<p>Na seção <strong>Animations</strong> do painel principal você escolhe o modo via <code class="docutils literal notranslate"><span class="pre">Animation</span> <span class="pre">Mode</span></code>:</p>
+<ul class="simple">
+<li><p><strong>ACTIONS</strong>: renderiza a partir de uma lista curada de Actions.</p></li>
+<li><p><strong>NLA</strong>: renderiza a partir de NLA strips na armadura alvo.</p></li>
+<li><p><strong>STATIC</strong>: renderiza apenas o frame atual.</p></li>
+</ul>
+<p>O modo selecionado controla como as animações são coletadas e como a armadura é preparada para reprodução.</p>
+</section>
+<hr class="docutils" />
+<section id="configuracoes-comuns">
+<h2>Configurações Comuns<a class="headerlink" href="#configuracoes-comuns" title="Link to this heading"></a></h2>
+<p>Estas se aplicam em todos os modos:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Target</span> <span class="pre">Armature</span></code> (<code class="docutils literal notranslate"><span class="pre">target_armature</span></code>):</p>
+<ul>
+<li><p>O objeto de armadura cujas animações serão renderizadas.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_previewing</span></code>:</p>
+<ul>
+<li><p>Flag interna usada para saber se uma visualização de animação está sendo reproduzida atualmente.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">custom_fps</span></code>:</p>
+<ul>
+<li><p>Usado por <strong>Apply FPS</strong> para sobrescrever o FPS da cena durante visualizações.</p></li>
+</ul>
+</li>
+</ul>
+<p>Quando <code class="docutils literal notranslate"><span class="pre">Animation</span> <span class="pre">Mode</span></code> muda para <strong>NLA</strong>, o add-on:</p>
+<ul class="simple">
+<li><p>Limpa a <code class="docutils literal notranslate"><span class="pre">action</span></code> atual de <code class="docutils literal notranslate"><span class="pre">target_armature.animation_data</span></code> (se houver).</p></li>
+<li><p>Garante que <code class="docutils literal notranslate"><span class="pre">use_nla</span></code> está habilitado, para que o NLA esteja ativo.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="modo-actions">
+<h2>Modo ACTIONS<a class="headerlink" href="#modo-actions" title="Link to this heading"></a></h2>
+<section id="lista-de-actions">
+<h3>Lista de Actions<a class="headerlink" href="#lista-de-actions" title="Link to this heading"></a></h3>
+<p>O modo <strong>Actions</strong> usa uma lista personalizada (<code class="docutils literal notranslate"><span class="pre">actions:</span> <span class="pre">CollectionProperty(type=ActionItem)</span></code>):</p>
+<ul class="simple">
+<li><p>Cada <code class="docutils literal notranslate"><span class="pre">ActionItem</span></code> tem:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: o nome da Action em <code class="docutils literal notranslate"><span class="pre">bpy.data.actions</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">frame_start</span></code>, <code class="docutils literal notranslate"><span class="pre">frame_end</span></code>: intervalo de frames para renderizar.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">enabled</span></code>: se esta action deve ser incluída nas renderizações.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sync_secondary</span></code>, <code class="docutils literal notranslate"><span class="pre">secondary_armature</span></code>, <code class="docutils literal notranslate"><span class="pre">secondary_action</span></code>:</p>
+<ul>
+<li><p>Projetado para sincronizar uma segunda armadura; parcialmente implementado e marcado como “não implementado” na UI por enquanto.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Detect Actions</strong> (<code class="docutils literal notranslate"><span class="pre">sprite_render.detect_actions</span></code>):</p>
+<ul class="simple">
+<li><p>Limpa a lista atual.</p></li>
+<li><p>Itera sobre todas as <code class="docutils literal notranslate"><span class="pre">bpy.data.actions</span></code>.</p></li>
+<li><p>Adiciona um <code class="docutils literal notranslate"><span class="pre">ActionItem</span></code> por Action, com intervalo baseado em <code class="docutils literal notranslate"><span class="pre">action.frame_range</span></code>.</p></li>
+</ul>
+<p>Você também pode:</p>
+<ul class="simple">
+<li><p>Adicionar itens com <strong>Add Action</strong>.</p></li>
+<li><p>Remover o item atualmente selecionado com <strong>Remove Action</strong>.</p></li>
+</ul>
+<p>A propriedade <code class="docutils literal notranslate"><span class="pre">actions_index</span></code>:</p>
+<ul class="simple">
+<li><p>Rastreia qual item está selecionado na lista da UI.</p></li>
+<li><p>Dispara <code class="docutils literal notranslate"><span class="pre">update_actions_index</span></code> quando alterado para aplicar a nova Action à armadura e atualizar o intervalo de frames da cena.</p></li>
+</ul>
+</section>
+<section id="renderizacao-no-modo-actions">
+<h3>Renderização no Modo ACTIONS<a class="headerlink" href="#renderizacao-no-modo-actions" title="Link to this heading"></a></h3>
+<p>Quando <code class="docutils literal notranslate"><span class="pre">Render</span> <span class="pre">All</span></code> é iniciado no modo <strong>ACTIONS</strong>:</p>
+<ul class="simple">
+<li><p>O operador coleta animações da lista <code class="docutils literal notranslate"><span class="pre">actions</span></code>:</p>
+<ul>
+<li><p>Apenas aquelas com <code class="docutils literal notranslate"><span class="pre">enabled</span> <span class="pre">==</span> <span class="pre">True</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Para cada action:</p>
+<ul>
+<li><p>Procura a Action em <code class="docutils literal notranslate"><span class="pre">bpy.data.actions</span></code> usando seu nome.</p></li>
+<li><p>Atribui-a a <code class="docutils literal notranslate"><span class="pre">target_armature.animation_data.action</span></code>.</p></li>
+<li><p>Garante que <code class="docutils literal notranslate"><span class="pre">use_nla</span></code> está desabilitado, para que a Action dirija a pose diretamente.</p></li>
+</ul>
+</li>
+<li><p>Em seguida, itera sobre todos os frames de <code class="docutils literal notranslate"><span class="pre">frame_start</span></code> a <code class="docutils literal notranslate"><span class="pre">frame_end</span></code> e sobre todas as câmeras configuradas.</p></li>
+</ul>
+<p>O caminho de renderização assíncrono (<code class="docutils literal notranslate"><span class="pre">invoke</span></code> + timer) usa a mesma lógica ao inicializar cada nova animação.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="modo-nla">
+<h2>Modo NLA<a class="headerlink" href="#modo-nla" title="Link to this heading"></a></h2>
+<section id="lista-de-nla-strips">
+<h3>Lista de NLA Strips<a class="headerlink" href="#lista-de-nla-strips" title="Link to this heading"></a></h3>
+<p>No modo <strong>NLA</strong>, o add-on pode:</p>
+<ul class="simple">
+<li><p>Coletar automaticamente NLA strips diretamente da armadura, ou</p></li>
+<li><p>Usar uma lista curada <code class="docutils literal notranslate"><span class="pre">nla_strips:</span> <span class="pre">CollectionProperty(type=NLAItem)</span></code>.</p></li>
+</ul>
+<p>Cada <code class="docutils literal notranslate"><span class="pre">NLAItem</span></code> armazena:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: nome da strip.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">track_name</span></code>: nome da track NLA.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">frame_start</span></code>, <code class="docutils literal notranslate"><span class="pre">frame_end</span></code>: intervalo ao longo da timeline.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">enabled</span></code>: se esta strip deve ser renderizada.</p></li>
+</ul>
+<p><strong>Detect NLA Strips</strong> (<code class="docutils literal notranslate"><span class="pre">sprite_render.detect_nla_strips</span></code>):</p>
+<ul class="simple">
+<li><p>Requer uma <code class="docutils literal notranslate"><span class="pre">Target</span> <span class="pre">Armature</span></code> válida com <code class="docutils literal notranslate"><span class="pre">animation_data</span></code> e tracks NLA.</p></li>
+<li><p>Limpa a lista <code class="docutils literal notranslate"><span class="pre">nla_strips</span></code> existente.</p></li>
+<li><p>Itera por todas as tracks e strips NLA.</p></li>
+<li><p>Adiciona itens para strips que têm uma <code class="docutils literal notranslate"><span class="pre">action</span></code>.</p></li>
+<li><p>Define <code class="docutils literal notranslate"><span class="pre">enabled</span></code> com base em se a track e a strip estão mutadas.</p></li>
+</ul>
+<p>Você também pode:</p>
+<ul class="simple">
+<li><p>Adicionar itens manualmente com <strong>Add NLA Strip</strong>.</p></li>
+<li><p>Remover o selecionado com <strong>Remove NLA Strip</strong>.</p></li>
+</ul>
+<p>A propriedade <code class="docutils literal notranslate"><span class="pre">nla_strips_index</span></code>:</p>
+<ul class="simple">
+<li><p>Rastreia qual NLA strip está selecionada na lista.</p></li>
+<li><p>Dispara <code class="docutils literal notranslate"><span class="pre">update_nla_strips_index</span></code> para:</p>
+<ul>
+<li><p>Mutar todas as tracks/strips.</p></li>
+<li><p>Desmutar apenas a strip selecionada e sua track.</p></li>
+<li><p>Atualizar o intervalo de frames da cena para o início/fim da strip.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="helper-de-ativacao-nla">
+<h3>Helper de Ativação NLA<a class="headerlink" href="#helper-de-ativacao-nla" title="Link to this heading"></a></h3>
+<p>O helper estático:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_RenderAll.activate_nla_strip(obj,</span> <span class="pre">strip_name,</span> <span class="pre">track_name=None)</span></code></p></li>
+<li><p>Muta todas as strips, depois desmuta exatamente a strip com o nome fornecido (e track opcional).</p></li>
+<li><p>Força uma atualização de objeto/view layer quando bem-sucedido.</p></li>
+</ul>
+<p>Esta função é usada tanto para:</p>
+<ul class="simple">
+<li><p>Visualizações de teste (<code class="docutils literal notranslate"><span class="pre">test_nla_strip</span></code>), quanto</p></li>
+<li><p>Renderização real no modo NLA.</p></li>
+</ul>
+</section>
+<section id="renderizacao-no-modo-nla">
+<h3>Renderização no Modo NLA<a class="headerlink" href="#renderizacao-no-modo-nla" title="Link to this heading"></a></h3>
+<p>Quando <code class="docutils literal notranslate"><span class="pre">Render</span> <span class="pre">All</span></code> é executado com <strong>NLA</strong> selecionado:</p>
+<ul class="simple">
+<li><p>As animações são coletadas via:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">collect_nla_animations(obj,</span> <span class="pre">settings)</span></code></p></li>
+<li><p>Ou da lista <code class="docutils literal notranslate"><span class="pre">nla_strips</span></code> configurada, ou do NLA da armadura se a lista estiver vazia.</p></li>
+</ul>
+</li>
+<li><p>Cada entrada de animação contém:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">strip_name</span></code>, <code class="docutils literal notranslate"><span class="pre">frame_start</span></code>, <code class="docutils literal notranslate"><span class="pre">frame_end</span></code>, <code class="docutils literal notranslate"><span class="pre">track_name</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Antes de renderizar frames para uma animação específica:</p>
+<ul>
+<li><p>O operador garante que <code class="docutils literal notranslate"><span class="pre">animation_data.use_nla</span> <span class="pre">=</span> <span class="pre">True</span></code>.</p></li>
+<li><p>Chama <code class="docutils literal notranslate"><span class="pre">activate_nla_strip</span></code> para desmutar apenas aquela strip.</p></li>
+</ul>
+</li>
+<li><p>Em seguida, como com Actions, itera sobre todos os frames e câmeras.</p></li>
+</ul>
+<p>O caminho de renderização assíncrono usa a mesma sequência via seu callback de timer (<code class="docutils literal notranslate"><span class="pre">_render_next_frame</span></code>).</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="modo-static">
+<h2>Modo STATIC<a class="headerlink" href="#modo-static" title="Link to this heading"></a></h2>
+<p>No modo <strong>STATIC</strong>:</p>
+<ul class="simple">
+<li><p>Não há lista de animações.</p></li>
+<li><p>O add-on renderiza <strong>apenas o frame atual</strong> da cena.</p></li>
+</ul>
+<p>Para criação de diretórios, o add-on trata o nome da animação como <code class="docutils literal notranslate"><span class="pre">&quot;STATIC&quot;</span></code>:</p>
+<ul class="simple">
+<li><p>Isso ainda pode ser usado em <code class="docutils literal notranslate"><span class="pre">$animation</span></code> dentro do <code class="docutils literal notranslate"><span class="pre">output_template</span></code>.</p></li>
+</ul>
+<p>Use este modo para:</p>
+<ul class="simple">
+<li><p>Thumbnails.</p></li>
+<li><p>Poses-chave.</p></li>
+<li><p>Visualizações de frame único de um personagem ou prop.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="painel-de-teste-de-animacoes">
+<h2>Painel de Teste de Animações<a class="headerlink" href="#painel-de-teste-de-animacoes" title="Link to this heading"></a></h2>
+<p>Tanto os modos <strong>ACTIONS</strong> quanto <strong>NLA</strong> incluem um subpainel <strong>Animations Test</strong>, controlado por <code class="docutils literal notranslate"><span class="pre">show_section_animations_test</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Preview Action</strong> (<code class="docutils literal notranslate"><span class="pre">sprite_render.test_action</span></code>):</p>
+<ul>
+<li><p>Aplica a Action selecionada a <code class="docutils literal notranslate"><span class="pre">target_armature</span></code>.</p></li>
+<li><p>Desabilita o uso de NLA.</p></li>
+<li><p>Define <code class="docutils literal notranslate"><span class="pre">frame_start</span></code>, <code class="docutils literal notranslate"><span class="pre">frame_end</span></code> e frame atual.</p></li>
+<li><p>Se a sincronização secundária estiver habilitada e configurada, aplica a action secundária a outra armadura.</p></li>
+<li><p>Define <code class="docutils literal notranslate"><span class="pre">is_previewing</span> <span class="pre">=</span> <span class="pre">True</span></code> e inicia a reprodução da timeline (<code class="docutils literal notranslate"><span class="pre">bpy.ops.screen.animation_play()</span></code>).</p></li>
+</ul>
+</li>
+<li><p><strong>Preview NLA Strip</strong> (<code class="docutils literal notranslate"><span class="pre">sprite_render.test_nla_strip</span></code>):</p>
+<ul>
+<li><p>Garante que a armadura tem <code class="docutils literal notranslate"><span class="pre">animation_data</span></code> e NLA habilitado.</p></li>
+<li><p>Muta todas as strips, depois desmuta apenas a selecionada.</p></li>
+<li><p>Define o intervalo de frames para o início e fim da strip.</p></li>
+<li><p>Força uma atualização da view layer.</p></li>
+<li><p>Define <code class="docutils literal notranslate"><span class="pre">is_previewing</span> <span class="pre">=</span> <span class="pre">True</span></code> e inicia a reprodução.</p></li>
+</ul>
+</li>
+<li><p><strong>Stop Preview</strong> (<code class="docutils literal notranslate"><span class="pre">sprite_render.stop_preview</span></code>):</p>
+<ul>
+<li><p>Para a reprodução da timeline se estiver em execução.</p></li>
+<li><p>Define <code class="docutils literal notranslate"><span class="pre">is_previewing</span> <span class="pre">=</span> <span class="pre">False</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<p>O painel de teste também expõe:</p>
+<ul class="simple">
+<li><p>Botões de navegação de frame (primeiro, anterior, próximo, último).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">FPS</span></code> + <strong>Apply FPS</strong> (<code class="docutils literal notranslate"><span class="pre">sprite_render.apply_fps</span></code>), que define:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">scene.render.fps</span> <span class="pre">=</span> <span class="pre">custom_fps</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scene.render.fps_base</span> <span class="pre">=</span> <span class="pre">1.0</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="dicas-e-melhores-praticas">
+<h2>Dicas e Melhores Práticas<a class="headerlink" href="#dicas-e-melhores-praticas" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Mantenha os nomes de suas <strong>Action</strong> e <strong>NLA</strong> descritivos (ex.: <code class="docutils literal notranslate"><span class="pre">walk_front</span></code>, <code class="docutils literal notranslate"><span class="pre">idle_side</span></code>, <code class="docutils literal notranslate"><span class="pre">attack_back</span></code>) para gerar nomes de arquivos significativos.</p></li>
+<li><p>No modo <strong>ACTIONS</strong>, desabilite quaisquer actions que você não deseja renderizar para reduzir o tempo total de renderização.</p></li>
+<li><p>No modo <strong>NLA</strong>, use a lista curada <code class="docutils literal notranslate"><span class="pre">nla_strips</span></code> quando quiser controle refinado sobre quais strips são incluídas, independente do estado de mute no seu arquivo de trabalho.</p></li>
+<li><p>Use o painel <strong>Animations Test</strong> para verificar intervalos de frames e velocidade de reprodução de animações antes de iniciar lotes de renderização longos.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Lighting.html" class="btn btn-neutral float-left" title="Iluminação" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Output.html" class="btn btn-neutral float-right" title="Output" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sprite Render Tool.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

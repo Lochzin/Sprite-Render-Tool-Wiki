@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cameras &mdash; Sprite Render Tool 0.2.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/Cameras.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=000c92bf"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lighting" href="Lighting.html" />
+    <link rel="prev" title="Sprite Render Tool — Official Wiki" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Sprite Render Tool
+              <img src="../_static/SpriteRenderTool_Icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">English Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Sprite Render Tool — Official Wiki</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Cameras</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#camera-list">Camera List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#detecting-cameras-automatically">Detecting Cameras Automatically</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#automatic-detection-limitations">Automatic Detection Limitations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#light-rotation-per-camera">Light Rotation per Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#render-order">Render Order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-output-names-vs-camera-names">Custom Output Names vs Camera Names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-cameras">Testing Cameras</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Lighting.html">Lighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animations.html">Animations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Future-Features.html">Future Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="License.html">License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentação em Português</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pt/index.html">Sprite Render Tool — Wiki Oficial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Cameras.html">Câmeras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Lighting.html">Iluminação</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Animations.html">Animações</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Future-Features.html">Futuras Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/License.html">Licença</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sprite Render Tool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Cameras</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/en/Cameras.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="cameras">
+<h1>Cameras<a class="headerlink" href="#cameras" title="Link to this heading"></a></h1>
+<p>This page explains how to configure cameras inside the <strong>Sprite Render Tool</strong>. For information about lighting and the Light Pivot system, see <a class="reference internal" href="Lighting.html"><span class="std std-doc">Lighting</span></a>.</p>
+<hr class="docutils" />
+<section id="camera-list">
+<h2>Camera List<a class="headerlink" href="#camera-list" title="Link to this heading"></a></h2>
+<p>The camera system is backed by the <code class="docutils literal notranslate"><span class="pre">CameraItem</span></code> property group:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: camera object name in Blender.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_name</span></code>: name used in the generated filenames (optional, when <strong>Custom Output Names</strong> is enabled).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">light_rotation</span></code>: Euler rotation (XYZ) used to rotate the <strong>light pivot</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">render_order</span></code>: the order in which each camera will be rendered.</p></li>
+</ul>
+<p>In the <strong>Cameras</strong> section of the main panel you will see:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">Count</span></code>: how many cameras should exist in the list.</p></li>
+<li><p>Per‑camera subpanels (<code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">2</span></code>, …):</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">Name</span></code> (only visible when <strong>Custom Output Names</strong> is enabled)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Render</span> <span class="pre">Order</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Rotation</span></code>:</p>
+<ul>
+<li><p>either a single Z value, or a full XYZ rotation, depending on <strong>Enable Full Rotation (XYZ)</strong>.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>When you change <code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">Count</span></code>, the list of <code class="docutils literal notranslate"><span class="pre">CameraItem</span></code> entries is automatically grown or shrunk to match.</p>
+</section>
+<hr class="docutils" />
+<section id="detecting-cameras-automatically">
+<h2>Detecting Cameras Automatically<a class="headerlink" href="#detecting-cameras-automatically" title="Link to this heading"></a></h2>
+<p>The <strong>Detect Cameras</strong> button (<code class="docutils literal notranslate"><span class="pre">sprite_render.autofill_light_rotation</span></code>) scans the current <strong>View Layer</strong> for active cameras and fills the add‑on camera list:</p>
+<ul class="simple">
+<li><p>Only cameras that are:</p>
+<ul>
+<li><p>of type <code class="docutils literal notranslate"><span class="pre">CAMERA</span></code></p></li>
+<li><p>not hidden in viewport</p></li>
+<li><p>not hidden for render
+are considered.</p></li>
+</ul>
+</li>
+</ul>
+<p>For each detected camera it:</p>
+<ul class="simple">
+<li><p>Sets <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">output_name</span></code> to the Blender camera name.</p></li>
+<li><p>Computes an automatic Z rotation for <code class="docutils literal notranslate"><span class="pre">light_rotation</span></code> based on the relative position between the camera and the <strong>light pivot</strong> (if configured).</p></li>
+<li><p>Assigns <code class="docutils literal notranslate"><span class="pre">render_order</span></code> sequentially (0, 1, 2, …).</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Important</strong>: The <strong>Light Pivot</strong> object must be set in the <strong>Light Pivot</strong> section if you want automatic light rotation calculation; otherwise the operator will cancel with an error.</p>
+</div></blockquote>
+<section id="automatic-detection-limitations">
+<h3>Automatic Detection Limitations<a class="headerlink" href="#automatic-detection-limitations" title="Link to this heading"></a></h3>
+<p><strong>Detect Cameras</strong> attempts to find the ideal light pivot rotation for each camera angle, but this <strong>only works correctly for horizontal angles</strong> (like in boomer shooter first-person games, where cameras are all on the same horizontal plane around the character).</p>
+<p>For renders that need to be done at <strong>different angles</strong> (from above, diagonally, or in multiple planes), you will need to <strong>manually adjust</strong> the pivot rotation angle (<code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Rotation</span></code>) for each camera after using Detect Cameras.</p>
+<p>For more information about light rotation and lighting setup, see <a class="reference internal" href="Lighting.html"><span class="std std-doc">Lighting</span></a>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="light-rotation-per-camera">
+<h2>Light Rotation per Camera<a class="headerlink" href="#light-rotation-per-camera" title="Link to this heading"></a></h2>
+<p>Each camera has a <code class="docutils literal notranslate"><span class="pre">light_rotation</span></code> property (Euler rotation XYZ) that controls how the <strong>light pivot</strong> is rotated for that specific camera angle. This is configured in the camera’s subpanel in the <strong>Cameras</strong> section.</p>
+<p>For detailed information about the Light Pivot system, lighting strategies, and how to use light rotation effectively, see the <a class="reference internal" href="Lighting.html"><span class="std std-doc">Lighting</span></a> page.</p>
+</section>
+<hr class="docutils" />
+<section id="render-order">
+<h2>Render Order<a class="headerlink" href="#render-order" title="Link to this heading"></a></h2>
+<p>Each camera has a <code class="docutils literal notranslate"><span class="pre">Render</span> <span class="pre">Order</span></code> integer:</p>
+<ul class="simple">
+<li><p>Cameras are sorted by <code class="docutils literal notranslate"><span class="pre">render_order</span></code> before any rendering happens.</p></li>
+<li><p>Both the synchronous (<code class="docutils literal notranslate"><span class="pre">execute</span></code>) and asynchronous (<code class="docutils literal notranslate"><span class="pre">invoke</span></code> + timer) render paths use this ordering.</p></li>
+</ul>
+<p>Use this to:</p>
+<ul class="simple">
+<li><p>Make sure front / side / back cameras always render in a consistent sequence.</p></li>
+<li><p>Control how progress is reported and how your folders get filled over time.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="custom-output-names-vs-camera-names">
+<h2>Custom Output Names vs Camera Names<a class="headerlink" href="#custom-output-names-vs-camera-names" title="Link to this heading"></a></h2>
+<p>You can choose whether filenames refer to:</p>
+<ul class="simple">
+<li><p>The actual <strong>camera object name</strong> in Blender, or</p></li>
+<li><p>A <strong>custom output name</strong> (for example <code class="docutils literal notranslate"><span class="pre">front</span></code>, <code class="docutils literal notranslate"><span class="pre">side</span></code>, <code class="docutils literal notranslate"><span class="pre">back</span></code>, <code class="docutils literal notranslate"><span class="pre">iso_NE</span></code>, etc.).</p></li>
+</ul>
+<p>In <strong>Cameras</strong>:</p>
+<ul class="simple">
+<li><p>Enable <strong>Custom Output Names</strong> to use <code class="docutils literal notranslate"><span class="pre">output_name</span></code> instead of <code class="docutils literal notranslate"><span class="pre">name</span></code> when building paths.</p></li>
+<li><p>The add‑on uses:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">cam_item.output_name</span></code> when custom names are enabled and not empty.</p></li>
+<li><p>Otherwise, <code class="docutils literal notranslate"><span class="pre">cam_item.name</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<p>This value is then passed into the <code class="docutils literal notranslate"><span class="pre">$camera</span></code> placeholder in the <code class="docutils literal notranslate"><span class="pre">output_template</span></code> when building filenames.</p>
+</section>
+<hr class="docutils" />
+<section id="testing-cameras">
+<h2>Testing Cameras<a class="headerlink" href="#testing-cameras" title="Link to this heading"></a></h2>
+<p>The <strong>Test Cameras</strong> button (<code class="docutils literal notranslate"><span class="pre">sprite_render.test_cameras</span></code>) helps you quickly preview your camera setup:</p>
+<ul class="simple">
+<li><p>It finds the current scene camera in the add‑on list.</p></li>
+<li><p>Selects the <strong>next</strong> camera in the list (cyclically).</p></li>
+<li><p>Sets the scene camera to that object and switches the 3D Viewport to camera view.</p></li>
+<li><p>If a light pivot is set, it also applies the corresponding light rotation.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Technical</span> <span class="n">detail</span><span class="p">:</span> <span class="n">Uses</span> <span class="n">the</span> <span class="n">shared</span> <span class="n">apply_light_rotation</span> <span class="n">helper</span>
+</pre></div>
+</div>
+<p>Use this to:</p>
+<ul class="simple">
+<li><p>Walk through all configured cameras.</p></li>
+<li><p>Confirm that framing and lighting are consistent before starting a full render batch.</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Tip</strong>: For detailed information about lighting and the Light Pivot system, see <a class="reference internal" href="Lighting.html"><span class="std std-doc">Lighting</span></a>.</p>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Sprite Render Tool — Official Wiki" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Lighting.html" class="btn btn-neutral float-right" title="Lighting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sprite Render Tool.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
