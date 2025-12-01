@@ -44,7 +44,8 @@ Esta página lista funcionalidades planejadas e melhorias para o **Sprite Render
 
 Se você tiver sugestões de funcionalidades que gostaria de ver, considere:
 
-- Abrir uma issue no repositório do projeto
+- Abrir uma issue no repositório do projeto: [GitHub Issues](https://github.com/Lochzin/Sprite-Render-Tool-Wiki/issues)
+- Participar das discussões da comunidade: [GitHub Discussions](https://github.com/Lochzin/Sprite-Render-Tool-Wiki/discussions)
 - Entrar em contato com o desenvolvedor diretamente
 - Contribuir para o projeto
 

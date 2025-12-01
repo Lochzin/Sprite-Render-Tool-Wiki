@@ -200,3 +200,11 @@ Baseado em `LICENSE.md`:
 
 Para detalhes completos, consulte a página dedicada: **[Licença](License.md)**.
 
+---
+
+## Suporte e Comunidade
+
+- **Discussões da Comunidade**: Participe de discussões, faça perguntas e compartilhe dicas com outros usuários em [GitHub Discussions](https://github.com/Lochzin/Sprite-Render-Tool-Wiki/discussions)
+- **Reportar Problemas**: Encontrou um bug ou tem um problema técnico? Reporte em [GitHub Issues](https://github.com/Lochzin/Sprite-Render-Tool-Wiki/issues)
+- **FAQ**: Consulte a página [FAQ](FAQ.md) para perguntas comuns e soluções
+
