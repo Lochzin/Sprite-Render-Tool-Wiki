@@ -54,6 +54,11 @@ html_static_path = ['_static', 'assets']
 html_favicon = 'assets/images/favicon/favicon.ico'
 html_logo = 'assets/images/SpriteRenderTool_Icon.png'
 
+# Custom CSS files
+html_css_files = [
+    'custom.css',
+]
+
 html_theme_options = {
     'logo_only': False,
     'prev_next_buttons_location': 'bottom',
