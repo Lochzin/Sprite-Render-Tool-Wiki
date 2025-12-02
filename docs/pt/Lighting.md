@@ -142,3 +142,4 @@ Isso é especialmente útil para:
 - Veja [Câmeras](Cameras.md) para informações sobre configuração de câmeras e como a rotação de luz é configurada por câmera.
 - Veja [Debug](Debug.md) para informações sobre a funcionalidade Light Rotation Debug.
 
+
