@@ -23,13 +23,14 @@ This page lists common questions about using the **Sprite Render Tool** and how 
 - In the 3D Viewport, use **Test Cameras** to cycle through configured cameras and confirm which one is active.
 - The scene camera is being set correctly by the add‑on (you should see the camera change when cycling).
 
-**Q: Light does not rotate per camera, or looks wrong. How can I debug this?**  
+**Q: Light does not rotate per camera, or looks wrong. How can I troubleshoot this?**  
 **A:** Check the following:
 - Ensure a **Light Pivot** object is set in the **Light Pivot** section.
+- Verify `Enable Light Pivot` is enabled in the **Light Pivot** section.
 - Verify `Enable Full Rotation (XYZ)` is set correctly:
   - Off: only Z axis is used.
   - On: full XYZ from the camera's `light_rotation` is applied.
-- Make sure `Enable Light Pivot` is enabled in the **Light Pivot** section.
+- Use the **Test Cameras** button to cycle through cameras and check console logs for rotation values being applied.
 
 **Q: The Detect Cameras button does nothing. Why?**  
 **A:** The **Auto-fill Light Rotations** operator requires:

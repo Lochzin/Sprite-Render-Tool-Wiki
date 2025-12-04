@@ -4,6 +4,54 @@ This page explains how to configure cameras inside the **Sprite Render Tool**. F
 
 ---
 
+## Camera Creation Presets
+
+The **Camera Creation** panel provides a quick way to set up cameras using predefined presets:
+
+- **8 Preset Configurations Available**:
+  - 1 Camera - Front
+  - 2 Cameras - Front, Back
+  - 2 Cameras - Front, Right
+  - 3 Cameras - Front, Left, Right
+  - 3 Cameras - Front, Right, Back
+  - 4 Cameras - Front, Right, Back, Left (Cardinal Directions)
+  - 5 Cameras - Front, Front Right, Right, Back Right, Back
+  - 8 Cameras - 360 Degrees (Evenly distributed)
+
+**How it works:**
+- Select a preset from the dropdown
+- Adjust the `Distance` slider to set how far cameras are placed from the pivot point (or origin if no pivot is set)
+- Click **Create Cameras** to generate cameras based on the preset
+- Cameras are automatically positioned around the light pivot object (or scene origin) and oriented to point toward the center
+- The addon automatically tracks and replaces cameras created by previous presets, preserving manually created cameras
+
+**Benefits:**
+- Quickly set up common camera arrangements without manual positioning
+- Consistent camera angles and orientations
+- Automatic light rotation calculation based on camera positions
+- Clean workflow: configure lighting pivot first, then create cameras
+
+---
+
+## Lens Settings
+
+The **Lens Settings** section in the **Cameras** panel provides synchronized controls for camera properties:
+
+- **Camera Type**: Perspective or Orthographic projection
+- **Focal Length**: Lens focal length in millimeters (synchronized across all cameras)
+- **Resolution X / Y**: Render resolution synchronized across all cameras and applied to scene render settings
+- **Shift X / Y**: Camera shift values
+  - When **Sync Shift** is enabled: all cameras share the same shift values
+  - When **Sync Shift** is disabled: each camera can have individual shift values (shown in the Camera List)
+- **Clip Start / End**: Near and far clipping distances
+
+All lens settings are automatically applied to cameras when:
+- Cameras are created via presets
+- Cameras are detected using the **Detect Cameras** button
+- Settings are changed in the Lens Settings section
+
+---
+
 ## Camera List
 
 The camera system is backed by the `CameraItem` property group:
@@ -12,14 +60,17 @@ The camera system is backed by the `CameraItem` property group:
 - `light_rotation`: Euler rotation (XYZ) used to rotate the **light pivot**.
 - `render_order`: the order in which each camera will be rendered.
 
-In the **Cameras** section of the main panel you will see:
+In the **Cameras** panel you will see:
 - `Camera Count`: how many cameras should exist in the list.
-- Per‑camera subpanels (`Camera 1`, `Camera 2`, ...):
-  - `Name`
-  - `Output Name` (only visible when **Custom Output Names** is enabled)
-  - `Render Order`
-  - `Light Rotation`:
-    - either a single Z value, or a full XYZ rotation, depending on **Enable Full Rotation (XYZ)**.
+- **Lens Settings** section (always visible): synchronized camera properties
+- **Camera List** section (collapsible): individual camera settings
+  - Per‑camera subpanels (`Camera 1`, `Camera 2`, ...):
+    - `Name`
+    - `Output Name` (only visible when **Custom Output Names** is enabled)
+    - `Shift X` / `Shift Y` (only visible when **Sync Shift** is disabled in Lens Settings)
+    - `Render Order`
+    - `Light Rotation`:
+      - either a single Z value, or a full XYZ rotation, depending on **Enable Full Rotation (XYZ)**.
 
 When you change `Camera Count`, the list of `CameraItem` entries is automatically grown or shrunk to match.
 
@@ -38,6 +89,7 @@ For each detected camera it:
 - Sets `name` and `output_name` to the Blender camera name.
 - Computes an automatic Z rotation for `light_rotation` based on the relative position between the camera and the **light pivot** (if configured).
 - Assigns `render_order` sequentially (0, 1, 2, ...).
+- Applies lens settings (focal length, shift, resolution, etc.) from the Lens Settings section.
 
 > **Important**: The **Light Pivot** object must be set in the **Light Pivot** section if you want automatic light rotation calculation; otherwise the operator will cancel with an error.
 
@@ -102,7 +154,8 @@ Technical detail: Uses the shared apply_light_rotation helper
 Use this to:
 - Walk through all configured cameras.
 - Confirm that framing and lighting are consistent before starting a full render batch.
+- **Visualize light rotation**: Set viewport shading to **Rendered** mode to see the light pivot rotate in real-time as you cycle through cameras. This works for both Z-only and full XYZ rotation modes.
 
-> **Tip**: For detailed information about lighting and the Light Pivot system, see [Lighting](Lighting.md).
+> **Tip**: For detailed information about lighting, the Light Pivot system, and how to visualize light rotation, see [Lighting](Lighting.md).
 
 

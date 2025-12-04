@@ -34,33 +34,54 @@ It works with Blender **5.0.0+**.
 
 ## Main Panel (UI)
 
-The main panel organizes the workflow into sections:
+The addon interface is organized into separate collapsible panels:
 
-```python
-Technical detail: Implemented by the SPRITE_RENDER_PT_MainPanel class
-```
+- **📋 Header Panel**
+  - Version information
+  - Author information
+  - Large **📖 Open Documentation** button
 
-- **🔖 Project**
+- **🔖 Project Panel**
   - `Project Name`
   - `Object Name`
+  - Small documentation button in panel header
 
-- **🎥 Cameras**
+- **💡 Light Pivot Panel**
+  - `Enable Light Pivot`: toggle to enable/disable light pivot rotation
+  - `Light Pivot Object`: object used as the light pivot for light rotation (visible when enabled)
+  - **💡 Tip**: You can place lights as children of the light pivot (they will rotate with cameras) and add fixed lights outside the light pivot to illuminate dark areas of the character.
+  - Small documentation button in panel header
+  - For detailed information about lighting setup and strategies, see [Lighting](Lighting.md).
+
+- **📷 Camera Creation Panel**
+  - `Preset`: dropdown to select camera preset configuration (1, 2, 3, 4, 5, or 8 cameras)
+  - `Distance`: slider to adjust camera distance from pivot point
+  - **Create Cameras** button: creates cameras based on selected preset
+  - Small documentation button in panel header
+  - For more information about camera presets, see [Cameras](Cameras.md).
+
+- **🎥 Cameras Panel**
   - `Camera Count`: number of cameras in the internal list.
   - `Custom Output Names`: use names different from the camera object names for file output.
   - `Enable Full Rotation (XYZ)`: controls whether the pivot rotates in XYZ or only around Z.
-  - For each camera (`Camera 1`, `Camera 2`, ...):
-    - `Name`: name of the camera object in the scene.
-    - `Output Name`: name used in file names (if `Custom Output Names` is enabled).
-    - `Render Order`: order in which this camera will be rendered.
-    - `Light Rotation`: light/pivot rotation (Z only or XYZ).
+  - **📐 Lens Settings** (always visible):
+    - `Type`: Camera projection type (Perspective/Orthographic)
+    - `Focal Length`: lens focal length in millimeters
+    - `Sync Shift`: toggle to synchronize shift values across all cameras
+    - `Shift X` / `Shift Y`: camera shift values (synchronized or individual per camera)
+    - `Resolution X` / `Resolution Y`: resolution synchronized across all cameras
+    - `Clip Start` / `Clip End`: clipping distances
+  - **📋 Camera List** (collapsible):
+    - For each camera (`Camera 1`, `Camera 2`, ...):
+      - `Name`: name of the camera object in the scene.
+      - `Output Name`: name used in file names (if `Custom Output Names` is enabled).
+      - `Shift X` / `Shift Y`: individual shift values (visible when `Sync Shift` is disabled)
+      - `Render Order`: order in which this camera will be rendered.
+      - `Light Rotation`: light/pivot rotation (Z only or XYZ).
   - **Detect Cameras** button (`sprite_render.autofill_light_rotation`):
     - Detects visible cameras in the current View Layer.
     - Fills the list with names, count, and Z rotation based on the pivot object.
-
-- **💡 Light Pivot**
-  - `Light Pivot Object`: object used as the light pivot for light rotation.
-  - **💡 Tip**: You can place lights as children of the light pivot (they will rotate with cameras) and add fixed lights outside the light pivot to illuminate dark areas of the character.
-  - For detailed information about lighting setup and strategies, see [Lighting](Lighting.md).
+  - Small documentation button in panel header
 
 - **🎞️ Animations**
   - `Target Armature`: the armature to animate.
@@ -99,7 +120,9 @@ Technical detail: Implemented by SPRITE_RENDER_UL_NLAStrips
     - Frame controls (first, previous, next, last).
     - `Custom FPS` setting + `Apply` button.
 
-- **💾 Output**
+- **💾 Output Panel**
+  - `Output Path` (from the Blender scene render settings): base folder where everything will be created.
+  - **📂 Open Output Folder** button: opens the output folder in your system's file explorer.
   - `Output Name` (`output_template`):
     - Default template:  
       `$projectName_$objectName_$animation_$camera_$frame`
@@ -109,22 +132,17 @@ Technical detail: Implemented by SPRITE_RENDER_UL_NLAStrips
     - `$animation`: Action or NLA Strip name.
     - `$camera`: camera name or `output_name`.
     - `$frame`: frame number formatted as `0001`, `0002`, etc.
-  - **Use Folders:**
+  - **Create Folders:**
     - `Project Folder`, `Object Folder`, `Animation Folder`, `Camera Folder`  
     - Builds a folder hierarchy based on these levels.
-  - `Output Path` (from the Blender scene render settings): base folder where everything will be created.
-  - **📂 Open Output Folder** button: opens the output folder in your system's file explorer.
+  - Small documentation button in panel header
 
-- **🐛 Debug**
-  - `Light Rotation Debug`: prints debug information about pivot rotation to the console.
+- **📊 Render Progress** (shown in Header Panel while rendering)
+  - `[current/total]`, percentage, progress bar, and status message.
+  - **❌ Cancel Render** button.
+  - **ESC key**: press ESC to cancel rendering at any time during the process.
 
-- **📊 Render Progress**
-  - Shown while rendering:
-    - `[current/total]`, percentage, progress bar, and status message.
-    - **❌ Cancel Render** button.
-    - **ESC key**: press ESC to cancel rendering at any time during the process.
-
-- **⚙️ Actions (Footer)**
+- **⚙️ Actions Panel**
   - `🚀 Render All` (`sprite_render.render_all`):
     - Starts rendering all animations and cameras (asynchronous version using a timer).
   - `🎯 Test Cameras` (`sprite_render.test_cameras`):
@@ -144,9 +162,11 @@ This initial guide presents the basic workflow to get started with the Sprite Re
 
 - **2. Configure the Sprite Render panel**
   - In **Project**: set `Project Name` and `Object Name`.
+  - In **Light Pivot**: enable `Enable Light Pivot` and set the `Light Pivot Object`.
+  - In **Camera Creation** (optional): use presets to quickly create cameras, or skip to manually add cameras.
   - In **Cameras**:
-    - Set the **Light Pivot** object in the **Light Pivot** section.
-    - Click **Detect Cameras** to auto-fill the list.
+    - Configure **Lens Settings** (resolution, focal length, shift, etc.)
+    - Click **Detect Cameras** to auto-fill the list, or manually add cameras.
     - Adjust `Render Order`, `Output Name`, and `Light Rotation` as needed.
 
 - **3. Choose the animation mode**
