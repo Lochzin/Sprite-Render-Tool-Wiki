@@ -4,6 +4,36 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
+## [0.3.3] - 2024
+
+### Alterado
+- **Divisão da Sincronização de Shift**: Botão "Sync Shift" dividido em dois toggles separados
+  - **Sync Shift X**: Toggle independente para sincronização de shift horizontal
+  - **Sync Shift Y**: Toggle independente para sincronização de shift vertical
+  - Permite controle granular - sincronizar um eixo mantendo o outro independente
+  - Botões posicionados lado a lado na seção Lens Settings
+- **Rótulo Dinâmico de Propriedade de Lente**: Rótulo de configurações de lente agora muda dinamicamente com base no tipo de câmera
+  - Mostra "Focal Length" quando o tipo de câmera é Perspective
+  - Mostra "Orthographic Scale" quando o tipo de câmera é Orthographic
+  - Propriedade correta (`cam_data.lens` ou `cam_data.ortho_scale`) é aplicada com base no tipo de câmera
+- **Reorganização da UI do Painel Cameras**: Layout e organização melhorados das configurações de câmera
+  - **Camera Count**, **Custom Output Names** e **Enable Full Rotation** agora estão sempre visíveis
+  - Essas propriedades estão posicionadas após Lens Settings e antes da Camera List colapsável
+  - Apenas a lista de câmeras real permanece colapsável dentro da seção "Camera List"
+  - Fluxo de trabalho melhorado: configurações essenciais estão sempre acessíveis
+
+### Removido
+- **Botão de Documentação do Painel Project**: Removido botão de documentação do cabeçalho do painel Project
+  - Documentação ainda está acessível via o botão principal de documentação no painel Header
+
+### Corrigido
+- **Preservação de Valores de Shift Individuais**: Corrigido problema onde valores de shift individuais das câmeras eram perdidos ao desabilitar sincronização
+  - Quando a sincronização está habilitada, valores individuais agora são preservados
+  - Quando a sincronização está desabilitada, câmeras restauram seus valores de shift individuais originais
+  - Valores são mantidos corretamente ao alternar sincronização ligada/desligada
+
+---
+
 ## [0.3.2] - 2024
 
 ### Alterado

@@ -4,6 +4,36 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
+## [0.3.3] - 2024
+
+### Changed
+- **Split Shift Synchronization**: "Sync Shift" button divided into two separate toggles
+  - **Sync Shift X**: Independent toggle for horizontal shift synchronization
+  - **Sync Shift Y**: Independent toggle for vertical shift synchronization
+  - Allows granular control - sync one axis while keeping the other independent
+  - Buttons placed side-by-side in the Lens Settings section
+- **Dynamic Lens Property Label**: Lens settings label now changes dynamically based on camera type
+  - Shows "Focal Length" when camera type is Perspective
+  - Shows "Orthographic Scale" when camera type is Orthographic
+  - Correct property (`cam_data.lens` or `cam_data.ortho_scale`) is applied based on camera type
+- **Cameras Panel UI Reorganization**: Improved layout and organization of camera settings
+  - **Camera Count**, **Custom Output Names**, and **Enable Full Rotation** are now always visible
+  - These properties are positioned after Lens Settings and before the collapsible Camera List
+  - Only the actual camera list remains collapsible within the "Camera List" section
+  - Improved workflow: essential settings are always accessible
+
+### Removed
+- **Project Panel Documentation Button**: Removed documentation button from Project panel header
+  - Documentation is still accessible via the main documentation button in the Header panel
+
+### Fixed
+- **Individual Shift Values Preservation**: Fixed issue where individual camera shift values were lost when disabling sync
+  - When sync is enabled, individual values are now preserved
+  - When sync is disabled, cameras restore their original individual shift values
+  - Values are correctly maintained when toggling sync on/off
+
+---
+
 ## [0.3.2] - 2024
 
 ### Changed
