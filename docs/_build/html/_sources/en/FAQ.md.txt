@@ -127,4 +127,18 @@ Always read the `LICENSE.md` and **Licenca.md** page before redistributing anyth
 - Studio / Commercial: up to 5 users per license (extendable on request).  
 For precise details and edge cases, refer to the official license text.
 
+---
+
+## Support and Community
+
+**Q: Where can I get help or discuss the add-on with other users?**  
+**A:** You can:
+- Join the community discussions: [GitHub Discussions](https://github.com/Lochzin/Sprite-Render-Tool-Wiki/discussions)
+- Ask questions, share tips, and connect with other users
+
+**Q: How do I report a bug or issue?**  
+**A:** If you encounter a bug or have a technical issue:
+- Open an issue on GitHub: [Report a Bug](https://github.com/Lochzin/Sprite-Render-Tool-Wiki/issues)
+- Please include details about your Blender version, what you were trying to do, and any error messages
+
 

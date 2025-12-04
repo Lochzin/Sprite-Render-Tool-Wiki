@@ -38,6 +38,8 @@ Esta página lista funcionalidades planejadas e melhorias para o **Sprite Render
 
 - **Renderização de Normal Maps**: Opção para renderizar normal maps simultaneamente com a renderização normal. Isso permitirá que os usuários gerem tanto as imagens de sprites padrão quanto seus normal maps correspondentes em uma única passada de renderização, garantindo alinhamento perfeito e iluminação consistente entre as duas saídas.
 
+- **Suporte a Múltiplas Resoluções**: Suporte para renderizar múltiplas resoluções por câmera ou múltiplas resoluções para a mesma câmera. Esta funcionalidade permitirá que os usuários gerem sprites em diferentes resoluções (ex.: 1x, 2x, 4x) em um único lote de renderização, o que é útil para jogos que precisam de sprites em múltiplos níveis de qualidade ou para diferentes densidades de display.
+
 ---
 
 ## Solicitações de Funcionalidades

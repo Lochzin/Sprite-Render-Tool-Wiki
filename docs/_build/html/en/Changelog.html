@@ -77,16 +77,27 @@
 <li class="toctree-l1"><a class="reference internal" href="Output.html">Output</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">[0.2.5] - 2024</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">[0.2.4] - 2024</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#removed">Removed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">[0.2.7] - 2024</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#changed">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#added">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fixed">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">[0.2.6] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Changed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">[0.2.5] - 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">[0.2.4] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#removed">Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Changed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#technical-details">Technical Details</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">[0.2.3] - 2024</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">[0.2.2] - 2024</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">[0.2.1] - 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">[0.2.3] - 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">[0.2.2] - 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">[0.2.1] - 2024</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Future-Features.html">Future Features</a></li>
@@ -134,7 +145,95 @@
 <p>This page tracks changes to the <strong>Sprite Render Tool</strong> over time.</p>
 <hr class="docutils" />
 <section id="id1">
-<h2>[0.2.5] - 2024<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<h2>[0.2.7] - 2024<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<section id="changed">
+<h3>Changed<a class="headerlink" href="#changed" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Output UI</strong>: Moved the Output Path field above the Output Name template</p>
+<ul>
+<li><p>Makes it clearer where files will be saved before configuring naming</p></li>
+<li><p>Label updated from “Use Folders” to “Create Folders” for better clarity</p></li>
+</ul>
+</li>
+<li><p><strong>Terminology</strong>: Updated references from “pivot object” to “light pivot object” throughout the codebase</p>
+<ul>
+<li><p>Error messages and comments now use clearer terminology</p></li>
+<li><p>Improves understanding of the feature’s purpose</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="added">
+<h3>Added<a class="headerlink" href="#added" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Light pivot debug log</strong>: Added log message when starting render with light pivot</p>
+<ul>
+<li><p>Shows which pivot object is being used</p></li>
+<li><p>Shows how many light rotation slots (cameras) are linked</p></li>
+<li><p>Also logs when light pivot is disabled or not configured</p></li>
+</ul>
+</li>
+<li><p><strong>Test Cameras rotation log</strong>: Added detailed rotation logs when using Test Cameras button</p>
+<ul>
+<li><p>Shows rotation values being applied from each camera (before and after)</p></li>
+<li><p>Displays rotation in degrees for both XYZ (full rotation) and Z-only modes</p></li>
+<li><p>Helps debug light rotation issues</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="fixed">
+<h3>Fixed<a class="headerlink" href="#fixed" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Enable Full Rotation (XYZ)</strong>: Fixed bug where full rotation mode was not working correctly</p>
+<ul>
+<li><p>Issue was caused by <code class="docutils literal notranslate"><span class="pre">light_rotation</span></code> property returning an <code class="docutils literal notranslate"><span class="pre">Euler</span></code> object instead of a tuple</p></li>
+<li><p>Code now correctly handles both <code class="docutils literal notranslate"><span class="pre">Euler</span></code> objects and tuple/list formats</p></li>
+<li><p>Full XYZ rotation now works as expected when enabled</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h2>[0.2.6] - 2024<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="id3">
+<h3>Added<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Documentation button</strong>: Added help button in the main panel to open documentation</p>
+<ul>
+<li><p>Button located next to the version number at the top of the panel</p></li>
+<li><p>Opens the official documentation website in the default web browser</p></li>
+<li><p>Provides quick access to guides, tutorials, and FAQ</p></li>
+<li><p>URL updated in <code class="docutils literal notranslate"><span class="pre">bl_info</span></code> to point to the official documentation</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id4">
+<h3>Changed<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Localization</strong>: Translated all tooltips and descriptions from Portuguese to English</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">animation_mode</span></code> EnumProperty description and item tooltips now in English</p></li>
+<li><p>All user-facing tooltips are now consistently in English</p></li>
+<li><p>Improves accessibility for international users</p></li>
+</ul>
+</li>
+<li><p><strong>README.md</strong>: Added installation instructions and documentation section</p>
+<ul>
+<li><p>Step-by-step installation guide</p></li>
+<li><p>Link to official documentation with overview of available topics</p></li>
+<li><p>Note about accessing documentation from the addon panel</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h2>[0.2.5] - 2024<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <p><strong>Highlights:</strong></p>
 <ul class="simple">
 <li><p>Added <strong>ESC key cancellation</strong>: Ability to cancel rendering by pressing ESC key</p>
@@ -155,8 +254,8 @@
 </ul>
 </section>
 <hr class="docutils" />
-<section id="id2">
-<h2>[0.2.4] - 2024<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="id6">
+<h2>[0.2.4] - 2024<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
 <section id="removed">
 <h3>Removed<a class="headerlink" href="#removed" title="Link to this heading"></a></h3>
 <ul class="simple">
@@ -172,8 +271,8 @@
 </li>
 </ul>
 </section>
-<section id="changed">
-<h3>Changed<a class="headerlink" href="#changed" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>Changed<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">apply_light_rotation()</span></code> method signature simplified: removed <code class="docutils literal notranslate"><span class="pre">debug</span></code> parameter</p>
 <ul>
@@ -192,8 +291,8 @@
 </section>
 </section>
 <hr class="docutils" />
-<section id="id3">
-<h2>[0.2.3] - 2024<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<section id="id8">
+<h2>[0.2.3] - 2024<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
 <p><strong>Highlights:</strong></p>
 <ul class="simple">
 <li><p>Added <strong>Output path validation</strong>: The add-on now validates if the output path is configured and exists before rendering</p>
@@ -216,8 +315,8 @@
 </ul>
 </section>
 <hr class="docutils" />
-<section id="id4">
-<h2>[0.2.2] - 2024<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="id9">
+<h2>[0.2.2] - 2024<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
 <p><strong>Highlights:</strong></p>
 <ul class="simple">
 <li><p>Added <strong>Enable Light Pivot Toggle</strong>: New <code class="docutils literal notranslate"><span class="pre">enable_light_pivot</span></code> boolean property to control the light pivot feature</p>
@@ -236,8 +335,8 @@
 </ul>
 </section>
 <hr class="docutils" />
-<section id="id5">
-<h2>[0.2.1] - 2024<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<section id="id10">
+<h2>[0.2.1] - 2024<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
 <p><strong>Highlights:</strong></p>
 <ul class="simple">
 <li><p>Improved multi‑camera workflow with <code class="docutils literal notranslate"><span class="pre">render_order</span></code> per camera.</p></li>

@@ -199,3 +199,12 @@ Based on `LICENSE.md`:
   - Sharing the purchased download violates the purchase agreement.
 
 For full details, see the dedicated page: **[License](License.md)**.
+
+---
+
+## Support and Community
+
+- **Community Discussions**: Join discussions, ask questions, and share tips with other users on [GitHub Discussions](https://github.com/Lochzin/Sprite-Render-Tool-Wiki/discussions)
+- **Report Issues**: Found a bug or have a technical issue? Report it on [GitHub Issues](https://github.com/Lochzin/Sprite-Render-Tool-Wiki/issues)
+- **FAQ**: Check the [FAQ](FAQ.md) page for common questions and solutions
+

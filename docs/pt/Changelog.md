@@ -4,6 +4,55 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
+## [0.2.7] - 2024
+
+### Alterado
+- **UI de Output**: Campo Output Path movido acima do template Output Name
+  - Deixa mais claro onde os arquivos serão salvos antes de configurar a nomenclatura
+  - Rótulo atualizado de "Use Folders" para "Create Folders" para maior clareza
+- **Terminologia**: Referências atualizadas de "pivot object" para "light pivot object" em todo o código
+  - Mensagens de erro e comentários agora usam terminologia mais clara
+  - Melhora o entendimento do propósito da funcionalidade
+
+### Adicionado
+- **Log de debug do light pivot**: Adicionada mensagem de log ao iniciar renderização com light pivot
+  - Mostra qual objeto pivot está sendo usado
+  - Mostra quantos slots de rotação de luz (câmeras) estão vinculados
+  - Também registra quando o light pivot está desabilitado ou não configurado
+- **Log de rotação do Test Cameras**: Adicionados logs detalhados de rotação ao usar o botão Test Cameras
+  - Mostra valores de rotação sendo aplicados de cada câmera (antes e depois)
+  - Exibe rotação em graus para modos XYZ (rotação completa) e apenas Z
+  - Ajuda a depurar problemas de rotação de luz
+
+### Corrigido
+- **Enable Full Rotation (XYZ)**: Corrigido bug onde o modo de rotação completa não funcionava corretamente
+  - Problema era causado pela propriedade `light_rotation` retornando um objeto `Euler` em vez de uma tupla
+  - Código agora trata corretamente tanto objetos `Euler` quanto formatos tupla/lista
+  - Rotação XYZ completa agora funciona como esperado quando habilitada
+
+---
+
+## [0.2.6] - 2024
+
+### Adicionado
+- **Botão de documentação**: Adicionado botão de ajuda no painel principal para abrir a documentação
+  - Botão localizado ao lado do número da versão no topo do painel
+  - Abre o site oficial de documentação no navegador padrão
+  - Fornece acesso rápido a guias, tutoriais e FAQ
+  - URL atualizada em `bl_info` para apontar para a documentação oficial
+
+### Alterado
+- **Localização**: Traduzidos todos os tooltips e descrições do português para inglês
+  - Descrição e tooltips dos itens de `animation_mode` EnumProperty agora em inglês
+  - Todos os tooltips voltados ao usuário agora estão consistentemente em inglês
+  - Melhora a acessibilidade para usuários internacionais
+- **README.md**: Adicionadas instruções de instalação e seção de documentação
+  - Guia de instalação passo a passo
+  - Link para documentação oficial com visão geral dos tópicos disponíveis
+  - Nota sobre acesso à documentação a partir do painel do addon
+
+---
+
 ## [0.2.5] - 2024
 
 **Destaques:**

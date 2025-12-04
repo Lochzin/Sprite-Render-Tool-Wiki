@@ -4,6 +4,55 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
+## [0.2.7] - 2024
+
+### Changed
+- **Output UI**: Moved the Output Path field above the Output Name template
+  - Makes it clearer where files will be saved before configuring naming
+  - Label updated from "Use Folders" to "Create Folders" for better clarity
+- **Terminology**: Updated references from "pivot object" to "light pivot object" throughout the codebase
+  - Error messages and comments now use clearer terminology
+  - Improves understanding of the feature's purpose
+
+### Added
+- **Light pivot debug log**: Added log message when starting render with light pivot
+  - Shows which pivot object is being used
+  - Shows how many light rotation slots (cameras) are linked
+  - Also logs when light pivot is disabled or not configured
+- **Test Cameras rotation log**: Added detailed rotation logs when using Test Cameras button
+  - Shows rotation values being applied from each camera (before and after)
+  - Displays rotation in degrees for both XYZ (full rotation) and Z-only modes
+  - Helps debug light rotation issues
+
+### Fixed
+- **Enable Full Rotation (XYZ)**: Fixed bug where full rotation mode was not working correctly
+  - Issue was caused by `light_rotation` property returning an `Euler` object instead of a tuple
+  - Code now correctly handles both `Euler` objects and tuple/list formats
+  - Full XYZ rotation now works as expected when enabled
+
+---
+
+## [0.2.6] - 2024
+
+### Added
+- **Documentation button**: Added help button in the main panel to open documentation
+  - Button located next to the version number at the top of the panel
+  - Opens the official documentation website in the default web browser
+  - Provides quick access to guides, tutorials, and FAQ
+  - URL updated in `bl_info` to point to the official documentation
+
+### Changed
+- **Localization**: Translated all tooltips and descriptions from Portuguese to English
+  - `animation_mode` EnumProperty description and item tooltips now in English
+  - All user-facing tooltips are now consistently in English
+  - Improves accessibility for international users
+- **README.md**: Added installation instructions and documentation section
+  - Step-by-step installation guide
+  - Link to official documentation with overview of available topics
+  - Note about accessing documentation from the addon panel
+
+---
+
 ## [0.2.5] - 2024
 
 **Highlights:**

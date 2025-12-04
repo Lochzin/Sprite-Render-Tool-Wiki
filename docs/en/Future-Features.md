@@ -38,6 +38,8 @@ This page lists planned features and improvements for the **Sprite Render Tool**
 
 - **Normal Maps Rendering**: Option to render normal maps simultaneously with the regular render. This will allow users to generate both the standard sprite images and their corresponding normal maps in a single render pass, ensuring perfect alignment and consistent lighting between the two outputs.
 
+- **Multiple Resolution Support**: Support for rendering multiple resolutions per camera or multiple resolutions for the same camera. This feature will allow users to generate sprites at different resolutions (e.g., 1x, 2x, 4x) in a single render batch, which is useful for games that need sprites at multiple quality levels or for different display densities.
+
 ---
 
 ## Feature Requests

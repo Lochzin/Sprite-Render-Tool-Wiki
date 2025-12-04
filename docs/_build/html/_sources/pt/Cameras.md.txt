@@ -105,3 +105,4 @@ Use isso para:
 
 > **Dica**: Para informações detalhadas sobre iluminação e o sistema Light Pivot, veja [Iluminação](Lighting.md).
 
+
