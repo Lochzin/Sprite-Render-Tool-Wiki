@@ -11,8 +11,21 @@ Este documento lista todas as sugestões de GIFs animados que seriam úteis para
 #### GIF 1: Visão Geral do Painel
 - **O que mostrar**: Painel completo com todas as seções expandidas
 - **Duração**: ~5-10 segundos
-- **Ações**: Scroll pelo painel mostrando todas as seções (Project, Cameras, Light Pivot, Animations, Output, Render Progress)
+- **Ações**: Scroll pelo painel mostrando todas as seções (Header, Project, Light Pivot, Camera Creation, Cameras, Animations, Output, Actions)
 - **Onde colocar**: Após a seção "Main Panel (UI)"
+
+#### GIF 1b: Nova Estrutura de Painéis Colapsáveis
+- **O que mostrar**: Painéis separados e colapsáveis da nova UI
+- **Duração**: ~10-15 segundos
+- **Ações**:
+  - Mostrar Header Panel com botão de documentação grande
+  - Mostrar Project Panel com botão de ajuda no cabeçalho
+  - Mostrar Light Pivot Panel colapsável
+  - Mostrar Camera Creation Panel
+  - Mostrar Cameras Panel com Lens Settings sempre visível e Camera List colapsável
+  - Mostrar botões de documentação em cada painel
+  - Mostrar painéis sendo expandidos/colapsados
+- **Onde colocar**: Após a seção "Main Panel (UI)" no index.md
 
 #### GIF 2: Fluxo Básico Completo
 - **O que mostrar**: Workflow completo do início ao fim
@@ -93,6 +106,28 @@ Este documento lista todas as sugestões de GIFs animados que seriam úteis para
   - Se houver light pivot, mostrar a luz rotacionando
 - **Onde colocar**: Na seção "Testing Cameras"
 
+#### GIF 8b: Lens Settings Sincronizadas
+- **O que mostrar**: Configurações de lente sendo aplicadas a todas as câmeras
+- **Duração**: ~15-20 segundos
+- **Ações**:
+  - Mostrar seção "Lens Settings" no painel Cameras
+  - Alterar "Focal Length" → mostrar todas as câmeras sendo atualizadas
+  - Alterar "Resolution X/Y" → mostrar resolução sendo aplicada
+  - Alterar "Camera Type" (Perspective/Orthographic) → mostrar mudança em todas as câmeras
+  - Mostrar que as configurações são sincronizadas automaticamente
+- **Onde colocar**: Na seção "Lens Settings" do Cameras.md
+
+#### GIF 8c: Shift Individual vs Sincronizado
+- **O que mostrar**: Alternando entre shift sincronizado e individual por câmera
+- **Duração**: ~15-20 segundos
+- **Ações**:
+  - **Parte 1**: Com "Sync Shift" habilitado, alterar Shift X/Y → mostrar todas as câmeras mudando
+  - **Parte 2**: Desabilitar "Sync Shift"
+  - **Parte 3**: Mostrar campos Shift X/Y aparecendo para cada câmera individualmente
+  - Alterar shift de uma câmera específica → mostrar apenas aquela câmera mudando
+  - Destacar a diferença entre sincronizado e individual
+- **Onde colocar**: Na seção "Lens Settings" do Cameras.md
+
 #### GIF 9: Detect Cameras Preenchendo Lista
 - **O que mostrar**: Botão detectando e preenchendo a lista automaticamente
 - **Duração**: ~5-8 segundos
@@ -103,6 +138,20 @@ Este documento lista todas as sugestões de GIFs animados que seriam úteis para
   - Mostrar os valores de Light Rotation sendo calculados
 - **Onde colocar**: Na seção "Detecting Cameras Automatically"
 
+#### GIF 9b: Camera Creation Presets
+- **O que mostrar**: Usando presets para criar câmeras automaticamente
+- **Duração**: ~15-20 segundos
+- **Ações**:
+  - Mostrar painel "Camera Creation"
+  - Selecionar um preset do dropdown (ex: "4 Cameras - Front, Right, Back, Left")
+  - Ajustar slider "Distance"
+  - Clicar em "Create Cameras"
+  - Mostrar câmeras sendo criadas na viewport
+  - Mostrar câmeras sendo posicionadas ao redor do pivot/origem
+  - Mostrar lista de câmeras sendo preenchida automaticamente
+  - Mostrar câmeras apontando corretamente para o centro
+- **Onde colocar**: Na seção "Camera Creation Presets" do Cameras.md
+
 #### GIF 10: Light Rotation Mudando com Câmeras
 - **O que mostrar**: Luz rotacionando ao alternar câmeras
 - **Duração**: ~15-20 segundos
@@ -112,6 +161,18 @@ Este documento lista todas as sugestões de GIFs animados que seriam úteis para
   - Mostrar a luz (ou pivot) rotacionando para cada câmera
   - Destacar a diferença de iluminação no personagem
 - **Onde colocar**: Na seção "Light Rotation per Camera"
+
+#### GIF 10b: Visualizador de Rotação do Pivot (Viewport Rendered)
+- **O que mostrar**: Visualização em tempo real da rotação do pivot usando viewport shading em Rendered
+- **Duração**: ~20-25 segundos
+- **Ações**:
+  - Configurar lights e light pivot
+  - Mudar viewport shading para "Rendered" (pressionar Z e selecionar)
+  - Clicar em "Test Cameras" várias vezes
+  - Mostrar o pivot rotacionando em tempo real no viewport
+  - Mostrar funcionando tanto em modo Z-only quanto Full XYZ
+  - Destacar como as luzes filhas do pivot seguem a rotação
+- **Onde colocar**: Na seção "Visualizing Light Rotation" do Lighting.md
 
 ---
 
@@ -302,22 +363,25 @@ Este documento lista todas as sugestões de GIFs animados que seriam úteis para
   2. Abrir painel (Sidebar N)
   3. Configurar Project Name: "MyGame"
   4. Configurar Object Name: "Hero"
-  5. Criar/selecionar Light Pivot object
-  6. Clicar em "Detect Cameras" → ver lista preenchendo
-  7. Ajustar Render Order se necessário
-  8. Selecionar Target Armature
-  9. Mudar para modo ACTIONS
-  10. Clicar em "Detect Actions" → ver lista preenchendo
-  11. Habilitar/desabilitar Actions desejadas
-  12. Configurar Output Path
-  13. Configurar Output Template
-  14. Habilitar pastas (Project/Object/Animation/Camera)
-  15. Usar "Test Cameras" para verificar
-  16. Usar "Preview Action" para testar animação
-  17. Clicar em "Render All"
-  18. Mostrar progresso rodando
-  19. Mostrar arquivos sendo salvos
-  20. Abrir pasta de saída e mostrar resultado final
+  5. Habilitar "Enable Light Pivot" e criar/selecionar Light Pivot object
+  6. (Opção A) Usar Camera Creation Presets: selecionar preset "4 Cameras", ajustar distância, clicar "Create Cameras"
+  6. (Opção B) Clicar em "Detect Cameras" → ver lista preenchendo
+  7. Configurar Lens Settings (resolução, focal length, etc.)
+  8. Ajustar Render Order se necessário
+  9. Selecionar Target Armature
+  10. Mudar para modo ACTIONS
+  11. Clicar em "Detect Actions" → ver lista preenchendo
+  12. Habilitar/desabilitar Actions desejadas
+  13. Configurar Output Path
+  14. Configurar Output Template
+  15. Habilitar pastas (Project/Object/Animation/Camera)
+  16. Usar "Test Cameras" para verificar (com viewport em Rendered para ver rotação)
+  17. Usar "Preview Action" para testar animação
+  18. Clicar em "Render All"
+  19. Mostrar progresso rodando
+  20. Mostrar arquivos sendo salvos
+  21. Abrir pasta de saída usando botão "Open Output Folder"
+  22. Mostrar resultado final
 - **Onde colocar**: No final da seção "Basic Workflow" ou como vídeo separado
 
 ---
@@ -352,17 +416,22 @@ Este documento lista todas as sugestões de GIFs animados que seriam úteis para
 
 ### 🔴 Essenciais (Fazer Primeiro)
 1. ✅ Test Cameras alternando câmeras (GIF 8)
-2. ✅ Preview Action/NLA funcionando (GIF 4, 5)
-3. ✅ Light Pivot rotacionando com câmeras (GIF 11)
-4. ✅ Render Progress com barra e cancelamento (GIF 17, 18)
-5. ✅ Open Output Folder abrindo explorador (GIF 15)
+2. ✅ Visualizador de rotação do pivot (Viewport Rendered) (GIF 10b)
+3. ✅ Preview Action/NLA funcionando (GIF 4, 5)
+4. ✅ Light Pivot rotacionando com câmeras (GIF 11)
+5. ✅ Render Progress com barra e cancelamento (GIF 17, 18)
+6. ✅ Open Output Folder abrindo explorador (GIF 15)
+7. ✅ Camera Creation Presets (GIF 9b)
 
 ### 🟡 Muito Úteis (Segunda Fase)
 6. ✅ Detect Cameras preenchendo lista (GIF 9)
-7. ✅ Workflow completo do início ao fim (GIF 25)
-8. ✅ Comparação de lighting strategies (GIF 26)
-9. ✅ Detect Actions/NLA preenchendo listas (GIF 19, 20)
-10. ✅ Navegação de frames (GIF 6)
+7. ✅ Lens Settings sincronizadas (GIF 8b)
+8. ✅ Shift individual vs sincronizado (GIF 8c)
+9. ✅ Workflow completo do início ao fim (GIF 25)
+10. ✅ Comparação de lighting strategies (GIF 26)
+11. ✅ Detect Actions/NLA preenchendo listas (GIF 19, 20)
+12. ✅ Navegação de frames (GIF 6)
+13. ✅ Nova estrutura de painéis colapsáveis (GIF 1b)
 
 ### 🟢 Opcionais (Se Tiver Tempo)
 11. ✅ Comparação de modos de animação (GIF 27)
@@ -424,7 +493,11 @@ docs/
         animations-frame-navigation.gif
         cameras-test-cameras.gif
         cameras-detect-cameras.gif
+        cameras-presets-creation.gif
+        cameras-lens-settings-sync.gif
+        cameras-shift-individual.gif
         lighting-pivot-rotation.gif
+        lighting-pivot-visualizer-rendered.gif
         lighting-comparison-inside-outside.gif
         lighting-enable-toggle.gif
         lighting-z-vs-xyz.gif
@@ -455,5 +528,17 @@ Para cada GIF:
 ---
 
 **Última atualização**: 2024-12-XX
-**Versão do documento**: 1.0
+**Versão do documento**: 1.1
+
+---
+
+## 🆕 Novas Funcionalidades Adicionadas (v0.3.x)
+
+### GIFs Adicionados para Novas Features:
+
+- **GIF 1b**: Nova estrutura de painéis colapsáveis (v0.3.2)
+- **GIF 8b**: Lens Settings sincronizadas (v0.3.1)
+- **GIF 8c**: Shift individual vs sincronizado (v0.3.1)
+- **GIF 9b**: Camera Creation Presets (v0.3.0)
+- **GIF 10b**: Visualizador de rotação do pivot (Viewport Rendered) - Funcionalidade descoberta
 
