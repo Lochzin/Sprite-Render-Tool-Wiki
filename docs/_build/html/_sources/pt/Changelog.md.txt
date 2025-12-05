@@ -4,6 +4,182 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
+## [0.3.3] - 2024
+
+### Alterado
+- **Divisão da Sincronização de Shift**: Botão "Sync Shift" dividido em dois toggles separados
+  - **Sync Shift X**: Toggle independente para sincronização de shift horizontal
+  - **Sync Shift Y**: Toggle independente para sincronização de shift vertical
+  - Permite controle granular - sincronizar um eixo mantendo o outro independente
+  - Botões posicionados lado a lado na seção Lens Settings
+- **Rótulo Dinâmico de Propriedade de Lente**: Rótulo de configurações de lente agora muda dinamicamente com base no tipo de câmera
+  - Mostra "Focal Length" quando o tipo de câmera é Perspective
+  - Mostra "Orthographic Scale" quando o tipo de câmera é Orthographic
+  - Propriedade correta (`cam_data.lens` ou `cam_data.ortho_scale`) é aplicada com base no tipo de câmera
+- **Reorganização da UI do Painel Cameras**: Layout e organização melhorados das configurações de câmera
+  - **Camera Count**, **Custom Output Names** e **Enable Full Rotation** agora estão sempre visíveis
+  - Essas propriedades estão posicionadas após Lens Settings e antes da Camera List colapsável
+  - Apenas a lista de câmeras real permanece colapsável dentro da seção "Camera List"
+  - Fluxo de trabalho melhorado: configurações essenciais estão sempre acessíveis
+
+### Removido
+- **Botão de Documentação do Painel Project**: Removido botão de documentação do cabeçalho do painel Project
+  - Documentação ainda está acessível via o botão principal de documentação no painel Header
+
+### Corrigido
+- **Preservação de Valores de Shift Individuais**: Corrigido problema onde valores de shift individuais das câmeras eram perdidos ao desabilitar sincronização
+  - Quando a sincronização está habilitada, valores individuais agora são preservados
+  - Quando a sincronização está desabilitada, câmeras restauram seus valores de shift individuais originais
+  - Valores são mantidos corretamente ao alternar sincronização ligada/desligada
+
+---
+
+## [0.3.2] - 2024
+
+### Alterado
+- **Reorganização da UI**: Reestruturação completa da interface do addon
+  - Cada seção agora é um painel separado e colapsável
+  - Removidas caixas internas e toggles - cada painel é a própria seção
+  - Organização e navegação melhoradas
+- **Estrutura de Painéis**: Novo layout de painéis
+  - **Painel Header**: Informações gerais (versão, autor, botão de documentação)
+  - **Painel Project**: Configurações do projeto
+  - **Painel Light Pivot**: Configuração do pivô de luz
+  - **Painel Camera Creation**: Criação de presets de câmera
+  - **Painel Cameras**: Gerenciamento de câmeras e configurações de lente
+  - **Painel Animations**: Configuração de animações
+  - **Painel Output**: Configurações de saída
+  - **Painel Actions**: Botões de renderização e teste
+- **Botões de Documentação**: Melhor posicionamento dos botões de documentação
+  - Painel header: Botão grande de documentação abaixo do autor
+  - Outros painéis: Botão pequeno de documentação no cabeçalho do painel (canto superior direito)
+
+### Removido
+- **Referência ao Repositório GitHub**: Removida referência ao repositório GitHub privado do painel header
+
+---
+
+## [0.3.1] - 2024
+
+### Adicionado
+- **Configurações de Resolução Sincronizadas**: Novos controles de resolução em Lens Settings
+  - Campos Resolution X e Y sincronizados em todas as câmeras
+  - Aplicados às configurações de renderização da cena automaticamente
+- **Toggle de Sincronização de Shift**: Novo botão "Sync Shift" em Lens Settings
+  - Permite alternar entre valores de shift sincronizados e individuais
+  - Quando dessincronizado, cada câmera pode ter seus próprios valores de shift
+- **Shift Individual por Câmera**: Controles de shift por câmera
+  - Campos Shift X e Y aparecem para cada câmera quando o shift está dessincronizado
+  - Valores de shift exibidos antes de Render Order na lista de câmeras
+  - Valores aplicados automaticamente quando alterados
+
+### Alterado
+- **UI de Lens Settings**: Layout melhorado da seção de configurações de lente
+  - Seção Lens Settings agora está sempre visível (sem toggle)
+  - Removidas opções Sensor Width e Sensor Fit
+  - Adicionada opção Camera Type (Perspective/Orthographic)
+  - Layout corresponde ao painel de lente padrão do Blender
+- **Organização da Lista de Câmeras**: Melhor gerenciamento da lista de câmeras
+  - Todas as câmeras individuais agrupadas em uma subseção colapsável "Camera List"
+  - Camera List pode ser ocultada/exibida com um toggle
+  - Lens Settings permanecem sempre acessíveis
+
+### Corrigido
+- **Aplicação de Lens Settings**: Corrigida sincronização de configurações de lente
+  - Configurações agora aplicadas corretamente quando câmeras são criadas via presets
+  - Configurações aplicadas corretamente quando câmeras são detectadas
+  - Resolução aplicada antes de cada renderização
+
+---
+
+## [0.3.0] - 2024
+
+### Adicionado
+- **Sistema de Presets de Câmera**: Novo sistema de criação de câmeras com presets predefinidos
+  - **8 Configurações de Preset Disponíveis**:
+    - 1 Câmera - Front
+    - 2 Câmeras - Front, Back
+    - 2 Câmeras - Front, Right
+    - 3 Câmeras - Front, Left, Right
+    - 3 Câmeras - Front, Right, Back
+    - 4 Câmeras - Front, Right, Back, Left (Direções Cardeais)
+    - 5 Câmeras - Front, Front Right, Right, Back Right, Back
+    - 8 Câmeras - 360 Graus (Distribuídas uniformemente)
+  - Câmeras são automaticamente posicionadas ao redor do objeto pivô (ou origem)
+  - Câmeras automaticamente apontam para o centro com orientação correta
+  - Distância configurável do ponto pivô
+- **Seção de Criação de Câmeras**: Nova seção dedicada na UI para presets de câmera
+  - Localizada antes da seção Light Pivot para melhor fluxo de trabalho
+  - Dropdown para selecionar tipo de preset
+  - Slider de distância para ajustar distância da câmera
+  - Botão "Create Cameras" para aplicar o preset
+- **Substituição Automática de Câmeras**: Sistema inteligente de gerenciamento de câmeras
+  - Rastreia câmeras criadas pelo plugin
+  - Automaticamente deleta câmeras criadas anteriormente pelo plugin ao aplicar um novo preset
+  - Afeta apenas câmeras criadas pelo plugin, preservando câmeras criadas manualmente
+  - Previne acúmulo de câmeras não utilizadas
+
+### Alterado
+- **Layout da UI**: Reordenadas seções para melhor fluxo de trabalho
+  - Seção Light Pivot movida antes da seção Camera Creation
+  - Deixa mais claro configurar o pivô de iluminação antes de criar câmeras
+- **Sistema de Rotação de Câmeras**: Melhorado cálculo de rotação de câmeras
+  - Câmeras agora apontam corretamente para o objeto pivô/centro
+  - Corrigidos problemas de roll (rotação ao redor do eixo de visualização)
+  - Câmeras mantêm orientação correta independentemente da posição (front, side, back)
+  - Usa cálculo de rotação baseado em matriz para resultados confiáveis
+
+### Corrigido
+- **Bugs de Rotação de Câmeras**: Corrigidos múltiplos problemas de orientação de câmeras
+  - Corrigido câmeras apontando para baixo em vez de para o centro
+  - Corrigido câmeras laterais sendo rotacionadas 90 graus incorretamente
+  - Corrigido câmera traseira sendo invertida (rotação de 180 graus)
+  - Todas as câmeras agora mantêm orientação vertical correta
+- **Problemas de Undo/Crash**: Corrigidos crashes ao desfazer criação de câmeras
+  - Adicionada validação adequada antes de acessar objetos de câmera
+  - Corrigido `ReferenceError` quando objetos são removidos por undo
+  - Melhorado tratamento de erros para deleção de câmeras
+- **Erros de Collection Property**: Corrigido `TypeError` com `bpy.data.objects` e `bpy.data.cameras`
+  - Substituído uso incorreto do operador `in` pelo método `get()` adequado
+  - Corrigidas todas as verificações de existência de objetos em todo o código
+
+### Detalhes Técnicos
+- Novo PropertyGroup: `PluginCameraName` para rastrear câmeras criadas pelo plugin
+- Nova CollectionProperty: `plugin_created_cameras` em `SpriteRenderSettings`
+- Novo Operator: `SPRITE_RENDER_OT_ApplyCameraPreset` para criar câmeras a partir de presets
+- Estrutura de dados de preset de câmera: dicionário `CAMERA_PRESETS` com 8 configurações
+- Cálculo de rotação: Usa abordagem baseada em matriz com tratamento adequado de vetor up
+- Rastreamento de câmeras: Limpeza automática de câmeras criadas pelo plugin ao aplicar novos presets
+
+---
+
+## [0.2.8] - 2024
+
+### Alterado
+- **Layout da UI**: Reordenadas seções para melhorar o entendimento do usuário
+  - Seção Light Pivot agora aparece acima da seção Cameras
+  - Deixa mais claro que a configuração do pivô de luz afeta a renderização das câmeras
+  - Melhora o fluxo de trabalho configurando iluminação antes das câmeras
+
+### Adicionado
+- **Botões de documentação específicos por seção**: Adicionados botões de ajuda em cada seção principal
+  - Cada seção (Project, Light Pivot, Cameras, Animations, Output) agora tem um botão de documentação
+  - Botões abrem a página de documentação correspondente no navegador padrão
+  - Fornece acesso rápido a guias relevantes sem sair do Blender
+  - Links de documentação:
+    - **Project**: Abre página principal de documentação
+    - **Light Pivot**: Abre documentação de Iluminação
+    - **Cameras**: Abre documentação de Câmeras
+    - **Animations**: Abre documentação de Animações
+    - **Output**: Abre documentação de Saída
+
+### Detalhes Técnicos
+- Novos operadores: `SPRITE_RENDER_OT_OpenDocumentationProject`, `SPRITE_RENDER_OT_OpenDocumentationLighting`, `SPRITE_RENDER_OT_OpenDocumentationCameras`, `SPRITE_RENDER_OT_OpenDocumentationAnimations`, `SPRITE_RENDER_OT_OpenDocumentationOutput`
+- Função `draw_section_toggle()` modificada para aceitar parâmetro opcional de operador de documentação
+- Todos os links de documentação apontam para a versão em inglês (`/en/`) da documentação
+
+---
+
 ## [0.2.7] - 2024
 
 ### Alterado

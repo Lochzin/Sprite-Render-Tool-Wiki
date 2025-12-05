@@ -6,10 +6,6 @@ This page lists planned features and improvements for the **Sprite Render Tool**
 
 ## Planned Features
 
-### Visual Debug Tools
-
-- **Light Pivot Rotation Visualizer**: A visual debug tool to help visualize and adjust pivot rotation angles for cameras at different angles (not just horizontal). This feature was attempted once but could not be implemented due to Blender API limitations. It may be revisited in the future if there is significant user demand.
-
 ### Animation Features
 
 - **Sub-Actions Mode**: Support for Blender's sub-actions feature (introduced in Blender 4.4). This new animation mode will allow users to work with sub-actions, which provide a way to organize and manage complex animation hierarchies within a single action. This feature will complement the existing ACTIONS, NLA, and STATIC modes, providing more flexibility for advanced animation workflows.

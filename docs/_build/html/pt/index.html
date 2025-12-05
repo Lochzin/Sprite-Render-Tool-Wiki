@@ -162,28 +162,66 @@
 <hr class="docutils" />
 <section id="painel-principal-ui">
 <h2>Painel Principal (UI)<a class="headerlink" href="#painel-principal-ui" title="Link to this heading"></a></h2>
-<p>O painel principal organiza o fluxo de trabalho em seções:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Detalhe</span> <span class="n">técnico</span><span class="p">:</span> <span class="n">Implementado</span> <span class="n">pela</span> <span class="n">classe</span> <span class="n">SPRITE_RENDER_PT_MainPanel</span>
-</pre></div>
-</div>
+<p>A interface do addon está organizada em painéis separados e colapsáveis:</p>
 <ul>
-<li><p><strong>🔖 Projeto</strong></p>
+<li><p><strong>📋 Painel Header</strong></p>
+<ul class="simple">
+<li><p>Informações de versão</p></li>
+<li><p>Informações do autor</p></li>
+<li><p>Botão grande <strong>📖 Open Documentation</strong></p></li>
+</ul>
+</li>
+<li><p><strong>🔖 Painel Project</strong></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">Name</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Name</span></code></p></li>
+<li><p>Botão pequeno de documentação no cabeçalho do painel</p></li>
 </ul>
 </li>
-<li><p><strong>🎥 Câmeras</strong></p>
+<li><p><strong>💡 Painel Light Pivot</strong></p>
 <ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">Light</span> <span class="pre">Pivot</span></code>: toggle para habilitar/desabilitar rotação do pivô de luz</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Pivot</span> <span class="pre">Object</span></code>: objeto usado como pivô de luz para rotação da luz (visível quando habilitado)</p></li>
+<li><p><strong>💡 Dica</strong>: Você pode colocar luzes como filhos do light pivot (elas rotacionarão com as câmeras) e adicionar luzes fixas fora do light pivot para iluminar áreas escuras do personagem.</p></li>
+<li><p>Botão pequeno de documentação no cabeçalho do painel</p></li>
+<li><p>Para informações detalhadas sobre configuração de iluminação e estratégias, veja <a class="reference internal" href="Lighting.html"><span class="std std-doc">Iluminação</span></a>.</p></li>
+</ul>
+</li>
+<li><p><strong>📷 Painel Camera Creation</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Preset</span></code>: dropdown para selecionar configuração de preset de câmera (1, 2, 3, 4, 5 ou 8 câmeras)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Distance</span></code>: slider para ajustar distância da câmera do ponto pivô</p></li>
+<li><p>Botão <strong>Create Cameras</strong>: cria câmeras baseadas no preset selecionado</p></li>
+<li><p>Botão pequeno de documentação no cabeçalho do painel</p></li>
+<li><p>Para mais informações sobre presets de câmera, veja <a class="reference internal" href="Cameras.html"><span class="std std-doc">Câmeras</span></a>.</p></li>
+</ul>
+</li>
+<li><p><strong>🎥 Painel Cameras</strong></p>
+<ul class="simple">
+<li><p><strong>📐 Lens Settings</strong> (sempre visível):</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Type</span></code>: Tipo de projeção da câmera (Perspective/Orthographic)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Focal</span> <span class="pre">Length</span> <span class="pre">/</span> <span class="pre">Orthographic</span> <span class="pre">Scale</span></code>: propriedade da lente (rótulo muda com base no tipo de câmera)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Sync</span> <span class="pre">Shift</span> <span class="pre">X</span></code> / <code class="docutils literal notranslate"><span class="pre">Sync</span> <span class="pre">Shift</span> <span class="pre">Y</span></code>: toggles independentes para sincronização de shift horizontal e vertical</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">X</span></code> / <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">Y</span></code>: valores de shift da câmera (sincronizados ou individuais por câmera)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Resolution</span> <span class="pre">X</span></code> / <code class="docutils literal notranslate"><span class="pre">Resolution</span> <span class="pre">Y</span></code>: resolução sincronizada em todas as câmeras</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Clip</span> <span class="pre">Start</span></code> / <code class="docutils literal notranslate"><span class="pre">Clip</span> <span class="pre">End</span></code>: distâncias de clipping</p></li>
+</ul>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">Count</span></code>: número de câmeras na lista interna.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">Output</span> <span class="pre">Names</span></code>: usa nomes diferentes dos nomes dos objetos de câmera para saída de arquivos.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">Full</span> <span class="pre">Rotation</span> <span class="pre">(XYZ)</span></code>: controla se o pivô rotaciona em XYZ ou apenas ao redor de Z.</p></li>
+<li><p><strong>📋 Camera List</strong> (colapsável):</p>
+<ul>
 <li><p>Para cada câmera (<code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">2</span></code>, …):</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">Name</span></code>: nome do objeto de câmera na cena.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">Name</span></code>: nome usado nos nomes de arquivos (se <code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">Output</span> <span class="pre">Names</span></code> estiver habilitado).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">X</span></code> / <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">Y</span></code>: valores de shift individuais (visível quando <code class="docutils literal notranslate"><span class="pre">Sync</span> <span class="pre">Shift</span> <span class="pre">X</span></code> ou <code class="docutils literal notranslate"><span class="pre">Sync</span> <span class="pre">Shift</span> <span class="pre">Y</span></code> está desabilitado, respectivamente)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Render</span> <span class="pre">Order</span></code>: ordem em que esta câmera será renderizada.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Rotation</span></code>: rotação da luz/pivô (apenas Z ou XYZ).</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>Botão <strong>Detect Cameras</strong> (<code class="docutils literal notranslate"><span class="pre">sprite_render.autofill_light_rotation</span></code>):</p>
@@ -192,13 +230,7 @@
 <li><p>Preenche a lista com nomes, contagem e rotação Z baseada no objeto pivô.</p></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p><strong>💡 Light Pivot</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Pivot</span> <span class="pre">Object</span></code>: objeto usado como light pivot para rotação da luz.</p></li>
-<li><p><strong>💡 Dica</strong>: Você pode colocar luzes como filhos do light pivot (elas rotacionarão com as câmeras) e adicionar luzes fixas fora do light pivot para iluminar áreas escuras do personagem.</p></li>
-<li><p>Para informações detalhadas sobre configuração de iluminação e estratégias, veja <a class="reference internal" href="Lighting.html"><span class="std std-doc">Iluminação</span></a>.</p></li>
+<li><p>Botão pequeno de documentação no cabeçalho do painel</p></li>
 </ul>
 </li>
 <li><p><strong>🎞️ Animações</strong></p>
@@ -265,8 +297,10 @@
 <li><p>Configuração <code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">FPS</span></code> + botão <code class="docutils literal notranslate"><span class="pre">Apply</span></code>.</p></li>
 </ul>
 </li>
-<li><p><strong>💾 Output</strong></p>
+<li><p><strong>💾 Painel Output</strong></p>
 <ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">Path</span></code> (das configurações de renderização da cena do Blender): pasta base onde tudo será criado.</p></li>
+<li><p>Botão <strong>📂 Open Output Folder</strong>: abre a pasta de saída no explorador de arquivos do sistema.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">Name</span></code> (<code class="docutils literal notranslate"><span class="pre">output_template</span></code>):</p>
 <ul>
 <li><p>Template padrão:<br />
@@ -282,33 +316,23 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">$frame</span></code>: número do frame formatado como <code class="docutils literal notranslate"><span class="pre">0001</span></code>, <code class="docutils literal notranslate"><span class="pre">0002</span></code>, etc.</p></li>
 </ul>
 </li>
-<li><p><strong>Use Folders:</strong></p>
+<li><p><strong>Create Folders:</strong></p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">Folder</span></code>, <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Folder</span></code>, <code class="docutils literal notranslate"><span class="pre">Animation</span> <span class="pre">Folder</span></code>, <code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">Folder</span></code></p></li>
 <li><p>Constrói uma hierarquia de pastas baseada nesses níveis.</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">Path</span></code> (das configurações de renderização da cena do Blender): pasta base onde tudo será criado.</p></li>
-<li><p>Botão <strong>📂 Open Output Folder</strong>: abre a pasta de saída no explorador de arquivos do sistema.</p></li>
+<li><p>Botão pequeno de documentação no cabeçalho do painel</p></li>
 </ul>
 </li>
-<li><p><strong>🐛 Debug</strong></p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Rotation</span> <span class="pre">Debug</span></code>: imprime informações de debug sobre a rotação do pivô no console.</p></li>
-</ul>
-</li>
-<li><p><strong>📊 Render Progress</strong></p>
-<ul>
-<li><p>Mostrado durante a renderização:</p>
+<li><p><strong>📊 Render Progress</strong> (exibido no Painel Header durante a renderização)</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">[atual/total]</span></code>, porcentagem, barra de progresso e mensagem de status.</p></li>
 <li><p>Botão <strong>❌ Cancel Render</strong>.</p></li>
 <li><p><strong>Tecla ESC</strong>: pressione ESC para cancelar a renderização a qualquer momento durante o processo.</p></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p><strong>⚙️ Actions (Footer)</strong></p>
+<li><p><strong>⚙️ Painel Actions</strong></p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">🚀</span> <span class="pre">Render</span> <span class="pre">All</span></code> (<code class="docutils literal notranslate"><span class="pre">sprite_render.render_all</span></code>):</p>
 <ul>
@@ -340,10 +364,12 @@
 <li><p><strong>2. Configure o painel Sprite Render</strong></p>
 <ul>
 <li><p>Em <strong>Project</strong>: defina <code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">Name</span></code> e <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Name</span></code>.</p></li>
+<li><p>Em <strong>Light Pivot</strong>: habilite <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">Light</span> <span class="pre">Pivot</span></code> e defina o <code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Pivot</span> <span class="pre">Object</span></code>.</p></li>
+<li><p>Em <strong>Camera Creation</strong> (opcional): use presets para criar câmeras rapidamente, ou pule para adicionar câmeras manualmente.</p></li>
 <li><p>Em <strong>Cameras</strong>:</p>
 <ul>
-<li><p>Defina o objeto <strong>Light Pivot</strong> na seção <strong>Light Pivot</strong>.</p></li>
-<li><p>Clique em <strong>Detect Cameras</strong> para preencher a lista automaticamente.</p></li>
+<li><p>Configure <strong>Lens Settings</strong> (resolução, distância focal, shift, etc.)</p></li>
+<li><p>Clique em <strong>Detect Cameras</strong> para preencher a lista automaticamente, ou adicione câmeras manualmente.</p></li>
 <li><p>Ajuste <code class="docutils literal notranslate"><span class="pre">Render</span> <span class="pre">Order</span></code>, <code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">Name</span></code> e <code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Rotation</span></code> conforme necessário.</p></li>
 </ul>
 </li>

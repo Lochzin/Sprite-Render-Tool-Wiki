@@ -6,10 +6,6 @@ Esta página lista funcionalidades planejadas e melhorias para o **Sprite Render
 
 ## Funcionalidades Planejadas
 
-### Ferramentas de Debug Visual
-
-- **Visualizador de Rotação do Pivot de Luz**: Uma ferramenta de debug visual para ajudar a visualizar e ajustar ângulos de rotação do pivot para câmeras em diferentes ângulos (não apenas horizontal). Esta funcionalidade foi tentada uma vez, mas não pôde ser implementada devido a limitações da API do Blender. Pode ser revisitada no futuro caso haja muita demanda dos usuários.
-
 ### Funcionalidades de Animação
 
 - **Modo Sub-Actions**: Suporte para a funcionalidade de sub-actions do Blender (introduzida no Blender 4.4). Este novo modo de animação permitirá que os usuários trabalhem com sub-actions, que fornecem uma forma de organizar e gerenciar hierarquias de animação complexas dentro de uma única action. Esta funcionalidade complementará os modos existentes ACTIONS, NLA e STATIC, fornecendo mais flexibilidade para fluxos de trabalho de animação avançados.

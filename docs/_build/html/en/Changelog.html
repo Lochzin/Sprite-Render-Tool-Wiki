@@ -77,27 +77,57 @@
 <li class="toctree-l1"><a class="reference internal" href="Output.html">Output</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">[0.2.7] - 2024</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">[0.3.3] - 2024</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#changed">Changed</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#added">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#removed">Removed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#fixed">Fixed</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">[0.2.6] - 2024</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Added</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">Changed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">[0.3.2] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Removed</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">[0.2.5] - 2024</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">[0.2.4] - 2024</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#removed">Removed</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">Changed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">[0.3.1] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#added">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">[0.3.0] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Fixed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#technical-details">Technical Details</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">[0.2.3] - 2024</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id9">[0.2.2] - 2024</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id10">[0.2.1] - 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">[0.2.8] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Technical Details</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">[0.2.7] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id17">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id20">[0.2.6] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id21">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">Changed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id23">[0.2.5] - 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id24">[0.2.4] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id25">Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">Technical Details</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id28">[0.2.3] - 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id29">[0.2.2] - 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id30">[0.2.1] - 2024</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Future-Features.html">Future Features</a></li>
@@ -145,9 +175,308 @@
 <p>This page tracks changes to the <strong>Sprite Render Tool</strong> over time.</p>
 <hr class="docutils" />
 <section id="id1">
-<h2>[0.2.7] - 2024<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<h2>[0.3.3] - 2024<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <section id="changed">
 <h3>Changed<a class="headerlink" href="#changed" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Split Shift Synchronization</strong>: “Sync Shift” button divided into two separate toggles</p>
+<ul>
+<li><p><strong>Sync Shift X</strong>: Independent toggle for horizontal shift synchronization</p></li>
+<li><p><strong>Sync Shift Y</strong>: Independent toggle for vertical shift synchronization</p></li>
+<li><p>Allows granular control - sync one axis while keeping the other independent</p></li>
+<li><p>Buttons placed side-by-side in the Lens Settings section</p></li>
+</ul>
+</li>
+<li><p><strong>Dynamic Lens Property Label</strong>: Lens settings label now changes dynamically based on camera type</p>
+<ul>
+<li><p>Shows “Focal Length” when camera type is Perspective</p></li>
+<li><p>Shows “Orthographic Scale” when camera type is Orthographic</p></li>
+<li><p>Correct property (<code class="docutils literal notranslate"><span class="pre">cam_data.lens</span></code> or <code class="docutils literal notranslate"><span class="pre">cam_data.ortho_scale</span></code>) is applied based on camera type</p></li>
+</ul>
+</li>
+<li><p><strong>Cameras Panel UI Reorganization</strong>: Improved layout and organization of camera settings</p>
+<ul>
+<li><p><strong>Camera Count</strong>, <strong>Custom Output Names</strong>, and <strong>Enable Full Rotation</strong> are now always visible</p></li>
+<li><p>These properties are positioned after Lens Settings and before the collapsible Camera List</p></li>
+<li><p>Only the actual camera list remains collapsible within the “Camera List” section</p></li>
+<li><p>Improved workflow: essential settings are always accessible</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="removed">
+<h3>Removed<a class="headerlink" href="#removed" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project Panel Documentation Button</strong>: Removed documentation button from Project panel header</p>
+<ul>
+<li><p>Documentation is still accessible via the main documentation button in the Header panel</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="fixed">
+<h3>Fixed<a class="headerlink" href="#fixed" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Individual Shift Values Preservation</strong>: Fixed issue where individual camera shift values were lost when disabling sync</p>
+<ul>
+<li><p>When sync is enabled, individual values are now preserved</p></li>
+<li><p>When sync is disabled, cameras restore their original individual shift values</p></li>
+<li><p>Values are correctly maintained when toggling sync on/off</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h2>[0.3.2] - 2024<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="id3">
+<h3>Changed<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>UI Reorganization</strong>: Complete restructure of the addon interface</p>
+<ul>
+<li><p>Each section is now a separate collapsible panel</p></li>
+<li><p>Removed internal boxes and toggles - each panel is the section itself</p></li>
+<li><p>Improved organization and navigation</p></li>
+</ul>
+</li>
+<li><p><strong>Panel Structure</strong>: New panel layout</p>
+<ul>
+<li><p><strong>Header Panel</strong>: General information (version, author, documentation button)</p></li>
+<li><p><strong>Project Panel</strong>: Project settings</p></li>
+<li><p><strong>Light Pivot Panel</strong>: Light pivot configuration</p></li>
+<li><p><strong>Camera Creation Panel</strong>: Camera preset creation</p></li>
+<li><p><strong>Cameras Panel</strong>: Camera management and lens settings</p></li>
+<li><p><strong>Animations Panel</strong>: Animation configuration</p></li>
+<li><p><strong>Output Panel</strong>: Output settings</p></li>
+<li><p><strong>Actions Panel</strong>: Render and test buttons</p></li>
+</ul>
+</li>
+<li><p><strong>Documentation Buttons</strong>: Improved documentation button placement</p>
+<ul>
+<li><p>Header panel: Large documentation button below author</p></li>
+<li><p>Other panels: Small documentation button in the panel header (top right)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id4">
+<h3>Removed<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>GitHub Repository Reference</strong>: Removed reference to private GitHub repository from header panel</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h2>[0.3.1] - 2024<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<section id="added">
+<h3>Added<a class="headerlink" href="#added" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Synchronized Resolution Settings</strong>: New resolution controls in Lens Settings</p>
+<ul>
+<li><p>Resolution X and Y fields synchronized across all cameras</p></li>
+<li><p>Applied to scene render settings automatically</p></li>
+</ul>
+</li>
+<li><p><strong>Shift Synchronization Toggle</strong>: New “Sync Shift” button in Lens Settings</p>
+<ul>
+<li><p>Allows toggling between synchronized and individual shift values</p></li>
+<li><p>When desynchronized, each camera can have its own shift values</p></li>
+</ul>
+</li>
+<li><p><strong>Individual Camera Shift</strong>: Per-camera shift controls</p>
+<ul>
+<li><p>Shift X and Y fields appear for each camera when shift is desynchronized</p></li>
+<li><p>Shift values displayed before Render Order in camera list</p></li>
+<li><p>Values automatically applied when changed</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id6">
+<h3>Changed<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Lens Settings UI</strong>: Improved lens settings section layout</p>
+<ul>
+<li><p>Lens Settings section is now always visible (no toggle)</p></li>
+<li><p>Removed Sensor Width and Sensor Fit options</p></li>
+<li><p>Added Camera Type (Perspective/Orthographic) option</p></li>
+<li><p>Layout matches Blender’s default camera lens panel</p></li>
+</ul>
+</li>
+<li><p><strong>Camera List Organization</strong>: Better camera list management</p>
+<ul>
+<li><p>All individual cameras grouped in a collapsible “Camera List” subsection</p></li>
+<li><p>Camera List can be hidden/shown with a toggle</p></li>
+<li><p>Lens Settings remain always accessible</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id7">
+<h3>Fixed<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Lens Settings Application</strong>: Fixed lens settings synchronization</p>
+<ul>
+<li><p>Settings now correctly applied when cameras are created via presets</p></li>
+<li><p>Settings correctly applied when cameras are detected</p></li>
+<li><p>Resolution applied before each render</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id8">
+<h2>[0.3.0] - 2024<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<section id="id9">
+<h3>Added<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Camera Preset System</strong>: New camera creation system with predefined presets</p>
+<ul>
+<li><p><strong>8 Preset Configurations Available</strong>:</p>
+<ul>
+<li><p>1 Camera - Front</p></li>
+<li><p>2 Cameras - Front, Back</p></li>
+<li><p>2 Cameras - Front, Right</p></li>
+<li><p>3 Cameras - Front, Left, Right</p></li>
+<li><p>3 Cameras - Front, Right, Back</p></li>
+<li><p>4 Cameras - Front, Right, Back, Left (Cardinal Directions)</p></li>
+<li><p>5 Cameras - Front, Front Right, Right, Back Right, Back</p></li>
+<li><p>8 Cameras - 360 Degrees (Evenly distributed)</p></li>
+</ul>
+</li>
+<li><p>Cameras are automatically positioned around the pivot object (or origin)</p></li>
+<li><p>Cameras automatically point toward the center with correct orientation</p></li>
+<li><p>Configurable distance from the pivot point</p></li>
+</ul>
+</li>
+<li><p><strong>Camera Creation Section</strong>: New dedicated section in the UI for camera presets</p>
+<ul>
+<li><p>Located before Light Pivot section for better workflow</p></li>
+<li><p>Dropdown to select preset type</p></li>
+<li><p>Distance slider to adjust camera distance</p></li>
+<li><p>“Create Cameras” button to apply the preset</p></li>
+</ul>
+</li>
+<li><p><strong>Automatic Camera Replacement</strong>: Smart camera management system</p>
+<ul>
+<li><p>Tracks cameras created by the plugin</p></li>
+<li><p>Automatically deletes previously created plugin cameras when applying a new preset</p></li>
+<li><p>Only affects cameras created by the plugin, preserving manually created cameras</p></li>
+<li><p>Prevents accumulation of unused cameras</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id10">
+<h3>Changed<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>UI Layout</strong>: Reordered sections for better workflow</p>
+<ul>
+<li><p>Light Pivot section moved before Camera Creation section</p></li>
+<li><p>Makes it clearer to configure lighting pivot before creating cameras</p></li>
+</ul>
+</li>
+<li><p><strong>Camera Rotation System</strong>: Improved camera rotation calculation</p>
+<ul>
+<li><p>Cameras now correctly point toward the pivot object/center</p></li>
+<li><p>Fixed roll (rotation around view axis) issues</p></li>
+<li><p>Cameras maintain correct orientation regardless of position (front, side, back)</p></li>
+<li><p>Uses matrix-based rotation calculation for reliable results</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id11">
+<h3>Fixed<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Camera Rotation Bugs</strong>: Fixed multiple camera orientation issues</p>
+<ul>
+<li><p>Fixed cameras pointing downward instead of toward center</p></li>
+<li><p>Fixed side cameras being rotated 90 degrees incorrectly</p></li>
+<li><p>Fixed back camera being upside down (180 degrees rotation)</p></li>
+<li><p>All cameras now maintain correct vertical orientation</p></li>
+</ul>
+</li>
+<li><p><strong>Undo/Crash Issues</strong>: Fixed crashes when undoing camera creation</p>
+<ul>
+<li><p>Added proper validation before accessing camera objects</p></li>
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">ReferenceError</span></code> when objects are removed by undo</p></li>
+<li><p>Improved error handling for camera deletion</p></li>
+</ul>
+</li>
+<li><p><strong>Collection Property Errors</strong>: Fixed <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> with <code class="docutils literal notranslate"><span class="pre">bpy.data.objects</span></code> and <code class="docutils literal notranslate"><span class="pre">bpy.data.cameras</span></code></p>
+<ul>
+<li><p>Replaced incorrect <code class="docutils literal notranslate"><span class="pre">in</span></code> operator usage with proper <code class="docutils literal notranslate"><span class="pre">get()</span></code> method</p></li>
+<li><p>Fixed all object existence checks throughout the code</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="technical-details">
+<h3>Technical Details<a class="headerlink" href="#technical-details" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>New PropertyGroup: <code class="docutils literal notranslate"><span class="pre">PluginCameraName</span></code> for tracking plugin-created cameras</p></li>
+<li><p>New CollectionProperty: <code class="docutils literal notranslate"><span class="pre">plugin_created_cameras</span></code> in <code class="docutils literal notranslate"><span class="pre">SpriteRenderSettings</span></code></p></li>
+<li><p>New Operator: <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_ApplyCameraPreset</span></code> for creating cameras from presets</p></li>
+<li><p>Camera preset data structure: <code class="docutils literal notranslate"><span class="pre">CAMERA_PRESETS</span></code> dictionary with 8 configurations</p></li>
+<li><p>Rotation calculation: Uses matrix-based approach with proper up vector handling</p></li>
+<li><p>Camera tracking: Automatic cleanup of plugin-created cameras when applying new presets</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id12">
+<h2>[0.2.8] - 2024<a class="headerlink" href="#id12" title="Link to this heading"></a></h2>
+<section id="id13">
+<h3>Changed<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>UI Layout</strong>: Reordered sections to improve user understanding</p>
+<ul>
+<li><p>Light Pivot section now appears above the Cameras section</p></li>
+<li><p>Makes it clearer that light pivot configuration affects camera rendering</p></li>
+<li><p>Improves workflow by configuring lighting before cameras</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id14">
+<h3>Added<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Section-specific documentation buttons</strong>: Added help buttons in each main section</p>
+<ul>
+<li><p>Each section (Project, Light Pivot, Cameras, Animations, Output) now has a documentation button</p></li>
+<li><p>Buttons open the corresponding documentation page in the default web browser</p></li>
+<li><p>Provides quick access to relevant guides without leaving Blender</p></li>
+<li><p>Documentation links:</p>
+<ul>
+<li><p><strong>Project</strong>: Opens main documentation page</p></li>
+<li><p><strong>Light Pivot</strong>: Opens Lighting documentation</p></li>
+<li><p><strong>Cameras</strong>: Opens Cameras documentation</p></li>
+<li><p><strong>Animations</strong>: Opens Animations documentation</p></li>
+<li><p><strong>Output</strong>: Opens Output documentation</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id15">
+<h3>Technical Details<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>New operators: <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_OpenDocumentationProject</span></code>, <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_OpenDocumentationLighting</span></code>, <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_OpenDocumentationCameras</span></code>, <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_OpenDocumentationAnimations</span></code>, <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_OpenDocumentationOutput</span></code></p></li>
+<li><p>Modified <code class="docutils literal notranslate"><span class="pre">draw_section_toggle()</span></code> function to accept optional documentation operator parameter</p></li>
+<li><p>All documentation links point to English version (<code class="docutils literal notranslate"><span class="pre">/en/</span></code>) of the documentation</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id16">
+<h2>[0.2.7] - 2024<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
+<section id="id17">
+<h3>Changed<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>Output UI</strong>: Moved the Output Path field above the Output Name template</p>
 <ul>
@@ -163,8 +492,8 @@
 </li>
 </ul>
 </section>
-<section id="added">
-<h3>Added<a class="headerlink" href="#added" title="Link to this heading"></a></h3>
+<section id="id18">
+<h3>Added<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>Light pivot debug log</strong>: Added log message when starting render with light pivot</p>
 <ul>
@@ -182,8 +511,8 @@
 </li>
 </ul>
 </section>
-<section id="fixed">
-<h3>Fixed<a class="headerlink" href="#fixed" title="Link to this heading"></a></h3>
+<section id="id19">
+<h3>Fixed<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>Enable Full Rotation (XYZ)</strong>: Fixed bug where full rotation mode was not working correctly</p>
 <ul>
@@ -196,10 +525,10 @@
 </section>
 </section>
 <hr class="docutils" />
-<section id="id2">
-<h2>[0.2.6] - 2024<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
-<section id="id3">
-<h3>Added<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<section id="id20">
+<h2>[0.2.6] - 2024<a class="headerlink" href="#id20" title="Link to this heading"></a></h2>
+<section id="id21">
+<h3>Added<a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>Documentation button</strong>: Added help button in the main panel to open documentation</p>
 <ul>
@@ -211,8 +540,8 @@
 </li>
 </ul>
 </section>
-<section id="id4">
-<h3>Changed<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id22">
+<h3>Changed<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>Localization</strong>: Translated all tooltips and descriptions from Portuguese to English</p>
 <ul>
@@ -232,8 +561,8 @@
 </section>
 </section>
 <hr class="docutils" />
-<section id="id5">
-<h2>[0.2.5] - 2024<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<section id="id23">
+<h2>[0.2.5] - 2024<a class="headerlink" href="#id23" title="Link to this heading"></a></h2>
 <p><strong>Highlights:</strong></p>
 <ul class="simple">
 <li><p>Added <strong>ESC key cancellation</strong>: Ability to cancel rendering by pressing ESC key</p>
@@ -254,10 +583,10 @@
 </ul>
 </section>
 <hr class="docutils" />
-<section id="id6">
-<h2>[0.2.4] - 2024<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
-<section id="removed">
-<h3>Removed<a class="headerlink" href="#removed" title="Link to this heading"></a></h3>
+<section id="id24">
+<h2>[0.2.4] - 2024<a class="headerlink" href="#id24" title="Link to this heading"></a></h2>
+<section id="id25">
+<h3>Removed<a class="headerlink" href="#id25" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>Debug system</strong>: Removed all debug-related features and UI elements</p>
 <ul>
@@ -271,8 +600,8 @@
 </li>
 </ul>
 </section>
-<section id="id7">
-<h3>Changed<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<section id="id26">
+<h3>Changed<a class="headerlink" href="#id26" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">apply_light_rotation()</span></code> method signature simplified: removed <code class="docutils literal notranslate"><span class="pre">debug</span></code> parameter</p>
 <ul>
@@ -282,8 +611,8 @@
 </li>
 </ul>
 </section>
-<section id="technical-details">
-<h3>Technical Details<a class="headerlink" href="#technical-details" title="Link to this heading"></a></h3>
+<section id="id27">
+<h3>Technical Details<a class="headerlink" href="#id27" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Cleaned up code by removing debug-related conditionals and print statements</p></li>
 <li><p>Improved code maintainability by removing unused debug infrastructure</p></li>
@@ -291,8 +620,8 @@
 </section>
 </section>
 <hr class="docutils" />
-<section id="id8">
-<h2>[0.2.3] - 2024<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<section id="id28">
+<h2>[0.2.3] - 2024<a class="headerlink" href="#id28" title="Link to this heading"></a></h2>
 <p><strong>Highlights:</strong></p>
 <ul class="simple">
 <li><p>Added <strong>Output path validation</strong>: The add-on now validates if the output path is configured and exists before rendering</p>
@@ -315,8 +644,8 @@
 </ul>
 </section>
 <hr class="docutils" />
-<section id="id9">
-<h2>[0.2.2] - 2024<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<section id="id29">
+<h2>[0.2.2] - 2024<a class="headerlink" href="#id29" title="Link to this heading"></a></h2>
 <p><strong>Highlights:</strong></p>
 <ul class="simple">
 <li><p>Added <strong>Enable Light Pivot Toggle</strong>: New <code class="docutils literal notranslate"><span class="pre">enable_light_pivot</span></code> boolean property to control the light pivot feature</p>
@@ -335,8 +664,8 @@
 </ul>
 </section>
 <hr class="docutils" />
-<section id="id10">
-<h2>[0.2.1] - 2024<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<section id="id30">
+<h2>[0.2.1] - 2024<a class="headerlink" href="#id30" title="Link to this heading"></a></h2>
 <p><strong>Highlights:</strong></p>
 <ul class="simple">
 <li><p>Improved multi‑camera workflow with <code class="docutils literal notranslate"><span class="pre">render_order</span></code> per camera.</p></li>

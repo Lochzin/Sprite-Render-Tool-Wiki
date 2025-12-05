@@ -61,21 +61,21 @@ The addon interface is organized into separate collapsible panels:
   - For more information about camera presets, see [Cameras](Cameras.md).
 
 - **🎥 Cameras Panel**
-  - `Camera Count`: number of cameras in the internal list.
-  - `Custom Output Names`: use names different from the camera object names for file output.
-  - `Enable Full Rotation (XYZ)`: controls whether the pivot rotates in XYZ or only around Z.
   - **📐 Lens Settings** (always visible):
     - `Type`: Camera projection type (Perspective/Orthographic)
-    - `Focal Length`: lens focal length in millimeters
-    - `Sync Shift`: toggle to synchronize shift values across all cameras
+    - `Focal Length / Orthographic Scale`: lens property (label changes based on camera type)
+    - `Sync Shift X` / `Sync Shift Y`: independent toggles for horizontal and vertical shift synchronization
     - `Shift X` / `Shift Y`: camera shift values (synchronized or individual per camera)
     - `Resolution X` / `Resolution Y`: resolution synchronized across all cameras
     - `Clip Start` / `Clip End`: clipping distances
+  - `Camera Count`: number of cameras in the internal list.
+  - `Custom Output Names`: use names different from the camera object names for file output.
+  - `Enable Full Rotation (XYZ)`: controls whether the pivot rotates in XYZ or only around Z.
   - **📋 Camera List** (collapsible):
     - For each camera (`Camera 1`, `Camera 2`, ...):
       - `Name`: name of the camera object in the scene.
       - `Output Name`: name used in file names (if `Custom Output Names` is enabled).
-      - `Shift X` / `Shift Y`: individual shift values (visible when `Sync Shift` is disabled)
+      - `Shift X` / `Shift Y`: individual shift values (visible when `Sync Shift X` or `Sync Shift Y` is disabled, respectively)
       - `Render Order`: order in which this camera will be rendered.
       - `Light Rotation`: light/pivot rotation (Z only or XYZ).
   - **Detect Cameras** button (`sprite_render.autofill_light_rotation`):

@@ -72,6 +72,8 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Sprite Render Tool — Official Wiki</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Cameras</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#camera-creation-presets">Camera Creation Presets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lens-settings">Lens Settings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#camera-list">Camera List</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#detecting-cameras-automatically">Detecting Cameras Automatically</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#automatic-detection-limitations">Automatic Detection Limitations</a></li>
@@ -132,6 +134,70 @@
 <h1>Cameras<a class="headerlink" href="#cameras" title="Link to this heading"></a></h1>
 <p>This page explains how to configure cameras inside the <strong>Sprite Render Tool</strong>. For information about lighting and the Light Pivot system, see <a class="reference internal" href="Lighting.html"><span class="std std-doc">Lighting</span></a>.</p>
 <hr class="docutils" />
+<section id="camera-creation-presets">
+<h2>Camera Creation Presets<a class="headerlink" href="#camera-creation-presets" title="Link to this heading"></a></h2>
+<p>The <strong>Camera Creation</strong> panel provides a quick way to set up cameras using predefined presets:</p>
+<ul class="simple">
+<li><p><strong>8 Preset Configurations Available</strong>:</p>
+<ul>
+<li><p>1 Camera - Front</p></li>
+<li><p>2 Cameras - Front, Back</p></li>
+<li><p>2 Cameras - Front, Right</p></li>
+<li><p>3 Cameras - Front, Left, Right</p></li>
+<li><p>3 Cameras - Front, Right, Back</p></li>
+<li><p>4 Cameras - Front, Right, Back, Left (Cardinal Directions)</p></li>
+<li><p>5 Cameras - Front, Front Right, Right, Back Right, Back</p></li>
+<li><p>8 Cameras - 360 Degrees (Evenly distributed)</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>How it works:</strong></p>
+<ul class="simple">
+<li><p>Select a preset from the dropdown</p></li>
+<li><p>Adjust the <code class="docutils literal notranslate"><span class="pre">Distance</span></code> slider to set how far cameras are placed from the pivot point (or origin if no pivot is set)</p></li>
+<li><p>Click <strong>Create Cameras</strong> to generate cameras based on the preset</p></li>
+<li><p>Cameras are automatically positioned around the light pivot object (or scene origin) and oriented to point toward the center</p></li>
+<li><p>The addon automatically tracks and replaces cameras created by previous presets, preserving manually created cameras</p></li>
+</ul>
+<p><strong>Benefits:</strong></p>
+<ul class="simple">
+<li><p>Quickly set up common camera arrangements without manual positioning</p></li>
+<li><p>Consistent camera angles and orientations</p></li>
+<li><p>Automatic light rotation calculation based on camera positions</p></li>
+<li><p>Clean workflow: configure lighting pivot first, then create cameras</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="lens-settings">
+<h2>Lens Settings<a class="headerlink" href="#lens-settings" title="Link to this heading"></a></h2>
+<p>The <strong>Lens Settings</strong> section in the <strong>Cameras</strong> panel provides synchronized controls for camera properties:</p>
+<ul class="simple">
+<li><p><strong>Camera Type</strong>: Perspective or Orthographic projection</p></li>
+<li><p><strong>Focal Length / Orthographic Scale</strong>: The label changes dynamically based on camera type</p>
+<ul>
+<li><p>Shows “Focal Length” (in millimeters) when camera type is Perspective</p></li>
+<li><p>Shows “Orthographic Scale” when camera type is Orthographic</p></li>
+<li><p>The correct property is synchronized across all cameras</p></li>
+</ul>
+</li>
+<li><p><strong>Resolution X / Y</strong>: Render resolution synchronized across all cameras and applied to scene render settings</p></li>
+<li><p><strong>Shift X / Y</strong>: Camera shift values</p>
+<ul>
+<li><p><strong>Sync Shift X</strong> and <strong>Sync Shift Y</strong>: Independent toggles for horizontal and vertical shift synchronization</p></li>
+<li><p>When sync is enabled for an axis: all cameras share the same shift value for that axis</p></li>
+<li><p>When sync is disabled for an axis: each camera can have individual shift values for that axis (shown in the Camera List)</p></li>
+</ul>
+</li>
+<li><p><strong>Clip Start / End</strong>: Near and far clipping distances</p></li>
+</ul>
+<p>All lens settings are automatically applied to cameras when:</p>
+<ul class="simple">
+<li><p>Cameras are created via presets</p></li>
+<li><p>Cameras are detected using the <strong>Detect Cameras</strong> button</p></li>
+<li><p>Settings are changed in the Lens Settings section</p></li>
+</ul>
+</section>
+<hr class="docutils" />
 <section id="camera-list">
 <h2>Camera List<a class="headerlink" href="#camera-list" title="Link to this heading"></a></h2>
 <p>The camera system is backed by the <code class="docutils literal notranslate"><span class="pre">CameraItem</span></code> property group:</p>
@@ -141,17 +207,25 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">light_rotation</span></code>: Euler rotation (XYZ) used to rotate the <strong>light pivot</strong>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">render_order</span></code>: the order in which each camera will be rendered.</p></li>
 </ul>
-<p>In the <strong>Cameras</strong> section of the main panel you will see:</p>
+<p>In the <strong>Cameras</strong> panel you will see (in this order):</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">Count</span></code>: how many cameras should exist in the list.</p></li>
+<li><p><strong>Lens Settings</strong> section (always visible): synchronized camera properties</p></li>
+<li><p><strong>Camera Count</strong>: how many cameras should exist in the list (always visible, positioned after Lens Settings)</p></li>
+<li><p><strong>Custom Output Names</strong>: toggle to use custom output names instead of camera object names (always visible, positioned after Lens Settings)</p></li>
+<li><p><strong>Enable Full Rotation (XYZ)</strong>: toggle to enable full XYZ rotation for light pivot (always visible, positioned after Lens Settings)</p></li>
+<li><p><strong>Camera List</strong> section (collapsible): individual camera settings</p>
+<ul>
 <li><p>Per‑camera subpanels (<code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">2</span></code>, …):</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">Name</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">Name</span></code> (only visible when <strong>Custom Output Names</strong> is enabled)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">X</span></code> / <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">Y</span></code> (only visible when <strong>Sync Shift X</strong> or <strong>Sync Shift Y</strong> is disabled in Lens Settings, respectively)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Render</span> <span class="pre">Order</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Rotation</span></code>:</p>
 <ul>
 <li><p>either a single Z value, or a full XYZ rotation, depending on <strong>Enable Full Rotation (XYZ)</strong>.</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -178,6 +252,7 @@ are considered.</p></li>
 <li><p>Sets <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">output_name</span></code> to the Blender camera name.</p></li>
 <li><p>Computes an automatic Z rotation for <code class="docutils literal notranslate"><span class="pre">light_rotation</span></code> based on the relative position between the camera and the <strong>light pivot</strong> (if configured).</p></li>
 <li><p>Assigns <code class="docutils literal notranslate"><span class="pre">render_order</span></code> sequentially (0, 1, 2, …).</p></li>
+<li><p>Applies lens settings (focal length, shift, resolution, etc.) from the Lens Settings section.</p></li>
 </ul>
 <blockquote>
 <div><p><strong>Important</strong>: The <strong>Light Pivot</strong> object must be set in the <strong>Light Pivot</strong> section if you want automatic light rotation calculation; otherwise the operator will cancel with an error.</p>
@@ -246,9 +321,10 @@ are considered.</p></li>
 <ul class="simple">
 <li><p>Walk through all configured cameras.</p></li>
 <li><p>Confirm that framing and lighting are consistent before starting a full render batch.</p></li>
+<li><p><strong>Visualize light rotation</strong>: Set viewport shading to <strong>Rendered</strong> mode to see the light pivot rotate in real-time as you cycle through cameras. This works for both Z-only and full XYZ rotation modes.</p></li>
 </ul>
 <blockquote>
-<div><p><strong>Tip</strong>: For detailed information about lighting and the Light Pivot system, see <a class="reference internal" href="Lighting.html"><span class="std std-doc">Lighting</span></a>.</p>
+<div><p><strong>Tip</strong>: For detailed information about lighting, the Light Pivot system, and how to visualize light rotation, see <a class="reference internal" href="Lighting.html"><span class="std std-doc">Lighting</span></a>.</p>
 </div></blockquote>
 </section>
 </section>

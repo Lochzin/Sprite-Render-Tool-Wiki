@@ -34,33 +34,54 @@ Funciona com Blender **5.0.0+**.
 
 ## Painel Principal (UI)
 
-O painel principal organiza o fluxo de trabalho em seções:
+A interface do addon está organizada em painéis separados e colapsáveis:
 
-```python
-Detalhe técnico: Implementado pela classe SPRITE_RENDER_PT_MainPanel
-```
+- **📋 Painel Header**
+  - Informações de versão
+  - Informações do autor
+  - Botão grande **📖 Open Documentation**
 
-- **🔖 Projeto**
+- **🔖 Painel Project**
   - `Project Name`
   - `Object Name`
+  - Botão pequeno de documentação no cabeçalho do painel
 
-- **🎥 Câmeras**
+- **💡 Painel Light Pivot**
+  - `Enable Light Pivot`: toggle para habilitar/desabilitar rotação do pivô de luz
+  - `Light Pivot Object`: objeto usado como pivô de luz para rotação da luz (visível quando habilitado)
+  - **💡 Dica**: Você pode colocar luzes como filhos do light pivot (elas rotacionarão com as câmeras) e adicionar luzes fixas fora do light pivot para iluminar áreas escuras do personagem.
+  - Botão pequeno de documentação no cabeçalho do painel
+  - Para informações detalhadas sobre configuração de iluminação e estratégias, veja [Iluminação](Lighting.md).
+
+- **📷 Painel Camera Creation**
+  - `Preset`: dropdown para selecionar configuração de preset de câmera (1, 2, 3, 4, 5 ou 8 câmeras)
+  - `Distance`: slider para ajustar distância da câmera do ponto pivô
+  - Botão **Create Cameras**: cria câmeras baseadas no preset selecionado
+  - Botão pequeno de documentação no cabeçalho do painel
+  - Para mais informações sobre presets de câmera, veja [Câmeras](Cameras.md).
+
+- **🎥 Painel Cameras**
+  - **📐 Lens Settings** (sempre visível):
+    - `Type`: Tipo de projeção da câmera (Perspective/Orthographic)
+    - `Focal Length / Orthographic Scale`: propriedade da lente (rótulo muda com base no tipo de câmera)
+    - `Sync Shift X` / `Sync Shift Y`: toggles independentes para sincronização de shift horizontal e vertical
+    - `Shift X` / `Shift Y`: valores de shift da câmera (sincronizados ou individuais por câmera)
+    - `Resolution X` / `Resolution Y`: resolução sincronizada em todas as câmeras
+    - `Clip Start` / `Clip End`: distâncias de clipping
   - `Camera Count`: número de câmeras na lista interna.
   - `Custom Output Names`: usa nomes diferentes dos nomes dos objetos de câmera para saída de arquivos.
   - `Enable Full Rotation (XYZ)`: controla se o pivô rotaciona em XYZ ou apenas ao redor de Z.
-  - Para cada câmera (`Camera 1`, `Camera 2`, ...):
-    - `Name`: nome do objeto de câmera na cena.
-    - `Output Name`: nome usado nos nomes de arquivos (se `Custom Output Names` estiver habilitado).
-    - `Render Order`: ordem em que esta câmera será renderizada.
-    - `Light Rotation`: rotação da luz/pivô (apenas Z ou XYZ).
+  - **📋 Camera List** (colapsável):
+    - Para cada câmera (`Camera 1`, `Camera 2`, ...):
+      - `Name`: nome do objeto de câmera na cena.
+      - `Output Name`: nome usado nos nomes de arquivos (se `Custom Output Names` estiver habilitado).
+      - `Shift X` / `Shift Y`: valores de shift individuais (visível quando `Sync Shift X` ou `Sync Shift Y` está desabilitado, respectivamente)
+      - `Render Order`: ordem em que esta câmera será renderizada.
+      - `Light Rotation`: rotação da luz/pivô (apenas Z ou XYZ).
   - Botão **Detect Cameras** (`sprite_render.autofill_light_rotation`):
     - Detecta câmeras visíveis na View Layer atual.
     - Preenche a lista com nomes, contagem e rotação Z baseada no objeto pivô.
-
-- **💡 Light Pivot**
-  - `Light Pivot Object`: objeto usado como light pivot para rotação da luz.
-  - **💡 Dica**: Você pode colocar luzes como filhos do light pivot (elas rotacionarão com as câmeras) e adicionar luzes fixas fora do light pivot para iluminar áreas escuras do personagem.
-  - Para informações detalhadas sobre configuração de iluminação e estratégias, veja [Iluminação](Lighting.md).
+  - Botão pequeno de documentação no cabeçalho do painel
 
 - **🎞️ Animações**
   - `Target Armature`: a armadura a ser animada.
@@ -99,7 +120,9 @@ Detalhe técnico: Implementado por SPRITE_RENDER_UL_NLAStrips
     - Controles de frame (primeiro, anterior, próximo, último).
     - Configuração `Custom FPS` + botão `Apply`.
 
-- **💾 Output**
+- **💾 Painel Output**
+  - `Output Path` (das configurações de renderização da cena do Blender): pasta base onde tudo será criado.
+  - Botão **📂 Open Output Folder**: abre a pasta de saída no explorador de arquivos do sistema.
   - `Output Name` (`output_template`):
     - Template padrão:  
       `$projectName_$objectName_$animation_$camera_$frame`
@@ -109,22 +132,17 @@ Detalhe técnico: Implementado por SPRITE_RENDER_UL_NLAStrips
     - `$animation`: nome da Action ou NLA Strip.
     - `$camera`: nome da câmera ou `output_name`.
     - `$frame`: número do frame formatado como `0001`, `0002`, etc.
-  - **Use Folders:**
+  - **Create Folders:**
     - `Project Folder`, `Object Folder`, `Animation Folder`, `Camera Folder`  
     - Constrói uma hierarquia de pastas baseada nesses níveis.
-  - `Output Path` (das configurações de renderização da cena do Blender): pasta base onde tudo será criado.
-  - Botão **📂 Open Output Folder**: abre a pasta de saída no explorador de arquivos do sistema.
+  - Botão pequeno de documentação no cabeçalho do painel
 
-- **🐛 Debug**
-  - `Light Rotation Debug`: imprime informações de debug sobre a rotação do pivô no console.
+- **📊 Render Progress** (exibido no Painel Header durante a renderização)
+  - `[atual/total]`, porcentagem, barra de progresso e mensagem de status.
+  - Botão **❌ Cancel Render**.
+  - **Tecla ESC**: pressione ESC para cancelar a renderização a qualquer momento durante o processo.
 
-- **📊 Render Progress**
-  - Mostrado durante a renderização:
-    - `[atual/total]`, porcentagem, barra de progresso e mensagem de status.
-    - Botão **❌ Cancel Render**.
-    - **Tecla ESC**: pressione ESC para cancelar a renderização a qualquer momento durante o processo.
-
-- **⚙️ Actions (Footer)**
+- **⚙️ Painel Actions**
   - `🚀 Render All` (`sprite_render.render_all`):
     - Inicia a renderização de todas as animações e câmeras (versão assíncrona usando um timer).
   - `🎯 Test Cameras` (`sprite_render.test_cameras`):
@@ -144,9 +162,11 @@ Este guia inicial apresenta o fluxo de trabalho básico para começar a usar o S
 
 - **2. Configure o painel Sprite Render**
   - Em **Project**: defina `Project Name` e `Object Name`.
+  - Em **Light Pivot**: habilite `Enable Light Pivot` e defina o `Light Pivot Object`.
+  - Em **Camera Creation** (opcional): use presets para criar câmeras rapidamente, ou pule para adicionar câmeras manualmente.
   - Em **Cameras**:
-    - Defina o objeto **Light Pivot** na seção **Light Pivot**.
-    - Clique em **Detect Cameras** para preencher a lista automaticamente.
+    - Configure **Lens Settings** (resolução, distância focal, shift, etc.)
+    - Clique em **Detect Cameras** para preencher a lista automaticamente, ou adicione câmeras manualmente.
     - Ajuste `Render Order`, `Output Name` e `Light Rotation` conforme necessário.
 
 - **3. Escolha o modo de animação**

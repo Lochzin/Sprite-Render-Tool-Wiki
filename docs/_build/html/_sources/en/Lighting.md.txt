@@ -72,21 +72,27 @@ When using the **Detect Cameras** button, the add-on automatically calculates a 
 
 For renders that need to be done at **different angles** (from above, diagonally, or in multiple planes), you will need to **manually adjust** the pivot rotation angle (`Light Rotation`) for each camera after using Detect Cameras.
 
-> **Note**: A visual debug tool was attempted but could not be implemented due to Blender API limitations. It may be revisited in the future if there is significant user demand.
-
 ---
 
-## Light Rotation Debug
+## Visualizing Light Rotation
 
-When **Light Rotation Debug** is enabled in the **Debug** section:
-- The operator logs detailed information about how the light pivot rotation is applied:
-  - Light pivot object name.
-  - Camera name.
-  - Requested rotation values.
-  - Original vs. new rotation (in degrees).
-  - Any errors that occur when trying to apply the rotation.
+You can visually see the light pivot rotation in real-time using the **Test Cameras** button:
 
-This is useful for troubleshooting lighting issues and verifying that the correct rotation values are being applied.
+**How to use:**
+1. Set up your lights and light pivot object
+2. Set the 3D Viewport shading to **Rendered** mode (press `Z` and select "Rendered" or use the viewport shading dropdown)
+3. Click the **Test Cameras** button to cycle through cameras
+4. As you switch between cameras, you will see the light pivot rotate in real-time in the viewport
+
+**What you'll see:**
+- In **Z-only rotation mode**: The pivot rotates around the Z axis as you switch cameras
+- In **Full XYZ rotation mode**: The pivot rotates in all three axes according to each camera's `light_rotation` values
+- Lights that are children of the pivot will rotate along with it, showing you exactly how the lighting will look from each camera angle
+
+This visual feedback makes it easy to:
+- Verify that rotation values are correct for each camera
+- Adjust `Light Rotation` values while seeing the results immediately
+- Fine-tune lighting for cameras at different angles (not just horizontal)
 
 ---
 
@@ -133,12 +139,11 @@ This is especially useful for:
 
 4. **Adjust manually**: For cameras at non-horizontal angles, manually adjust the `Light Rotation` values after using Detect Cameras.
 
-5. **Use debug mode**: Enable Light Rotation Debug to verify that rotation values are being applied correctly.
+5. **Visualize rotation**: Set viewport shading to **Rendered** mode and use the **Test Cameras** button to see the light pivot rotation in real-time as you cycle through cameras.
 
 ---
 
 ## Related Topics
 
 - See [Cameras](Cameras.md) for information about camera setup and how light rotation is configured per camera.
-- See [Debug](Debug.md) for information about the Light Rotation Debug feature.
 

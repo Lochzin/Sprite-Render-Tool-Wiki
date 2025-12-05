@@ -84,6 +84,8 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Sprite Render Tool — Wiki Oficial</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Câmeras</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#presets-de-criacao-de-cameras">Presets de Criação de Câmeras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracoes-de-lente">Configurações de Lente</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#lista-de-cameras">Lista de Câmeras</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#detectando-cameras-automaticamente">Detectando Câmeras Automaticamente</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#limitacoes-da-deteccao-automatica">Limitações da Detecção Automática</a></li>
@@ -132,6 +134,70 @@
 <h1>Câmeras<a class="headerlink" href="#cameras" title="Link to this heading"></a></h1>
 <p>Esta página explica como configurar câmeras dentro do <strong>Sprite Render Tool</strong>. Para informações sobre iluminação e o sistema Light Pivot, veja <a class="reference internal" href="Lighting.html"><span class="std std-doc">Iluminação</span></a>.</p>
 <hr class="docutils" />
+<section id="presets-de-criacao-de-cameras">
+<h2>Presets de Criação de Câmeras<a class="headerlink" href="#presets-de-criacao-de-cameras" title="Link to this heading"></a></h2>
+<p>O painel <strong>Camera Creation</strong> fornece uma forma rápida de configurar câmeras usando presets predefinidos:</p>
+<ul class="simple">
+<li><p><strong>8 Configurações de Preset Disponíveis</strong>:</p>
+<ul>
+<li><p>1 Câmera - Front</p></li>
+<li><p>2 Câmeras - Front, Back</p></li>
+<li><p>2 Câmeras - Front, Right</p></li>
+<li><p>3 Câmeras - Front, Left, Right</p></li>
+<li><p>3 Câmeras - Front, Right, Back</p></li>
+<li><p>4 Câmeras - Front, Right, Back, Left (Direções Cardeais)</p></li>
+<li><p>5 Câmeras - Front, Front Right, Right, Back Right, Back</p></li>
+<li><p>8 Câmeras - 360 Graus (Distribuídas uniformemente)</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Como funciona:</strong></p>
+<ul class="simple">
+<li><p>Selecione um preset do dropdown</p></li>
+<li><p>Ajuste o slider <code class="docutils literal notranslate"><span class="pre">Distance</span></code> para definir a distância das câmeras do ponto pivô (ou origem se nenhum pivô estiver definido)</p></li>
+<li><p>Clique em <strong>Create Cameras</strong> para gerar câmeras baseadas no preset</p></li>
+<li><p>As câmeras são automaticamente posicionadas ao redor do objeto pivô de luz (ou origem da cena) e orientadas para apontar para o centro</p></li>
+<li><p>O addon automaticamente rastreia e substitui câmeras criadas por presets anteriores, preservando câmeras criadas manualmente</p></li>
+</ul>
+<p><strong>Benefícios:</strong></p>
+<ul class="simple">
+<li><p>Configure rapidamente arranjos comuns de câmeras sem posicionamento manual</p></li>
+<li><p>Ângulos e orientações consistentes de câmeras</p></li>
+<li><p>Cálculo automático de rotação de luz baseado nas posições das câmeras</p></li>
+<li><p>Fluxo de trabalho limpo: configure o pivô de iluminação primeiro, depois crie as câmeras</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="configuracoes-de-lente">
+<h2>Configurações de Lente<a class="headerlink" href="#configuracoes-de-lente" title="Link to this heading"></a></h2>
+<p>A seção <strong>Lens Settings</strong> no painel <strong>Cameras</strong> fornece controles sincronizados para propriedades da câmera:</p>
+<ul class="simple">
+<li><p><strong>Camera Type</strong>: Projeção Perspective ou Orthographic</p></li>
+<li><p><strong>Focal Length / Orthographic Scale</strong>: O rótulo muda dinamicamente com base no tipo de câmera</p>
+<ul>
+<li><p>Mostra “Focal Length” (em milímetros) quando o tipo de câmera é Perspective</p></li>
+<li><p>Mostra “Orthographic Scale” quando o tipo de câmera é Orthographic</p></li>
+<li><p>A propriedade correta é sincronizada em todas as câmeras</p></li>
+</ul>
+</li>
+<li><p><strong>Resolution X / Y</strong>: Resolução de renderização sincronizada em todas as câmeras e aplicada às configurações de renderização da cena</p></li>
+<li><p><strong>Shift X / Y</strong>: Valores de shift da câmera</p>
+<ul>
+<li><p><strong>Sync Shift X</strong> e <strong>Sync Shift Y</strong>: Toggles independentes para sincronização de shift horizontal e vertical</p></li>
+<li><p>Quando a sincronização está habilitada para um eixo: todas as câmeras compartilham o mesmo valor de shift para esse eixo</p></li>
+<li><p>Quando a sincronização está desabilitada para um eixo: cada câmera pode ter valores de shift individuais para esse eixo (exibidos na Camera List)</p></li>
+</ul>
+</li>
+<li><p><strong>Clip Start / End</strong>: Distâncias de clipping próximo e distante</p></li>
+</ul>
+<p>Todas as configurações de lente são automaticamente aplicadas às câmeras quando:</p>
+<ul class="simple">
+<li><p>Câmeras são criadas via presets</p></li>
+<li><p>Câmeras são detectadas usando o botão <strong>Detect Cameras</strong></p></li>
+<li><p>Configurações são alteradas na seção Lens Settings</p></li>
+</ul>
+</section>
+<hr class="docutils" />
 <section id="lista-de-cameras">
 <h2>Lista de Câmeras<a class="headerlink" href="#lista-de-cameras" title="Link to this heading"></a></h2>
 <p>O sistema de câmeras é suportado pelo grupo de propriedades <code class="docutils literal notranslate"><span class="pre">CameraItem</span></code>:</p>
@@ -141,17 +207,25 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">light_rotation</span></code>: rotação Euler (XYZ) usada para rotacionar o <strong>light pivot</strong>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">render_order</span></code>: a ordem em que cada câmera será renderizada.</p></li>
 </ul>
-<p>Na seção <strong>Cameras</strong> do painel principal você verá:</p>
+<p>No painel <strong>Cameras</strong> você verá (nesta ordem):</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">Count</span></code>: quantas câmeras devem existir na lista.</p></li>
+<li><p>Seção <strong>Lens Settings</strong> (sempre visível): propriedades de câmera sincronizadas</p></li>
+<li><p><strong>Camera Count</strong>: quantas câmeras devem existir na lista (sempre visível, posicionado após Lens Settings)</p></li>
+<li><p><strong>Custom Output Names</strong>: toggle para usar nomes de saída personalizados em vez de nomes de objetos de câmera (sempre visível, posicionado após Lens Settings)</p></li>
+<li><p><strong>Enable Full Rotation (XYZ)</strong>: toggle para habilitar rotação XYZ completa para o light pivot (sempre visível, posicionado após Lens Settings)</p></li>
+<li><p>Seção <strong>Camera List</strong> (colapsável): configurações individuais de câmera</p>
+<ul>
 <li><p>Subpainéis por câmera (<code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">2</span></code>, …):</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">Name</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">Name</span></code> (visível apenas quando <strong>Custom Output Names</strong> está habilitado)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">X</span></code> / <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">Y</span></code> (visível apenas quando <strong>Sync Shift X</strong> ou <strong>Sync Shift Y</strong> está desabilitado em Lens Settings, respectivamente)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Render</span> <span class="pre">Order</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Rotation</span></code>:</p>
 <ul>
 <li><p>ou um único valor Z, ou uma rotação XYZ completa, dependendo de <strong>Enable Full Rotation (XYZ)</strong>.</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -178,6 +252,7 @@ são consideradas.</p></li>
 <li><p>Define <code class="docutils literal notranslate"><span class="pre">name</span></code> e <code class="docutils literal notranslate"><span class="pre">output_name</span></code> para o nome da câmera do Blender.</p></li>
 <li><p>Calcula uma rotação Z automática para <code class="docutils literal notranslate"><span class="pre">light_rotation</span></code> baseada na posição relativa entre a câmera e o <strong>light pivot</strong> (se configurado).</p></li>
 <li><p>Atribui <code class="docutils literal notranslate"><span class="pre">render_order</span></code> sequencialmente (0, 1, 2, …).</p></li>
+<li><p>Aplica configurações de lente (distância focal, shift, resolução, etc.) da seção Lens Settings.</p></li>
 </ul>
 <blockquote>
 <div><p><strong>Importante</strong>: O objeto <strong>Light Pivot</strong> deve ser definido na seção <strong>Light Pivot</strong> se você quiser o cálculo automático de rotação de luz; caso contrário, o operador cancelará com um erro.</p>
@@ -246,9 +321,10 @@ são consideradas.</p></li>
 <ul class="simple">
 <li><p>Percorrer todas as câmeras configuradas.</p></li>
 <li><p>Confirmar que o enquadramento e a iluminação são consistentes antes de iniciar um lote completo de renderização.</p></li>
+<li><p><strong>Visualizar rotação de luz</strong>: Defina o shading do viewport para o modo <strong>Rendered</strong> para ver o pivô de luz rotacionar em tempo real ao percorrer as câmeras. Isso funciona tanto para o modo de rotação apenas Z quanto para o modo de rotação completa XYZ.</p></li>
 </ul>
 <blockquote>
-<div><p><strong>Dica</strong>: Para informações detalhadas sobre iluminação e o sistema Light Pivot, veja <a class="reference internal" href="Lighting.html"><span class="std std-doc">Iluminação</span></a>.</p>
+<div><p><strong>Dica</strong>: Para informações detalhadas sobre iluminação, o sistema Light Pivot e como visualizar a rotação de luz, veja <a class="reference internal" href="Lighting.html"><span class="std std-doc">Iluminação</span></a>.</p>
 </div></blockquote>
 </section>
 </section>

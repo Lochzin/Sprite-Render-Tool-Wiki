@@ -98,7 +98,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#debug-de-rotacao-de-luz">Debug de Rotação de Luz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualizando-a-rotacao-de-luz">Visualizando a Rotação de Luz</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#estrategia-avancada-de-iluminacao">💡 Estratégia Avançada de Iluminação</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#luzes-dentro-do-pivo">Luzes Dentro do Pivô</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#luzes-fora-do-pivo">Luzes Fora do Pivô</a></li>
@@ -212,28 +212,32 @@
 <h4>Limitações da Detecção Automática<a class="headerlink" href="#limitacoes-da-deteccao-automatica" title="Link to this heading"></a></h4>
 <p>O <strong>Detect Cameras</strong> tenta encontrar a rotação ideal do pivô de luz para cada ângulo de câmera, mas isso <strong>só funciona corretamente para ângulos horizontais</strong> (como em jogos boomer shooter em primeira pessoa, onde as câmeras estão todas no mesmo plano horizontal ao redor do personagem).</p>
 <p>Para renderizações que precisam ser feitas em <strong>ângulos diferentes</strong> (de cima, diagonalmente, ou em múltiplos planos), você precisará <strong>ajustar manualmente</strong> o ângulo de rotação do pivô (<code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Rotation</span></code>) para cada câmera após usar o Detect Cameras.</p>
-<blockquote>
-<div><p><strong>Nota</strong>: Uma ferramenta de debug visual foi tentada, mas não pôde ser implementada devido a limitações da API do Blender. Pode ser revisitada no futuro caso haja muita demanda dos usuários.</p>
-</div></blockquote>
 </section>
 </section>
 </section>
 <hr class="docutils" />
-<section id="debug-de-rotacao-de-luz">
-<h2>Debug de Rotação de Luz<a class="headerlink" href="#debug-de-rotacao-de-luz" title="Link to this heading"></a></h2>
-<p>Quando <strong>Light Rotation Debug</strong> está habilitado na seção <strong>Debug</strong>:</p>
+<section id="visualizando-a-rotacao-de-luz">
+<h2>Visualizando a Rotação de Luz<a class="headerlink" href="#visualizando-a-rotacao-de-luz" title="Link to this heading"></a></h2>
+<p>Você pode ver visualmente a rotação do pivô de luz em tempo real usando o botão <strong>Test Cameras</strong>:</p>
+<p><strong>Como usar:</strong></p>
+<ol class="arabic simple">
+<li><p>Configure suas luzes e o objeto light pivot</p></li>
+<li><p>Defina o shading do 3D Viewport para o modo <strong>Rendered</strong> (pressione <code class="docutils literal notranslate"><span class="pre">Z</span></code> e selecione “Rendered” ou use o dropdown de shading do viewport)</p></li>
+<li><p>Clique no botão <strong>Test Cameras</strong> para percorrer as câmeras</p></li>
+<li><p>Ao alternar entre câmeras, você verá o pivô de luz rotacionar em tempo real no viewport</p></li>
+</ol>
+<p><strong>O que você verá:</strong></p>
 <ul class="simple">
-<li><p>O operador registra informações detalhadas sobre como a rotação do light pivot é aplicada:</p>
-<ul>
-<li><p>Nome do objeto light pivot.</p></li>
-<li><p>Nome da câmera.</p></li>
-<li><p>Valores de rotação solicitados.</p></li>
-<li><p>Rotação original vs. nova rotação (em graus).</p></li>
-<li><p>Quaisquer erros que ocorram ao tentar aplicar a rotação.</p></li>
+<li><p>No <strong>modo de rotação apenas Z</strong>: O pivô rotaciona ao redor do eixo Z ao alternar câmeras</p></li>
+<li><p>No <strong>modo de rotação completa XYZ</strong>: O pivô rotaciona nos três eixos de acordo com os valores <code class="docutils literal notranslate"><span class="pre">light_rotation</span></code> de cada câmera</p></li>
+<li><p>Luzes que são filhos do pivô rotacionarão junto com ele, mostrando exatamente como a iluminação ficará de cada ângulo de câmera</p></li>
 </ul>
-</li>
+<p>Este feedback visual facilita:</p>
+<ul class="simple">
+<li><p>Verificar se os valores de rotação estão corretos para cada câmera</p></li>
+<li><p>Ajustar valores de <code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Rotation</span></code> enquanto vê os resultados imediatamente</p></li>
+<li><p>Ajustar finamente a iluminação para câmeras em diferentes ângulos (não apenas horizontais)</p></li>
 </ul>
-<p>Isso é útil para solucionar problemas de iluminação e verificar se os valores de rotação corretos estão sendo aplicados.</p>
 </section>
 <hr class="docutils" />
 <section id="estrategia-avancada-de-iluminacao">
@@ -280,7 +284,7 @@
 <li><p><strong>Adicione fill lights</strong>: Uma vez que a iluminação principal esteja funcionando, adicione luzes fixas fora do pivô para preencher áreas escuras.</p></li>
 <li><p><strong>Teste com Test Cameras</strong>: Use o botão <strong>Test Cameras</strong> para percorrer as câmeras e verificar se a iluminação está correta em cada ângulo.</p></li>
 <li><p><strong>Ajuste manualmente</strong>: Para câmeras em ângulos não horizontais, ajuste manualmente os valores de <code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Rotation</span></code> após usar o Detect Cameras.</p></li>
-<li><p><strong>Use o modo debug</strong>: Habilite o Light Rotation Debug para verificar se os valores de rotação estão sendo aplicados corretamente.</p></li>
+<li><p><strong>Visualize a rotação</strong>: Defina o shading do viewport para o modo <strong>Rendered</strong> e use o botão <strong>Test Cameras</strong> para ver a rotação do pivô de luz em tempo real ao percorrer as câmeras.</p></li>
 </ol>
 </section>
 <hr class="docutils" />
@@ -288,7 +292,6 @@
 <h2>Tópicos Relacionados<a class="headerlink" href="#topicos-relacionados" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Veja <a class="reference internal" href="Cameras.html"><span class="std std-doc">Câmeras</span></a> para informações sobre configuração de câmeras e como a rotação de luz é configurada por câmera.</p></li>
-<li><p>Veja <a class="reference internal" href="#Debug.md"><span class="xref myst">Debug</span></a> para informações sobre a funcionalidade Light Rotation Debug.</p></li>
 </ul>
 </section>
 </section>

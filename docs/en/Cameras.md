@@ -38,11 +38,15 @@ The **Camera Creation** panel provides a quick way to set up cameras using prede
 The **Lens Settings** section in the **Cameras** panel provides synchronized controls for camera properties:
 
 - **Camera Type**: Perspective or Orthographic projection
-- **Focal Length**: Lens focal length in millimeters (synchronized across all cameras)
+- **Focal Length / Orthographic Scale**: The label changes dynamically based on camera type
+  - Shows "Focal Length" (in millimeters) when camera type is Perspective
+  - Shows "Orthographic Scale" when camera type is Orthographic
+  - The correct property is synchronized across all cameras
 - **Resolution X / Y**: Render resolution synchronized across all cameras and applied to scene render settings
 - **Shift X / Y**: Camera shift values
-  - When **Sync Shift** is enabled: all cameras share the same shift values
-  - When **Sync Shift** is disabled: each camera can have individual shift values (shown in the Camera List)
+  - **Sync Shift X** and **Sync Shift Y**: Independent toggles for horizontal and vertical shift synchronization
+  - When sync is enabled for an axis: all cameras share the same shift value for that axis
+  - When sync is disabled for an axis: each camera can have individual shift values for that axis (shown in the Camera List)
 - **Clip Start / End**: Near and far clipping distances
 
 All lens settings are automatically applied to cameras when:
@@ -60,14 +64,16 @@ The camera system is backed by the `CameraItem` property group:
 - `light_rotation`: Euler rotation (XYZ) used to rotate the **light pivot**.
 - `render_order`: the order in which each camera will be rendered.
 
-In the **Cameras** panel you will see:
-- `Camera Count`: how many cameras should exist in the list.
+In the **Cameras** panel you will see (in this order):
 - **Lens Settings** section (always visible): synchronized camera properties
+- **Camera Count**: how many cameras should exist in the list (always visible, positioned after Lens Settings)
+- **Custom Output Names**: toggle to use custom output names instead of camera object names (always visible, positioned after Lens Settings)
+- **Enable Full Rotation (XYZ)**: toggle to enable full XYZ rotation for light pivot (always visible, positioned after Lens Settings)
 - **Camera List** section (collapsible): individual camera settings
   - Per‑camera subpanels (`Camera 1`, `Camera 2`, ...):
     - `Name`
     - `Output Name` (only visible when **Custom Output Names** is enabled)
-    - `Shift X` / `Shift Y` (only visible when **Sync Shift** is disabled in Lens Settings)
+    - `Shift X` / `Shift Y` (only visible when **Sync Shift X** or **Sync Shift Y** is disabled in Lens Settings, respectively)
     - `Render Order`
     - `Light Rotation`:
       - either a single Z value, or a full XYZ rotation, depending on **Enable Full Rotation (XYZ)**.

@@ -86,7 +86,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#light-rotation-debug">Light Rotation Debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualizing-light-rotation">Visualizing Light Rotation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#advanced-lighting-strategy">💡 Advanced Lighting Strategy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#lights-inside-the-pivot">Lights Inside the Pivot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#lights-outside-the-pivot">Lights Outside the Pivot</a></li>
@@ -212,28 +212,32 @@
 <h4>Automatic Detection Limitations<a class="headerlink" href="#automatic-detection-limitations" title="Link to this heading"></a></h4>
 <p><strong>Detect Cameras</strong> attempts to find the ideal light pivot rotation for each camera angle, but this <strong>only works correctly for horizontal angles</strong> (like in boomer shooter first-person games, where cameras are all on the same horizontal plane around the character).</p>
 <p>For renders that need to be done at <strong>different angles</strong> (from above, diagonally, or in multiple planes), you will need to <strong>manually adjust</strong> the pivot rotation angle (<code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Rotation</span></code>) for each camera after using Detect Cameras.</p>
-<blockquote>
-<div><p><strong>Note</strong>: A visual debug tool was attempted but could not be implemented due to Blender API limitations. It may be revisited in the future if there is significant user demand.</p>
-</div></blockquote>
 </section>
 </section>
 </section>
 <hr class="docutils" />
-<section id="light-rotation-debug">
-<h2>Light Rotation Debug<a class="headerlink" href="#light-rotation-debug" title="Link to this heading"></a></h2>
-<p>When <strong>Light Rotation Debug</strong> is enabled in the <strong>Debug</strong> section:</p>
+<section id="visualizing-light-rotation">
+<h2>Visualizing Light Rotation<a class="headerlink" href="#visualizing-light-rotation" title="Link to this heading"></a></h2>
+<p>You can visually see the light pivot rotation in real-time using the <strong>Test Cameras</strong> button:</p>
+<p><strong>How to use:</strong></p>
+<ol class="arabic simple">
+<li><p>Set up your lights and light pivot object</p></li>
+<li><p>Set the 3D Viewport shading to <strong>Rendered</strong> mode (press <code class="docutils literal notranslate"><span class="pre">Z</span></code> and select “Rendered” or use the viewport shading dropdown)</p></li>
+<li><p>Click the <strong>Test Cameras</strong> button to cycle through cameras</p></li>
+<li><p>As you switch between cameras, you will see the light pivot rotate in real-time in the viewport</p></li>
+</ol>
+<p><strong>What you’ll see:</strong></p>
 <ul class="simple">
-<li><p>The operator logs detailed information about how the light pivot rotation is applied:</p>
-<ul>
-<li><p>Light pivot object name.</p></li>
-<li><p>Camera name.</p></li>
-<li><p>Requested rotation values.</p></li>
-<li><p>Original vs. new rotation (in degrees).</p></li>
-<li><p>Any errors that occur when trying to apply the rotation.</p></li>
+<li><p>In <strong>Z-only rotation mode</strong>: The pivot rotates around the Z axis as you switch cameras</p></li>
+<li><p>In <strong>Full XYZ rotation mode</strong>: The pivot rotates in all three axes according to each camera’s <code class="docutils literal notranslate"><span class="pre">light_rotation</span></code> values</p></li>
+<li><p>Lights that are children of the pivot will rotate along with it, showing you exactly how the lighting will look from each camera angle</p></li>
 </ul>
-</li>
+<p>This visual feedback makes it easy to:</p>
+<ul class="simple">
+<li><p>Verify that rotation values are correct for each camera</p></li>
+<li><p>Adjust <code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Rotation</span></code> values while seeing the results immediately</p></li>
+<li><p>Fine-tune lighting for cameras at different angles (not just horizontal)</p></li>
 </ul>
-<p>This is useful for troubleshooting lighting issues and verifying that the correct rotation values are being applied.</p>
 </section>
 <hr class="docutils" />
 <section id="advanced-lighting-strategy">
@@ -280,7 +284,7 @@
 <li><p><strong>Add fill lights</strong>: Once the main lighting is working, add fixed lights outside the pivot to fill dark areas.</p></li>
 <li><p><strong>Test with Test Cameras</strong>: Use the <strong>Test Cameras</strong> button to cycle through cameras and verify that lighting looks correct from each angle.</p></li>
 <li><p><strong>Adjust manually</strong>: For cameras at non-horizontal angles, manually adjust the <code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">Rotation</span></code> values after using Detect Cameras.</p></li>
-<li><p><strong>Use debug mode</strong>: Enable Light Rotation Debug to verify that rotation values are being applied correctly.</p></li>
+<li><p><strong>Visualize rotation</strong>: Set viewport shading to <strong>Rendered</strong> mode and use the <strong>Test Cameras</strong> button to see the light pivot rotation in real-time as you cycle through cameras.</p></li>
 </ol>
 </section>
 <hr class="docutils" />
@@ -288,7 +292,6 @@
 <h2>Related Topics<a class="headerlink" href="#related-topics" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>See <a class="reference internal" href="Cameras.html"><span class="std std-doc">Cameras</span></a> for information about camera setup and how light rotation is configured per camera.</p></li>
-<li><p>See <a class="reference internal" href="#Debug.md"><span class="xref myst">Debug</span></a> for information about the Light Rotation Debug feature.</p></li>
 </ul>
 </section>
 </section>

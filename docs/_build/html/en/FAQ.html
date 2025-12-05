@@ -148,17 +148,18 @@
 <li><p>In the 3D Viewport, use <strong>Test Cameras</strong> to cycle through configured cameras and confirm which one is active.</p></li>
 <li><p>The scene camera is being set correctly by the add‑on (you should see the camera change when cycling).</p></li>
 </ul>
-<p><strong>Q: Light does not rotate per camera, or looks wrong. How can I debug this?</strong><br />
+<p><strong>Q: Light does not rotate per camera, or looks wrong. How can I troubleshoot this?</strong><br />
 <strong>A:</strong> Check the following:</p>
 <ul class="simple">
 <li><p>Ensure a <strong>Light Pivot</strong> object is set in the <strong>Light Pivot</strong> section.</p></li>
+<li><p>Verify <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">Light</span> <span class="pre">Pivot</span></code> is enabled in the <strong>Light Pivot</strong> section.</p></li>
 <li><p>Verify <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">Full</span> <span class="pre">Rotation</span> <span class="pre">(XYZ)</span></code> is set correctly:</p>
 <ul>
 <li><p>Off: only Z axis is used.</p></li>
 <li><p>On: full XYZ from the camera’s <code class="docutils literal notranslate"><span class="pre">light_rotation</span></code> is applied.</p></li>
 </ul>
 </li>
-<li><p>Make sure <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">Light</span> <span class="pre">Pivot</span></code> is enabled in the <strong>Light Pivot</strong> section.</p></li>
+<li><p>Use the <strong>Test Cameras</strong> button to cycle through cameras and check console logs for rotation values being applied.</p></li>
 </ul>
 <p><strong>Q: The Detect Cameras button does nothing. Why?</strong><br />
 <strong>A:</strong> The <strong>Auto-fill Light Rotations</strong> operator requires:</p>

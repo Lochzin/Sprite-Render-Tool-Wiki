@@ -72,21 +72,27 @@ O **Detect Cameras** tenta encontrar a rotação ideal do pivô de luz para cada
 
 Para renderizações que precisam ser feitas em **ângulos diferentes** (de cima, diagonalmente, ou em múltiplos planos), você precisará **ajustar manualmente** o ângulo de rotação do pivô (`Light Rotation`) para cada câmera após usar o Detect Cameras.
 
-> **Nota**: Uma ferramenta de debug visual foi tentada, mas não pôde ser implementada devido a limitações da API do Blender. Pode ser revisitada no futuro caso haja muita demanda dos usuários.
-
 ---
 
-## Debug de Rotação de Luz
+## Visualizando a Rotação de Luz
 
-Quando **Light Rotation Debug** está habilitado na seção **Debug**:
-- O operador registra informações detalhadas sobre como a rotação do light pivot é aplicada:
-  - Nome do objeto light pivot.
-  - Nome da câmera.
-  - Valores de rotação solicitados.
-  - Rotação original vs. nova rotação (em graus).
-  - Quaisquer erros que ocorram ao tentar aplicar a rotação.
+Você pode ver visualmente a rotação do pivô de luz em tempo real usando o botão **Test Cameras**:
 
-Isso é útil para solucionar problemas de iluminação e verificar se os valores de rotação corretos estão sendo aplicados.
+**Como usar:**
+1. Configure suas luzes e o objeto light pivot
+2. Defina o shading do 3D Viewport para o modo **Rendered** (pressione `Z` e selecione "Rendered" ou use o dropdown de shading do viewport)
+3. Clique no botão **Test Cameras** para percorrer as câmeras
+4. Ao alternar entre câmeras, você verá o pivô de luz rotacionar em tempo real no viewport
+
+**O que você verá:**
+- No **modo de rotação apenas Z**: O pivô rotaciona ao redor do eixo Z ao alternar câmeras
+- No **modo de rotação completa XYZ**: O pivô rotaciona nos três eixos de acordo com os valores `light_rotation` de cada câmera
+- Luzes que são filhos do pivô rotacionarão junto com ele, mostrando exatamente como a iluminação ficará de cada ângulo de câmera
+
+Este feedback visual facilita:
+- Verificar se os valores de rotação estão corretos para cada câmera
+- Ajustar valores de `Light Rotation` enquanto vê os resultados imediatamente
+- Ajustar finamente a iluminação para câmeras em diferentes ângulos (não apenas horizontais)
 
 ---
 
@@ -133,13 +139,12 @@ Isso é especialmente útil para:
 
 4. **Ajuste manualmente**: Para câmeras em ângulos não horizontais, ajuste manualmente os valores de `Light Rotation` após usar o Detect Cameras.
 
-5. **Use o modo debug**: Habilite o Light Rotation Debug para verificar se os valores de rotação estão sendo aplicados corretamente.
+5. **Visualize a rotação**: Defina o shading do viewport para o modo **Rendered** e use o botão **Test Cameras** para ver a rotação do pivô de luz em tempo real ao percorrer as câmeras.
 
 ---
 
 ## Tópicos Relacionados
 
 - Veja [Câmeras](Cameras.md) para informações sobre configuração de câmeras e como a rotação de luz é configurada por câmera.
-- Veja [Debug](Debug.md) para informações sobre a funcionalidade Light Rotation Debug.
 
 

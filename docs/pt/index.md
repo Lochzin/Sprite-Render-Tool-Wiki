@@ -61,21 +61,21 @@ A interface do addon está organizada em painéis separados e colapsáveis:
   - Para mais informações sobre presets de câmera, veja [Câmeras](Cameras.md).
 
 - **🎥 Painel Cameras**
-  - `Camera Count`: número de câmeras na lista interna.
-  - `Custom Output Names`: usa nomes diferentes dos nomes dos objetos de câmera para saída de arquivos.
-  - `Enable Full Rotation (XYZ)`: controla se o pivô rotaciona em XYZ ou apenas ao redor de Z.
   - **📐 Lens Settings** (sempre visível):
     - `Type`: Tipo de projeção da câmera (Perspective/Orthographic)
-    - `Focal Length`: distância focal da lente em milímetros
-    - `Sync Shift`: toggle para sincronizar valores de shift em todas as câmeras
+    - `Focal Length / Orthographic Scale`: propriedade da lente (rótulo muda com base no tipo de câmera)
+    - `Sync Shift X` / `Sync Shift Y`: toggles independentes para sincronização de shift horizontal e vertical
     - `Shift X` / `Shift Y`: valores de shift da câmera (sincronizados ou individuais por câmera)
     - `Resolution X` / `Resolution Y`: resolução sincronizada em todas as câmeras
     - `Clip Start` / `Clip End`: distâncias de clipping
+  - `Camera Count`: número de câmeras na lista interna.
+  - `Custom Output Names`: usa nomes diferentes dos nomes dos objetos de câmera para saída de arquivos.
+  - `Enable Full Rotation (XYZ)`: controla se o pivô rotaciona em XYZ ou apenas ao redor de Z.
   - **📋 Camera List** (colapsável):
     - Para cada câmera (`Camera 1`, `Camera 2`, ...):
       - `Name`: nome do objeto de câmera na cena.
       - `Output Name`: nome usado nos nomes de arquivos (se `Custom Output Names` estiver habilitado).
-      - `Shift X` / `Shift Y`: valores de shift individuais (visível quando `Sync Shift` está desabilitado)
+      - `Shift X` / `Shift Y`: valores de shift individuais (visível quando `Sync Shift X` ou `Sync Shift Y` está desabilitado, respectivamente)
       - `Render Order`: ordem em que esta câmera será renderizada.
       - `Light Rotation`: rotação da luz/pivô (apenas Z ou XYZ).
   - Botão **Detect Cameras** (`sprite_render.autofill_light_rotation`):

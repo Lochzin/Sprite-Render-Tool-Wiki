@@ -38,11 +38,15 @@ O painel **Camera Creation** fornece uma forma rápida de configurar câmeras us
 A seção **Lens Settings** no painel **Cameras** fornece controles sincronizados para propriedades da câmera:
 
 - **Camera Type**: Projeção Perspective ou Orthographic
-- **Focal Length**: Distância focal da lente em milímetros (sincronizada em todas as câmeras)
+- **Focal Length / Orthographic Scale**: O rótulo muda dinamicamente com base no tipo de câmera
+  - Mostra "Focal Length" (em milímetros) quando o tipo de câmera é Perspective
+  - Mostra "Orthographic Scale" quando o tipo de câmera é Orthographic
+  - A propriedade correta é sincronizada em todas as câmeras
 - **Resolution X / Y**: Resolução de renderização sincronizada em todas as câmeras e aplicada às configurações de renderização da cena
 - **Shift X / Y**: Valores de shift da câmera
-  - Quando **Sync Shift** está habilitado: todas as câmeras compartilham os mesmos valores de shift
-  - Quando **Sync Shift** está desabilitado: cada câmera pode ter valores de shift individuais (exibidos na Camera List)
+  - **Sync Shift X** e **Sync Shift Y**: Toggles independentes para sincronização de shift horizontal e vertical
+  - Quando a sincronização está habilitada para um eixo: todas as câmeras compartilham o mesmo valor de shift para esse eixo
+  - Quando a sincronização está desabilitada para um eixo: cada câmera pode ter valores de shift individuais para esse eixo (exibidos na Camera List)
 - **Clip Start / End**: Distâncias de clipping próximo e distante
 
 Todas as configurações de lente são automaticamente aplicadas às câmeras quando:
@@ -60,14 +64,16 @@ O sistema de câmeras é suportado pelo grupo de propriedades `CameraItem`:
 - `light_rotation`: rotação Euler (XYZ) usada para rotacionar o **light pivot**.
 - `render_order`: a ordem em que cada câmera será renderizada.
 
-No painel **Cameras** você verá:
-- `Camera Count`: quantas câmeras devem existir na lista.
+No painel **Cameras** você verá (nesta ordem):
 - Seção **Lens Settings** (sempre visível): propriedades de câmera sincronizadas
+- **Camera Count**: quantas câmeras devem existir na lista (sempre visível, posicionado após Lens Settings)
+- **Custom Output Names**: toggle para usar nomes de saída personalizados em vez de nomes de objetos de câmera (sempre visível, posicionado após Lens Settings)
+- **Enable Full Rotation (XYZ)**: toggle para habilitar rotação XYZ completa para o light pivot (sempre visível, posicionado após Lens Settings)
 - Seção **Camera List** (colapsável): configurações individuais de câmera
   - Subpainéis por câmera (`Camera 1`, `Camera 2`, ...):
     - `Name`
     - `Output Name` (visível apenas quando **Custom Output Names** está habilitado)
-    - `Shift X` / `Shift Y` (visível apenas quando **Sync Shift** está desabilitado em Lens Settings)
+    - `Shift X` / `Shift Y` (visível apenas quando **Sync Shift X** ou **Sync Shift Y** está desabilitado em Lens Settings, respectivamente)
     - `Render Order`
     - `Light Rotation`:
       - ou um único valor Z, ou uma rotação XYZ completa, dependendo de **Enable Full Rotation (XYZ)**.
