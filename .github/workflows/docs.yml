@@ -1,13 +1,14 @@
-name: Build and Deploy Documentation
+# Este workflow foi desabilitado em favor do deploy.yml que usa o sistema moderno do GitHub Pages
+name: Build and Deploy Documentation (DISABLED)
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'docs/**'
-      - '.github/workflows/docs.yml'
-  workflow_dispatch:  # Permite execução manual
+  workflow_dispatch:  # Apenas execução manual permitida - workflow desabilitado
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - 'docs/**'
+  #     - '.github/workflows/docs.yml'
 
 permissions:
   contents: write  # Necessário para fazer push na branch gh-pages

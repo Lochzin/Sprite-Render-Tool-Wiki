@@ -42,11 +42,18 @@ jobs:
           cd docs
           sphinx-build -b html . _build/html --keep-going
           
+      - name: Create .nojekyll file
+        run: |
+          touch docs/_build/html/.nojekyll
+          echo "Created .nojekyll file to prevent Jekyll processing"
+          
       - name: Verify build output
         run: |
           cd docs/_build/html
           ls -la
           test -f index.html || (echo "ERROR: index.html not found!" && exit 1)
+          test -f .nojekyll || (echo "ERROR: .nojekyll not found!" && exit 1)
+          echo "Build verification successful!"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
