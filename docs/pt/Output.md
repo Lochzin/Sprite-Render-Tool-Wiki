@@ -8,7 +8,7 @@ Esta página explica como o **Sprite Render Tool** constrói estruturas de pasta
 
 O núcleo do sistema de nomenclatura é `output_template`:
 - Valor padrão:  
-  `$projectName_$objectName_$animation_$camera_$frame`
+  `$objectName_$animation_$frame`
 
 Esta string é usada tanto para gerar:
 - Nomes de pastas (indiretamente, via `$animation` e `$camera` quando as opções de pasta estão habilitadas), quanto
@@ -121,7 +121,7 @@ Se `$camera` **estiver** presente:
 - Configurações:
   - `Project Name`: `MyGame`
   - `Object Name`: `Hero`
-  - `output_template`: `$projectName_$objectName_$animation_$camera_$frame`
+  - `output_template`: `$objectName_$animation_$frame`
   - **Use Folders**:
     - Project: ON
     - Object: ON

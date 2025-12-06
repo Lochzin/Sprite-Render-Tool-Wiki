@@ -4,6 +4,204 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
+## [0.3.8] - 2024
+
+### Corrigido
+- **Bug de Duplicação de Renderização**: Corrigido problema onde o processo de renderização estava renderizando frames extras após completar a última câmera
+  - Melhorada lógica de avanço de frame e câmera no loop de renderização assíncrono
+  - Corrigida validação de frame ao usar recurso de frame step
+  - Agora avança corretamente para a próxima câmera quando todos os frames da câmera atual estão completos
+  - Previne renderização de frames duplicados de câmeras anteriores
+
+### Removido
+- **Funcionalidade de Atualização Automática do Addon**: Removida funcionalidade de atualização automática do addon
+  - Removido operador `SPRITE_RENDER_OT_UpdateAddon` devido a problemas de estabilidade
+  - Removida classe `SPRITE_RENDER_AddonPreferences` e botão de atualização das Preferências do Addon
+  - Atualizações do addon agora devem ser feitas manualmente desinstalando e reinstalando o addon
+  - Esta mudança foi feita para prevenir crashes e melhorar a estabilidade
+
+### Detalhes Técnicos
+- Refatorado método `_render_next_frame()` em `SPRITE_RENDER_OT_RenderAll`:
+  - Reordenadas verificações: verificação de câmeras finalizadas agora acontece antes da validação de frame
+  - Melhorada lógica de frame step para identificar corretamente quando a câmera está completa
+  - Corrigido avanço de frame para mover imediatamente para a próxima câmera quando os frames estão esgotados
+  - Melhor tratamento de casos extremos em sequências de frame step
+
+---
+
+## [0.3.7] - 2024
+
+### Alterado
+- **Reorganização de Tabs**: Melhorada estrutura e organização de tabs
+  - **Tab Info**: Renomeado de "Header" para "Info" e movido para primeira posição na sidebar
+  - **Tab Execute Removida**: Tab removida para simplificar interface
+  - **Ações de Renderização**: Botões de renderização e teste movidos para tab Render
+  - **Ordem das Tabs**: Nova ordem é Info → Setup → Cameras → Animations → Render
+  - Melhor fluxo de trabalho: todas as ações relacionadas a renderização (configurações, saída e execução) em um lugar
+
+### Detalhes Técnicos
+- Removido operador `SPRITE_RENDER_OT_SetMainTab_Execute`
+- Renomeado `SPRITE_RENDER_OT_SetMainTab_Header` para `SPRITE_RENDER_OT_SetMainTab_Info`
+- Atualizado `main_panel_tab` EnumProperty: removido EXECUTE, renomeado HEADER para INFO, reordenados itens
+- Tab padrão mudou de SETUP para INFO
+- Tab Render agora inclui seção "Render Actions" com botões Render All e Test Cameras
+
+---
+
+## [0.3.6] - 2024
+
+### Adicionado
+- **Sistema de Navegação Lateral**: Redesign completo da UI com interface de tabs
+  - **Menu Lateral**: Sidebar vertical com botões de ícone para navegação fácil (similar ao UVPackmaster)
+  - **5 Tabs Principais**: Setup, Cameras, Animations, Render, Execute
+  - **Tab Header**: Tab adicional na parte inferior da sidebar para informações de versão, documentação e progresso de renderização
+  - **Tooltips**: Cada botão de tab mostra descrição específica ao passar o mouse
+  - **Interface Consolidada**: Toda funcionalidade organizada em um único painel principal
+  - Reduz desordem da UI de 9 painéis separados para 1 painel unificado com navegação
+- **Armature na Tab Setup**: Adicionado campo de seleção de armature na tab Setup
+  - Localizado abaixo da seção Light Pivot para fluxo de trabalho lógico
+  - Redundante com tab Animations para conveniência
+  - Torna configuração de setup mais completa em um lugar
+
+### Alterado
+- **Reestruturação Completa da UI**: Reorganização major da interface
+  - **Antes**: 9 painéis colapsáveis separados (Header, Project, Light Pivot, Camera Creation, Cameras, Animations, Render Settings, Output, Actions)
+  - **Depois**: 1 painel principal com navegação lateral e 6 tabs
+  - Informações do header integradas ao painel principal (não mais separadas)
+  - Todo conteúdo acessível através de navegação por tabs
+- **UI de Sincronização de Shift**: Melhorada interface de controle de shift
+  - **Rótulos dos Botões**: Mudado de "Sync X/Y" para "Desync Shift X/Y"
+  - **Lógica Invertida**: Botões agora mostram estado de dessincronização (pressionado = dessincronizado, não pressionado = sincronizado)
+  - **Estado Padrão**: Sincronização de shift habilitada por padrão (botões não pressionados = sincronizado)
+  - Mais intuitivo: botão pressionado significa "permitir valores individuais"
+- **Organização de Tabs**: Conteúdo reorganizado em grupos lógicos
+  - **Tab Setup**: Project, Light Pivot, Armature, Camera Creation
+  - **Tab Cameras**: Lens Settings, Camera Options, Camera List
+  - **Tab Animations**: Modo de animação, configuração Actions/NLA, ferramentas de teste
+  - **Tab Render**: Render Settings (Resolution, Frame Step, Playback Speed) + configuração Output
+  - **Tab Execute**: Botões de renderização e teste
+  - **Tab Header**: Versão, autor, documentação, progresso de renderização
+
+### Corrigido
+- **Crash de UI com Propriedades Invertidas**: Corrigido crash ao usar getters/setters para propriedades booleanas invertidas
+  - Substituídos getters/setters problemáticos por operadores toggle simples
+  - Criados operadores `SPRITE_RENDER_OT_ToggleDesyncShiftX` e `SPRITE_RENDER_OT_ToggleDesyncShiftY`
+  - Previne crashes `EXCEPTION_ACCESS_VIOLATION` no sistema de UI do Blender
+- **Definições Duplicadas de Operadores**: Corrigido problema onde operadores toggle eram definidos duas vezes
+  - Removidas definições de classe duplicadas que estavam causando problemas de renderização de UI
+  - Tab Cameras agora exibe todo conteúdo corretamente (Lens Settings, Camera Options, Camera List, botão Detect Cameras)
+
+### Detalhes Técnicos
+- Novo painel: `SPRITE_RENDER_PT_MainPanel` com navegação lateral
+- Novo operador: `SPRITE_RENDER_OT_SetMainTab` para troca de tabs
+- Novos operadores: `SPRITE_RENDER_OT_ToggleDesyncShiftX` e `SPRITE_RENDER_OT_ToggleDesyncShiftY` para controle de shift
+- Sistema de tabs: `main_panel_tab` EnumProperty com 6 opções
+- Layout da sidebar: Coluna vertical com botões de ícone, botão header na parte inferior
+- Troca de conteúdo: Área de conteúdo dinâmica baseada na tab selecionada
+
+---
+
+## [0.3.5] - 2024
+
+### Adicionado
+- **Painel Render Settings**: Novo painel dedicado para configurações de renderização
+  - **Resolution**: Controles de resolução X e Y (movidos do painel Cameras)
+  - **Frame Step**: Habilitar/desabilitar frame stepping com valor de step configurável (1-100)
+    - Útil para animações feitas para FPS mais altos (60, 30 fps) que precisam ser renderizadas em intervalos menores
+    - Ajusta automaticamente cálculo de contagem total de renderização quando habilitado
+    - Exemplo: Step de 2 renderiza frames 1, 3, 5, 7... (pula cada outro frame)
+  - **Playback Speed**: Controle de FPS com botão apply (movido do painel Animations)
+  - Localizado entre painéis Animations e Output para melhor fluxo de trabalho
+- **Ferramenta de Teste de Contagem de Frames**: Ferramenta de debug temporária para testar cálculo de frames
+  - Botão "🧪 Test Frame Count" aparece quando Frame Step está habilitado
+  - Calcula e exibe total de frames sem renderizar
+  - Mostra detalhamento por animação com e sem step aplicado
+  - Ajuda a verificar configuração de frame step antes de renderizar
+- **Atualização Automática do Addon**: Nova funcionalidade de atualização integrada ao addon
+  - Botão "Update Addon from ZIP" nas Preferências do Addon (Preferences → Add-ons → Sprite Render Tool)
+  - Abre diálogo de arquivo para selecionar novo arquivo ZIP
+  - Cria backup automaticamente antes de atualizar
+  - Extrai e instala nova versão
+  - Recarrega todos os módulos automaticamente
+  - Restaura backup automaticamente se atualização falhar
+  - Não precisa desinstalar/reinstalar o addon manualmente
+  - Integrado perfeitamente à interface de preferências do addon do Blender
+
+### Alterado
+- **Estado Padrão do Painel Header**: Painel Header agora inicia minimizado (colapsado) por padrão
+  - Melhor organização da UI - usuários podem expandir quando necessário
+  - Versão, autor e botão de documentação ainda acessíveis quando expandido
+- **Preset Padrão de Câmera**: Mudado preset padrão de câmera de 4 câmeras para 5 câmeras
+  - Preset padrão agora é "5 Cameras - Front, Front Right, Right, Back Right, Back"
+  - Melhor padrão para a maioria dos fluxos de trabalho de renderização de sprites
+- **Template Padrão de Output**: Mudado template padrão de nome de saída
+  - **Antes**: `$projectName_$objectName_$animation_$camera_$frame`
+  - **Depois**: `$objectName_$animation_$frame`
+  - Template padrão simplificado sem nome de projeto e câmera
+- **Reorganização da UI**: Movidas configurações relacionadas a renderização para novo painel Render Settings
+  - Resolution movido do painel Cameras para painel Render Settings
+  - Frame Step movido do painel Animations para painel Render Settings
+  - Playback Speed movido da caixa de teste Animations para painel Render Settings
+  - Melhor organização das opções de configuração de renderização
+
+### Corrigido
+- **Frame Step Não Funcionando**: Corrigido problema onde frame step não estava sendo aplicado durante renderização
+  - Cálculo de frame step agora funciona corretamente em ambos os modos de renderização síncrono e assíncrono
+  - Contagem total de frames calculada corretamente com step aplicado
+  - Iteração de frame pula frames corretamente de acordo com valor de step
+- **Bug de Reset do Contador Sequencial**: Corrigido problema onde contador sequencial de frames estava resetando ao trocar câmeras
+  - Contador sequencial agora só reseta ao iniciar nova animação, não ao trocar câmeras
+  - Previne sobrescrita de arquivos quando `$camera` não está no template de saída
+  - Frames continuam numerando sequencialmente através de todas as câmeras para a mesma animação
+- **NLA Strip Não Reativando na Troca de Câmera**: Corrigido problema onde NLA strip não estava sendo reativada ao trocar câmeras
+  - Primeira câmera às vezes estava usando animação aleatória em vez da correta
+  - NLA strip agora reativa corretamente ao trocar câmeras em ambos os modos de renderização síncrono e assíncrono
+  - Garante que animação correta está ativa para cada ângulo de câmera
+  - Aplicado antes de cada renderização para garantir estado correto da animação
+- **Crash de Atualização do Addon**: Corrigido crash ao atualizar addon após reload de módulo
+  - Protegidas chamadas `self.report()` com try/except para prevenir crashes
+  - Adicionado fallback para `print()` para mensagens de erro
+  - Melhorado tratamento de erros durante processo de atualização do addon
+
+### Detalhes Técnicos
+- Cálculo de frame step: `range(start_frame, end_frame + 1, step)` quando habilitado
+- Frame step aplicado em ambos métodos `execute()` (síncrono) e `_render_next_frame()` (assíncrono)
+- Lógica de contador sequencial: Só reseta em nova animação (`_current_frame == 0` E `_current_cam_index == 0`)
+- Operador de atualização: `SPRITE_RENDER_OT_UpdateAddon` com sistema completo de tratamento de erros e backup
+- Localização de backup: `{addon_path}_backup` para segurança
+- Operador de teste: `SPRITE_RENDER_OT_TestFrameCount` (ferramenta de debug temporária)
+
+---
+
+## [0.3.4] - 2024
+
+### Alterado
+- **Modularização do Código**: Reestruturação completa da base de código do addon em arquitetura modular
+  - Dividido `Sprite Render Tool.py` monolítico em módulos organizados:
+    - `constants.py`: Presets de câmera e valores constantes
+    - `properties.py`: Todas as classes PropertyGroup e definições UIList
+    - `utils.py`: Funções auxiliares e utilitários
+    - `panels.py`: Todas as classes de painel UI
+    - `operators.py`: Todas as classes de operador
+    - `__init__.py`: Ponto de entrada com registro e suporte a hot-reload
+  - Melhorada manutenibilidade e organização do código
+  - Melhor separação de responsabilidades
+  - Mais fácil estender e modificar componentes individuais
+
+### Corrigido
+- **Bug de Instalação**: Corrigido erro `RuntimeError: 'method-wrapper' object has no attribute 'bl_info'`
+  - Resolvido problema de importação circular entre `__init__.py` e `panels.py`
+  - Adicionada definição local de `bl_info` em `panels.py` para evitar dependências circulares
+  - Garantida ordem adequada de carregamento de módulos
+
+### Detalhes Técnicos
+- Nova estrutura de diretório: pacote `sprite_render_tool/` com arquivos modulares
+- Suporte a hot-reload mantido para fluxo de trabalho de desenvolvimento
+- Toda lógica de registro/desregistro adequadamente organizada por módulo
+- Compatibilidade retroativa mantida - sem mudanças funcionais no comportamento do addon
+
+---
+
 ## [0.3.3] - 2024
 
 ### Alterado

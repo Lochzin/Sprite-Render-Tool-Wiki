@@ -44,9 +44,9 @@ A seção **Lens Settings** no painel **Cameras** fornece controles sincronizado
   - A propriedade correta é sincronizada em todas as câmeras
 - **Resolution X / Y**: Resolução de renderização sincronizada em todas as câmeras e aplicada às configurações de renderização da cena
 - **Shift X / Y**: Valores de shift da câmera
-  - **Sync Shift X** e **Sync Shift Y**: Toggles independentes para sincronização de shift horizontal e vertical
-  - Quando a sincronização está habilitada para um eixo: todas as câmeras compartilham o mesmo valor de shift para esse eixo
-  - Quando a sincronização está desabilitada para um eixo: cada câmera pode ter valores de shift individuais para esse eixo (exibidos na Camera List)
+  - **Desync Shift X** e **Desync Shift Y**: Botões toggle independentes para sincronização de shift horizontal e vertical
+  - Quando o botão está **não pressionado** (sincronizado): todas as câmeras compartilham o mesmo valor de shift para esse eixo
+  - Quando o botão está **pressionado** (dessincronizado): cada câmera pode ter valores de shift individuais para esse eixo (exibidos na Camera List)
 - **Clip Start / End**: Distâncias de clipping próximo e distante
 
 Todas as configurações de lente são automaticamente aplicadas às câmeras quando:
@@ -73,7 +73,7 @@ No painel **Cameras** você verá (nesta ordem):
   - Subpainéis por câmera (`Camera 1`, `Camera 2`, ...):
     - `Name`
     - `Output Name` (visível apenas quando **Custom Output Names** está habilitado)
-    - `Shift X` / `Shift Y` (visível apenas quando **Sync Shift X** ou **Sync Shift Y** está desabilitado em Lens Settings, respectivamente)
+    - `Shift X` / `Shift Y` (visível apenas quando **Desync Shift X** ou **Desync Shift Y** está habilitado/pressionado em Lens Settings, respectivamente)
     - `Render Order`
     - `Light Rotation`:
       - ou um único valor Z, ou uma rotação XYZ completa, dependendo de **Enable Full Rotation (XYZ)**.

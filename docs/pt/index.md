@@ -34,119 +34,130 @@ Funciona com Blender **5.0.0+**.
 
 ## Painel Principal (UI)
 
-A interface do addon está organizada em painéis separados e colapsáveis:
+A interface do addon usa um **sistema de navegação lateral** com interface de tabs. Toda funcionalidade está organizada em um único painel principal com 5 tabs principais acessíveis via botões de ícone na sidebar esquerda:
 
-- **📋 Painel Header**
-  - Informações de versão
-  - Informações do autor
-  - Botão grande **📖 Open Documentation**
+### Navegação Lateral
 
-- **🔖 Painel Project**
+A sidebar esquerda contém botões de ícone para navegação fácil entre as tabs:
+- **📋 Info** (INFO): Versão, autor, documentação e progresso de renderização
+- **⚙️ Setup** (SETTINGS): Project, Light Pivot, Armature, Camera Creation
+- **📷 Cameras** (CAMERA_DATA): Lens Settings, Camera Options, Camera List
+- **🦴 Animations** (ARMATURE_DATA): Modo de animação, configuração Actions/NLA, testes
+- **🎬 Render** (RENDER_STILL): Render Settings, configuração Output, Render Actions
+
+Cada botão de tab mostra um tooltip ao passar o mouse com uma descrição específica.
+
+### Conteúdo das Tabs
+
+#### 📋 Tab Info
+- Informações de versão
+- Informações do autor
+- Botão grande **📖 Open Documentation**
+- **📊 Render Progress** (exibido durante a renderização):
+  - `[atual/total]`, porcentagem, barra de progresso e mensagem de status
+  - Botão **❌ Cancel Render**
+  - **Tecla ESC**: pressione ESC para cancelar a renderização a qualquer momento durante o processo
+
+#### ⚙️ Tab Setup
+- **📁 Seção Project**:
   - `Project Name`
   - `Object Name`
-  - Botão pequeno de documentação no cabeçalho do painel
-
-- **💡 Painel Light Pivot**
+- **💡 Seção Light Pivot**:
   - `Enable Light Pivot`: toggle para habilitar/desabilitar rotação do pivô de luz
   - `Light Pivot Object`: objeto usado como pivô de luz para rotação da luz (visível quando habilitado)
   - **💡 Dica**: Você pode colocar luzes como filhos do light pivot (elas rotacionarão com as câmeras) e adicionar luzes fixas fora do light pivot para iluminar áreas escuras do personagem.
-  - Botão pequeno de documentação no cabeçalho do painel
+  - Botão pequeno de documentação no cabeçalho da seção
   - Para informações detalhadas sobre configuração de iluminação e estratégias, veja [Iluminação](Lighting.md).
-
-- **📷 Painel Camera Creation**
+- **🦴 Seção Armature**:
+  - `Armature`: seleção de armature alvo (redundante com tab Animations para conveniência)
+- **📷 Seção Camera Creation**:
   - `Preset`: dropdown para selecionar configuração de preset de câmera (1, 2, 3, 4, 5 ou 8 câmeras)
   - `Distance`: slider para ajustar distância da câmera do ponto pivô
   - Botão **Create Cameras**: cria câmeras baseadas no preset selecionado
-  - Botão pequeno de documentação no cabeçalho do painel
+  - Botão pequeno de documentação no cabeçalho da seção
   - Para mais informações sobre presets de câmera, veja [Câmeras](Cameras.md).
 
-- **🎥 Painel Cameras**
-  - **📐 Lens Settings** (sempre visível):
-    - `Type`: Tipo de projeção da câmera (Perspective/Orthographic)
-    - `Focal Length / Orthographic Scale`: propriedade da lente (rótulo muda com base no tipo de câmera)
-    - `Sync Shift X` / `Sync Shift Y`: toggles independentes para sincronização de shift horizontal e vertical
-    - `Shift X` / `Shift Y`: valores de shift da câmera (sincronizados ou individuais por câmera)
+#### 📷 Tab Cameras
+- **📐 Lens Settings** (sempre visível):
+  - `Type`: Tipo de projeção da câmera (Perspective/Orthographic)
+  - `Focal Length / Orthographic Scale`: propriedade da lente (rótulo muda com base no tipo de câmera)
+  - `Desync Shift X` / `Desync Shift Y`: botões toggle independentes (pressionado = dessincronizado, não pressionado = sincronizado)
+  - `Shift X` / `Shift Y`: valores de shift da câmera (sincronizados ou individuais por câmera)
+  - `Clip Start` / `Clip End`: distâncias de clipping
+- `Camera Count`: número de câmeras na lista interna
+- `Custom Output Names`: usa nomes diferentes dos nomes dos objetos de câmera para saída de arquivos
+- `Enable Full Rotation (XYZ)`: controla se o pivô rotaciona em XYZ ou apenas ao redor de Z
+- **📋 Camera List** (colapsável):
+  - Para cada câmera (`Camera 1`, `Camera 2`, ...):
+    - `Name`: nome do objeto de câmera na cena
+    - `Output Name`: nome usado nos nomes de arquivos (se `Custom Output Names` estiver habilitado)
+    - `Shift X` / `Shift Y`: valores de shift individuais (visível quando `Desync Shift X` ou `Desync Shift Y` está habilitado, respectivamente)
+    - `Render Order`: ordem em que esta câmera será renderizada
+    - `Light Rotation`: rotação da luz/pivô (apenas Z ou XYZ)
+- Botão **Detect Cameras** (`sprite_render.autofill_light_rotation`):
+  - Detecta câmeras visíveis na View Layer atual
+  - Preenche a lista com nomes, contagem e rotação Z baseada no objeto pivô
+- Botão pequeno de documentação no cabeçalho da seção
+
+#### 🦴 Tab Animations
+- `Target Armature`: a armadura a ser animada
+- `Animation Mode`:
+  - **NLA**: usa NLA strips
+  - **ACTIONS**: usa Actions listadas dentro do add-on
+  - **STATIC**: renderiza apenas o frame atual
+
+**Modo ACTIONS:**
+- Lista `Actions`:
+  - Cada item tem: `enabled`, `name`, `frame_start`, `frame_end`, e opções de sincronização secundária (ainda não implementadas)
+- Botões:
+  - `Detect Actions`: lê `bpy.data.actions` e preenche a lista
+  - `Add`, `Remove`: gerencia a lista manualmente
+- **🎬 Animations Test** (colapsável):
+  - `Preview Action` / `Stop Preview`
+  - Controles de frame (primeiro, anterior, próximo, último)
+  - Exibição de contador de frame
+
+**Modo NLA:**
+- Lista `NLA Strips`:
+  - Cada item: `enabled`, `name` (nome da strip), `track_name`, `frame_start`, `frame_end`
+- Botões:
+  - `Detect NLA Strips`: lê as tracks NLA da armadura alvo
+  - `Add`, `Remove`: gerencia a lista manualmente
+- **🎬 Animations Test** (colapsável):
+  - `Preview NLA Strip` / `Stop Preview`
+  - Controles de frame (primeiro, anterior, próximo, último)
+  - Exibição de contador de frame
+
+#### 🎬 Tab Render
+- **⚙️ Seção Render Settings**:
+  - **Resolution**:
     - `Resolution X` / `Resolution Y`: resolução sincronizada em todas as câmeras
-    - `Clip Start` / `Clip End`: distâncias de clipping
-  - `Camera Count`: número de câmeras na lista interna.
-  - `Custom Output Names`: usa nomes diferentes dos nomes dos objetos de câmera para saída de arquivos.
-  - `Enable Full Rotation (XYZ)`: controla se o pivô rotaciona em XYZ ou apenas ao redor de Z.
-  - **📋 Camera List** (colapsável):
-    - Para cada câmera (`Camera 1`, `Camera 2`, ...):
-      - `Name`: nome do objeto de câmera na cena.
-      - `Output Name`: nome usado nos nomes de arquivos (se `Custom Output Names` estiver habilitado).
-      - `Shift X` / `Shift Y`: valores de shift individuais (visível quando `Sync Shift X` ou `Sync Shift Y` está desabilitado, respectivamente)
-      - `Render Order`: ordem em que esta câmera será renderizada.
-      - `Light Rotation`: rotação da luz/pivô (apenas Z ou XYZ).
-  - Botão **Detect Cameras** (`sprite_render.autofill_light_rotation`):
-    - Detecta câmeras visíveis na View Layer atual.
-    - Preenche a lista com nomes, contagem e rotação Z baseada no objeto pivô.
-  - Botão pequeno de documentação no cabeçalho do painel
-
-- **🎞️ Animações**
-  - `Target Armature`: a armadura a ser animada.
-  - `Animation Mode`:
-    - **NLA**: usa NLA strips.
-    - **ACTIONS**: usa Actions listadas dentro do add-on.
-    - **STATIC**: renderiza apenas o frame atual.
-
-  **Modo ACTIONS:**
-  - Lista `Actions`:
-    - Cada item tem: `enabled`, `name`, `frame_start`, `frame_end`, e opções de sincronização secundária (ainda não implementadas).
-
-```python
-Detalhe técnico: Implementado por SPRITE_RENDER_UL_Actions
-```
-  - Botões:
-    - `Detect Actions`: lê `bpy.data.actions` e preenche a lista.
-    - `Add`, `Remove`: gerencia a lista manualmente.
-  - **Animations Test (ACTIONS)**:
-    - `Preview Action` / `Stop Preview`
-    - Controles de frame (primeiro, anterior, próximo, último).
-    - Configuração `Custom FPS` + botão `Apply`.
-
-  **Modo NLA:**
-  - Lista `NLA Strips`:
-    - Cada item: `enabled`, `name` (nome da strip), `track_name`, `frame_start`, `frame_end`.
-
-```python
-Detalhe técnico: Implementado por SPRITE_RENDER_UL_NLAStrips
-```
-  - Botões:
-    - `Detect NLA Strips`: lê as tracks NLA da armadura alvo.
-    - `Add`, `Remove`: gerencia a lista manualmente.
-  - **Animations Test (NLA)**:
-    - `Preview NLA Strip` / `Stop Preview`
-    - Controles de frame (primeiro, anterior, próximo, último).
-    - Configuração `Custom FPS` + botão `Apply`.
-
-- **💾 Painel Output**
-  - `Output Path` (das configurações de renderização da cena do Blender): pasta base onde tudo será criado.
-  - Botão **📂 Open Output Folder**: abre a pasta de saída no explorador de arquivos do sistema.
+  - **Frame Step**:
+    - `Enable Frame Step`: toggle para habilitar frame stepping
+    - `Step`: valor de step (1-100) - renderiza cada N-ésimo frame (ex.: step de 2 renderiza frames 1, 3, 5, 7...)
+    - Botão **🧪 Test Frame Count**: calcula e exibe total de frames sem renderizar (aparece quando Frame Step está habilitado)
+  - **Playback Speed**:
+    - `FPS`: configuração de FPS personalizada com botão `Apply`
+- **📤 Seção Output**:
+  - `Output Path` (das configurações de renderização da cena do Blender): pasta base onde tudo será criado
+  - Botão **📂 Open Output Folder**: abre a pasta de saída no explorador de arquivos do sistema
   - `Output Name` (`output_template`):
-    - Template padrão:  
-      `$projectName_$objectName_$animation_$camera_$frame`
-  - **Placeholders disponíveis:**
-    - `$projectName`: nome do projeto.
-    - `$objectName`: nome do objeto/personagem.
-    - `$animation`: nome da Action ou NLA Strip.
-    - `$camera`: nome da câmera ou `output_name`.
+    - Template padrão: `$objectName_$animation_$frame`
+  - **Placeholders disponíveis** (colapsável):
+    - `$projectName`: nome do projeto
+    - `$objectName`: nome do objeto/personagem
+    - `$animation`: nome da Action ou NLA Strip
+    - `$camera`: nome da câmera ou `output_name`
     - `$frame`: número do frame formatado como `0001`, `0002`, etc.
-  - **Create Folders:**
-    - `Project Folder`, `Object Folder`, `Animation Folder`, `Camera Folder`  
-    - Constrói uma hierarquia de pastas baseada nesses níveis.
-  - Botão pequeno de documentação no cabeçalho do painel
-
-- **📊 Render Progress** (exibido no Painel Header durante a renderização)
-  - `[atual/total]`, porcentagem, barra de progresso e mensagem de status.
-  - Botão **❌ Cancel Render**.
-  - **Tecla ESC**: pressione ESC para cancelar a renderização a qualquer momento durante o processo.
-
-- **⚙️ Painel Actions**
+  - **Create Folders**:
+    - `Project Folder`, `Object Folder`, `Animation Folder`, `Camera Folder`
+    - Constrói uma hierarquia de pastas baseada nesses níveis
+  - Botão pequeno de documentação no cabeçalho da seção
+- **🚀 Seção Render Actions**:
   - `🚀 Render All` (`sprite_render.render_all`):
-    - Inicia a renderização de todas as animações e câmeras (versão assíncrona usando um timer).
+    - Inicia a renderização de todas as animações e câmeras (versão assíncrona usando um timer)
   - `🎯 Test Cameras` (`sprite_render.test_cameras`):
-    - Percorre as câmeras configuradas para visualização.
+    - Percorre as câmeras configuradas para visualização
 
 ---
 
@@ -161,13 +172,15 @@ Este guia inicial apresenta o fluxo de trabalho básico para começar a usar o S
   - Opcionalmente crie um objeto **Light Pivot** para controlar a rotação da iluminação ao redor do personagem.
 
 - **2. Configure o painel Sprite Render**
-  - Em **Project**: defina `Project Name` e `Object Name`.
-  - Em **Light Pivot**: habilite `Enable Light Pivot` e defina o `Light Pivot Object`.
-  - Em **Camera Creation** (opcional): use presets para criar câmeras rapidamente, ou pule para adicionar câmeras manualmente.
-  - Em **Cameras**:
-    - Configure **Lens Settings** (resolução, distância focal, shift, etc.)
+  - Na **tab Setup**:
+    - Defina `Project Name` e `Object Name` na seção Project.
+    - Habilite `Enable Light Pivot` e defina o `Light Pivot Object` na seção Light Pivot.
+    - (Opcional) Na seção Camera Creation: use presets para criar câmeras rapidamente, ou pule para adicionar câmeras manualmente.
+  - Na **tab Cameras**:
+    - Configure **Lens Settings** (distância focal, shift, distâncias de clipping, etc.)
+    - Defina `Camera Count`, `Custom Output Names` e `Enable Full Rotation` conforme necessário.
     - Clique em **Detect Cameras** para preencher a lista automaticamente, ou adicione câmeras manualmente.
-    - Ajuste `Render Order`, `Output Name` e `Light Rotation` conforme necessário.
+    - Ajuste `Render Order`, `Output Name` e `Light Rotation` para cada câmera na Camera List.
 
 - **3. Escolha o modo de animação**
   - **ACTIONS**:
@@ -179,18 +192,21 @@ Este guia inicial apresenta o fluxo de trabalho básico para começar a usar o S
   - **STATIC**:
     - O add-on usa o frame atual para renderizar; útil para thumbnails ou poses.
 
-- **4. Configure Output**
-  - Ajuste `output_template` se quiser um padrão de nomenclatura diferente.
-  - Habilite as opções `Use Folders` de acordo com como você quer organizar os arquivos.
-  - Em `Output Path` (Blender Render Properties), escolha a pasta base onde tudo será salvo.
+- **4. Configure Render Settings e Output**
+  - Na **tab Render**:
+    - Defina `Resolution X` e `Resolution Y` em Render Settings.
+    - (Opcional) Habilite `Frame Step` se quiser renderizar cada N-ésimo frame.
+    - Ajuste `output_template` se quiser um padrão de nomenclatura diferente.
+    - Habilite as opções `Create Folders` de acordo com como você quer organizar os arquivos.
+    - Em `Output Path`, escolha a pasta base onde tudo será salvo.
 
 - **5. Teste antes de renderizar tudo**
-  - Use **Test Cameras** para verificar cada câmera.
-  - Use o painel **Animations Test** (Actions ou NLA) para visualizar animações antes de renderizar.
+  - Use **Test Cameras** (na tab Render → Render Actions) para verificar cada câmera.
+  - Use a seção **Animations Test** (na tab Animations) para visualizar animações antes de renderizar.
 
 - **6. Renderize**
-  - Clique em **Render All**.
-  - Monitore o progresso na seção **Render Progress**.
+  - Clique em **Render All** (na tab Render → Render Actions).
+  - Monitore o progresso na **tab Info** → seção Render Progress.
   - Se necessário, use o botão **Cancel Render** ou pressione **ESC** para parar (ele parará após o frame atual terminar).
 
 ---

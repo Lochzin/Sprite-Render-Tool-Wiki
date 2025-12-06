@@ -44,9 +44,9 @@ The **Lens Settings** section in the **Cameras** panel provides synchronized con
   - The correct property is synchronized across all cameras
 - **Resolution X / Y**: Render resolution synchronized across all cameras and applied to scene render settings
 - **Shift X / Y**: Camera shift values
-  - **Sync Shift X** and **Sync Shift Y**: Independent toggles for horizontal and vertical shift synchronization
-  - When sync is enabled for an axis: all cameras share the same shift value for that axis
-  - When sync is disabled for an axis: each camera can have individual shift values for that axis (shown in the Camera List)
+  - **Desync Shift X** and **Desync Shift Y**: Independent toggle buttons for horizontal and vertical shift synchronization
+  - When button is **unpressed** (synced): all cameras share the same shift value for that axis
+  - When button is **pressed** (desynced): each camera can have individual shift values for that axis (shown in the Camera List)
 - **Clip Start / End**: Near and far clipping distances
 
 All lens settings are automatically applied to cameras when:
@@ -73,7 +73,7 @@ In the **Cameras** panel you will see (in this order):
   - Per‑camera subpanels (`Camera 1`, `Camera 2`, ...):
     - `Name`
     - `Output Name` (only visible when **Custom Output Names** is enabled)
-    - `Shift X` / `Shift Y` (only visible when **Sync Shift X** or **Sync Shift Y** is disabled in Lens Settings, respectively)
+    - `Shift X` / `Shift Y` (only visible when **Desync Shift X** or **Desync Shift Y** is enabled/pressed in Lens Settings, respectively)
     - `Render Order`
     - `Light Rotation`:
       - either a single Z value, or a full XYZ rotation, depending on **Enable Full Rotation (XYZ)**.

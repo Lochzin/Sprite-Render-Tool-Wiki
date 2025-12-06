@@ -8,7 +8,7 @@ This page explains how the **Sprite Render Tool** builds folder structures and f
 
 The core of the naming system is `output_template`:
 - Default value:  
-  `$projectName_$objectName_$animation_$camera_$frame`
+  `$objectName_$animation_$frame`
 
 This string is used both to generate:
 - Folder names (indirectly, via `$animation` and `$camera` when folder options are enabled), and
@@ -121,7 +121,7 @@ If `$camera` **is** present:
 - Settings:
   - `Project Name`: `MyGame`
   - `Object Name`: `Hero`
-  - `output_template`: `$projectName_$objectName_$animation_$camera_$frame`
+  - `output_template`: `$objectName_$animation_$frame`
   - **Use Folders**:
     - Project: ON
     - Object: ON
