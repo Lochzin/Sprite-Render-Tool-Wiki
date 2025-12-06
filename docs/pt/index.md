@@ -153,6 +153,7 @@ Cada botão de tab mostra um tooltip ao passar o mouse com uma descrição espec
     - `Project Folder`, `Object Folder`, `Animation Folder`, `Camera Folder`
     - Constrói uma hierarquia de pastas baseada nesses níveis
   - Botão pequeno de documentação no cabeçalho da seção
+  - Para informações detalhadas sobre configurações de renderização, configuração de saída e ações de renderização, veja a página dedicada [Renderização](Render.md).
 - **🚀 Seção Render Actions**:
   - `🚀 Render All` (`sprite_render.render_all`):
     - Inicia a renderização de todas as animações e câmeras (versão assíncrona usando um timer)

@@ -153,6 +153,7 @@ Each tab button shows a tooltip on hover with a specific description.
     - `Project Folder`, `Object Folder`, `Animation Folder`, `Camera Folder`
     - Builds a folder hierarchy based on these levels
   - Small documentation button in section header
+  - For detailed information about render settings, output configuration, and render actions, see the dedicated [Render](Render.md) page.
 - **🚀 Render Actions Section**:
   - `🚀 Render All` (`sprite_render.render_all`):
     - Starts rendering all animations and cameras (asynchronous version using a timer)

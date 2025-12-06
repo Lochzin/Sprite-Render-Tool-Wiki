@@ -33,6 +33,9 @@ Este documento contém todos os links relevantes do **Sprite Render Tool**, incl
 #### Saída
 - **Output**: [https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/Output.html](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/Output.html)
 
+#### Renderização
+- **Render**: [https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/Render.html](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/Render.html)
+
 #### FAQ
 - **FAQ**: [https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/FAQ.html](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/FAQ.html)
 
@@ -65,6 +68,9 @@ Este documento contém todos os links relevantes do **Sprite Render Tool**, incl
 
 #### Saída
 - **Output**: [https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/Output.html](https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/Output.html)
+
+#### Renderização
+- **Renderização**: [https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/Render.html](https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/Render.html)
 
 #### FAQ
 - **FAQ**: [https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/FAQ.html](https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/FAQ.html)
@@ -129,6 +135,10 @@ Este documento contém todos os links relevantes do **Sprite Render Tool**, incl
 - [Output (PT)](https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/Output.html)
 - [Output (EN)](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/Output.html)
 
+### Renderização
+- [Renderização (PT)](https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/Render.html)
+- [Render (EN)](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/Render.html)
+
 ### Resolução de Problemas
 - [FAQ (PT)](https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/FAQ.html)
 - [FAQ (EN)](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/FAQ.html)
@@ -156,6 +166,7 @@ Este documento contém todos os links relevantes do **Sprite Render Tool**, incl
 - `Lighting.html` - Sistema de iluminação
 - `Animations.html` - Modos de animação
 - `Output.html` - Configuração de saída
+- `Render.html` - Configurações de renderização e ações
 - `FAQ.html` - Perguntas frequentes
 - `Changelog.html` - Histórico de versões
 - `Future-Features.html` - Funcionalidades planejadas

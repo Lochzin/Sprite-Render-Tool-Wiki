@@ -14,32 +14,39 @@ Este documento lista todas as sugestões de GIFs animados que seriam úteis para
 - **Ações**: Scroll pelo painel mostrando todas as seções (Header, Project, Light Pivot, Camera Creation, Cameras, Animations, Output, Actions)
 - **Onde colocar**: Após a seção "Main Panel (UI)"
 
-#### GIF 1b: Nova Estrutura de Painéis Colapsáveis
-- **O que mostrar**: Painéis separados e colapsáveis da nova UI
-- **Duração**: ~10-15 segundos
+#### GIF 1b: Nova Estrutura de Tabs com Sidebar
+- **O que mostrar**: Sistema de navegação lateral com tabs
+- **Duração**: ~15-20 segundos
 - **Ações**:
-  - Mostrar Header Panel com botão de documentação grande
-  - Mostrar Project Panel com botão de ajuda no cabeçalho
-  - Mostrar Light Pivot Panel colapsável
-  - Mostrar Camera Creation Panel
-  - Mostrar Cameras Panel com Lens Settings sempre visível e Camera List colapsável
-  - Mostrar botões de documentação em cada painel
-  - Mostrar painéis sendo expandidos/colapsados
+  - Mostrar sidebar esquerda com botões de tabs (Info, Setup, Cameras, Animations, Render)
+  - Clicar em cada tab mostrando conteúdo mudando
+  - Mostrar tab Info com versão, autor, documentação
+  - Mostrar tab Setup com Project, Light Pivot, Armature, Camera Creation
+  - Mostrar tab Cameras com Lens Settings, Camera List
+  - Mostrar tab Animations com modo de animação, Actions/NLA
+  - Mostrar tab Render com Render Settings, Output, Render Actions
+  - Destacar tooltips aparecendo ao passar mouse sobre os botões
 - **Onde colocar**: Após a seção "Main Panel (UI)" no index.md
 
-#### GIF 2: Fluxo Básico Completo
-- **O que mostrar**: Workflow completo do início ao fim
-- **Duração**: ~30-45 segundos
+#### GIF 2: Fluxo Básico Completo (Nova UI com Tabs)
+- **O que mostrar**: Workflow completo do início ao fim com nova interface de tabs
+- **Duração**: ~45-60 segundos
 - **Ações**:
   1. Abrir o painel (Sidebar N)
-  2. Configurar Project Name e Object Name
-  3. Configurar Light Pivot object
-  4. Clicar em "Detect Cameras" e ver a lista sendo preenchida
-  5. Clicar em "Detect Actions" e ver a lista sendo preenchida
-  6. Configurar Output Path e template
-  7. Clicar em "Render All"
-  8. Mostrar barra de progresso atualizando
-- **Onde colocar**: Na seção "Basic Workflow"
+  2. Mostrar sidebar com tabs
+  3. Na tab Setup: Configurar Project Name e Object Name
+  4. Na tab Setup: Configurar Light Pivot object
+  5. Na tab Setup: (Opcional) Usar Camera Creation Presets
+  6. Na tab Cameras: Clicar em "Detect Cameras" e ver a lista sendo preenchida
+  7. Na tab Cameras: Configurar Lens Settings
+  8. Na tab Animations: Selecionar Target Armature
+  9. Na tab Animations: Clicar em "Detect Actions" e ver a lista sendo preenchida
+  10. Na tab Render: Configurar Resolution, Frame Step (opcional)
+  11. Na tab Render: Configurar Output Path e template
+  12. Na tab Render: Clicar em "Render All"
+  13. Mostrar mudança para Info tab automaticamente
+  14. Mostrar barra de progresso atualizando na Info tab
+- **Onde colocar**: Na seção "Basic Guide"
 
 #### GIF 3: Botão Open Output Folder
 - **O que mostrar**: Botão sendo clicado e explorador de arquivos abrindo
@@ -243,6 +250,68 @@ Este documento lista todas as sugestões de GIFs animados que seriam úteis para
 
 ---
 
+### 5b. **Render.md — Render Tab**
+
+#### GIF 15b: Navegação pela Tab Render com Sidebar
+- **O que mostrar**: Navegação pela nova interface de tabs com sidebar
+- **Duração**: ~10-15 segundos
+- **Ações**:
+  - Mostrar sidebar com botões de tabs (Info, Setup, Cameras, Animations, Render)
+  - Clicar na tab Render
+  - Mostrar conteúdo da tab Render aparecendo (Render Settings, Output, Render Actions)
+  - Destacar a organização da interface
+- **Onde colocar**: No início da página Render.md, seção "Render Tab"
+
+#### GIF 15c: Frame Step em Funcionamento
+- **O que mostrar**: Frame Step sendo configurado e aplicado
+- **Duração**: ~15-20 segundos
+- **Ações**:
+  - Mostrar seção "Frame Step" na tab Render
+  - Habilitar "Enable Frame Step"
+  - Configurar Step = 2
+  - Mostrar mensagem "Renders every 2 frame(s)"
+  - Clicar em "🧪 Test Frame Count"
+  - Mostrar cálculo de frames (com e sem step)
+  - Iniciar renderização e mostrar frames sendo pulados (1, 3, 5, 7...)
+- **Onde colocar**: Na seção "Frame Step" do Render.md
+
+#### GIF 15d: Render Settings (Resolution, Frame Step, Playback Speed)
+- **O que mostrar**: Todas as configurações de renderização em ação
+- **Duração**: ~20-25 segundos
+- **Ações**:
+  - Mostrar seção "Render Settings"
+  - Alterar Resolution X/Y → mostrar mudança sendo aplicada
+  - Configurar Frame Step (habilitar, ajustar step)
+  - Configurar Playback Speed (FPS) e clicar "Apply"
+  - Mostrar todas as configurações funcionando juntas
+- **Onde colocar**: Na seção "Render Settings" do Render.md
+
+#### GIF 15e: Render All com Progresso na Info Tab
+- **O que mostrar**: Renderização completa com progresso sendo exibido na Info tab
+- **Duração**: ~30-40 segundos
+- **Ações**:
+  - Na tab Render, clicar em "Render All"
+  - Mostrar mudança automática para Info tab (ou navegação manual)
+  - Mostrar seção "Render Progress" aparecendo
+  - Mostrar contador [current/total] atualizando
+  - Mostrar porcentagem e barra de progresso
+  - Mostrar mensagem de status mudando (animação, câmera, frame)
+  - Mostrar arquivos sendo salvos no explorador (se possível)
+- **Onde colocar**: Na seção "🚀 Render All" do Render.md
+
+#### GIF 15f: Test Cameras da Tab Render
+- **O que mostrar**: Botão Test Cameras sendo usado da tab Render
+- **Duração**: ~10-15 segundos
+- **Ações**:
+  - Mostrar tab Render com seção "Render Actions"
+  - Clicar em "🎯 Test Cameras"
+  - Mostrar viewport mudando para próxima câmera
+  - Clicar várias vezes mostrando ciclo de câmeras
+  - Destacar que funciona da mesma forma que na tab Cameras
+- **Onde colocar**: Na seção "🎯 Test Cameras" do Render.md
+
+---
+
 ## 📊 PRIORIDADE MÉDIA — GIFs Muito Úteis
 
 ### 6. **index.md — Render Progress**
@@ -355,34 +424,37 @@ Este documento lista todas as sugestões de GIFs animados que seriam úteis para
 
 ## 🎬 GIFs Especiais — Workflows Completos
 
-### GIF 25: Workflow Completo do Início ao Fim
-- **O que mostrar**: Todo o processo de configuração e renderização
+### GIF 25: Workflow Completo do Início ao Fim (Nova UI)
+- **O que mostrar**: Todo o processo de configuração e renderização com nova interface de tabs
 - **Duração**: ~60-90 segundos (pode ser acelerado)
 - **Ações**:
   1. Abrir Blender com cena preparada
-  2. Abrir painel (Sidebar N)
-  3. Configurar Project Name: "MyGame"
-  4. Configurar Object Name: "Hero"
-  5. Habilitar "Enable Light Pivot" e criar/selecionar Light Pivot object
-  6. (Opção A) Usar Camera Creation Presets: selecionar preset "4 Cameras", ajustar distância, clicar "Create Cameras"
-  6. (Opção B) Clicar em "Detect Cameras" → ver lista preenchendo
-  7. Configurar Lens Settings (resolução, focal length, etc.)
-  8. Ajustar Render Order se necessário
-  9. Selecionar Target Armature
-  10. Mudar para modo ACTIONS
-  11. Clicar em "Detect Actions" → ver lista preenchendo
-  12. Habilitar/desabilitar Actions desejadas
-  13. Configurar Output Path
-  14. Configurar Output Template
-  15. Habilitar pastas (Project/Object/Animation/Camera)
-  16. Usar "Test Cameras" para verificar (com viewport em Rendered para ver rotação)
-  17. Usar "Preview Action" para testar animação
-  18. Clicar em "Render All"
-  19. Mostrar progresso rodando
-  20. Mostrar arquivos sendo salvos
-  21. Abrir pasta de saída usando botão "Open Output Folder"
-  22. Mostrar resultado final
-- **Onde colocar**: No final da seção "Basic Workflow" ou como vídeo separado
+  2. Abrir painel (Sidebar N) → mostrar sidebar com tabs
+  3. **Tab Setup**: Configurar Project Name: "MyGame"
+  4. **Tab Setup**: Configurar Object Name: "Hero"
+  5. **Tab Setup**: Habilitar "Enable Light Pivot" e criar/selecionar Light Pivot object
+  6. **Tab Setup**: (Opção A) Usar Camera Creation Presets: selecionar preset "4 Cameras", ajustar distância, clicar "Create Cameras"
+  6. **Tab Setup**: (Opção B) Ir para tab Cameras e clicar em "Detect Cameras" → ver lista preenchendo
+  7. **Tab Cameras**: Configurar Lens Settings (focal length, shift, clip distances, etc.)
+  8. **Tab Cameras**: Ajustar Render Order se necessário
+  9. **Tab Animations**: Selecionar Target Armature
+  10. **Tab Animations**: Mudar para modo ACTIONS
+  11. **Tab Animations**: Clicar em "Detect Actions" → ver lista preenchendo
+  12. **Tab Animations**: Habilitar/desabilitar Actions desejadas
+  13. **Tab Animations**: Usar "Preview Action" para testar animação
+  14. **Tab Render**: Configurar Resolution X/Y
+  15. **Tab Render**: (Opcional) Habilitar Frame Step e configurar
+  16. **Tab Render**: Configurar Output Path
+  17. **Tab Render**: Configurar Output Template
+  18. **Tab Render**: Habilitar pastas (Project/Object/Animation/Camera)
+  19. **Tab Render**: Usar "Test Cameras" para verificar (com viewport em Rendered para ver rotação)
+  20. **Tab Render**: Clicar em "Render All"
+  21. Mostrar mudança automática para **Tab Info** (ou navegação manual)
+  22. **Tab Info**: Mostrar progresso rodando (contador, porcentagem, barra)
+  23. Mostrar arquivos sendo salvos
+  24. **Tab Render**: Abrir pasta de saída usando botão "Open Output Folder"
+  25. Mostrar resultado final
+- **Onde colocar**: No final da seção "Basic Guide" ou como vídeo separado
 
 ---
 
@@ -431,7 +503,10 @@ Este documento lista todas as sugestões de GIFs animados que seriam úteis para
 10. ✅ Comparação de lighting strategies (GIF 26)
 11. ✅ Detect Actions/NLA preenchendo listas (GIF 19, 20)
 12. ✅ Navegação de frames (GIF 6)
-13. ✅ Nova estrutura de painéis colapsáveis (GIF 1b)
+13. ✅ Nova estrutura de tabs com sidebar (GIF 1b)
+14. ✅ Frame Step em funcionamento (GIF 15c)
+15. ✅ Render Settings completo (GIF 15d)
+16. ✅ Render All com progresso na Info tab (GIF 15e)
 
 ### 🟢 Opcionais (Se Tiver Tempo)
 11. ✅ Comparação de modos de animação (GIF 27)
@@ -505,6 +580,11 @@ docs/
         output-folder-structure.gif
         render-progress-bar.gif
         render-cancel-esc.gif
+        render-tab-navigation.gif
+        render-frame-step.gif
+        render-settings-complete.gif
+        render-all-progress-info-tab.gif
+        render-test-cameras-from-render-tab.gif
         ...
 ```
 
@@ -536,9 +616,14 @@ Para cada GIF:
 
 ### GIFs Adicionados para Novas Features:
 
-- **GIF 1b**: Nova estrutura de painéis colapsáveis (v0.3.2)
+- **GIF 1b**: Nova estrutura de tabs com sidebar (v0.3.6)
 - **GIF 8b**: Lens Settings sincronizadas (v0.3.1)
 - **GIF 8c**: Shift individual vs sincronizado (v0.3.1)
 - **GIF 9b**: Camera Creation Presets (v0.3.0)
 - **GIF 10b**: Visualizador de rotação do pivot (Viewport Rendered) - Funcionalidade descoberta
+- **GIF 15b**: Navegação pela Tab Render com Sidebar (v0.3.6)
+- **GIF 15c**: Frame Step em funcionamento (v0.3.5)
+- **GIF 15d**: Render Settings completo (v0.3.5)
+- **GIF 15e**: Render All com progresso na Info tab (v0.3.7)
+- **GIF 15f**: Test Cameras da Tab Render (v0.3.7)
 
