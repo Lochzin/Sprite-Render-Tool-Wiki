@@ -80,3 +80,21 @@ language = 'en'
 locale_dirs = ['locale/']
 gettext_compact = False
 
+# -- GitHub Pages Configuration ------------------------------------------------
+# Create .nojekyll file to prevent Jekyll processing on GitHub Pages
+# This is automatically handled by the GitHub Actions workflow, but we also
+# create it here as a fallback for local builds
+
+def setup(app):
+    """Create .nojekyll file after HTML build for GitHub Pages compatibility."""
+    def create_nojekyll(app, env):
+        import os
+        nojekyll_path = os.path.join(app.outdir, '.nojekyll')
+        if not os.path.exists(nojekyll_path):
+            with open(nojekyll_path, 'w') as f:
+                f.write('')
+            print(f"Created .nojekyll file at {nojekyll_path}")
+    
+    app.connect('env-updated', create_nojekyll)
+    return {'version': '1.0', 'parallel_read_safe': True}
+

@@ -1,0 +1,113 @@
+name: Build and Deploy Documentation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+      - '.github/workflows/docs.yml'
+  workflow_dispatch:  # Permite execução manual
+
+permissions:
+  contents: write  # Necessário para fazer push na branch gh-pages
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Necessário para histórico completo do git
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: 'docs/requirements.txt'
+
+      - name: Install dependencies
+        run: |
+          cd docs
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build documentation
+        run: |
+          cd docs
+          sphinx-build -b html . _build/html
+
+      - name: Create .nojekyll file
+        run: |
+          touch docs/_build/html/.nojekyll
+          echo "Created .nojekyll file to prevent Jekyll processing"
+
+      - name: Verify build output
+        run: |
+          cd docs/_build/html
+          ls -la
+          test -f index.html || (echo "ERROR: index.html not found!" && exit 1)
+          test -f .nojekyll || (echo "ERROR: .nojekyll not found!" && exit 1)
+          echo "Build verification successful!"
+
+      - name: Setup Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Deploy to gh-pages
+        run: |
+          cd docs/_build/html
+          
+          # Inicializar git no diretório de build
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Adicionar remote com autenticação
+          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git || \
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          
+          # Fazer fetch da branch gh-pages (se existir)
+          git fetch origin gh-pages 2>/dev/null || echo "Branch gh-pages não existe ainda, será criada"
+          
+          # Criar ou fazer checkout da branch gh-pages
+          if git show-ref --verify --quiet refs/remotes/origin/gh-pages; then
+            git checkout -b gh-pages origin/gh-pages
+            # Remover todos os arquivos antigos (exceto .git)
+            find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} + 2>/dev/null || true
+          else
+            git checkout -b gh-pages
+          fi
+          
+          # Adicionar todos os arquivos novos (incluindo .nojekyll)
+          git add -A
+          
+          # Commit com mensagem descritiva
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy documentation from commit ${{ github.sha }}
+            
+            Source commit: ${{ github.sha }}
+            Workflow run: ${{ github.run_id }}
+            Triggered by: ${{ github.actor }}"
+          fi
+          
+          # Force push para gh-pages (overwrite completo)
+          git push -f origin gh-pages
+
+      - name: Deployment summary
+        run: |
+          echo "## 📚 Documentation Deployed Successfully!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Build completed successfully" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Documentation deployed to branch: \`gh-pages\`" >> $GITHUB_STEP_SUMMARY
+          echo "🌐 Your documentation will be available at:" >> $GITHUB_STEP_SUMMARY
+          echo "   https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Commit: \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "Workflow run: \`${{ github.run_id }}\`" >> $GITHUB_STEP_SUMMARY
