@@ -1,0 +1,396 @@
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Render &mdash; Sprite Render Tool 0.2.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=166b7d9a" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/Render.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=000c92bf"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FAQ" href="FAQ.html" />
+    <link rel="prev" title="Output" href="Output.html" />
+ 
+<style>
+/* Custom CSS for Sprite Render Tool documentation */
+/* Reduce logo size in sidebar */
+.wy-side-nav-search .wy-side-nav-search__logo,
+.wy-side-nav-search img.logo {
+    max-height: 80px !important;
+    width: auto !important;
+    max-width: 250px !important;
+}
+
+/* Also target the icon class if used */
+.wy-side-nav-search .icon img {
+    max-height: 80px !important;
+    width: auto !important;
+}
+</style>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Sprite Render Tool
+              <img src="../_static/SpriteRenderTool_Icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">English Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Sprite Render Tool — Official Wiki</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cameras.html">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lighting.html">Lighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animations.html">Animations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Render</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#render-settings">Render Settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#resolution">Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#frame-step">Frame Step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#playback-speed">Playback Speed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#output-configuration">Output Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#output-path">Output Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-name-template">Output Name Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#available-placeholders">Available Placeholders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-folders">Create Folders</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#render-actions">Render Actions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#render-all">🚀 Render All</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-cameras">🎯 Test Cameras</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#workflow-tips">Workflow Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#related-documentation">Related Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Future-Features.html">Future Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="License.html">License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentação em Português</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pt/index.html">Sprite Render Tool — Wiki Oficial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Cameras.html">Câmeras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Lighting.html">Iluminação</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Animations.html">Animações</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Render.html">Renderização</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Future-Features.html">Futuras Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/License.html">Licença</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sprite Render Tool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Render</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/en/Render.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="render">
+<h1>Render<a class="headerlink" href="#render" title="Link to this heading"></a></h1>
+<p>This page explains the <strong>Render</strong> tab functionality, which includes render settings, output configuration, and render actions.</p>
+<hr class="docutils" />
+<section id="render-settings">
+<h2>Render Settings<a class="headerlink" href="#render-settings" title="Link to this heading"></a></h2>
+<p>The <strong>Render Settings</strong> section provides controls for resolution, frame stepping, and playback speed:</p>
+<section id="resolution">
+<h3>Resolution<a class="headerlink" href="#resolution" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Resolution X / Y</strong>: Render resolution synchronized across all cameras</p>
+<ul>
+<li><p>These values are automatically applied to the Blender scene render settings</p></li>
+<li><p>All cameras will render at the same resolution</p></li>
+<li><p>Resolution is applied before each render to ensure consistency</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="frame-step">
+<h3>Frame Step<a class="headerlink" href="#frame-step" title="Link to this heading"></a></h3>
+<p>The <strong>Frame Step</strong> feature allows you to render every Nth frame instead of all frames:</p>
+<ul class="simple">
+<li><p><strong>Enable Frame Step</strong>: Toggle to enable/disable frame stepping</p></li>
+<li><p><strong>Step</strong>: Step value (1-100)</p>
+<ul>
+<li><p>When set to 1: renders all frames (normal behavior)</p></li>
+<li><p>When set to 2: renders frames 1, 3, 5, 7… (skips every other frame)</p></li>
+<li><p>When set to 3: renders frames 1, 4, 7, 10… (skips 2 frames between each rendered frame)</p></li>
+<li><p>And so on…</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Use cases:</strong></p>
+<ul class="simple">
+<li><p>Animations made for higher FPS (60, 30 fps) that need to be rendered at lower intervals</p></li>
+<li><p>Creating sprite sheets with fewer frames for performance optimization</p></li>
+<li><p>Testing render settings without rendering all frames</p></li>
+</ul>
+<p><strong>🧪 Test Frame Count</strong> button:</p>
+<ul class="simple">
+<li><p>Appears when Frame Step is enabled</p></li>
+<li><p>Calculates and displays total frames that will be rendered without actually rendering</p></li>
+<li><p>Shows detailed breakdown per animation with and without step applied</p></li>
+<li><p>Helps verify frame step configuration before starting a full render batch</p></li>
+</ul>
+</section>
+<section id="playback-speed">
+<h3>Playback Speed<a class="headerlink" href="#playback-speed" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>FPS</strong>: Custom frames per second setting</p></li>
+<li><p><strong>Apply</strong> button: Applies the FPS setting to the Blender scene</p>
+<ul>
+<li><p>This affects animation playback speed in the viewport</p></li>
+<li><p>Useful for previewing animations at different speeds</p></li>
+<li><p>Does not affect the actual frame rendering (frames are still rendered at their original frame numbers)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="output-configuration">
+<h2>Output Configuration<a class="headerlink" href="#output-configuration" title="Link to this heading"></a></h2>
+<p>The <strong>Output</strong> section in the Render tab provides controls for where and how files are saved. For detailed information about output templates, folder structures, and file naming, see the dedicated <a class="reference internal" href="Output.html"><span class="std std-doc">Output</span></a> page.</p>
+<section id="output-path">
+<h3>Output Path<a class="headerlink" href="#output-path" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Output Path</strong>: Base folder where all rendered files will be created</p>
+<ul>
+<li><p>This uses the Blender scene render settings (<code class="docutils literal notranslate"><span class="pre">scene.render.filepath</span></code>)</p></li>
+<li><p>Can use Blender relative paths (starting with <code class="docutils literal notranslate"><span class="pre">//</span></code>)</p></li>
+<li><p>The add-on automatically converts relative paths to absolute paths</p></li>
+</ul>
+</li>
+<li><p><strong>📂 Open Output Folder</strong> button: Opens the output folder in your system’s file explorer</p>
+<ul>
+<li><p>Automatically creates the folder if it doesn’t exist</p></li>
+<li><p>Cross-platform support (Windows, macOS, Linux)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="output-name-template">
+<h3>Output Name Template<a class="headerlink" href="#output-name-template" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Output Name</strong> (<code class="docutils literal notranslate"><span class="pre">output_template</span></code>): Template string for generating file names</p>
+<ul>
+<li><p>Default template: <code class="docutils literal notranslate"><span class="pre">$objectName_$animation_$frame</span></code></p></li>
+<li><p>See <a class="reference internal" href="Output.html"><span class="std std-doc">Output</span></a> for detailed information about templates and placeholders</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="available-placeholders">
+<h3>Available Placeholders<a class="headerlink" href="#available-placeholders" title="Link to this heading"></a></h3>
+<p>The <strong>📋 Show Available Placeholders</strong> section (collapsible) displays:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$projectName</span></code>: Project name from settings</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$objectName</span></code>: Object/character name from settings</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$animation</span></code>: Animation/Action name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$camera</span></code>: Camera name or output name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$frame</span></code>: Frame number (formatted as 0001, 0002, etc.)</p></li>
+</ul>
+<p>The section also shows a live preview of what the output name would look like with sample values.</p>
+</section>
+<section id="create-folders">
+<h3>Create Folders<a class="headerlink" href="#create-folders" title="Link to this heading"></a></h3>
+<p>Organize output files into a folder hierarchy:</p>
+<ul class="simple">
+<li><p><strong>Project Folder</strong>: Creates a folder with the project name</p></li>
+<li><p><strong>Object Folder</strong>: Creates a folder with the object name</p></li>
+<li><p><strong>Animation Folder</strong>: Creates a folder with the animation name</p></li>
+<li><p><strong>Camera Folder</strong>: Creates a folder with the camera name</p></li>
+</ul>
+<p>These folders are built in the order: <code class="docutils literal notranslate"><span class="pre">Project/Object/Animation/Camera/</span></code> (based on which options are enabled).</p>
+<p>For more details about folder structure and file naming, see <a class="reference internal" href="Output.html"><span class="std std-doc">Output</span></a>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="render-actions">
+<h2>Render Actions<a class="headerlink" href="#render-actions" title="Link to this heading"></a></h2>
+<p>The <strong>Render Actions</strong> section contains the main buttons for rendering and testing:</p>
+<section id="render-all">
+<h3>🚀 Render All<a class="headerlink" href="#render-all" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Operator</strong>: <code class="docutils literal notranslate"><span class="pre">sprite_render.render_all</span></code></p></li>
+<li><p><strong>Functionality</strong>: Starts rendering all enabled animations and cameras</p></li>
+<li><p><strong>Mode</strong>: Asynchronous rendering using a timer</p>
+<ul>
+<li><p>Non-blocking: you can continue working in Blender while rendering</p></li>
+<li><p>Progress tracking: see render progress in the <strong>Info</strong> tab</p></li>
+<li><p>Cancellable: use <strong>Cancel Render</strong> button or press <strong>ESC</strong> to stop</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>How it works:</strong></p>
+<ol class="arabic simple">
+<li><p>Validates output path before starting</p></li>
+<li><p>Renders each enabled animation</p></li>
+<li><p>For each animation, renders all configured cameras</p></li>
+<li><p>Applies frame step if enabled</p></li>
+<li><p>Saves each frame as a PNG image</p></li>
+<li><p>Shows progress in the Info tab</p></li>
+</ol>
+<p><strong>Progress tracking:</strong></p>
+<ul class="simple">
+<li><p>Current frame count: <code class="docutils literal notranslate"><span class="pre">[current/total]</span></code></p></li>
+<li><p>Percentage complete</p></li>
+<li><p>Progress bar</p></li>
+<li><p>Status message (current animation, camera, frame)</p></li>
+</ul>
+</section>
+<section id="test-cameras">
+<h3>🎯 Test Cameras<a class="headerlink" href="#test-cameras" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Operator</strong>: <code class="docutils literal notranslate"><span class="pre">sprite_render.test_cameras</span></code></p></li>
+<li><p><strong>Functionality</strong>: Cycles through configured cameras for preview</p></li>
+<li><p><strong>Use cases</strong>:</p>
+<ul>
+<li><p>Quickly preview all camera angles</p></li>
+<li><p>Verify camera framing before rendering</p></li>
+<li><p>Check lighting setup with light pivot rotation</p></li>
+<li><p>Visualize light rotation in <strong>Rendered</strong> viewport shading mode</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>How it works:</strong></p>
+<ol class="arabic simple">
+<li><p>Finds the current scene camera in the add-on camera list</p></li>
+<li><p>Selects the next camera in the list (cyclically)</p></li>
+<li><p>Sets the scene camera to that object</p></li>
+<li><p>Switches the 3D Viewport to camera view</p></li>
+<li><p>If a light pivot is set, applies the corresponding light rotation</p></li>
+</ol>
+<blockquote>
+<div><p><strong>Tip</strong>: For detailed information about camera testing and light rotation visualization, see <a class="reference internal" href="Cameras.html"><span class="std std-doc">Cameras</span></a> and <a class="reference internal" href="Lighting.html"><span class="std std-doc">Lighting</span></a>.</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="workflow-tips">
+<h2>Workflow Tips<a class="headerlink" href="#workflow-tips" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Before rendering:</strong></p>
+<ul class="simple">
+<li><p>Set resolution in Render Settings</p></li>
+<li><p>Configure output path and template</p></li>
+<li><p>Enable/disable folder options as needed</p></li>
+<li><p>Use <strong>Test Cameras</strong> to verify camera setup</p></li>
+<li><p>Use <strong>🧪 Test Frame Count</strong> if using Frame Step</p></li>
+</ul>
+</li>
+<li><p><strong>During rendering:</strong></p>
+<ul class="simple">
+<li><p>Monitor progress in the <strong>Info</strong> tab</p></li>
+<li><p>You can continue working in Blender (asynchronous rendering)</p></li>
+<li><p>Press <strong>ESC</strong> or click <strong>Cancel Render</strong> to stop (stops after current frame completes)</p></li>
+</ul>
+</li>
+<li><p><strong>After rendering:</strong></p>
+<ul class="simple">
+<li><p>Use <strong>📂 Open Output Folder</strong> to quickly access rendered files</p></li>
+<li><p>Check folder structure matches your expectations</p></li>
+<li><p>Verify file names follow your template</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="related-documentation">
+<h2>Related Documentation<a class="headerlink" href="#related-documentation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="Output.html"><span class="std std-doc">Output</span></a>: Detailed information about output templates, folder structures, and file naming</p></li>
+<li><p><a class="reference internal" href="Cameras.html"><span class="std std-doc">Cameras</span></a>: Camera configuration and testing</p></li>
+<li><p><a class="reference internal" href="Lighting.html"><span class="std std-doc">Lighting</span></a>: Light pivot system and lighting strategies</p></li>
+<li><p><a class="reference internal" href="Animations.html"><span class="std std-doc">Animations</span></a>: Animation modes and configuration</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Output.html" class="btn btn-neutral float-left" title="Output" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="FAQ.html" class="btn btn-neutral float-right" title="FAQ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sprite Render Tool.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

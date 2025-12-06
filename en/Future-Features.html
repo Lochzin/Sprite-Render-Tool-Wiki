@@ -1,0 +1,227 @@
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Future Features &mdash; Sprite Render Tool 0.2.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=166b7d9a" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/Future-Features.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=000c92bf"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="License" href="License.html" />
+    <link rel="prev" title="Changelog" href="Changelog.html" />
+ 
+<style>
+/* Custom CSS for Sprite Render Tool documentation */
+/* Reduce logo size in sidebar */
+.wy-side-nav-search .wy-side-nav-search__logo,
+.wy-side-nav-search img.logo {
+    max-height: 80px !important;
+    width: auto !important;
+    max-width: 250px !important;
+}
+
+/* Also target the icon class if used */
+.wy-side-nav-search .icon img {
+    max-height: 80px !important;
+    width: auto !important;
+}
+</style>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Sprite Render Tool
+              <img src="../_static/SpriteRenderTool_Icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">English Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Sprite Render Tool — Official Wiki</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cameras.html">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lighting.html">Lighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animations.html">Animations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Render.html">Render</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Changelog.html">Changelog</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Future Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#planned-features">Planned Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#animation-features">Animation Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#camera-setup-features">Camera Setup Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ui-ux-improvements">UI/UX Improvements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-features">Output Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-requests">Feature Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="License.html">License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentação em Português</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pt/index.html">Sprite Render Tool — Wiki Oficial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Cameras.html">Câmeras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Lighting.html">Iluminação</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Animations.html">Animações</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Render.html">Renderização</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Future-Features.html">Futuras Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/License.html">Licença</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sprite Render Tool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Future Features</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/en/Future-Features.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="future-features">
+<h1>Future Features<a class="headerlink" href="#future-features" title="Link to this heading"></a></h1>
+<p>This page lists planned features and improvements for the <strong>Sprite Render Tool</strong> that are not yet implemented but are on the roadmap.</p>
+<hr class="docutils" />
+<section id="planned-features">
+<h2>Planned Features<a class="headerlink" href="#planned-features" title="Link to this heading"></a></h2>
+<section id="animation-features">
+<h3>Animation Features<a class="headerlink" href="#animation-features" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Sub-Actions Mode</strong>: Support for Blender’s sub-actions feature (introduced in Blender 4.4). This new animation mode will allow users to work with sub-actions, which provide a way to organize and manage complex animation hierarchies within a single action. This feature will complement the existing ACTIONS, NLA, and STATIC modes, providing more flexibility for advanced animation workflows.</p></li>
+<li><p><strong>Secondary Armature Sync</strong>: Complete implementation of the secondary armature synchronization feature. Currently, the UI has placeholders for <code class="docutils literal notranslate"><span class="pre">sync_secondary</span></code>, <code class="docutils literal notranslate"><span class="pre">secondary_armature</span></code>, and <code class="docutils literal notranslate"><span class="pre">secondary_action</span></code>, but the functionality is not yet fully implemented.</p></li>
+</ul>
+</section>
+<section id="camera-setup-features">
+<h3>Camera Setup Features<a class="headerlink" href="#camera-setup-features" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Camera Presets</strong>: Quick setup presets for common camera configurations:</p>
+<ul>
+<li><p>Presets for 1, 2, 3, 4, and 5 cameras with pre-configured angles and rotations</p></li>
+<li><p>Custom preset creation and saving for frequently used camera setups</p></li>
+<li><p>Preset sharing and import/export functionality</p></li>
+<li><p>This will streamline the workflow for users who frequently work with standard camera arrangements (front, back, side views, etc.)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="ui-ux-improvements">
+<h3>UI/UX Improvements<a class="headerlink" href="#ui-ux-improvements" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Contextual Help Buttons</strong>: Integration of help/documentation buttons throughout the UI that link directly to relevant sections of the wiki:</p>
+<ul>
+<li><p><strong>Animation Mode</strong> section: Button linking to the Animations documentation page</p></li>
+<li><p><strong>Cameras</strong> section: Button linking to the Cameras documentation page</p></li>
+<li><p><strong>Light Pivot</strong> section: Button linking to the Lighting documentation page</p></li>
+<li><p><strong>Output</strong> section: Button linking to the Output documentation page</p></li>
+<li><p><strong>FAQ</strong> button: Quick access to frequently asked questions</p></li>
+<li><p>These buttons will provide instant access to detailed documentation without leaving Blender, improving the learning curve for new users and serving as quick reference for experienced users</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="output-features">
+<h3>Output Features<a class="headerlink" href="#output-features" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Normal Maps Rendering</strong>: Option to render normal maps simultaneously with the regular render. This will allow users to generate both the standard sprite images and their corresponding normal maps in a single render pass, ensuring perfect alignment and consistent lighting between the two outputs.</p></li>
+<li><p><strong>Multiple Resolution Support</strong>: Support for rendering multiple resolutions per camera or multiple resolutions for the same camera. This feature will allow users to generate sprites at different resolutions (e.g., 1x, 2x, 4x) in a single render batch, which is useful for games that need sprites at multiple quality levels or for different display densities.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="feature-requests">
+<h2>Feature Requests<a class="headerlink" href="#feature-requests" title="Link to this heading"></a></h2>
+<p>If you have suggestions for features you’d like to see, please consider:</p>
+<ul class="simple">
+<li><p>Opening an issue on the project repository: <a class="reference external" href="https://github.com/Lochzin/Sprite-Render-Tool-Wiki/issues">GitHub Issues</a></p></li>
+<li><p>Joining the community discussions: <a class="reference external" href="https://github.com/Lochzin/Sprite-Render-Tool-Wiki/discussions">GitHub Discussions</a></p></li>
+<li><p>Contacting the developer directly</p></li>
+<li><p>Contributing to the project</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>Note</strong>: This is a living document. Features may be added, removed, or reprioritized based on user feedback and development priorities.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Changelog.html" class="btn btn-neutral float-left" title="Changelog" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="License.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sprite Render Tool.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

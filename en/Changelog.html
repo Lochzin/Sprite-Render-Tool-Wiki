@@ -1,0 +1,1093 @@
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Changelog &mdash; Sprite Render Tool 0.2.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=166b7d9a" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/Changelog.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=000c92bf"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Future Features" href="Future-Features.html" />
+    <link rel="prev" title="FAQ" href="FAQ.html" />
+ 
+<style>
+/* Custom CSS for Sprite Render Tool documentation */
+/* Reduce logo size in sidebar */
+.wy-side-nav-search .wy-side-nav-search__logo,
+.wy-side-nav-search img.logo {
+    max-height: 80px !important;
+    width: auto !important;
+    max-width: 250px !important;
+}
+
+/* Also target the icon class if used */
+.wy-side-nav-search .icon img {
+    max-height: 80px !important;
+    width: auto !important;
+}
+</style>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Sprite Render Tool
+              <img src="../_static/SpriteRenderTool_Icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">English Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Sprite Render Tool — Official Wiki</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cameras.html">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lighting.html">Lighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animations.html">Animations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Render.html">Render</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">[0.3.8] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fixed">Fixed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#removed">Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#technical-details">Technical Details</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">[0.3.7] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#changed">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Technical Details</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">[0.3.6] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#added">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Fixed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Technical Details</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">[0.3.5] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Fixed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Technical Details</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">[0.3.4] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Fixed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Technical Details</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id17">[0.3.3] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id18">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id21">[0.3.2] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id22">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">Removed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id24">[0.3.1] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id25">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id28">[0.3.0] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id29">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id31">Fixed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id32">Technical Details</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id33">[0.2.8] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id34">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id35">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id36">Technical Details</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id37">[0.2.7] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id38">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id39">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id40">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id41">[0.2.6] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id42">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id43">Changed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id44">[0.2.5] - 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id45">[0.2.4] - 2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id46">Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id47">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id48">Technical Details</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id49">[0.2.3] - 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id50">[0.2.2] - 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id51">[0.2.1] - 2024</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Future-Features.html">Future Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="License.html">License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentação em Português</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pt/index.html">Sprite Render Tool — Wiki Oficial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Cameras.html">Câmeras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Lighting.html">Iluminação</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Animations.html">Animações</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Render.html">Renderização</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/Future-Features.html">Futuras Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt/License.html">Licença</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sprite Render Tool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Changelog</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/en/Changelog.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Link to this heading"></a></h1>
+<p>This page tracks changes to the <strong>Sprite Render Tool</strong> over time.</p>
+<hr class="docutils" />
+<section id="id1">
+<h2>[0.3.8] - 2024<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<section id="fixed">
+<h3>Fixed<a class="headerlink" href="#fixed" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Render Duplication Bug</strong>: Fixed issue where render process was rendering extra frames after completing the last camera</p>
+<ul>
+<li><p>Improved frame and camera advancement logic in asynchronous render loop</p></li>
+<li><p>Fixed frame validation when using frame step feature</p></li>
+<li><p>Now correctly advances to next camera when all frames for current camera are complete</p></li>
+<li><p>Prevents rendering duplicate frames from previous cameras</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="removed">
+<h3>Removed<a class="headerlink" href="#removed" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Automatic Addon Update Feature</strong>: Removed automatic addon update functionality</p>
+<ul>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_UpdateAddon</span></code> operator due to stability issues</p></li>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_AddonPreferences</span></code> class and update button from Addon Preferences</p></li>
+<li><p>Addon updates must now be done manually by uninstalling and reinstalling the addon</p></li>
+<li><p>This change was made to prevent crashes and improve stability</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="technical-details">
+<h3>Technical Details<a class="headerlink" href="#technical-details" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Refactored <code class="docutils literal notranslate"><span class="pre">_render_next_frame()</span></code> method in <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_RenderAll</span></code>:</p>
+<ul>
+<li><p>Reordered checks: cameras finished check now happens before frame validation</p></li>
+<li><p>Improved frame step logic to correctly identify when camera is complete</p></li>
+<li><p>Fixed frame advancement to immediately move to next camera when frames are exhausted</p></li>
+<li><p>Better handling of edge cases in frame step sequences</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h2>[0.3.7] - 2024<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="changed">
+<h3>Changed<a class="headerlink" href="#changed" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Tab Reorganization</strong>: Improved tab structure and organization</p>
+<ul>
+<li><p><strong>Info Tab</strong>: Renamed from “Header” to “Info” and moved to first position in sidebar</p></li>
+<li><p><strong>Execute Tab Removed</strong>: Tab removed to simplify interface</p></li>
+<li><p><strong>Render Actions</strong>: Render and test buttons moved to Render tab</p></li>
+<li><p><strong>Tab Order</strong>: New order is Info → Setup → Cameras → Animations → Render</p></li>
+<li><p>Better workflow: all render-related actions (settings, output, and execution) in one place</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id3">
+<h3>Technical Details<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_SetMainTab_Execute</span></code> operator</p></li>
+<li><p>Renamed <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_SetMainTab_Header</span></code> to <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_SetMainTab_Info</span></code></p></li>
+<li><p>Updated <code class="docutils literal notranslate"><span class="pre">main_panel_tab</span></code> EnumProperty: removed EXECUTE, renamed HEADER to INFO, reordered items</p></li>
+<li><p>Default tab changed from SETUP to INFO</p></li>
+<li><p>Render tab now includes “Render Actions” section with Render All and Test Cameras buttons</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h2>[0.3.6] - 2024<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="added">
+<h3>Added<a class="headerlink" href="#added" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Sidebar Navigation System</strong>: Complete UI redesign with tabbed interface</p>
+<ul>
+<li><p><strong>Menu Lateral</strong>: Vertical sidebar with icon buttons for easy navigation (similar to UVPackmaster)</p></li>
+<li><p><strong>5 Main Tabs</strong>: Setup, Cameras, Animations, Render, Execute</p></li>
+<li><p><strong>Header Tab</strong>: Additional tab at the bottom of sidebar for version info, documentation, and render progress</p></li>
+<li><p><strong>Tooltips</strong>: Each tab button shows specific description on hover</p></li>
+<li><p><strong>Consolidated Interface</strong>: All functionality organized into a single main panel</p></li>
+<li><p>Reduces UI clutter from 9 separate panels to 1 unified panel with navigation</p></li>
+</ul>
+</li>
+<li><p><strong>Armature in Setup Tab</strong>: Added armature selection field to Setup tab</p>
+<ul>
+<li><p>Located below Light Pivot section for logical workflow</p></li>
+<li><p>Redundant with Animations tab for convenience</p></li>
+<li><p>Makes setup configuration more complete in one place</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id5">
+<h3>Changed<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Complete UI Restructure</strong>: Major interface reorganization</p>
+<ul>
+<li><p><strong>Before</strong>: 9 separate collapsible panels (Header, Project, Light Pivot, Camera Creation, Cameras, Animations, Render Settings, Output, Actions)</p></li>
+<li><p><strong>After</strong>: 1 main panel with sidebar navigation and 6 tabs</p></li>
+<li><p>Header information integrated into main panel (no longer separate)</p></li>
+<li><p>All content accessible through tab navigation</p></li>
+</ul>
+</li>
+<li><p><strong>Shift Synchronization UI</strong>: Improved shift control interface</p>
+<ul>
+<li><p><strong>Button Labels</strong>: Changed from “Sync X/Y” to “Desync Shift X/Y”</p></li>
+<li><p><strong>Inverted Logic</strong>: Buttons now show desync state (pressed = desynced, unpressed = synced)</p></li>
+<li><p><strong>Default State</strong>: Shift synchronization enabled by default (buttons unpressed = synced)</p></li>
+<li><p>More intuitive: button pressed means “allow individual values”</p></li>
+</ul>
+</li>
+<li><p><strong>Tab Organization</strong>: Content reorganized into logical groups</p>
+<ul>
+<li><p><strong>Setup Tab</strong>: Project, Light Pivot, Armature, Camera Creation</p></li>
+<li><p><strong>Cameras Tab</strong>: Lens Settings, Camera Options, Camera List</p></li>
+<li><p><strong>Animations Tab</strong>: Animation mode, Actions/NLA configuration, testing tools</p></li>
+<li><p><strong>Render Tab</strong>: Render Settings (Resolution, Frame Step, Playback Speed) + Output configuration</p></li>
+<li><p><strong>Execute Tab</strong>: Render and test buttons</p></li>
+<li><p><strong>Header Tab</strong>: Version, author, documentation, render progress</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id6">
+<h3>Fixed<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>UI Crash with Inverted Properties</strong>: Fixed crash when using getters/setters for inverted boolean properties</p>
+<ul>
+<li><p>Replaced problematic property getters/setters with simple toggle operators</p></li>
+<li><p>Created <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_ToggleDesyncShiftX</span></code> and <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_ToggleDesyncShiftY</span></code> operators</p></li>
+<li><p>Prevents <code class="docutils literal notranslate"><span class="pre">EXCEPTION_ACCESS_VIOLATION</span></code> crashes in Blender’s UI system</p></li>
+</ul>
+</li>
+<li><p><strong>Duplicate Operator Definitions</strong>: Fixed issue where toggle operators were defined twice</p>
+<ul>
+<li><p>Removed duplicate class definitions that were causing UI rendering issues</p></li>
+<li><p>Cameras tab now displays all content correctly (Lens Settings, Camera Options, Camera List, Detect Cameras button)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id7">
+<h3>Technical Details<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>New panel: <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_PT_MainPanel</span></code> with sidebar navigation</p></li>
+<li><p>New operator: <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_SetMainTab</span></code> for tab switching</p></li>
+<li><p>New operators: <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_ToggleDesyncShiftX</span></code> and <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_ToggleDesyncShiftY</span></code> for shift control</p></li>
+<li><p>Tab system: <code class="docutils literal notranslate"><span class="pre">main_panel_tab</span></code> EnumProperty with 6 options</p></li>
+<li><p>Sidebar layout: Vertical column with icon buttons, header button at bottom</p></li>
+<li><p>Content switching: Dynamic content area based on selected tab</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id8">
+<h2>[0.3.5] - 2024<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<section id="id9">
+<h3>Added<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Render Settings Panel</strong>: New dedicated panel for render configuration settings</p>
+<ul>
+<li><p><strong>Resolution</strong>: X and Y resolution controls (moved from Cameras panel)</p></li>
+<li><p><strong>Frame Step</strong>: Enable/disable frame stepping with configurable step value (1-100)</p>
+<ul>
+<li><p>Useful for animations made for higher FPS (60, 30 fps) that need to be rendered at lower intervals</p></li>
+<li><p>Automatically adjusts total render count calculation when enabled</p></li>
+<li><p>Example: Step of 2 renders frames 1, 3, 5, 7… (skips every other frame)</p></li>
+</ul>
+</li>
+<li><p><strong>Playback Speed</strong>: FPS control with apply button (moved from Animations panel)</p></li>
+<li><p>Located between Animations and Output panels for better workflow</p></li>
+</ul>
+</li>
+<li><p><strong>Frame Count Test Tool</strong>: Temporary debug tool to test frame calculation</p>
+<ul>
+<li><p>“🧪 Test Frame Count” button appears when Frame Step is enabled</p></li>
+<li><p>Calculates and displays total frames without rendering</p></li>
+<li><p>Shows detailed breakdown per animation with and without step applied</p></li>
+<li><p>Helps verify frame step configuration before rendering</p></li>
+</ul>
+</li>
+<li><p><strong>Automatic Addon Update</strong>: New update functionality built into the addon</p>
+<ul>
+<li><p>“Update Addon from ZIP” button in Addon Preferences (Preferences → Add-ons → Sprite Render Tool)</p></li>
+<li><p>Opens file dialog to select new ZIP file</p></li>
+<li><p>Automatically creates backup before updating</p></li>
+<li><p>Extracts and installs new version</p></li>
+<li><p>Reloads all modules automatically</p></li>
+<li><p>Restores backup automatically if update fails</p></li>
+<li><p>No need to manually uninstall/reinstall the addon</p></li>
+<li><p>Integrated seamlessly into Blender’s addon preferences interface</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id10">
+<h3>Changed<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Header Panel Default State</strong>: Header panel now starts minimized (collapsed) by default</p>
+<ul>
+<li><p>Improved UI organization - users can expand when needed</p></li>
+<li><p>Version, author, and documentation button still accessible when expanded</p></li>
+</ul>
+</li>
+<li><p><strong>Default Camera Preset</strong>: Changed default camera preset from 4 cameras to 5 cameras</p>
+<ul>
+<li><p>Default preset is now “5 Cameras - Front, Front Right, Right, Back Right, Back”</p></li>
+<li><p>Better default for most sprite rendering workflows</p></li>
+</ul>
+</li>
+<li><p><strong>Default Output Template</strong>: Changed default output name template</p>
+<ul>
+<li><p><strong>Before</strong>: <code class="docutils literal notranslate"><span class="pre">$projectName_$objectName_$animation_$camera_$frame</span></code></p></li>
+<li><p><strong>After</strong>: <code class="docutils literal notranslate"><span class="pre">$objectName_$animation_$frame</span></code></p></li>
+<li><p>Simplified default template without project name and camera</p></li>
+</ul>
+</li>
+<li><p><strong>UI Reorganization</strong>: Moved render-related settings to new Render Settings panel</p>
+<ul>
+<li><p>Resolution moved from Cameras panel to Render Settings panel</p></li>
+<li><p>Frame Step moved from Animations panel to Render Settings panel</p></li>
+<li><p>Playback Speed moved from Animations test box to Render Settings panel</p></li>
+<li><p>Better organization of render configuration options</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id11">
+<h3>Fixed<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Frame Step Not Working</strong>: Fixed issue where frame step was not being applied during rendering</p>
+<ul>
+<li><p>Frame step calculation now works correctly in both synchronous and asynchronous render modes</p></li>
+<li><p>Total frame count correctly calculated with step applied</p></li>
+<li><p>Frame iteration properly skips frames according to step value</p></li>
+</ul>
+</li>
+<li><p><strong>Sequential Counter Reset Bug</strong>: Fixed issue where sequential frame counter was resetting when changing cameras</p>
+<ul>
+<li><p>Sequential counter now only resets when starting a new animation, not when changing cameras</p></li>
+<li><p>Prevents file overwriting when <code class="docutils literal notranslate"><span class="pre">$camera</span></code> is not in the output template</p></li>
+<li><p>Frames continue numbering sequentially across all cameras for the same animation</p></li>
+</ul>
+</li>
+<li><p><strong>NLA Strip Not Reactivating on Camera Change</strong>: Fixed issue where NLA strip was not being reactivated when changing cameras</p>
+<ul>
+<li><p>First camera was sometimes using a random animation instead of the correct one</p></li>
+<li><p>NLA strip now correctly reactivates when changing cameras in both synchronous and asynchronous render modes</p></li>
+<li><p>Ensures correct animation is active for each camera angle</p></li>
+<li><p>Applied before each render to guarantee correct animation state</p></li>
+</ul>
+</li>
+<li><p><strong>Addon Update Crash</strong>: Fixed crash when updating addon after module reload</p>
+<ul>
+<li><p>Protected <code class="docutils literal notranslate"><span class="pre">self.report()</span></code> calls with try/except to prevent crashes</p></li>
+<li><p>Added fallback to <code class="docutils literal notranslate"><span class="pre">print()</span></code> for error messages</p></li>
+<li><p>Improved error handling during addon update process</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id12">
+<h3>Technical Details<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Frame step calculation: <code class="docutils literal notranslate"><span class="pre">range(start_frame,</span> <span class="pre">end_frame</span> <span class="pre">+</span> <span class="pre">1,</span> <span class="pre">step)</span></code> when enabled</p></li>
+<li><p>Frame step applied in both <code class="docutils literal notranslate"><span class="pre">execute()</span></code> (synchronous) and <code class="docutils literal notranslate"><span class="pre">_render_next_frame()</span></code> (asynchronous) methods</p></li>
+<li><p>Sequential counter logic: Only resets on new animation (<code class="docutils literal notranslate"><span class="pre">_current_frame</span> <span class="pre">==</span> <span class="pre">0</span></code> AND <code class="docutils literal notranslate"><span class="pre">_current_cam_index</span> <span class="pre">==</span> <span class="pre">0</span></code>)</p></li>
+<li><p>Update operator: <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_UpdateAddon</span></code> with full error handling and backup system</p></li>
+<li><p>Backup location: <code class="docutils literal notranslate"><span class="pre">{addon_path}_backup</span></code> for safety</p></li>
+<li><p>Test operator: <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_TestFrameCount</span></code> (temporary debug tool)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id13">
+<h2>[0.3.4] - 2024<a class="headerlink" href="#id13" title="Link to this heading"></a></h2>
+<section id="id14">
+<h3>Changed<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Code Modularization</strong>: Complete restructuring of the addon codebase into a modular architecture</p>
+<ul>
+<li><p>Split monolithic <code class="docutils literal notranslate"><span class="pre">Sprite</span> <span class="pre">Render</span> <span class="pre">Tool.py</span></code> into organized modules:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">constants.py</span></code>: Camera presets and constant values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">properties.py</span></code>: All PropertyGroup classes and UIList definitions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">utils.py</span></code>: Helper functions and utilities</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">panels.py</span></code>: All UI panel classes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">operators.py</span></code>: All operator classes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>: Entry point with registration and hot-reload support</p></li>
+</ul>
+</li>
+<li><p>Improved code maintainability and organization</p></li>
+<li><p>Better separation of concerns</p></li>
+<li><p>Easier to extend and modify individual components</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id15">
+<h3>Fixed<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Installation Bug</strong>: Fixed <code class="docutils literal notranslate"><span class="pre">RuntimeError:</span> <span class="pre">'method-wrapper'</span> <span class="pre">object</span> <span class="pre">has</span> <span class="pre">no</span> <span class="pre">attribute</span> <span class="pre">'bl_info'</span></code> error</p>
+<ul>
+<li><p>Resolved circular import issue between <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> and <code class="docutils literal notranslate"><span class="pre">panels.py</span></code></p></li>
+<li><p>Added local <code class="docutils literal notranslate"><span class="pre">bl_info</span></code> definition in <code class="docutils literal notranslate"><span class="pre">panels.py</span></code> to avoid circular dependencies</p></li>
+<li><p>Ensured proper module loading order</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id16">
+<h3>Technical Details<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>New directory structure: <code class="docutils literal notranslate"><span class="pre">sprite_render_tool/</span></code> package with modular files</p></li>
+<li><p>Hot-reload support maintained for development workflow</p></li>
+<li><p>All registration/unregistration logic properly organized per module</p></li>
+<li><p>Backward compatibility maintained - no functional changes to addon behavior</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id17">
+<h2>[0.3.3] - 2024<a class="headerlink" href="#id17" title="Link to this heading"></a></h2>
+<section id="id18">
+<h3>Changed<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Split Shift Synchronization</strong>: “Sync Shift” button divided into two separate toggles</p>
+<ul>
+<li><p><strong>Sync Shift X</strong>: Independent toggle for horizontal shift synchronization</p></li>
+<li><p><strong>Sync Shift Y</strong>: Independent toggle for vertical shift synchronization</p></li>
+<li><p>Allows granular control - sync one axis while keeping the other independent</p></li>
+<li><p>Buttons placed side-by-side in the Lens Settings section</p></li>
+</ul>
+</li>
+<li><p><strong>Dynamic Lens Property Label</strong>: Lens settings label now changes dynamically based on camera type</p>
+<ul>
+<li><p>Shows “Focal Length” when camera type is Perspective</p></li>
+<li><p>Shows “Orthographic Scale” when camera type is Orthographic</p></li>
+<li><p>Correct property (<code class="docutils literal notranslate"><span class="pre">cam_data.lens</span></code> or <code class="docutils literal notranslate"><span class="pre">cam_data.ortho_scale</span></code>) is applied based on camera type</p></li>
+</ul>
+</li>
+<li><p><strong>Cameras Panel UI Reorganization</strong>: Improved layout and organization of camera settings</p>
+<ul>
+<li><p><strong>Camera Count</strong>, <strong>Custom Output Names</strong>, and <strong>Enable Full Rotation</strong> are now always visible</p></li>
+<li><p>These properties are positioned after Lens Settings and before the collapsible Camera List</p></li>
+<li><p>Only the actual camera list remains collapsible within the “Camera List” section</p></li>
+<li><p>Improved workflow: essential settings are always accessible</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id19">
+<h3>Removed<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project Panel Documentation Button</strong>: Removed documentation button from Project panel header</p>
+<ul>
+<li><p>Documentation is still accessible via the main documentation button in the Header panel</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id20">
+<h3>Fixed<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Individual Shift Values Preservation</strong>: Fixed issue where individual camera shift values were lost when disabling sync</p>
+<ul>
+<li><p>When sync is enabled, individual values are now preserved</p></li>
+<li><p>When sync is disabled, cameras restore their original individual shift values</p></li>
+<li><p>Values are correctly maintained when toggling sync on/off</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id21">
+<h2>[0.3.2] - 2024<a class="headerlink" href="#id21" title="Link to this heading"></a></h2>
+<section id="id22">
+<h3>Changed<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>UI Reorganization</strong>: Complete restructure of the addon interface</p>
+<ul>
+<li><p>Each section is now a separate collapsible panel</p></li>
+<li><p>Removed internal boxes and toggles - each panel is the section itself</p></li>
+<li><p>Improved organization and navigation</p></li>
+</ul>
+</li>
+<li><p><strong>Panel Structure</strong>: New panel layout</p>
+<ul>
+<li><p><strong>Header Panel</strong>: General information (version, author, documentation button)</p></li>
+<li><p><strong>Project Panel</strong>: Project settings</p></li>
+<li><p><strong>Light Pivot Panel</strong>: Light pivot configuration</p></li>
+<li><p><strong>Camera Creation Panel</strong>: Camera preset creation</p></li>
+<li><p><strong>Cameras Panel</strong>: Camera management and lens settings</p></li>
+<li><p><strong>Animations Panel</strong>: Animation configuration</p></li>
+<li><p><strong>Output Panel</strong>: Output settings</p></li>
+<li><p><strong>Actions Panel</strong>: Render and test buttons</p></li>
+</ul>
+</li>
+<li><p><strong>Documentation Buttons</strong>: Improved documentation button placement</p>
+<ul>
+<li><p>Header panel: Large documentation button below author</p></li>
+<li><p>Other panels: Small documentation button in the panel header (top right)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id23">
+<h3>Removed<a class="headerlink" href="#id23" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>GitHub Repository Reference</strong>: Removed reference to private GitHub repository from header panel</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id24">
+<h2>[0.3.1] - 2024<a class="headerlink" href="#id24" title="Link to this heading"></a></h2>
+<section id="id25">
+<h3>Added<a class="headerlink" href="#id25" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Synchronized Resolution Settings</strong>: New resolution controls in Lens Settings</p>
+<ul>
+<li><p>Resolution X and Y fields synchronized across all cameras</p></li>
+<li><p>Applied to scene render settings automatically</p></li>
+</ul>
+</li>
+<li><p><strong>Shift Synchronization Toggle</strong>: New “Sync Shift” button in Lens Settings</p>
+<ul>
+<li><p>Allows toggling between synchronized and individual shift values</p></li>
+<li><p>When desynchronized, each camera can have its own shift values</p></li>
+</ul>
+</li>
+<li><p><strong>Individual Camera Shift</strong>: Per-camera shift controls</p>
+<ul>
+<li><p>Shift X and Y fields appear for each camera when shift is desynchronized</p></li>
+<li><p>Shift values displayed before Render Order in camera list</p></li>
+<li><p>Values automatically applied when changed</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id26">
+<h3>Changed<a class="headerlink" href="#id26" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Lens Settings UI</strong>: Improved lens settings section layout</p>
+<ul>
+<li><p>Lens Settings section is now always visible (no toggle)</p></li>
+<li><p>Removed Sensor Width and Sensor Fit options</p></li>
+<li><p>Added Camera Type (Perspective/Orthographic) option</p></li>
+<li><p>Layout matches Blender’s default camera lens panel</p></li>
+</ul>
+</li>
+<li><p><strong>Camera List Organization</strong>: Better camera list management</p>
+<ul>
+<li><p>All individual cameras grouped in a collapsible “Camera List” subsection</p></li>
+<li><p>Camera List can be hidden/shown with a toggle</p></li>
+<li><p>Lens Settings remain always accessible</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id27">
+<h3>Fixed<a class="headerlink" href="#id27" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Lens Settings Application</strong>: Fixed lens settings synchronization</p>
+<ul>
+<li><p>Settings now correctly applied when cameras are created via presets</p></li>
+<li><p>Settings correctly applied when cameras are detected</p></li>
+<li><p>Resolution applied before each render</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id28">
+<h2>[0.3.0] - 2024<a class="headerlink" href="#id28" title="Link to this heading"></a></h2>
+<section id="id29">
+<h3>Added<a class="headerlink" href="#id29" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Camera Preset System</strong>: New camera creation system with predefined presets</p>
+<ul>
+<li><p><strong>8 Preset Configurations Available</strong>:</p>
+<ul>
+<li><p>1 Camera - Front</p></li>
+<li><p>2 Cameras - Front, Back</p></li>
+<li><p>2 Cameras - Front, Right</p></li>
+<li><p>3 Cameras - Front, Left, Right</p></li>
+<li><p>3 Cameras - Front, Right, Back</p></li>
+<li><p>4 Cameras - Front, Right, Back, Left (Cardinal Directions)</p></li>
+<li><p>5 Cameras - Front, Front Right, Right, Back Right, Back</p></li>
+<li><p>8 Cameras - 360 Degrees (Evenly distributed)</p></li>
+</ul>
+</li>
+<li><p>Cameras are automatically positioned around the pivot object (or origin)</p></li>
+<li><p>Cameras automatically point toward the center with correct orientation</p></li>
+<li><p>Configurable distance from the pivot point</p></li>
+</ul>
+</li>
+<li><p><strong>Camera Creation Section</strong>: New dedicated section in the UI for camera presets</p>
+<ul>
+<li><p>Located before Light Pivot section for better workflow</p></li>
+<li><p>Dropdown to select preset type</p></li>
+<li><p>Distance slider to adjust camera distance</p></li>
+<li><p>“Create Cameras” button to apply the preset</p></li>
+</ul>
+</li>
+<li><p><strong>Automatic Camera Replacement</strong>: Smart camera management system</p>
+<ul>
+<li><p>Tracks cameras created by the plugin</p></li>
+<li><p>Automatically deletes previously created plugin cameras when applying a new preset</p></li>
+<li><p>Only affects cameras created by the plugin, preserving manually created cameras</p></li>
+<li><p>Prevents accumulation of unused cameras</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id30">
+<h3>Changed<a class="headerlink" href="#id30" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>UI Layout</strong>: Reordered sections for better workflow</p>
+<ul>
+<li><p>Light Pivot section moved before Camera Creation section</p></li>
+<li><p>Makes it clearer to configure lighting pivot before creating cameras</p></li>
+</ul>
+</li>
+<li><p><strong>Camera Rotation System</strong>: Improved camera rotation calculation</p>
+<ul>
+<li><p>Cameras now correctly point toward the pivot object/center</p></li>
+<li><p>Fixed roll (rotation around view axis) issues</p></li>
+<li><p>Cameras maintain correct orientation regardless of position (front, side, back)</p></li>
+<li><p>Uses matrix-based rotation calculation for reliable results</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id31">
+<h3>Fixed<a class="headerlink" href="#id31" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Camera Rotation Bugs</strong>: Fixed multiple camera orientation issues</p>
+<ul>
+<li><p>Fixed cameras pointing downward instead of toward center</p></li>
+<li><p>Fixed side cameras being rotated 90 degrees incorrectly</p></li>
+<li><p>Fixed back camera being upside down (180 degrees rotation)</p></li>
+<li><p>All cameras now maintain correct vertical orientation</p></li>
+</ul>
+</li>
+<li><p><strong>Undo/Crash Issues</strong>: Fixed crashes when undoing camera creation</p>
+<ul>
+<li><p>Added proper validation before accessing camera objects</p></li>
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">ReferenceError</span></code> when objects are removed by undo</p></li>
+<li><p>Improved error handling for camera deletion</p></li>
+</ul>
+</li>
+<li><p><strong>Collection Property Errors</strong>: Fixed <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> with <code class="docutils literal notranslate"><span class="pre">bpy.data.objects</span></code> and <code class="docutils literal notranslate"><span class="pre">bpy.data.cameras</span></code></p>
+<ul>
+<li><p>Replaced incorrect <code class="docutils literal notranslate"><span class="pre">in</span></code> operator usage with proper <code class="docutils literal notranslate"><span class="pre">get()</span></code> method</p></li>
+<li><p>Fixed all object existence checks throughout the code</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id32">
+<h3>Technical Details<a class="headerlink" href="#id32" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>New PropertyGroup: <code class="docutils literal notranslate"><span class="pre">PluginCameraName</span></code> for tracking plugin-created cameras</p></li>
+<li><p>New CollectionProperty: <code class="docutils literal notranslate"><span class="pre">plugin_created_cameras</span></code> in <code class="docutils literal notranslate"><span class="pre">SpriteRenderSettings</span></code></p></li>
+<li><p>New Operator: <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_ApplyCameraPreset</span></code> for creating cameras from presets</p></li>
+<li><p>Camera preset data structure: <code class="docutils literal notranslate"><span class="pre">CAMERA_PRESETS</span></code> dictionary with 8 configurations</p></li>
+<li><p>Rotation calculation: Uses matrix-based approach with proper up vector handling</p></li>
+<li><p>Camera tracking: Automatic cleanup of plugin-created cameras when applying new presets</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id33">
+<h2>[0.2.8] - 2024<a class="headerlink" href="#id33" title="Link to this heading"></a></h2>
+<section id="id34">
+<h3>Changed<a class="headerlink" href="#id34" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>UI Layout</strong>: Reordered sections to improve user understanding</p>
+<ul>
+<li><p>Light Pivot section now appears above the Cameras section</p></li>
+<li><p>Makes it clearer that light pivot configuration affects camera rendering</p></li>
+<li><p>Improves workflow by configuring lighting before cameras</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id35">
+<h3>Added<a class="headerlink" href="#id35" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Section-specific documentation buttons</strong>: Added help buttons in each main section</p>
+<ul>
+<li><p>Each section (Project, Light Pivot, Cameras, Animations, Output) now has a documentation button</p></li>
+<li><p>Buttons open the corresponding documentation page in the default web browser</p></li>
+<li><p>Provides quick access to relevant guides without leaving Blender</p></li>
+<li><p>Documentation links:</p>
+<ul>
+<li><p><strong>Project</strong>: Opens main documentation page</p></li>
+<li><p><strong>Light Pivot</strong>: Opens Lighting documentation</p></li>
+<li><p><strong>Cameras</strong>: Opens Cameras documentation</p></li>
+<li><p><strong>Animations</strong>: Opens Animations documentation</p></li>
+<li><p><strong>Output</strong>: Opens Output documentation</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id36">
+<h3>Technical Details<a class="headerlink" href="#id36" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>New operators: <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_OpenDocumentationProject</span></code>, <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_OpenDocumentationLighting</span></code>, <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_OpenDocumentationCameras</span></code>, <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_OpenDocumentationAnimations</span></code>, <code class="docutils literal notranslate"><span class="pre">SPRITE_RENDER_OT_OpenDocumentationOutput</span></code></p></li>
+<li><p>Modified <code class="docutils literal notranslate"><span class="pre">draw_section_toggle()</span></code> function to accept optional documentation operator parameter</p></li>
+<li><p>All documentation links point to English version (<code class="docutils literal notranslate"><span class="pre">/en/</span></code>) of the documentation</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id37">
+<h2>[0.2.7] - 2024<a class="headerlink" href="#id37" title="Link to this heading"></a></h2>
+<section id="id38">
+<h3>Changed<a class="headerlink" href="#id38" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Output UI</strong>: Moved the Output Path field above the Output Name template</p>
+<ul>
+<li><p>Makes it clearer where files will be saved before configuring naming</p></li>
+<li><p>Label updated from “Use Folders” to “Create Folders” for better clarity</p></li>
+</ul>
+</li>
+<li><p><strong>Terminology</strong>: Updated references from “pivot object” to “light pivot object” throughout the codebase</p>
+<ul>
+<li><p>Error messages and comments now use clearer terminology</p></li>
+<li><p>Improves understanding of the feature’s purpose</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id39">
+<h3>Added<a class="headerlink" href="#id39" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Light pivot debug log</strong>: Added log message when starting render with light pivot</p>
+<ul>
+<li><p>Shows which pivot object is being used</p></li>
+<li><p>Shows how many light rotation slots (cameras) are linked</p></li>
+<li><p>Also logs when light pivot is disabled or not configured</p></li>
+</ul>
+</li>
+<li><p><strong>Test Cameras rotation log</strong>: Added detailed rotation logs when using Test Cameras button</p>
+<ul>
+<li><p>Shows rotation values being applied from each camera (before and after)</p></li>
+<li><p>Displays rotation in degrees for both XYZ (full rotation) and Z-only modes</p></li>
+<li><p>Helps debug light rotation issues</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id40">
+<h3>Fixed<a class="headerlink" href="#id40" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Enable Full Rotation (XYZ)</strong>: Fixed bug where full rotation mode was not working correctly</p>
+<ul>
+<li><p>Issue was caused by <code class="docutils literal notranslate"><span class="pre">light_rotation</span></code> property returning an <code class="docutils literal notranslate"><span class="pre">Euler</span></code> object instead of a tuple</p></li>
+<li><p>Code now correctly handles both <code class="docutils literal notranslate"><span class="pre">Euler</span></code> objects and tuple/list formats</p></li>
+<li><p>Full XYZ rotation now works as expected when enabled</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id41">
+<h2>[0.2.6] - 2024<a class="headerlink" href="#id41" title="Link to this heading"></a></h2>
+<section id="id42">
+<h3>Added<a class="headerlink" href="#id42" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Documentation button</strong>: Added help button in the main panel to open documentation</p>
+<ul>
+<li><p>Button located next to the version number at the top of the panel</p></li>
+<li><p>Opens the official documentation website in the default web browser</p></li>
+<li><p>Provides quick access to guides, tutorials, and FAQ</p></li>
+<li><p>URL updated in <code class="docutils literal notranslate"><span class="pre">bl_info</span></code> to point to the official documentation</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id43">
+<h3>Changed<a class="headerlink" href="#id43" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Localization</strong>: Translated all tooltips and descriptions from Portuguese to English</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">animation_mode</span></code> EnumProperty description and item tooltips now in English</p></li>
+<li><p>All user-facing tooltips are now consistently in English</p></li>
+<li><p>Improves accessibility for international users</p></li>
+</ul>
+</li>
+<li><p><strong>README.md</strong>: Added installation instructions and documentation section</p>
+<ul>
+<li><p>Step-by-step installation guide</p></li>
+<li><p>Link to official documentation with overview of available topics</p></li>
+<li><p>Note about accessing documentation from the addon panel</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id44">
+<h2>[0.2.5] - 2024<a class="headerlink" href="#id44" title="Link to this heading"></a></h2>
+<p><strong>Highlights:</strong></p>
+<ul class="simple">
+<li><p>Added <strong>ESC key cancellation</strong>: Ability to cancel rendering by pressing ESC key</p>
+<ul>
+<li><p>Modal operator automatically detects ESC key press during rendering</p></li>
+<li><p>Cancels render immediately when ESC is pressed</p></li>
+<li><p>Works alongside the existing cancel button</p></li>
+</ul>
+</li>
+<li><p>Added <strong>Open output folder button</strong>: Button to open output folder in file explorer</p>
+<ul>
+<li><p>Located next to the “Output Path” field in the Output section</p></li>
+<li><p>Automatically converts Blender relative paths (<code class="docutils literal notranslate"><span class="pre">//</span></code>) to absolute paths</p></li>
+<li><p>Creates folder if it doesn’t exist before opening</p></li>
+<li><p>Cross-platform support (Windows, macOS, Linux)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id45">
+<h2>[0.2.4] - 2024<a class="headerlink" href="#id45" title="Link to this heading"></a></h2>
+<section id="id46">
+<h3>Removed<a class="headerlink" href="#id46" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Debug system</strong>: Removed all debug-related features and UI elements</p>
+<ul>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">debug_light_rotation</span></code> boolean property</p></li>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">show_section_debug</span></code> toggle property</p></li>
+<li><p>Removed debug section from UI panel</p></li>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">update_debug_light_rotation()</span></code> callback function</p></li>
+<li><p>Removed all debug print statements and log messages</p></li>
+<li><p>Simplified <code class="docutils literal notranslate"><span class="pre">apply_light_rotation()</span></code> method by removing debug parameter and conditional logging</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id47">
+<h3>Changed<a class="headerlink" href="#id47" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">apply_light_rotation()</span></code> method signature simplified: removed <code class="docutils literal notranslate"><span class="pre">debug</span></code> parameter</p>
+<ul>
+<li><p>Method now only applies rotation without any debug output</p></li>
+<li><p>All calls to <code class="docutils literal notranslate"><span class="pre">apply_light_rotation()</span></code> updated to use simplified signature</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id48">
+<h3>Technical Details<a class="headerlink" href="#id48" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Cleaned up code by removing debug-related conditionals and print statements</p></li>
+<li><p>Improved code maintainability by removing unused debug infrastructure</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id49">
+<h2>[0.2.3] - 2024<a class="headerlink" href="#id49" title="Link to this heading"></a></h2>
+<p><strong>Highlights:</strong></p>
+<ul class="simple">
+<li><p>Added <strong>Output path validation</strong>: The add-on now validates if the output path is configured and exists before rendering</p>
+<ul>
+<li><p>Prevents rendering when output path is empty or invalid</p></li>
+<li><p>Shows clear error messages when path validation fails</p></li>
+<li><p>Works in both synchronous and asynchronous rendering modes</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Fixed:</strong></p>
+<ul class="simple">
+<li><p><strong>Blender relative path support</strong>: Fixed handling of Blender’s relative paths (starting with <code class="docutils literal notranslate"><span class="pre">//</span></code>)</p>
+<ul>
+<li><p>Now correctly converts relative paths to absolute paths</p></li>
+<li><p>Prevents issues when Blender saves paths as relative (e.g., <code class="docutils literal notranslate"><span class="pre">//TestRender\</span></code>)</p></li>
+<li><p>Applied to all path processing methods</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id50">
+<h2>[0.2.2] - 2024<a class="headerlink" href="#id50" title="Link to this heading"></a></h2>
+<p><strong>Highlights:</strong></p>
+<ul class="simple">
+<li><p>Added <strong>Enable Light Pivot Toggle</strong>: New <code class="docutils literal notranslate"><span class="pre">enable_light_pivot</span></code> boolean property to control the light pivot feature</p>
+<ul>
+<li><p>When enabled (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>): Light rotation is applied to the pivot object during rendering</p></li>
+<li><p>When disabled: Light rotation is ignored, even if a pivot object is configured</p></li>
+<li><p>The pivot object selection field is only visible when <code class="docutils literal notranslate"><span class="pre">enable_light_pivot</span></code> is enabled</p></li>
+<li><p>This allows users to temporarily disable light rotation without removing the pivot object configuration</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Changed:</strong></p>
+<ul class="simple">
+<li><p>Light rotation is now only applied when both <code class="docutils literal notranslate"><span class="pre">pivot_object</span></code> is set AND <code class="docutils literal notranslate"><span class="pre">enable_light_pivot</span></code> is enabled</p></li>
+<li><p>The pivot object UI field is conditionally displayed based on <code class="docutils literal notranslate"><span class="pre">enable_light_pivot</span></code> state</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id51">
+<h2>[0.2.1] - 2024<a class="headerlink" href="#id51" title="Link to this heading"></a></h2>
+<p><strong>Highlights:</strong></p>
+<ul class="simple">
+<li><p>Improved multi‑camera workflow with <code class="docutils literal notranslate"><span class="pre">render_order</span></code> per camera.</p></li>
+<li><p>Added <strong>pivot‑based light rotation</strong> per camera, with optional full XYZ rotation.</p></li>
+<li><p>Introduced <strong>output folder structure options</strong>:</p>
+<ul>
+<li><p>Project/Object/Animation/Camera folders.</p></li>
+</ul>
+</li>
+<li><p>Added <strong>output template</strong> with placeholders:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">$projectName</span></code>, <code class="docutils literal notranslate"><span class="pre">$objectName</span></code>, <code class="docutils literal notranslate"><span class="pre">$animation</span></code>, <code class="docutils literal notranslate"><span class="pre">$camera</span></code>, <code class="docutils literal notranslate"><span class="pre">$frame</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Implemented <strong>Render All (async)</strong> with:</p>
+<ul>
+<li><p>Progress bar, status messages, and render counters.</p></li>
+<li><p>Cancel render button.</p></li>
+</ul>
+</li>
+<li><p>Added <strong>Animations Test</strong> panels for both Actions and NLA:</p>
+<ul>
+<li><p>Preview, frame navigation, and custom FPS controls.</p></li>
+</ul>
+</li>
+<li><p>Added automatic detection helpers:</p>
+<ul>
+<li><p><strong>Detect Cameras</strong></p></li>
+<li><p><strong>Detect Actions</strong></p></li>
+<li><p><strong>Detect NLA Strips</strong></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="FAQ.html" class="btn btn-neutral float-left" title="FAQ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Future-Features.html" class="btn btn-neutral float-right" title="Future Features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sprite Render Tool.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

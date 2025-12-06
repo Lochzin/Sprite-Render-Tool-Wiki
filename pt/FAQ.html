@@ -1,0 +1,341 @@
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ &mdash; Sprite Render Tool 0.2.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=166b7d9a" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/FAQ.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=000c92bf"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Changelog" href="Changelog.html" />
+    <link rel="prev" title="Renderização" href="Render.html" />
+ 
+<style>
+/* Custom CSS for Sprite Render Tool documentation */
+/* Reduce logo size in sidebar */
+.wy-side-nav-search .wy-side-nav-search__logo,
+.wy-side-nav-search img.logo {
+    max-height: 80px !important;
+    width: auto !important;
+    max-width: 250px !important;
+}
+
+/* Also target the icon class if used */
+.wy-side-nav-search .icon img {
+    max-height: 80px !important;
+    width: auto !important;
+}
+</style>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Sprite Render Tool
+              <img src="../_static/SpriteRenderTool_Icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">English Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../en/index.html">Sprite Render Tool — Official Wiki</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Cameras.html">Cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Lighting.html">Lighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Animations.html">Animations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Render.html">Render</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/Future-Features.html">Future Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../en/License.html">License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentação em Português</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Sprite Render Tool — Wiki Oficial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cameras.html">Câmeras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lighting.html">Iluminação</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animations.html">Animações</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Render.html">Renderização</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#geral">Geral</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cameras-e-iluminacao">Câmeras e Iluminação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#animacoes">Animações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#output-e-arquivos">Output e Arquivos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#performance-e-estabilidade">Performance e Estabilidade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#licenciamento">Licenciamento</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#suporte-e-comunidade">Suporte e Comunidade</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Future-Features.html">Futuras Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="License.html">Licença</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sprite Render Tool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">FAQ</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/pt/FAQ.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="faq">
+<h1>FAQ<a class="headerlink" href="#faq" title="Link to this heading"></a></h1>
+<p>Esta página lista perguntas comuns sobre o uso do <strong>Sprite Render Tool</strong> e como resolver problemas típicos.</p>
+<hr class="docutils" />
+<section id="geral">
+<h2>Geral<a class="headerlink" href="#geral" title="Link to this heading"></a></h2>
+<p><strong>P: Quais versões do Blender são suportadas?</strong><br />
+<strong>R:</strong> O <code class="docutils literal notranslate"><span class="pre">bl_info</span></code> no add-on especifica Blender <strong>5.0.0</strong> como a versão mínima. Ele é projetado para Blender 5.x e posteriores. O add-on foi inicialmente desenvolvido para Blender 4.0, então é possível que funcione (talvez até completamente bem) em versões anteriores, mas isso não foi testado e não é oficialmente suportado.</p>
+<p><strong>P: Onde encontro o painel Sprite Render Tool?</strong><br />
+<strong>R:</strong> Após habilitar o add-on em Preferences, vá para:<br />
+<code class="docutils literal notranslate"><span class="pre">3D</span> <span class="pre">Viewport</span> <span class="pre">&gt;</span> <span class="pre">Sidebar</span> <span class="pre">(N)</span> <span class="pre">&gt;</span> <span class="pre">Sprite</span> <span class="pre">Render</span></code>.</p>
+</section>
+<hr class="docutils" />
+<section id="cameras-e-iluminacao">
+<h2>Câmeras e Iluminação<a class="headerlink" href="#cameras-e-iluminacao" title="Link to this heading"></a></h2>
+<p><strong>P: Minhas renderizações parecem estar vindo da câmera errada. O que devo verificar?</strong><br />
+<strong>R:</strong> Certifique-se de que:</p>
+<ul class="simple">
+<li><p>A lista <strong>Cameras</strong> tem os valores <code class="docutils literal notranslate"><span class="pre">Name</span></code> corretos (eles devem corresponder a objetos de câmera existentes).</p></li>
+<li><p>Na 3D Viewport, use <strong>Test Cameras</strong> para percorrer as câmeras configuradas e confirmar qual está ativa.</p></li>
+<li><p>A câmera da cena está sendo definida corretamente pelo add-on (você deve ver a câmera mudar ao percorrer).</p></li>
+</ul>
+<p><strong>P: A luz não rotaciona por câmera, ou parece errada. Como posso depurar isso?</strong><br />
+<strong>R:</strong> Verifique o seguinte:</p>
+<ul class="simple">
+<li><p>Certifique-se de que um objeto <strong>Light Pivot</strong> está definido na seção <strong>Light Pivot</strong>.</p></li>
+<li><p>Verifique se <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">Full</span> <span class="pre">Rotation</span> <span class="pre">(XYZ)</span></code> está definido corretamente:</p>
+<ul>
+<li><p>Desligado: apenas o eixo Z é usado.</p></li>
+<li><p>Ligado: XYZ completo do <code class="docutils literal notranslate"><span class="pre">light_rotation</span></code> da câmera é aplicado.</p></li>
+</ul>
+</li>
+<li><p>Certifique-se de que <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">Light</span> <span class="pre">Pivot</span></code> está habilitado na seção <strong>Light Pivot</strong>.</p></li>
+</ul>
+<p><strong>P: O botão Detect Cameras não faz nada. Por quê?</strong><br />
+<strong>R:</strong> O operador <strong>Auto-fill Light Rotations</strong> requer:</p>
+<ul class="simple">
+<li><p>Um objeto <strong>Light Pivot</strong> válido (caso contrário, cancela com um erro).</p></li>
+<li><p>Pelo menos uma câmera que seja:</p>
+<ul>
+<li><p>do tipo <code class="docutils literal notranslate"><span class="pre">CAMERA</span></code></p></li>
+<li><p>não oculta no viewport</p></li>
+<li><p>não oculta para renderização<br />
+Certifique-se de que você está na View Layer correta e que as câmeras estão visíveis.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="animacoes">
+<h2>Animações<a class="headerlink" href="#animacoes" title="Link to this heading"></a></h2>
+<p><strong>P: Actions não aparecem na lista.</strong><br />
+<strong>R:</strong> No modo <strong>ACTIONS</strong>:</p>
+<ul class="simple">
+<li><p>Clique em <strong>Detect Actions</strong>.</p></li>
+<li><p>A ferramenta lê de <code class="docutils literal notranslate"><span class="pre">bpy.data.actions</span></code> e preenche a lista.</p></li>
+<li><p>Se ainda estiver vazia, confirme que Actions existem no seu arquivo e não estão armazenadas em um arquivo blend diferente ou biblioteca.</p></li>
+</ul>
+<p><strong>P: NLA strips não são detectadas.</strong><br />
+<strong>R:</strong> No modo <strong>NLA</strong>:</p>
+<ul class="simple">
+<li><p>Defina uma <strong>Target Armature</strong> válida.</p></li>
+<li><p>Certifique-se de que a armadura tem <code class="docutils literal notranslate"><span class="pre">animation_data</span></code> com tracks e strips NLA.</p></li>
+<li><p>Clique em <strong>Detect NLA Strips</strong>.</p></li>
+<li><p>Se ainda estiver vazia, verifique se suas NLA strips estão na armadura escolhida e realmente têm Actions atribuídas.</p></li>
+</ul>
+<p><strong>P: A animação errada toca durante a renderização.</strong><br />
+<strong>R:</strong> Possíveis causas:</p>
+<ul class="simple">
+<li><p>No modo <strong>ACTIONS</strong>:</p>
+<ul>
+<li><p>Verifique se a Action correta está habilitada na lista.</p></li>
+<li><p>Confirme que seu <code class="docutils literal notranslate"><span class="pre">frame_start</span></code> e <code class="docutils literal notranslate"><span class="pre">frame_end</span></code> cobrem o intervalo pretendido.</p></li>
+</ul>
+</li>
+<li><p>No modo <strong>NLA</strong>:</p>
+<ul>
+<li><p>Verifique se a NLA strip selecionada na lista corresponde à strip que você espera.</p></li>
+<li><p>Use <strong>Preview NLA Strip</strong> para ver se apenas essa strip está ativa antes de renderizar.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>P: Preview Action / Preview NLA Strip não parece tocar.</strong><br />
+<strong>R:</strong> Verifique:</p>
+<ul class="simple">
+<li><p>Reprodução da timeline:</p>
+<ul>
+<li><p>Certifique-se de que a timeline não está pausada por algum outro operador modal.</p></li>
+</ul>
+</li>
+<li><p>Estado <code class="docutils literal notranslate"><span class="pre">is_previewing</span></code>:</p>
+<ul>
+<li><p>Quando a visualização começa, o add-on chama <code class="docutils literal notranslate"><span class="pre">bpy.ops.screen.animation_play()</span></code>.</p></li>
+<li><p>Use <strong>Stop Preview</strong> se a reprodução ficou travada ou se outra visualização estiver em execução.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="output-e-arquivos">
+<h2>Output e Arquivos<a class="headerlink" href="#output-e-arquivos" title="Link to this heading"></a></h2>
+<p><strong>P: Onde minhas imagens estão sendo salvas?</strong><br />
+<strong>R:</strong> O caminho final é construído a partir de:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scene.render.filepath</span></code> (limpo pelo add-on), mais</p></li>
+<li><p>Níveis de pasta opcionais (<strong>Project/Object/Animation/Camera</strong>), mais</p></li>
+<li><p>Nome do arquivo de <code class="docutils literal notranslate"><span class="pre">output_template</span></code> com placeholders:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">$projectName</span></code>, <code class="docutils literal notranslate"><span class="pre">$objectName</span></code>, <code class="docutils literal notranslate"><span class="pre">$animation</span></code>, <code class="docutils literal notranslate"><span class="pre">$camera</span></code>, <code class="docutils literal notranslate"><span class="pre">$frame</span></code><br />
+Verifique a seção <strong>Output</strong> e suas Render Properties para saber exatamente onde os arquivos vão.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>P: Alterei <code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">Name</span></code> ou <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Name</span></code> mas imagens antigas ainda estão na pasta anterior.</strong><br />
+<strong>R:</strong> O add-on não move ou exclui renderizações antigas:</p>
+<ul class="simple">
+<li><p>Novas renderizações usam suas novas configurações para construir novas pastas/nomes de arquivos.</p></li>
+<li><p>Você pode precisar limpar diretórios antigos manualmente se quiser evitar duplicatas.</p></li>
+</ul>
+<p><strong>P: Nomes de arquivos parecem estranhos ou contêm underscores inesperados.</strong><br />
+<strong>R:</strong> O add-on:</p>
+<ul class="simple">
+<li><p>Substitui caracteres que são inválidos em sistemas de arquivos comuns: <code class="docutils literal notranslate"><span class="pre">&lt;&gt;:&quot;|?*\/</span></code> com <code class="docutils literal notranslate"><span class="pre">_</span></code>.</p></li>
+<li><p>Usa <code class="docutils literal notranslate"><span class="pre">os.path.basename</span></code> na saída do template para evitar caminhos aninhados em um único nome de arquivo.
+Se você vir <code class="docutils literal notranslate"><span class="pre">_</span></code> extras, provavelmente está sanitizando caracteres ou removendo barras acidentais no template.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="performance-e-estabilidade">
+<h2>Performance e Estabilidade<a class="headerlink" href="#performance-e-estabilidade" title="Link to this heading"></a></h2>
+<p><strong>P: O Blender congela durante a renderização. Isso é normal?</strong><br />
+<strong>R:</strong> O caminho <strong>síncrono</strong> (<code class="docutils literal notranslate"><span class="pre">execute</span></code>) bloqueará a UI, especialmente em lotes longos. Use:</p>
+<ul class="simple">
+<li><p>O <strong>Render All</strong> padrão do painel, que inicia o fluxo <strong>assíncrono</strong> baseado em timer, atualizando a UI entre frames e permitindo cancelamento.</p></li>
+</ul>
+<p><strong>P: Como posso parar um lote de renderização longo?</strong><br />
+<strong>R:</strong> Você pode cancelar a renderização de duas formas:</p>
+<ul class="simple">
+<li><p><strong>Botão Cancel Render</strong>: Clique no botão <strong>Cancel Render</strong> na seção <strong>Render Progress</strong>.</p></li>
+<li><p><strong>Tecla ESC</strong>: Pressione a tecla <strong>ESC</strong> a qualquer momento durante a renderização.</p></li>
+<li><p>Ambos os métodos definem uma flag de cancelamento, e a renderização para graciosamente após o frame atual terminar.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="licenciamento">
+<h2>Licenciamento<a class="headerlink" href="#licenciamento" title="Link to this heading"></a></h2>
+<p><strong>P: Posso redistribuir o add-on?</strong><br />
+<strong>R:</strong> A conformidade GPL permite certas redistribuições de código sob condições específicas, mas:</p>
+<ul class="simple">
+<li><p>Os <strong>Termos de Distribuição Comercial</strong> proíbem redistribuir o <strong>arquivo comprado como um produto comercial</strong>.</p></li>
+<li><p>Redistribuições de terceiros <strong>não</strong> recebem suporte ou atualizações garantidas.
+Sempre leia o <code class="docutils literal notranslate"><span class="pre">LICENSE.md</span></code> e a página <strong>License.md</strong> antes de redistribuir qualquer coisa.</p></li>
+</ul>
+<p><strong>P: Meus usuários precisam comprar o add-on se eu usá-lo no meu estúdio?</strong><br />
+<strong>R:</strong> Depende da sua licença:</p>
+<ul class="simple">
+<li><p>Licença individual: 1 usuário.</p></li>
+<li><p>Estúdio / Comercial: até 5 usuários por licença (extensível mediante solicitação).<br />
+Para detalhes precisos e casos extremos, consulte o texto da licença oficial.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="suporte-e-comunidade">
+<h2>Suporte e Comunidade<a class="headerlink" href="#suporte-e-comunidade" title="Link to this heading"></a></h2>
+<p><strong>P: Onde posso obter ajuda ou discutir o add-on com outros usuários?</strong><br />
+<strong>R:</strong> Você pode:</p>
+<ul class="simple">
+<li><p>Participar das discussões da comunidade: <a class="reference external" href="https://github.com/Lochzin/Sprite-Render-Tool-Wiki/discussions">GitHub Discussions</a></p></li>
+<li><p>Fazer perguntas, compartilhar dicas e conectar-se com outros usuários</p></li>
+</ul>
+<p><strong>P: Como reporto um bug ou problema?</strong><br />
+<strong>R:</strong> Se você encontrar um bug ou tiver um problema técnico:</p>
+<ul class="simple">
+<li><p>Abra uma issue no GitHub: <a class="reference external" href="https://github.com/Lochzin/Sprite-Render-Tool-Wiki/issues">Reportar um Bug</a></p></li>
+<li><p>Por favor, inclua detalhes sobre sua versão do Blender, o que você estava tentando fazer e quaisquer mensagens de erro</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Render.html" class="btn btn-neutral float-left" title="Renderização" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sprite Render Tool.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
