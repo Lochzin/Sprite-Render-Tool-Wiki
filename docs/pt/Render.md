@@ -2,8 +2,6 @@
 
 Esta página explica a funcionalidade da tab **Render**, que inclui configurações de renderização, configuração de saída e ações de renderização.
 
-![Render Tab](/_static/images/SRT_RenderTab.png)
-
 ---
 
 ## Configurações de Renderização
@@ -51,7 +49,7 @@ Botão **🧪 Test Frame Count**:
 
 ## Configuração de Saída
 
-A seção **Output** na tab Render fornece controles para onde e como os arquivos são salvos. Para informações detalhadas sobre templates de saída, estruturas de pastas e nomenclatura de arquivos, veja a página dedicada [Output](Output.md).
+A seção **Output** na [tab Render](https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/index.html#render-tab) fornece controles para onde e como os arquivos são salvos. Para informações detalhadas sobre templates de saída, estruturas de pastas e nomenclatura de arquivos, veja a página dedicada [Output](Output.md).
 
 ### Output Path
 
@@ -113,7 +111,7 @@ A seção **Render Actions** contém os botões principais para renderização e
 3. Para cada animação, renderiza todas as câmeras configuradas
 4. Aplica frame step se habilitado
 5. Salva cada frame como uma imagem PNG
-6. Mostra progresso na tab Render (abaixo da seção Render Actions)
+6. Mostra progresso na [tab Render](https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/index.html#render-tab) (abaixo da seção Render Actions)
 
 **Rastreamento de progresso:**
 - Contagem de frames atual: `[atual/total]`

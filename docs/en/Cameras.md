@@ -2,8 +2,6 @@
 
 This page explains how to configure cameras inside the **Sprite Render Tool**. For information about lighting and the Light Pivot system, see [Lighting](Lighting.md).
 
-![Cameras Tab](/_static/images/SRT_CameraTab.png)
-
 ---
 
 ## Camera Creation Presets

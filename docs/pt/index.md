@@ -85,7 +85,7 @@ Cada botão de tab mostra um tooltip ao passar o mouse com uma descrição espec
   - Botão pequeno de documentação no cabeçalho da seção
   - Para informações detalhadas sobre configuração de iluminação e estratégias, veja [Iluminação](Lighting.md).
 - **🦴 Seção Armature**:
-  - `Armature`: seleção de armature alvo (redundante com tab Animations para conveniência)
+  - `Armature`: seleção de armature alvo (redundante com [tab Animations](https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/index.html#animations-tab) para conveniência)
 - **📷 Seção Camera Creation**:
   - `Preset`: dropdown para selecionar configuração de preset de câmera (1, 2, 3, 4, 5 ou 8 câmeras)
   - `Distance`: slider para ajustar distância da câmera do ponto pivô
@@ -197,11 +197,11 @@ Este guia inicial apresenta o fluxo de trabalho básico para começar a usar o S
   - Opcionalmente crie um objeto **Light Pivot** para controlar a rotação da iluminação ao redor do personagem.
 
 - **2. Configure o painel Sprite Render**
-  - Na **tab Setup**:
+  - Na **[tab Setup](https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/index.html#setup-tab)**:
     - Defina `Project Name` e `Object Name` na seção Project.
     - Habilite `Enable Light Pivot` e defina o `Light Pivot Object` na seção Light Pivot.
     - (Opcional) Na seção Camera Creation: use presets para criar câmeras rapidamente, ou pule para adicionar câmeras manualmente.
-  - Na **tab Cameras**:
+  - Na **[tab Cameras](https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/index.html#cameras-tab)**:
     - Configure **Lens Settings** (distância focal, shift, distâncias de clipping, etc.)
     - Defina `Camera Count`, `Custom Output Names` e `Enable Full Rotation` conforme necessário.
     - Clique em **Detect Cameras** para preencher a lista automaticamente, ou adicione câmeras manualmente.
@@ -218,7 +218,7 @@ Este guia inicial apresenta o fluxo de trabalho básico para começar a usar o S
     - O add-on usa o frame atual para renderizar; útil para thumbnails ou poses.
 
 - **4. Configure Render Settings e Output**
-  - Na **tab Render**:
+  - Na **[tab Render](https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/index.html#render-tab)**:
     - Defina `Resolution X` e `Resolution Y` em Render Settings.
     - (Opcional) Habilite `Frame Step` se quiser renderizar cada N-ésimo frame.
     - Ajuste `output_template` se quiser um padrão de nomenclatura diferente.
@@ -226,12 +226,12 @@ Este guia inicial apresenta o fluxo de trabalho básico para começar a usar o S
     - Em `Output Path`, escolha a pasta base onde tudo será salvo.
 
 - **5. Teste antes de renderizar tudo**
-  - Use **Test Cameras** (na tab Render → Render Actions) para verificar cada câmera.
-  - Use a seção **Animations Test** (na tab Animations) para visualizar animações antes de renderizar.
+  - Use **Test Cameras** (na [tab Render](https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/index.html#render-tab) → Render Actions) para verificar cada câmera.
+  - Use a seção **Animations Test** (na [tab Animations](https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/index.html#animations-tab)) para visualizar animações antes de renderizar.
 
 - **6. Renderize**
-  - Clique em **Render All** (na tab Render → Render Actions).
-  - Monitore o progresso na **tab Render** → seção Render Progress (aparece abaixo de Render Actions durante a renderização).
+  - Clique em **Render All** (na [tab Render](https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/index.html#render-tab) → Render Actions).
+  - Monitore o progresso na **[tab Render](https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/index.html#render-tab)** → seção Render Progress (aparece abaixo de Render Actions durante a renderização).
   - Se necessário, use o botão **Cancel Render** ou pressione **ESC** para parar (ele parará após o frame atual terminar).
 
 ---

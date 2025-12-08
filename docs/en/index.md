@@ -85,7 +85,7 @@ Each tab button shows a tooltip on hover with a specific description.
   - Small documentation button in section header
   - For detailed information about lighting setup and strategies, see [Lighting](Lighting.md).
 - **🦴 Armature Section**:
-  - `Armature`: target armature selection (redundant with Animations tab for convenience)
+  - `Armature`: target armature selection (redundant with [Animations tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#animations-tab) for convenience)
 - **📷 Camera Creation Section**:
   - `Preset`: dropdown to select camera preset configuration (1, 2, 3, 4, 5, or 8 cameras)
   - `Distance`: slider to adjust camera distance from pivot point
@@ -197,11 +197,11 @@ This initial guide presents the basic workflow to get started with the Sprite Re
   - Optionally create a **Light Pivot** object to control lighting rotation around the character.
 
 - **2. Configure the Sprite Render panel**
-  - In **Setup tab**:
+  - In **[Setup tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#setup-tab)**:
     - Set `Project Name` and `Object Name` in the Project section.
     - Enable `Enable Light Pivot` and set the `Light Pivot Object` in the Light Pivot section.
     - (Optional) In Camera Creation section: use presets to quickly create cameras, or skip to manually add cameras.
-  - In **Cameras tab**:
+  - In **[Cameras tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#cameras-tab)**:
     - Configure **Lens Settings** (focal length, shift, clip distances, etc.)
     - Set `Camera Count`, `Custom Output Names`, and `Enable Full Rotation` as needed.
     - Click **Detect Cameras** to auto-fill the list, or manually add cameras.
@@ -218,7 +218,7 @@ This initial guide presents the basic workflow to get started with the Sprite Re
     - The add-on uses the current frame to render; useful for thumbnails or poses.
 
 - **4. Configure Render Settings and Output**
-  - In **Render tab**:
+  - In **[Render tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#render-tab)**:
     - Set `Resolution X` and `Resolution Y` in Render Settings.
     - (Optional) Enable `Frame Step` if you want to render every Nth frame.
     - Adjust `output_template` if you want a different file naming pattern.
@@ -226,12 +226,12 @@ This initial guide presents the basic workflow to get started with the Sprite Re
     - In `Output Path`, choose the base folder where everything will be saved.
 
 - **5. Test before rendering everything**
-  - Use **Test Cameras** (in Render tab → Render Actions) to check each camera.
-  - Use the **Animations Test** section (in Animations tab) to preview animations before rendering.
+  - Use **Test Cameras** (in [Render tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#render-tab) → Render Actions) to check each camera.
+  - Use the **Animations Test** section (in [Animations tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#animations-tab)) to preview animations before rendering.
 
 - **6. Render**
-  - Click **Render All** (in Render tab → Render Actions).
-  - Monitor progress in the **Render tab** → Render Progress section (appears below Render Actions while rendering).
+  - Click **Render All** (in [Render tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#render-tab) → Render Actions).
+  - Monitor progress in the **[Render tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#render-tab)** → Render Progress section (appears below Render Actions while rendering).
   - If needed, use **Cancel Render** button or press **ESC** to stop (it will stop after the current frame finishes).
 
 ---

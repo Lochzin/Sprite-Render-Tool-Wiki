@@ -2,8 +2,6 @@
 
 This page explains the **Render** tab functionality, which includes render settings, output configuration, and render actions.
 
-![Render Tab](/_static/images/SRT_RenderTab.png)
-
 ---
 
 ## Render Settings
@@ -51,7 +49,7 @@ The **Frame Step** feature allows you to render every Nth frame instead of all f
 
 ## Output Configuration
 
-The **Output** section in the Render tab provides controls for where and how files are saved. For detailed information about output templates, folder structures, and file naming, see the dedicated [Output](Output.md) page.
+The **Output** section in the [Render tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#render-tab) provides controls for where and how files are saved. For detailed information about output templates, folder structures, and file naming, see the dedicated [Output](Output.md) page.
 
 ### Output Path
 
@@ -113,7 +111,7 @@ The **Render Actions** section contains the main buttons for rendering and testi
 3. For each animation, renders all configured cameras
 4. Applies frame step if enabled
 5. Saves each frame as a PNG image
-6. Shows progress in the Render tab (below Render Actions section)
+6. Shows progress in the [Render tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#render-tab) (below Render Actions section)
 
 **Progress tracking:**
 - Current frame count: `[current/total]`

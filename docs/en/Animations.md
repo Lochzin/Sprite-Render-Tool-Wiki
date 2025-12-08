@@ -2,8 +2,6 @@
 
 This page explains how the **Sprite Render Tool** handles animations in the three modes: **ACTIONS**, **NLA**, and **STATIC**.
 
-![Animations Tab](/_static/images/SRT_AnimationTab.png)
-
 ---
 
 ## Animation Modes
