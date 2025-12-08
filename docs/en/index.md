@@ -47,7 +47,7 @@ The left sidebar contains icon buttons for easy navigation between tabs:
 
 Each tab button shows a tooltip on hover with a specific description.
 
-![Info Tab](images/SRT_Sidebar.png)
+![Sidebar](images/SRT_Sidebar.png)
 
 ### Tab Contents
 
@@ -80,6 +80,8 @@ Each tab button shows a tooltip on hover with a specific description.
   - **Create Cameras** button: creates cameras based on selected preset
   - Small documentation button in section header
   - For more information about camera presets, see [Cameras](Cameras.md).
+
+![Setup Tab](images/SRT_SetupTab.png)
 
 #### 📷 Cameras Tab
 - **📐 Lens Settings** (always visible):
