@@ -61,6 +61,8 @@ Cada botão de tab mostra um tooltip ao passar o mouse com uma descrição espec
   - Botão **License**: abre a documentação da licença
   - Seção inicia minimizada por padrão
 
+![Info Tab](/_static/images/SRT_InfoTab.png)
+
 #### ⚙️ Tab Setup
 - **📁 Seção Project**:
   - `Project Name`
@@ -79,6 +81,8 @@ Cada botão de tab mostra um tooltip ao passar o mouse com uma descrição espec
   - Botão **Create Cameras**: cria câmeras baseadas no preset selecionado
   - Botão pequeno de documentação no cabeçalho da seção
   - Para mais informações sobre presets de câmera, veja [Câmeras](Cameras.md).
+
+![Setup Tab](/_static/images/SRT_SetupTab.png)
 
 #### 📷 Tab Cameras
 - **📐 Lens Settings** (sempre visível):
