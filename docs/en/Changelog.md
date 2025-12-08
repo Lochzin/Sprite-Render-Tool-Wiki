@@ -4,6 +4,42 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
+## [0.3.10] - 2024
+
+### Changed
+- **Render Progress Location**: Moved render progress display from Info tab to Render tab
+  - Render progress now appears in Render tab below "Render Actions" section
+  - Better workflow: all render-related information (settings, output, actions, and progress) in one place
+  - Progress display only appears when rendering is active
+  - Info tab now focuses solely on version information and documentation links
+- **Additional Resources in Info Tab**: Added Additional Resources section to Info tab
+  - Section includes collapsible "📚 Additional Resources" box with documentation links
+  - Links to Changelog, Future Features, and License documentation
+  - Uses existing `show_section_additional_resources` property (starts minimized by default)
+  - Provides quick access to additional documentation directly from Info tab
+  - Improves organization by consolidating all documentation links in one place
+
+## [0.3.9] - 2024
+
+### Fixed
+- **Invalid Icon Errors**: Fixed TypeError crashes caused by invalid icon names
+  - Changed "HISTORY" icon to "TIME" for Changelog button (HISTORY icon doesn't exist in Blender 5.0)
+  - Changed "LIGHTBULB" icon to "LIGHT" for Future Features button (LIGHTBULB icon doesn't exist in Blender 5.0)
+  - Prevents UI crashes when opening documentation links in Info tab
+
+### Removed
+- **FAQ Documentation Button**: Removed FAQ button and operator from Info tab
+  - Removed `SPRITE_RENDER_OT_OpenDocumentationFAQ` operator
+  - Removed FAQ button from Additional Resources section
+  - Simplifies UI and reduces maintenance
+
+### Changed
+- **Additional Resources Section**: Section now starts minimized (collapsed) by default
+  - Added `show_section_additional_resources` property with `default=False`
+  - Section is now collapsible using the same toggle system as other sections
+  - Documentation links (Changelog, Future Features, License) only visible when expanded
+  - Improves UI organization by reducing initial clutter
+
 ## [0.3.8] - 2024
 
 ### Fixed

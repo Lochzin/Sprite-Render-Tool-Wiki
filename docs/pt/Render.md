@@ -2,6 +2,8 @@
 
 Esta página explica a funcionalidade da tab **Render**, que inclui configurações de renderização, configuração de saída e ações de renderização.
 
+![Render Tab](/_static/images/SRT_RenderTab.png)
+
 ---
 
 ## Configurações de Renderização
@@ -111,7 +113,7 @@ A seção **Render Actions** contém os botões principais para renderização e
 3. Para cada animação, renderiza todas as câmeras configuradas
 4. Aplica frame step se habilitado
 5. Salva cada frame como uma imagem PNG
-6. Mostra progresso na tab Info
+6. Mostra progresso na tab Render (abaixo da seção Render Actions)
 
 **Rastreamento de progresso:**
 - Contagem de frames atual: `[atual/total]`

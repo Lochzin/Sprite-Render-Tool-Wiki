@@ -2,6 +2,8 @@
 
 This page explains the **Render** tab functionality, which includes render settings, output configuration, and render actions.
 
+![Render Tab](/_static/images/SRT_RenderTab.png)
+
 ---
 
 ## Render Settings
@@ -111,7 +113,7 @@ The **Render Actions** section contains the main buttons for rendering and testi
 3. For each animation, renders all configured cameras
 4. Applies frame step if enabled
 5. Saves each frame as a PNG image
-6. Shows progress in the Info tab
+6. Shows progress in the Render tab (below Render Actions section)
 
 **Progress tracking:**
 - Current frame count: `[current/total]`

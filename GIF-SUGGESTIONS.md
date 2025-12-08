@@ -1,6 +1,141 @@
-# Sugestões de GIFs Demonstrativos para Documentação
+# Sugestões de GIFs e Imagens Demonstrativos para Documentação
 
-Este documento lista todas as sugestões de GIFs animados que seriam úteis para demonstrar funcionalidades do Sprite Render Tool na documentação.
+Este documento lista todas as sugestões de GIFs animados e imagens estáticas que seriam úteis para demonstrar funcionalidades do Sprite Render Tool na documentação.
+
+---
+
+## 📸 IMAGENS ESTÁTICAS — Screenshots da Interface
+
+### ✅ Imagens Já Adicionadas
+
+As seguintes imagens já foram adicionadas à documentação:
+
+#### 1. **SRT_Sidebar.png** ✅
+- **Onde está**: `docs/_static/images/SRT_Sidebar.png`
+- **Onde usada**: 
+  - `docs/en/index.md` - Após a seção "Sidebar Navigation"
+  - `docs/pt/index.md` - Após a seção "Navegação Lateral"
+- **O que mostra**: Sidebar esquerda com botões de tabs (Info, Setup, Cameras, Animations, Render)
+- **Status**: ✅ Adicionada e referenciada
+
+#### 2. **SRT_InfoTab.png** ✅
+- **Onde está**: `docs/_static/images/SRT_InfoTab.png`
+- **Onde usada**: 
+  - `docs/en/index.md` - Após a seção "Info Tab"
+  - `docs/pt/index.md` - Após a seção "Tab Info"
+- **O que mostra**: Conteúdo completo da tab Info (versão, autor, documentação, Additional Resources)
+- **Status**: ✅ Adicionada e referenciada
+
+#### 3. **SRT_SetupTab.png** ✅
+- **Onde está**: `docs/_static/images/SRT_SetupTab.png`
+- **Onde usada**: 
+  - `docs/en/index.md` - Após a seção "Setup Tab"
+  - `docs/pt/index.md` - Após a seção "Tab Setup"
+- **O que mostra**: Conteúdo completo da tab Setup (Project, Light Pivot, Armature, Camera Creation)
+- **Status**: ✅ Adicionada e referenciada
+
+#### 4. **SRT_CameraTab.png** ✅
+- **Onde está**: `docs/_static/images/SRT_CameraTab.png`
+- **Onde usada**: 
+  - `docs/en/index.md` - Após a seção "Cameras Tab"
+  - `docs/pt/index.md` - Após a seção "Tab Cameras"
+  - `docs/en/Cameras.md` - No início da página
+  - `docs/pt/Cameras.md` - No início da página
+- **O que mostra**: Conteúdo completo da tab Cameras (Lens Settings, Camera Options, Camera List)
+- **Status**: ✅ Adicionada e referenciada
+
+#### 5. **SRT_AnimationTab.png** ✅
+- **Onde está**: `docs/_static/images/SRT_AnimationTab.png`
+- **Onde usada**: 
+  - `docs/en/index.md` - Após a seção "Animations Tab"
+  - `docs/pt/index.md` - Após a seção "Tab Animations"
+  - `docs/en/Animations.md` - No início da página
+  - `docs/pt/Animations.md` - No início da página
+- **O que mostra**: Conteúdo completo da tab Animations (modo de animação, Actions/NLA, testes)
+- **Status**: ✅ Adicionada e referenciada
+
+#### 6. **SRT_RenderTab.png** ✅
+- **Onde está**: `docs/_static/images/SRT_RenderTab.png`
+- **Onde usada**: 
+  - `docs/en/index.md` - Após a seção "Render Tab"
+  - `docs/pt/index.md` - Após a seção "Tab Render"
+  - `docs/en/Render.md` - No início da página
+  - `docs/pt/Render.md` - No início da página
+- **O que mostra**: Conteúdo completo da tab Render (Render Settings, Output, Render Actions)
+- **Status**: ✅ Adicionada e referenciada
+
+### 📋 Imagens Sugeridas (Ainda Não Criadas)
+
+#### 7. **SRT_LensSettings_Expanded.png** (Sugerida)
+- **Onde colocar**: `docs/_static/images/SRT_LensSettings_Expanded.png`
+- **Onde usar**: 
+  - `docs/en/Cameras.md` - Na seção "Lens Settings"
+  - `docs/pt/Cameras.md` - Na seção "Lens Settings"
+- **O que mostrar**: Seção Lens Settings expandida mostrando todos os controles (Type, Focal Length/Orthographic Scale, Desync Shift X/Y, Shift X/Y, Clip Start/End)
+- **Prioridade**: 🟡 Média
+
+#### 8. **SRT_CameraList_Expanded.png** (Sugerida)
+- **Onde colocar**: `docs/_static/images/SRT_CameraList_Expanded.png`
+- **Onde usar**: 
+  - `docs/en/Cameras.md` - Na seção "Camera List"
+  - `docs/pt/Cameras.md` - Na seção "Camera List"
+- **O que mostrar**: Camera List expandida mostrando múltiplas câmeras com seus campos (Name, Output Name, Shift, Render Order, Light Rotation)
+- **Prioridade**: 🟡 Média
+
+#### 9. **SRT_AnimationTest_Expanded.png** (Sugerida)
+- **Onde colocar**: `docs/_static/images/SRT_AnimationTest_Expanded.png`
+- **Onde usar**: 
+  - `docs/en/Animations.md` - Na seção "Animation Test Panel"
+  - `docs/pt/Animations.md` - Na seção "Painel de Teste de Animações"
+- **O que mostrar**: Seção Animations Test expandida mostrando Preview Action, controles de frame, e contador
+- **Prioridade**: 🟡 Média
+
+#### 10. **SRT_RenderProgress_Active.png** (Sugerida)
+- **Onde colocar**: `docs/_static/images/SRT_RenderProgress_Active.png`
+- **Onde usar**: 
+  - `docs/en/Render.md` - Na seção "Render Progress"
+  - `docs/pt/Render.md` - Na seção "Progresso de Renderização"
+  - `docs/en/index.md` - Na seção "Render Progress" (se ainda mencionada)
+  - `docs/pt/index.md` - Na seção "Progresso de Renderização" (se ainda mencionada)
+- **O que mostrar**: Seção Render Progress ativa durante renderização (contador [current/total], porcentagem, barra de progresso, status message, botão Cancel)
+- **Prioridade**: 🟡 Média
+
+#### 11. **SRT_OutputPlaceholders_Expanded.png** (Sugerida)
+- **Onde colocar**: `docs/_static/images/SRT_OutputPlaceholders_Expanded.png`
+- **Onde usar**: 
+  - `docs/en/Render.md` - Na seção "Output Template"
+  - `docs/pt/Render.md` - Na seção "Template de Saída"
+  - `docs/en/Output.md` - Na seção "Output Template"
+  - `docs/pt/Output.md` - Na seção "Template de Saída"
+- **O que mostrar**: Seção "Show Available Placeholders" expandida mostrando lista de placeholders ($projectName, $objectName, etc.) e preview do nome de arquivo
+- **Prioridade**: 🟢 Baixa
+
+#### 12. **SRT_AdditionalResources_Expanded.png** (Sugerida)
+- **Onde colocar**: `docs/_static/images/SRT_AdditionalResources_Expanded.png`
+- **Onde usar**: 
+  - `docs/en/index.md` - Na seção "Info Tab" > "Additional Resources"
+  - `docs/pt/index.md` - Na seção "Tab Info" > "Additional Resources"
+- **O que mostrar**: Seção Additional Resources expandida mostrando botões (Changelog, Future Features, License)
+- **Prioridade**: 🟢 Baixa
+
+### 📐 Especificações para Imagens Estáticas
+
+- **Formato**: PNG
+- **Resolução**: 1920x1080 (Full HD) ou maior se necessário para capturar toda a interface
+- **Qualidade**: Alta qualidade, sem compressão excessiva
+- **Captura**: Screenshot direto do Blender com interface visível
+- **Otimização**: Usar ferramentas como TinyPNG ou ImageOptim para reduzir tamanho sem perder qualidade visual
+- **Tamanho máximo**: Tentar manter abaixo de 500 KB por imagem
+
+### 📍 Convenção de Nomenclatura
+
+- **Padrão**: `SRT_[NomeDaSeção].png`
+- **Exemplos**:
+  - `SRT_Sidebar.png` - Sidebar de navegação
+  - `SRT_InfoTab.png` - Tab Info completa
+  - `SRT_CameraTab.png` - Tab Cameras completa
+  - `SRT_LensSettings_Expanded.png` - Seção específica expandida
+  - `SRT_RenderProgress_Active.png` - Estado ativo de uma funcionalidade
 
 ---
 

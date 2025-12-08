@@ -4,6 +4,42 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
+## [0.3.10] - 2024
+
+### Alterado
+- **Localização do Progresso de Renderização**: Movido o display de progresso de renderização da tab Info para a tab Render
+  - O progresso de renderização agora aparece na tab Render abaixo da seção "Render Actions"
+  - Melhor fluxo de trabalho: todas as informações relacionadas à renderização (configurações, saída, ações e progresso) em um só lugar
+  - O display de progresso só aparece quando a renderização está ativa
+  - A tab Info agora foca apenas em informações de versão e links de documentação
+- **Recursos Adicionais na Tab Info**: Adicionada seção de Recursos Adicionais na tab Info
+  - Seção inclui uma caixa recolhível "📚 Additional Resources" com links de documentação
+  - Links para Changelog, Future Features e License
+  - Usa a propriedade existente `show_section_additional_resources` (inicia minimizada por padrão)
+  - Fornece acesso rápido à documentação adicional diretamente da tab Info
+  - Melhora a organização consolidando todos os links de documentação em um só lugar
+
+## [0.3.9] - 2024
+
+### Corrigido
+- **Erros de Ícone Inválidos**: Corrigidos crashes TypeError causados por nomes de ícones inválidos
+  - Alterado ícone "HISTORY" para "TIME" para o botão Changelog (ícone HISTORY não existe no Blender 5.0)
+  - Alterado ícone "LIGHTBULB" para "LIGHT" para o botão Future Features (ícone LIGHTBULB não existe no Blender 5.0)
+  - Previne crashes na UI ao abrir links de documentação na tab Info
+
+### Removido
+- **Botão de Documentação FAQ**: Removido botão FAQ e operador da tab Info
+  - Removido operador `SPRITE_RENDER_OT_OpenDocumentationFAQ`
+  - Removido botão FAQ da seção Additional Resources
+  - Simplifica a UI e reduz manutenção
+
+### Alterado
+- **Seção Additional Resources**: Seção agora inicia minimizada (recolhida) por padrão
+  - Adicionada propriedade `show_section_additional_resources` com `default=False`
+  - Seção agora é recolhível usando o mesmo sistema de toggle de outras seções
+  - Links de documentação (Changelog, Future Features, License) só visíveis quando expandidos
+  - Melhora organização da UI reduzindo desordem inicial
+
 ## [0.3.8] - 2024
 
 ### Corrigido

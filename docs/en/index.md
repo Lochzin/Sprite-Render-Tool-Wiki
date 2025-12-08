@@ -45,9 +45,9 @@ The left sidebar contains icon buttons for easy navigation between tabs:
 - **🦴 Animations** (ARMATURE_DATA): Animation mode, Actions/NLA configuration, testing
 - **🎬 Render** (RENDER_STILL): Render Settings, Output configuration, Render Actions
 
-Each tab button shows a tooltip on hover with a specific description.
-
 ![Sidebar](/_static/images/SRT_Sidebar.png)
+
+Each tab button shows a tooltip on hover with a specific description.
 
 ### Tab Contents
 
@@ -55,10 +55,11 @@ Each tab button shows a tooltip on hover with a specific description.
 - Version information
 - Author information
 - Large **📖 Open Documentation** button
-- **📊 Render Progress** (shown while rendering):
-  - `[current/total]`, percentage, progress bar, and status message
-  - **❌ Cancel Render** button
-  - **ESC key**: press ESC to cancel rendering at any time during the process
+- **📚 Additional Resources** (collapsible section):
+  - **Changelog** button: opens changelog documentation
+  - **Future Features** button: opens future features documentation
+  - **License** button: opens license documentation
+  - Section starts minimized by default
 
 ![Info Tab](/_static/images/SRT_InfoTab.png)
 
@@ -105,6 +106,8 @@ Each tab button shows a tooltip on hover with a specific description.
   - Fills the list with names, count, and Z rotation based on the pivot object
 - Small documentation button in section header
 
+![Camera Tab](/_static/images/SRT_CameraTab.png)
+
 #### 🦴 Animations Tab
 - `Target Armature`: the armature to animate
 - `Animation Mode`:
@@ -133,6 +136,8 @@ Each tab button shows a tooltip on hover with a specific description.
   - `Preview NLA Strip` / `Stop Preview`
   - Frame controls (first, previous, next, last)
   - Frame counter display
+
+![Animation Tab](/_static/images/SRT_AnimationTab.png)
 
 #### 🎬 Render Tab
 - **⚙️ Render Settings Section**:
@@ -165,6 +170,8 @@ Each tab button shows a tooltip on hover with a specific description.
     - Starts rendering all animations and cameras (asynchronous version using a timer)
   - `🎯 Test Cameras` (`sprite_render.test_cameras`):
     - Cycles through the configured cameras for preview
+
+![Render Tab](/_static/images/SRT_RenderTab.png)
 
 ---
 
@@ -213,7 +220,7 @@ This initial guide presents the basic workflow to get started with the Sprite Re
 
 - **6. Render**
   - Click **Render All** (in Render tab → Render Actions).
-  - Monitor progress in the **Info tab** → Render Progress section.
+  - Monitor progress in the **Render tab** → Render Progress section (appears below Render Actions while rendering).
   - If needed, use **Cancel Render** button or press **ESC** to stop (it will stop after the current frame finishes).
 
 ---

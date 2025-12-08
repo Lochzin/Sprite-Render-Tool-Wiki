@@ -45,6 +45,8 @@ A sidebar esquerda contém botões de ícone para navegação fácil entre as ta
 - **🦴 Animations** (ARMATURE_DATA): Modo de animação, configuração Actions/NLA, testes
 - **🎬 Render** (RENDER_STILL): Render Settings, configuração Output, Render Actions
 
+![Sidebar](/_static/images/SRT_Sidebar.png)
+
 Cada botão de tab mostra um tooltip ao passar o mouse com uma descrição específica.
 
 ### Conteúdo das Tabs
@@ -53,10 +55,11 @@ Cada botão de tab mostra um tooltip ao passar o mouse com uma descrição espec
 - Informações de versão
 - Informações do autor
 - Botão grande **📖 Open Documentation**
-- **📊 Render Progress** (exibido durante a renderização):
-  - `[atual/total]`, porcentagem, barra de progresso e mensagem de status
-  - Botão **❌ Cancel Render**
-  - **Tecla ESC**: pressione ESC para cancelar a renderização a qualquer momento durante o processo
+- **📚 Additional Resources** (seção recolhível):
+  - Botão **Changelog**: abre a documentação do changelog
+  - Botão **Future Features**: abre a documentação de funcionalidades futuras
+  - Botão **License**: abre a documentação da licença
+  - Seção inicia minimizada por padrão
 
 #### ⚙️ Tab Setup
 - **📁 Seção Project**:
@@ -99,6 +102,8 @@ Cada botão de tab mostra um tooltip ao passar o mouse com uma descrição espec
   - Preenche a lista com nomes, contagem e rotação Z baseada no objeto pivô
 - Botão pequeno de documentação no cabeçalho da seção
 
+![Camera Tab](/_static/images/SRT_CameraTab.png)
+
 #### 🦴 Tab Animations
 - `Target Armature`: a armadura a ser animada
 - `Animation Mode`:
@@ -127,6 +132,8 @@ Cada botão de tab mostra um tooltip ao passar o mouse com uma descrição espec
   - `Preview NLA Strip` / `Stop Preview`
   - Controles de frame (primeiro, anterior, próximo, último)
   - Exibição de contador de frame
+
+![Animation Tab](/_static/images/SRT_AnimationTab.png)
 
 #### 🎬 Tab Render
 - **⚙️ Seção Render Settings**:
@@ -159,6 +166,8 @@ Cada botão de tab mostra um tooltip ao passar o mouse com uma descrição espec
     - Inicia a renderização de todas as animações e câmeras (versão assíncrona usando um timer)
   - `🎯 Test Cameras` (`sprite_render.test_cameras`):
     - Percorre as câmeras configuradas para visualização
+
+![Render Tab](/_static/images/SRT_RenderTab.png)
 
 ---
 
@@ -207,7 +216,7 @@ Este guia inicial apresenta o fluxo de trabalho básico para começar a usar o S
 
 - **6. Renderize**
   - Clique em **Render All** (na tab Render → Render Actions).
-  - Monitore o progresso na **tab Info** → seção Render Progress.
+  - Monitore o progresso na **tab Render** → seção Render Progress (aparece abaixo de Render Actions durante a renderização).
   - Se necessário, use o botão **Cancel Render** ou pressione **ESC** para parar (ele parará após o frame atual terminar).
 
 ---
