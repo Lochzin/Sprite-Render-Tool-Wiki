@@ -47,6 +47,8 @@ The left sidebar contains icon buttons for easy navigation between tabs:
 
 Each tab button shows a tooltip on hover with a specific description.
 
+![Info Tab](images/SRT_Sidebar.png)
+
 ### Tab Contents
 
 #### 📋 Info Tab
@@ -57,6 +59,8 @@ Each tab button shows a tooltip on hover with a specific description.
   - `[current/total]`, percentage, progress bar, and status message
   - **❌ Cancel Render** button
   - **ESC key**: press ESC to cancel rendering at any time during the process
+
+![Info Tab](images/SRT_InfoTab.png)
 
 #### ⚙️ Setup Tab
 - **📁 Project Section**:

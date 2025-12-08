@@ -52,7 +52,7 @@ html_theme = 'sphinx_rtd_theme'
 # html_baseurl deve ser relativo ou vazio para GitHub Pages funcionar corretamente
 # O GitHub Pages serve a partir da raiz, então não precisamos do baseurl absoluto
 html_baseurl = ''
-html_static_path = ['_static', 'assets']
+html_static_path = ['_static', 'assets', 'images']
 html_favicon = 'assets/images/favicon/favicon.ico'
 html_logo = 'assets/images/SpriteRenderTool_Icon.png'
 
