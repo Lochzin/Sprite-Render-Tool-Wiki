@@ -47,7 +47,7 @@ The left sidebar contains icon buttons for easy navigation between tabs:
 
 Each tab button shows a tooltip on hover with a specific description.
 
-![Sidebar](images/SRT_Sidebar.png)
+![Sidebar](/_static/images/SRT_Sidebar.png)
 
 ### Tab Contents
 
@@ -60,7 +60,7 @@ Each tab button shows a tooltip on hover with a specific description.
   - **❌ Cancel Render** button
   - **ESC key**: press ESC to cancel rendering at any time during the process
 
-![Info Tab](images/SRT_InfoTab.png)
+![Info Tab](/_static/images/SRT_InfoTab.png)
 
 #### ⚙️ Setup Tab
 - **📁 Project Section**:
@@ -81,7 +81,7 @@ Each tab button shows a tooltip on hover with a specific description.
   - Small documentation button in section header
   - For more information about camera presets, see [Cameras](Cameras.md).
 
-![Setup Tab](images/SRT_SetupTab.png)
+![Setup Tab](/_static/images/SRT_SetupTab.png)
 
 #### 📷 Cameras Tab
 - **📐 Lens Settings** (always visible):

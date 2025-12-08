@@ -45,6 +45,10 @@ myst_enable_extensions = [
     "tasklist",
 ]
 
+# MyST configuration for images
+# This ensures images are copied to the output directory
+myst_url_schemes = ["http", "https", "mailto"]
+
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
@@ -52,7 +56,7 @@ html_theme = 'sphinx_rtd_theme'
 # html_baseurl deve ser relativo ou vazio para GitHub Pages funcionar corretamente
 # O GitHub Pages serve a partir da raiz, então não precisamos do baseurl absoluto
 html_baseurl = ''
-html_static_path = ['_static', 'assets', 'images']
+html_static_path = ['_static', 'assets']
 html_favicon = 'assets/images/favicon/favicon.ico'
 html_logo = 'assets/images/SpriteRenderTool_Icon.png'
 
