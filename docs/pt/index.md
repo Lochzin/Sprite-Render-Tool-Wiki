@@ -21,14 +21,25 @@ Funciona com Blender **5.0.0+**.
 
 ## Instalação Rápida
 
-- **Arquivo do add-on**: `Sprite Render Tool.py`
+- **Arquivo do add-on**: `Sprite Render Tool.zip`
 - **Compatibilidade**: Blender 5.0.0 ou mais recente.
 
 **Passos:**
 - **1.** Abra o Blender → `Edit > Preferences... > Add-ons`  
-- **2.** Clique em **Install...** e escolha `Sprite Render Tool.py`  
+- **2.** Clique em **Install...** e escolha `Sprite Render Tool.zip`  
 - **3.** Procure por **Sprite Render Tool** na lista de add-ons e ative-o  
 - **4.** O painel aparecerá em: `View3D > Sidebar (N) > Sprite Render > Sprite Render`
+
+**⚠️ Importante - Atualizando o Add-on:**
+- **Antes de instalar uma nova versão**, é **recomendado** desinstalar a versão antiga primeiro:
+  - Vá em `Edit > Preferences... > Add-ons`
+  - Procure por "Sprite Render Tool"
+  - Clique em **Remove** para desinstalar a versão antiga
+  - Em seguida, instale a nova versão seguindo os passos acima
+- **Se você encontrar bugs** com versões duplicadas instaladas:
+  - Desinstale **ambas** as versões da lista de add-ons
+  - Reinicie o Blender
+  - Instale a **versão mais recente** seguindo os passos de instalação acima
 
 ---
 
