@@ -14,21 +14,17 @@ Esta página lista funcionalidades planejadas e melhorias para o **Sprite Render
 
 ### Funcionalidades de Configuração de Câmeras
 
-- **Presets de Câmeras**: Configurações rápidas para arranjos de câmeras comuns:
-  - Presets para 1, 2, 3, 4 e 5 câmeras com ângulos e rotações pré-configurados
+- **Presets de Câmeras Customizados**: Expansão do sistema de presets existente:
   - Criação e salvamento de presets customizados para configurações de câmeras frequentemente usadas
   - Funcionalidade de compartilhamento e importação/exportação de presets
-  - Isso agilizará o fluxo de trabalho para usuários que frequentemente trabalham com arranjos de câmeras padrão (vistas frontal, traseira, lateral, etc.)
+  - Isso agilizará o fluxo de trabalho para usuários que frequentemente trabalham com arranjos de câmeras personalizados além dos presets padrão
 
 ### Melhorias de UI/UX
 
-- **Botões de Ajuda Contextual**: Integração de botões de ajuda/documentação em toda a UI que vinculam diretamente às seções relevantes da wiki:
-  - Seção **Animation Mode**: Botão que leva à página de documentação de Animações
-  - Seção **Cameras**: Botão que leva à página de documentação de Câmeras
-  - Seção **Light Pivot**: Botão que leva à página de documentação de Iluminação
-  - Seção **Output**: Botão que leva à página de documentação de Saída
-  - Botão **FAQ**: Acesso rápido a perguntas frequentes
-  - Esses botões fornecerão acesso instantâneo à documentação detalhada sem sair do Blender, melhorando a curva de aprendizado para novos usuários e servindo como referência rápida para usuários experientes
+- **Expansão de Botões de Ajuda Contextual**: Melhorias adicionais aos botões de documentação existentes:
+  - Integração mais profunda de tooltips contextuais com links diretos para seções específicas da documentação
+  - Botões de ajuda inline em campos de propriedade complexos
+  - Essas melhorias fornecerão acesso ainda mais instantâneo à documentação detalhada sem sair do Blender, melhorando a curva de aprendizado para novos usuários e servindo como referência rápida para usuários experientes
 
 ### Funcionalidades de Saída
 

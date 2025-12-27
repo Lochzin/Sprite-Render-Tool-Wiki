@@ -4,7 +4,49 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
-## [0.3.10] - 2024
+## [0.3.11] - 2025
+
+### Adicionado
+- **Modo de Animação Frame Ranges**: Novo modo de animação para renderizar intervalos de frames específicos sem rig ou animação
+  - Novo modo `FRAME_RANGES` no dropdown de Animation Mode
+  - Permite renderizar múltiplos intervalos de frames personalizados (ex.: frames 1-10, 20-30, 50-60)
+  - Cada intervalo de frames pode ser habilitado/desabilitado individualmente
+  - Cada intervalo tem um nome personalizável para organização
+  - Não requer armature ou dados de animação - renderiza apenas frames estáticos
+  - Útil para renderizar sequências específicas ou frames de teste sem configurar animações
+  - Intervalos de frames são gerenciados através de uma interface de lista similar aos modos Actions e NLA
+  - Validação garante `frame_end >= frame_start` para cada intervalo
+
+### Corrigido
+- **Detectar Câmeras com Light Pivot Desabilitado**: Corrigido bug onde o botão "Detect Cameras" falhava quando o light pivot estava desabilitado
+  - Agora permite corretamente a detecção de câmeras mesmo quando o light pivot está desabilitado
+  - Verificação do objeto light pivot só ocorre quando o light pivot está habilitado
+  - Quando o light pivot está desabilitado, câmeras são detectadas com rotação zero
+  - Previne erro "Light pivot object is not set" quando o pivô está intencionalmente desabilitado
+- **Barra de Progresso de Renderização Editável**: Corrigido problema onde a barra de progresso de renderização podia ser editada clicando nela
+  - Barra de progresso agora é apenas para exibição com representação baseada em caracteres visuais (█ e ░)
+  - Porcentagem de progresso e contagens permanecem visíveis mas não editáveis
+  - Previne modificação acidental de valores de progresso durante a renderização
+- **UI de Progresso de Renderização Não Desaparecendo**: Corrigido bug onde a seção de progresso de renderização podia permanecer visível após a conclusão da renderização
+  - Adicionados blocos try-finally para garantir que a flag `is_rendering` seja sempre resetada, mesmo em exceções
+  - Melhorado método `_cleanup()` para sempre resetar o estado de renderização no início
+  - Adicionado tratamento de exceções em todo o pipeline de renderização para prevenir estado travado
+  - UI de progresso agora desaparece confiavelmente quando a renderização termina ou é cancelada
+- **Deleção de Arquivo Durante Renderização**: Melhorado tratamento quando arquivos renderizados são deletados durante o processo de renderização
+  - Adicionado tratamento de exceções para verificação de arquivo (OSError, IOError)
+  - Processo de renderização continua suavemente mesmo se arquivos forem deletados após serem escritos
+  - Previne que o processo de renderização trave quando arquivos estão inacessíveis
+
+### Detalhes Técnicos
+- Novo PropertyGroup: `FrameRangeItem` com propriedades `name`, `frame_start`, `frame_end` e `enabled`
+- Nova UIList: `SPRITE_RENDER_UL_FrameRanges` para exibir lista de intervalos de frames
+- Novos operadores: `SPRITE_RENDER_OT_FrameRangeAdd` e `SPRITE_RENDER_OT_FrameRangeRemove`
+- Intervalos de frames integrados ao pipeline de renderização: métodos `create_output_directories()`, `execute()` e `invoke()`
+- Validação de intervalo de frames: Correção automática quando `frame_end < frame_start`
+
+---
+
+## [0.3.10] - 2025
 
 ### Alterado
 - **Localização do Progresso de Renderização**: Movido o display de progresso de renderização da tab Info para a tab Render
@@ -19,7 +61,7 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
   - Fornece acesso rápido à documentação adicional diretamente da tab Info
   - Melhora a organização consolidando todos os links de documentação em um só lugar
 
-## [0.3.9] - 2024
+## [0.3.9] - 2025
 
 ### Corrigido
 - **Erros de Ícone Inválidos**: Corrigidos crashes TypeError causados por nomes de ícones inválidos
@@ -40,7 +82,7 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
   - Links de documentação (Changelog, Future Features, License) só visíveis quando expandidos
   - Melhora organização da UI reduzindo desordem inicial
 
-## [0.3.8] - 2024
+## [0.3.8] - 2025
 
 ### Corrigido
 - **Bug de Duplicação de Renderização**: Corrigido problema onde o processo de renderização estava renderizando frames extras após completar a última câmera
@@ -65,7 +107,7 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
-## [0.3.7] - 2024
+## [0.3.7] - 2025
 
 ### Alterado
 - **Reorganização de Tabs**: Melhorada estrutura e organização de tabs
@@ -84,7 +126,7 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
-## [0.3.6] - 2024
+## [0.3.6] - 2025
 
 ### Adicionado
 - **Sistema de Navegação Lateral**: Redesign completo da UI com interface de tabs
@@ -137,7 +179,7 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
-## [0.3.5] - 2024
+## [0.3.5] - 2025
 
 ### Adicionado
 - **Painel Render Settings**: Novo painel dedicado para configurações de renderização
@@ -209,7 +251,7 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
-## [0.3.4] - 2024
+## [0.3.4] - 2025
 
 ### Alterado
 - **Modularização do Código**: Reestruturação completa da base de código do addon em arquitetura modular
@@ -238,7 +280,7 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
-## [0.3.3] - 2024
+## [0.3.3] - 2025
 
 ### Alterado
 - **Divisão da Sincronização de Shift**: Botão "Sync Shift" dividido em dois toggles separados
@@ -268,7 +310,7 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
-## [0.3.2] - 2024
+## [0.3.2] - 2025
 
 ### Alterado
 - **Reorganização da UI**: Reestruturação completa da interface do addon
@@ -293,7 +335,7 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
-## [0.3.1] - 2024
+## [0.3.1] - 2025
 
 ### Adicionado
 - **Configurações de Resolução Sincronizadas**: Novos controles de resolução em Lens Settings
@@ -326,7 +368,7 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
-## [0.3.0] - 2024
+## [0.3.0] - 2025
 
 ### Adicionado
 - **Sistema de Presets de Câmera**: Novo sistema de criação de câmeras com presets predefinidos
@@ -387,7 +429,7 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
-## [0.2.8] - 2024
+## [0.2.8] - 2025
 
 ### Alterado
 - **Layout da UI**: Reordenadas seções para melhorar o entendimento do usuário
@@ -414,7 +456,7 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
-## [0.2.7] - 2024
+## [0.2.7] - 2025
 
 ### Alterado
 - **UI de Output**: Campo Output Path movido acima do template Output Name
@@ -442,7 +484,7 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
-## [0.2.6] - 2024
+## [0.2.6] - 2025
 
 ### Adicionado
 - **Botão de documentação**: Adicionado botão de ajuda no painel principal para abrir a documentação
@@ -463,7 +505,7 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
-## [0.2.5] - 2024
+## [0.2.5] - 2025
 
 **Destaques:**
 - Adicionado **Cancelamento com tecla ESC**: Capacidade de cancelar renderização pressionando a tecla ESC
@@ -478,7 +520,7 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
-## [0.2.4] - 2024
+## [0.2.4] - 2025
 
 ### Removido
 - **Sistema de debug**: Removidas todas as funcionalidades e elementos de UI relacionados a debug
@@ -500,7 +542,7 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
-## [0.2.3] - 2024
+## [0.2.3] - 2025
 
 **Destaques:**
 - Adicionada **Validação de caminho de saída**: O add-on agora valida se o caminho de saída está configurado e existe antes de renderizar
@@ -516,7 +558,7 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
-## [0.2.2] - 2024
+## [0.2.2] - 2025
 
 **Destaques:**
 - Adicionado **Toggle de Habilitar Light Pivot**: Nova propriedade booleana `enable_light_pivot` para controlar a funcionalidade de pivô de luz
@@ -531,7 +573,7 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 
 ---
 
-## [0.2.1] - 2024
+## [0.2.1] - 2025
 
 **Destaques:**
 - Fluxo de trabalho multi-câmera aprimorado com `render_order` por câmera.

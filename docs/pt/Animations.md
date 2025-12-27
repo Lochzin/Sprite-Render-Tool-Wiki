@@ -1,6 +1,6 @@
 # Animações
 
-Esta página explica como o **Sprite Render Tool** lida com animações nos três modos: **ACTIONS**, **NLA** e **STATIC**.
+Esta página explica como o **Sprite Render Tool** lida com animações nos quatro modos: **ACTIONS**, **NLA**, **STATIC** e **FRAME_RANGES**.
 
 ---
 
@@ -10,6 +10,7 @@ Na seção **Animations** do painel principal você escolhe o modo via `Animatio
 - **ACTIONS**: renderiza a partir de uma lista curada de Actions.
 - **NLA**: renderiza a partir de NLA strips na armadura alvo.
 - **STATIC**: renderiza apenas o frame atual.
+- **FRAME_RANGES**: renderiza intervalos de frames específicos sem rig ou animação.
 
 O modo selecionado controla como as animações são coletadas e como a armadura é preparada para reprodução.
 
@@ -144,6 +145,40 @@ Use este modo para:
 - Thumbnails.
 - Poses-chave.
 - Visualizações de frame único de um personagem ou prop.
+
+---
+
+## Modo FRAME_RANGES
+
+### Lista de Frame Ranges
+
+O modo **FRAME_RANGES** permite renderizar intervalos de frames específicos sem precisar de armature ou dados de animação:
+- Cada `FrameRangeItem` tem:
+  - `name`: nome personalizável para o intervalo (ex.: "Test Frames", "Sequence 1-10")
+  - `frame_start`, `frame_end`: intervalo de frames para renderizar
+  - `enabled`: se este intervalo deve ser incluído nas renderizações
+- Permite renderizar múltiplos intervalos personalizados (ex.: frames 1-10, 20-30, 50-60)
+- Útil para renderizar sequências específicas ou frames de teste sem configurar animações
+
+**Gerenciamento de Frame Ranges**:
+- Você pode adicionar itens com **Add Frame Range**
+- Remover o item atualmente selecionado com **Remove Frame Range**
+- Validação automática garante `frame_end >= frame_start` para cada intervalo
+
+### Renderização no Modo FRAME_RANGES
+
+Quando `Render All` é iniciado no modo **FRAME_RANGES**:
+- O operador coleta intervalos da lista `frame_ranges`:
+  - Apenas aqueles com `enabled == True`
+- Para cada intervalo:
+  - Itera sobre todos os frames de `frame_start` a `frame_end` e sobre todas as câmeras configuradas
+  - Não requer armature ou animação - renderiza frames estáticos da cena
+- O nome do intervalo pode ser usado em `$animation` dentro do `output_template`
+
+Use este modo para:
+- Renderizar sequências específicas de frames sem configurar animações
+- Testar frames individuais ou intervalos de frames
+- Renderizar frames estáticos de diferentes estados da cena
 
 ---
 

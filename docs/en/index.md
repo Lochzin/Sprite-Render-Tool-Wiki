@@ -125,6 +125,7 @@ Each tab button shows a tooltip on hover with a specific description.
   - **NLA**: use NLA strips
   - **ACTIONS**: use Actions listed inside the add-on
   - **STATIC**: render only the current frame
+  - **FRAME_RANGES**: render specific frame ranges without rig or animation
 
 **ACTIONS Mode:**
 - `Actions` list:
@@ -147,6 +148,16 @@ Each tab button shows a tooltip on hover with a specific description.
   - `Preview NLA Strip` / `Stop Preview`
   - Frame controls (first, previous, next, last)
   - Frame counter display
+
+**FRAME_RANGES Mode:**
+- `Frame Ranges` list:
+  - Each item: `enabled`, `name` (range name), `frame_start`, `frame_end`
+  - Allows rendering multiple custom frame ranges (e.g., frames 1-10, 20-30, 50-60)
+  - No armature or animation data required - renders static frames only
+  - Useful for rendering specific sequences or test frames without setting up animations
+- Buttons:
+  - `Add`, `Remove`: manually manage the list
+- Automatic validation ensures `frame_end >= frame_start` for each range
 
 ![Animation Tab](/_static/images/SRT_AnimationTab.png)
 

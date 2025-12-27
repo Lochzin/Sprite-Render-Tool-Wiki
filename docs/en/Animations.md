@@ -1,6 +1,6 @@
 # Animations
 
-This page explains how the **Sprite Render Tool** handles animations in the three modes: **ACTIONS**, **NLA**, and **STATIC**.
+This page explains how the **Sprite Render Tool** handles animations in the four modes: **ACTIONS**, **NLA**, **STATIC**, and **FRAME_RANGES**.
 
 ---
 
@@ -10,6 +10,7 @@ In the **Animations** section of the main panel you choose the mode via `Animati
 - **ACTIONS**: render from a curated list of Actions.
 - **NLA**: render from NLA strips on the target armature.
 - **STATIC**: render only the current frame.
+- **FRAME_RANGES**: render specific frame ranges without rig or animation.
 
 The selected mode controls how animations are collected and how the armature is prepared for playback.
 
@@ -144,6 +145,40 @@ Use this mode for:
 - Thumbnails.
 - Key poses.
 - Single‑frame previews of a character or prop.
+
+---
+
+## FRAME_RANGES Mode
+
+### Frame Ranges List
+
+The **FRAME_RANGES** mode allows rendering specific frame ranges without needing armature or animation data:
+- Each `FrameRangeItem` has:
+  - `name`: customizable name for the range (e.g., "Test Frames", "Sequence 1-10")
+  - `frame_start`, `frame_end`: frame range to render
+  - `enabled`: whether this range should be included in renders
+- Allows rendering multiple custom ranges (e.g., frames 1-10, 20-30, 50-60)
+- Useful for rendering specific sequences or test frames without setting up animations
+
+**Frame Ranges Management**:
+- You can add items with **Add Frame Range**
+- Remove the currently selected item with **Remove Frame Range**
+- Automatic validation ensures `frame_end >= frame_start` for each range
+
+### Rendering in FRAME_RANGES Mode
+
+When `Render All` is started in **FRAME_RANGES** mode:
+- The operator collects ranges from the `frame_ranges` list:
+  - Only those with `enabled == True`
+- For each range:
+  - Iterates over all frames from `frame_start` to `frame_end` and over all configured cameras
+  - Does not require armature or animation - renders static frames from the scene
+- The range name can be used in `$animation` within the `output_template`
+
+Use this mode for:
+- Rendering specific frame sequences without setting up animations
+- Testing individual frames or frame ranges
+- Rendering static frames from different scene states
 
 ---
 

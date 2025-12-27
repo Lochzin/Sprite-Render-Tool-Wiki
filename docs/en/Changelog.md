@@ -4,7 +4,49 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
-## [0.3.10] - 2024
+## [0.3.11] - 2025
+
+### Added
+- **Frame Ranges Animation Mode**: New animation mode for rendering specific frame ranges without rig or animation
+  - New `FRAME_RANGES` mode in Animation Mode dropdown
+  - Allows rendering multiple custom frame ranges (e.g., frames 1-10, 20-30, 50-60)
+  - Each frame range can be individually enabled/disabled
+  - Each range has a customizable name for organization
+  - No armature or animation data required - renders static frames only
+  - Useful for rendering specific sequences or test frames without setting up animations
+  - Frame ranges are managed through a list interface similar to Actions and NLA modes
+  - Validation ensures `frame_end >= frame_start` for each range
+
+### Fixed
+- **Detect Cameras with Light Pivot Disabled**: Fixed bug where "Detect Cameras" button failed when light pivot was disabled
+  - Now correctly allows camera detection even when light pivot is disabled
+  - Light pivot object check only occurs when light pivot is enabled
+  - When light pivot is disabled, cameras are detected with zero rotation
+  - Prevents "Light pivot object is not set" error when pivot is intentionally disabled
+- **Render Progress Bar Editable**: Fixed issue where render progress bar could be edited by clicking on it
+  - Progress bar is now display-only with visual character-based representation (█ and ░)
+  - Progress percentage and counts remain visible but non-editable
+  - Prevents accidental modification of progress values during rendering
+- **Render Progress UI Not Disappearing**: Fixed bug where render progress section could remain visible after render completion
+  - Added try-finally blocks to ensure `is_rendering` flag is always reset, even on exceptions
+  - Improved `_cleanup()` method to always reset rendering state at the start
+  - Added exception handling throughout render pipeline to prevent state from getting stuck
+  - Progress UI now reliably disappears when render finishes or is cancelled
+- **File Deletion During Render**: Improved handling when rendered files are deleted during the render process
+  - Added exception handling for file verification (OSError, IOError)
+  - Render process continues smoothly even if files are deleted after being written
+  - Prevents render process from getting stuck when files are inaccessible
+
+### Technical Details
+- New PropertyGroup: `FrameRangeItem` with `name`, `frame_start`, `frame_end`, and `enabled` properties
+- New UIList: `SPRITE_RENDER_UL_FrameRanges` for displaying frame ranges list
+- New operators: `SPRITE_RENDER_OT_FrameRangeAdd` and `SPRITE_RENDER_OT_FrameRangeRemove`
+- Frame ranges integrated into render pipeline: `create_output_directories()`, `execute()`, and `invoke()` methods
+- Frame range validation: Automatic correction when `frame_end < frame_start`
+
+---
+
+## [0.3.10] - 2025
 
 ### Changed
 - **Render Progress Location**: Moved render progress display from Info tab to Render tab
@@ -19,7 +61,7 @@ This page tracks changes to the **Sprite Render Tool** over time.
   - Provides quick access to additional documentation directly from Info tab
   - Improves organization by consolidating all documentation links in one place
 
-## [0.3.9] - 2024
+## [0.3.9] - 2025
 
 ### Fixed
 - **Invalid Icon Errors**: Fixed TypeError crashes caused by invalid icon names
@@ -40,7 +82,7 @@ This page tracks changes to the **Sprite Render Tool** over time.
   - Documentation links (Changelog, Future Features, License) only visible when expanded
   - Improves UI organization by reducing initial clutter
 
-## [0.3.8] - 2024
+## [0.3.8] - 2025
 
 ### Fixed
 - **Render Duplication Bug**: Fixed issue where render process was rendering extra frames after completing the last camera
@@ -65,7 +107,7 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
-## [0.3.7] - 2024
+## [0.3.7] - 2025
 
 ### Changed
 - **Tab Reorganization**: Improved tab structure and organization
@@ -84,7 +126,7 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
-## [0.3.6] - 2024
+## [0.3.6] - 2025
 
 ### Added
 - **Sidebar Navigation System**: Complete UI redesign with tabbed interface
@@ -137,7 +179,7 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
-## [0.3.5] - 2024
+## [0.3.5] - 2025
 
 ### Added
 - **Render Settings Panel**: New dedicated panel for render configuration settings
@@ -209,7 +251,7 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
-## [0.3.4] - 2024
+## [0.3.4] - 2025
 
 ### Changed
 - **Code Modularization**: Complete restructuring of the addon codebase into a modular architecture
@@ -238,7 +280,7 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
-## [0.3.3] - 2024
+## [0.3.3] - 2025
 
 ### Changed
 - **Split Shift Synchronization**: "Sync Shift" button divided into two separate toggles
@@ -268,7 +310,7 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
-## [0.3.2] - 2024
+## [0.3.2] - 2025
 
 ### Changed
 - **UI Reorganization**: Complete restructure of the addon interface
@@ -293,7 +335,7 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
-## [0.3.1] - 2024
+## [0.3.1] - 2025
 
 ### Added
 - **Synchronized Resolution Settings**: New resolution controls in Lens Settings
@@ -326,7 +368,7 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
-## [0.3.0] - 2024
+## [0.3.0] - 2025
 
 ### Added
 - **Camera Preset System**: New camera creation system with predefined presets
@@ -387,7 +429,7 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
-## [0.2.8] - 2024
+## [0.2.8] - 2025
 
 ### Changed
 - **UI Layout**: Reordered sections to improve user understanding
@@ -414,7 +456,7 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
-## [0.2.7] - 2024
+## [0.2.7] - 2025
 
 ### Changed
 - **Output UI**: Moved the Output Path field above the Output Name template
@@ -442,7 +484,7 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
-## [0.2.6] - 2024
+## [0.2.6] - 2025
 
 ### Added
 - **Documentation button**: Added help button in the main panel to open documentation
@@ -463,7 +505,7 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
-## [0.2.5] - 2024
+## [0.2.5] - 2025
 
 **Highlights:**
 - Added **ESC key cancellation**: Ability to cancel rendering by pressing ESC key
@@ -478,7 +520,7 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
-## [0.2.4] - 2024
+## [0.2.4] - 2025
 
 ### Removed
 - **Debug system**: Removed all debug-related features and UI elements
@@ -500,7 +542,7 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
-## [0.2.3] - 2024
+## [0.2.3] - 2025
 
 **Highlights:**
 - Added **Output path validation**: The add-on now validates if the output path is configured and exists before rendering
@@ -516,7 +558,7 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
-## [0.2.2] - 2024
+## [0.2.2] - 2025
 
 **Highlights:**
 - Added **Enable Light Pivot Toggle**: New `enable_light_pivot` boolean property to control the light pivot feature
@@ -531,7 +573,7 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
-## [0.2.1] - 2024
+## [0.2.1] - 2025
 
 **Highlights:**
 - Improved multi‑camera workflow with `render_order` per camera.

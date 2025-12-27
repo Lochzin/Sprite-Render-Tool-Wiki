@@ -125,6 +125,7 @@ Cada botão de tab mostra um tooltip ao passar o mouse com uma descrição espec
   - **NLA**: usa NLA strips
   - **ACTIONS**: usa Actions listadas dentro do add-on
   - **STATIC**: renderiza apenas o frame atual
+  - **FRAME_RANGES**: renderiza intervalos de frames específicos sem rig ou animação
 
 **Modo ACTIONS:**
 - Lista `Actions`:
@@ -147,6 +148,16 @@ Cada botão de tab mostra um tooltip ao passar o mouse com uma descrição espec
   - `Preview NLA Strip` / `Stop Preview`
   - Controles de frame (primeiro, anterior, próximo, último)
   - Exibição de contador de frame
+
+**Modo FRAME_RANGES:**
+- Lista `Frame Ranges`:
+  - Cada item: `enabled`, `name` (nome do intervalo), `frame_start`, `frame_end`
+  - Permite renderizar múltiplos intervalos de frames personalizados (ex.: frames 1-10, 20-30, 50-60)
+  - Não requer armature ou dados de animação - renderiza apenas frames estáticos
+  - Útil para renderizar sequências específicas ou frames de teste sem configurar animações
+- Botões:
+  - `Add`, `Remove`: gerencia a lista manualmente
+- Validação automática garante `frame_end >= frame_start` para cada intervalo
 
 ![Animation Tab](/_static/images/SRT_AnimationTab.png)
 

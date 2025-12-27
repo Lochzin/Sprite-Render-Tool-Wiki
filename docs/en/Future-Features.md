@@ -14,21 +14,17 @@ This page lists planned features and improvements for the **Sprite Render Tool**
 
 ### Camera Setup Features
 
-- **Camera Presets**: Quick setup presets for common camera configurations:
-  - Presets for 1, 2, 3, 4, and 5 cameras with pre-configured angles and rotations
+- **Custom Camera Presets**: Expansion of the existing preset system:
   - Custom preset creation and saving for frequently used camera setups
   - Preset sharing and import/export functionality
-  - This will streamline the workflow for users who frequently work with standard camera arrangements (front, back, side views, etc.)
+  - This will streamline the workflow for users who frequently work with custom camera arrangements beyond the standard presets
 
 ### UI/UX Improvements
 
-- **Contextual Help Buttons**: Integration of help/documentation buttons throughout the UI that link directly to relevant sections of the wiki:
-  - **Animation Mode** section: Button linking to the Animations documentation page
-  - **Cameras** section: Button linking to the Cameras documentation page
-  - **Light Pivot** section: Button linking to the Lighting documentation page
-  - **Output** section: Button linking to the Output documentation page
-  - **FAQ** button: Quick access to frequently asked questions
-  - These buttons will provide instant access to detailed documentation without leaving Blender, improving the learning curve for new users and serving as quick reference for experienced users
+- **Expanded Contextual Help Buttons**: Additional improvements to existing documentation buttons:
+  - Deeper integration of contextual tooltips with direct links to specific documentation sections
+  - Inline help buttons in complex property fields
+  - These improvements will provide even more instant access to detailed documentation without leaving Blender, improving the learning curve for new users and serving as quick reference for experienced users
 
 ### Output Features
 
