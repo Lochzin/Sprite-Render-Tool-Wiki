@@ -155,9 +155,12 @@ Cada botão de tab mostra um tooltip ao passar o mouse com uma descrição espec
   - Permite renderizar múltiplos intervalos de frames personalizados (ex.: frames 1-10, 20-30, 50-60)
   - Não requer armature ou dados de animação - renderiza apenas frames estáticos
   - Útil para renderizar sequências específicas ou frames de teste sem configurar animações
+  - A lista exibe cada intervalo no formato "frame_start-frame_end"
 - Botões:
   - `Add`, `Remove`: gerencia a lista manualmente
-- Validação automática garante `frame_end >= frame_start` para cada intervalo
+  - Ao adicionar, o nome padrão é "Range {número}" e os valores padrão vêm do intervalo de frames da cena
+- Validação automática garante `frame_end >= frame_start` para cada intervalo (corrige automaticamente se necessário)
+- Mensagem informativa: "⚠️ No rig or animation required - Renders only the specified frame ranges"
 
 ![Animation Tab](/_static/images/SRT_AnimationTab.png)
 

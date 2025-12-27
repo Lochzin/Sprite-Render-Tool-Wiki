@@ -162,8 +162,11 @@ The **FRAME_RANGES** mode allows rendering specific frame ranges without needing
 
 **Frame Ranges Management**:
 - You can add items with **Add Frame Range**
+  - A new range is created with default name "Range {number}" based on the list size
+  - Default `frame_start` and `frame_end` values are based on the scene's frame range (`scene.frame_start` and `scene.frame_end`)
 - Remove the currently selected item with **Remove Frame Range**
-- Automatic validation ensures `frame_end >= frame_start` for each range
+- Automatic validation ensures `frame_end >= frame_start` for each range (automatically corrects if `frame_end < frame_start`)
+- The list displays each range showing the name and frame range in the format "frame_start-frame_end"
 
 ### Rendering in FRAME_RANGES Mode
 
@@ -184,7 +187,7 @@ Use this mode for:
 
 ## Animation Test Panel
 
-Both **ACTIONS** and **NLA** modes include an **Animations Test** subpanel, controlled by `show_section_animations_test`:
+**ACTIONS** and **NLA** modes include an **Animations Test** subpanel, controlled by `show_section_animations_test`. **Note**: **FRAME_RANGES** mode does not have a test panel, as it does not require animation or armature.
 
 - **Preview Action** (`sprite_render.test_action`):
   - Applies the selected Action to `target_armature`.

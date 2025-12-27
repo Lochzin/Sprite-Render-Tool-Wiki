@@ -39,10 +39,12 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ### Technical Details
 - New PropertyGroup: `FrameRangeItem` with `name`, `frame_start`, `frame_end`, and `enabled` properties
-- New UIList: `SPRITE_RENDER_UL_FrameRanges` for displaying frame ranges list
-- New operators: `SPRITE_RENDER_OT_FrameRangeAdd` and `SPRITE_RENDER_OT_FrameRangeRemove`
+  - Automatic validation via `_validate_frame_range()` callback that ensures `frame_end >= frame_start`
+  - Default values based on scene's frame range
+- New UIList: `SPRITE_RENDER_UL_FrameRanges` (bl_idname: `SPRITE_RENDER_UL_frame_ranges`) for displaying frame ranges list
+- New operators: `SPRITE_RENDER_OT_FrameRangeAdd` (bl_idname: `sprite_render.frame_range_add`) and `SPRITE_RENDER_OT_FrameRangeRemove` (bl_idname: `sprite_render.frame_range_remove`)
 - Frame ranges integrated into render pipeline: `create_output_directories()`, `execute()`, and `invoke()` methods
-- Frame range validation: Automatic correction when `frame_end < frame_start`
+- Animation collection: `frame_ranges` list is processed and converted to `(name, frame_start, frame_end)` format for rendering
 
 ---
 

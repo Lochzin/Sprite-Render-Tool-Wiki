@@ -162,8 +162,11 @@ O modo **FRAME_RANGES** permite renderizar intervalos de frames específicos sem
 
 **Gerenciamento de Frame Ranges**:
 - Você pode adicionar itens com **Add Frame Range**
+  - Um novo intervalo é criado com nome padrão "Range {número}" baseado no tamanho da lista
+  - Os valores padrão de `frame_start` e `frame_end` são baseados no intervalo de frames da cena (`scene.frame_start` e `scene.frame_end`)
 - Remover o item atualmente selecionado com **Remove Frame Range**
-- Validação automática garante `frame_end >= frame_start` para cada intervalo
+- Validação automática garante `frame_end >= frame_start` para cada intervalo (corrige automaticamente se `frame_end < frame_start`)
+- A lista exibe cada intervalo mostrando o nome e o intervalo de frames no formato "frame_start-frame_end"
 
 ### Renderização no Modo FRAME_RANGES
 
@@ -184,7 +187,7 @@ Use este modo para:
 
 ## Painel de Teste de Animações
 
-Tanto os modos **ACTIONS** quanto **NLA** incluem um subpainel **Animations Test**, controlado por `show_section_animations_test`:
+Os modos **ACTIONS** e **NLA** incluem um subpainel **Animations Test**, controlado por `show_section_animations_test`. **Nota**: O modo **FRAME_RANGES** não possui painel de teste, pois não requer animação ou armature.
 
 - **Preview Action** (`sprite_render.test_action`):
   - Aplica a Action selecionada a `target_armature`.

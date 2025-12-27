@@ -155,9 +155,12 @@ Each tab button shows a tooltip on hover with a specific description.
   - Allows rendering multiple custom frame ranges (e.g., frames 1-10, 20-30, 50-60)
   - No armature or animation data required - renders static frames only
   - Useful for rendering specific sequences or test frames without setting up animations
+  - The list displays each range in the format "frame_start-frame_end"
 - Buttons:
   - `Add`, `Remove`: manually manage the list
-- Automatic validation ensures `frame_end >= frame_start` for each range
+  - When adding, default name is "Range {number}" and default values come from the scene's frame range
+- Automatic validation ensures `frame_end >= frame_start` for each range (automatically corrects if needed)
+- Informative message: "⚠️ No rig or animation required - Renders only the specified frame ranges"
 
 ![Animation Tab](/_static/images/SRT_AnimationTab.png)
 
