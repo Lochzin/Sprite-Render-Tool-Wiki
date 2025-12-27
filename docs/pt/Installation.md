@@ -20,19 +20,29 @@ Esta página fornece instruções detalhadas sobre como instalar e atualizar o *
 
 2. **Acesse as Preferências**
    - Vá em `Edit > Preferences...` (ou `Blender > Preferences...` no macOS)
-   - Clique na aba **Add-ons** no menu lateral
+   - Clique na aba **Add-ons** no menu lateral (indicado por **1** na imagem abaixo)
 
 3. **Instale o Add-on**
-   - No topo da janela de Add-ons, localize a **setinha** (▼) ao lado do botão de tags
+   - No topo da janela de Add-ons, localize a **setinha** (▼) ao lado do botão de tags (indicado por **2** na imagem)
    - Clique na setinha para abrir o menu
-   - Selecione **Install from disk...** (Instalar do disco)
+   - Selecione **Install from disk...** (Instalar do disco) (indicado por **3** na imagem)
    - Navegue até o arquivo `Sprite Render Tool.zip`
    - Selecione o arquivo e clique em **Install Add-on**
 
 4. **Ative o Add-on**
    - Na lista de add-ons, procure por **Sprite Render Tool**
-   - Marque a caixa de seleção ao lado do nome do add-on para ativá-lo
+   - Marque a caixa de seleção ao lado do nome do add-on para ativá-lo (indicado por **5** na imagem)
    - O add-on agora está instalado e pronto para uso
+
+![Add-ons Preferences](/_static/images/SRT_AddonPref.png)
+
+**Legenda da imagem:**
+- **1** - Aba Add-ons selecionada no menu Preferences
+- **2** - Setinha (dropdown) para acessar opções de instalação
+- **3** - Opção "Install from disk..." no menu dropdown
+- **4** - Área onde são exibidas as informações do add-on (Website, Type, Maintainer, Version, File)
+- **5** - Checkbox para ativar/desativar o add-on
+- **6** - Botão Uninstall para desinstalar o add-on
 
 5. **Localize o Painel**
    - O painel do Sprite Render Tool aparecerá em:
