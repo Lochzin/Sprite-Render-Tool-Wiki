@@ -19,27 +19,15 @@ It works with Blender **5.0.0+**.
 
 ---
 
-## Quick Installation
+## Installation
 
+For detailed installation, update, and troubleshooting instructions, see the dedicated page: **[Installation](Installation.md)**.
+
+**Quick summary:**
 - **Add-on file**: `Sprite Render Tool.zip`
-- **Compatibility**: Blender 5.0.0 or newer.
-
-**Steps:**
-- **1.** Open Blender → `Edit > Preferences... > Add-ons`  
-- **2.** Click **Install...** and choose `Sprite Render Tool.zip`  
-- **3.** Search for **Sprite Render Tool** in the add-ons list and enable it  
-- **4.** The panel will appear at: `View3D > Sidebar (N) > Sprite Render > Sprite Render`
-
-**⚠️ Important - Updating the Add-on:**
-- **Before installing a new version**, it is **recommended** to uninstall the old version first:
-  - Go to `Edit > Preferences... > Add-ons`
-  - Search for "Sprite Render Tool"
-  - Click **Remove** to uninstall the old version
-  - Then install the new version following the steps above
-- **If you encounter bugs** with duplicate versions installed:
-  - Uninstall **both** versions from the add-ons list
-  - Restart Blender
-  - Install the **most recent version** following the installation steps above
+- **Compatibility**: Blender 5.0.0 or newer
+- **Location**: `Edit > Preferences... > Add-ons` → Click dropdown arrow (▼) → **Install from disk...** → Select ZIP file → Enable the add-on
+- **Panel**: `View3D > Sidebar (N) > Sprite Render > Sprite Render`
 
 ---
 

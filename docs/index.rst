@@ -10,6 +10,7 @@ Add-on for **Blender** focused on generating 2D sprites from 3D animations, with
    :caption: English Documentation
 
    en/index.md
+   en/Installation.md
    en/Cameras.md
    en/Lighting.md
    en/Animations.md
@@ -25,6 +26,7 @@ Add-on for **Blender** focused on generating 2D sprites from 3D animations, with
    :caption: Documentação em Português
 
    pt/index.md
+   pt/Installation.md
    pt/Cameras.md
    pt/Lighting.md
    pt/Animations.md
