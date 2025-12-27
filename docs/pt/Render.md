@@ -6,6 +6,8 @@ Esta página explica a funcionalidade da tab **Render**, que inclui configuraç�
 
 ## Configurações de Renderização
 
+> **Localização no add-on**: Tab **Render** → Seção **Render Settings**
+
 A seção **Render Settings** fornece controles para resolução, frame stepping e velocidade de reprodução:
 
 ### Resolução
@@ -48,6 +50,8 @@ Botão **🧪 Test Frame Count**:
 ---
 
 ## Configuração de Saída
+
+> **Localização no add-on**: Tab **Render** → Seção **Output**
 
 A seção **Output** na [tab Render](https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/index.html#render-tab) fornece controles para onde e como os arquivos são salvos. Para informações detalhadas sobre templates de saída, estruturas de pastas e nomenclatura de arquivos, veja a página dedicada [Output](Output.md).
 
@@ -93,6 +97,8 @@ Para mais detalhes sobre estrutura de pastas e nomenclatura de arquivos, veja [O
 ---
 
 ## Ações de Renderização
+
+> **Localização no add-on**: Tab **Render** → Seção **Render Actions**
 
 A seção **Render Actions** contém os botões principais para renderização e teste:
 

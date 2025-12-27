@@ -14,6 +14,8 @@ This standardized lighting approach helps maintain uniform illumination across a
 
 ## Light Pivot Object
 
+> **Location in add-on**: **Setup** tab → **Light Pivot** section
+
 The **Light Pivot** is a Blender object that acts as a control point for lighting rotation. You can use any Blender object as the pivot, though typically an **empty object** is used (mesh objects can also work, but empty objects are preferred for their simplicity).
 
 ```python

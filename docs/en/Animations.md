@@ -6,6 +6,8 @@ This page explains how the **Sprite Render Tool** handles animations in the four
 
 ## Animation Modes
 
+> **Location in add-on**: **Animations** tab
+
 In the **Animations** section of the main panel you choose the mode via `Animation Mode`:
 - **ACTIONS**: render from a curated list of Actions.
 - **NLA**: render from NLA strips on the target armature.
@@ -17,6 +19,8 @@ The selected mode controls how animations are collected and how the armature is 
 ---
 
 ## Common Settings
+
+> **Location in add-on**: **Animations** tab → **Target Armature** field (always visible at the top of the tab)
 
 These apply across modes:
 - `Target Armature` (`target_armature`):
@@ -33,6 +37,8 @@ When `Animation Mode` changes to **NLA**, the add‑on:
 ---
 
 ## ACTIONS Mode
+
+> **Location in add-on**: **Animations** tab → **ACTIONS** mode selected
 
 ### Actions List
 
@@ -73,6 +79,8 @@ The asynchronous render path (`invoke` + timer) uses the same logic when initial
 ---
 
 ## NLA Mode
+
+> **Location in add-on**: **Animations** tab → **NLA** mode selected
 
 ### NLA Strips List
 
@@ -134,6 +142,8 @@ The asynchronous render path uses the same sequence via its timer callback (`_re
 
 ## STATIC Mode
 
+> **Location in add-on**: **Animations** tab → **STATIC** mode selected
+
 In **STATIC** mode:
 - There is no animation list.
 - The add‑on renders **only the current frame** of the scene.
@@ -149,6 +159,8 @@ Use this mode for:
 ---
 
 ## FRAME_RANGES Mode
+
+> **Location in add-on**: **Animations** tab → **FRAME_RANGES** mode selected
 
 ### Frame Ranges List
 
@@ -188,6 +200,8 @@ Use this mode for:
 ## Animation Test Panel
 
 **ACTIONS** and **NLA** modes include an **Animations Test** subpanel, controlled by `show_section_animations_test`. **Note**: **FRAME_RANGES** mode does not have a test panel, as it does not require animation or armature.
+
+![Animation Test Expanded](/_static/images/SRT_AnimationTest_Expanded.png)
 
 - **Preview Action** (`sprite_render.test_action`):
   - Applies the selected Action to `target_armature`.

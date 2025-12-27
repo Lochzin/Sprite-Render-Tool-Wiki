@@ -6,6 +6,8 @@ Esta página explica como configurar câmeras dentro do **Sprite Render Tool**. 
 
 ## Presets de Criação de Câmeras
 
+> **Localização no add-on**: Tab **Setup** → Seção **Camera Creation**
+
 O painel **Camera Creation** fornece uma forma rápida de configurar câmeras usando presets predefinidos:
 
 - **8 Configurações de Preset Disponíveis**:
@@ -35,6 +37,8 @@ O painel **Camera Creation** fornece uma forma rápida de configurar câmeras us
 
 ## Configurações de Lente
 
+> **Localização no add-on**: Tab **Cameras** → Seção **Lens Settings**
+
 A seção **Lens Settings** no painel **Cameras** fornece controles sincronizados para propriedades da câmera:
 
 - **Camera Type**: Projeção Perspective ou Orthographic
@@ -49,6 +53,8 @@ A seção **Lens Settings** no painel **Cameras** fornece controles sincronizado
   - Quando o botão está **pressionado** (dessincronizado): cada câmera pode ter valores de shift individuais para esse eixo (exibidos na Camera List)
 - **Clip Start / End**: Distâncias de clipping próximo e distante
 
+![Lens Settings Expanded](/_static/images/SRT_LensSettings_Expanded.png)
+
 Todas as configurações de lente são automaticamente aplicadas às câmeras quando:
 - Câmeras são criadas via presets
 - Câmeras são detectadas usando o botão **Detect Cameras**
@@ -57,6 +63,8 @@ Todas as configurações de lente são automaticamente aplicadas às câmeras qu
 ---
 
 ## Lista de Câmeras
+
+> **Localização no add-on**: Tab **Cameras** → Seção **Camera List** (colapsável)
 
 O sistema de câmeras é suportado pelo grupo de propriedades `CameraItem`:
 - `name`: nome do objeto de câmera no Blender.
@@ -80,9 +88,13 @@ No painel **Cameras** você verá (nesta ordem):
 
 Quando você altera `Camera Count`, a lista de entradas `CameraItem` é automaticamente expandida ou reduzida para corresponder.
 
+![Camera List Expanded](/_static/images/SRT_CameraList_Expanded.png)
+
 ---
 
 ## Detectando Câmeras Automaticamente
+
+> **Localização no add-on**: Tab **Cameras** → Botão **Detect Cameras** (localizado abaixo da Camera List)
 
 O botão **Detect Cameras** (`sprite_render.autofill_light_rotation`) escaneia a **View Layer** atual em busca de câmeras ativas e preenche a lista de câmeras do add-on:
 - Apenas câmeras que são:

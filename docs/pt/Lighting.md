@@ -14,6 +14,8 @@ Esta abordagem de iluminação padronizada ajuda a manter uma iluminação unifo
 
 ## Objeto Light Pivot
 
+> **Localização no add-on**: Tab **Setup** → Seção **Light Pivot**
+
 O **Light Pivot** é um objeto do Blender que atua como um ponto de controle para a rotação da iluminação. Você pode usar qualquer objeto do Blender como pivô, embora geralmente se use um **empty object** (objetos mesh também funcionam, mas empty objects são preferidos por sua simplicidade).
 
 ```python
@@ -35,6 +37,10 @@ Isso permite que você desabilite temporariamente a rotação de luz sem remover
 ---
 
 ## Rotação de Luz
+
+> **Localização no add-on**: 
+> - **Enable Full Rotation (XYZ)**: Tab **Cameras** → Opção **Enable Full Rotation (XYZ)** (sempre visível, após Lens Settings)
+> - **Light Rotation por câmera**: Tab **Cameras** → Seção **Camera List** → Cada câmera individual
 
 Cada câmera no add-on tem uma propriedade `light_rotation` (rotação Euler XYZ) que controla como o light pivot é rotacionado para esse ângulo de câmera específico.
 

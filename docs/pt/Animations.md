@@ -6,6 +6,8 @@ Esta página explica como o **Sprite Render Tool** lida com animações nos quat
 
 ## Modos de Animação
 
+> **Localização no add-on**: Tab **Animations**
+
 Na seção **Animations** do painel principal você escolhe o modo via `Animation Mode`:
 - **ACTIONS**: renderiza a partir de uma lista curada de Actions.
 - **NLA**: renderiza a partir de NLA strips na armadura alvo.
@@ -74,6 +76,8 @@ O caminho de renderização assíncrono (`invoke` + timer) usa a mesma lógica a
 
 ## Modo NLA
 
+> **Localização no add-on**: Tab **Animations** → Modo **NLA** selecionado
+
 ### Lista de NLA Strips
 
 No modo **NLA**, o add-on pode:
@@ -134,6 +138,8 @@ O caminho de renderização assíncrono usa a mesma sequência via seu callback 
 
 ## Modo STATIC
 
+> **Localização no add-on**: Tab **Animations** → Modo **STATIC** selecionado
+
 No modo **STATIC**:
 - Não há lista de animações.
 - O add-on renderiza **apenas o frame atual** da cena.
@@ -149,6 +155,8 @@ Use este modo para:
 ---
 
 ## Modo FRAME_RANGES
+
+> **Localização no add-on**: Tab **Animations** → Modo **FRAME_RANGES** selecionado
 
 ### Lista de Frame Ranges
 
@@ -188,6 +196,8 @@ Use este modo para:
 ## Painel de Teste de Animações
 
 Os modos **ACTIONS** e **NLA** incluem um subpainel **Animations Test**, controlado por `show_section_animations_test`. **Nota**: O modo **FRAME_RANGES** não possui painel de teste, pois não requer animação ou armature.
+
+![Animation Test Expanded](/_static/images/SRT_AnimationTest_Expanded.png)
 
 - **Preview Action** (`sprite_render.test_action`):
   - Aplica a Action selecionada a `target_armature`.

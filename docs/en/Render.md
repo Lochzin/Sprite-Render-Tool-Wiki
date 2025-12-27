@@ -6,6 +6,8 @@ This page explains the **Render** tab functionality, which includes render setti
 
 ## Render Settings
 
+> **Location in add-on**: **Render** tab → **Render Settings** section
+
 The **Render Settings** section provides controls for resolution, frame stepping, and playback speed:
 
 ### Resolution
@@ -48,6 +50,8 @@ The **Frame Step** feature allows you to render every Nth frame instead of all f
 ---
 
 ## Output Configuration
+
+> **Location in add-on**: **Render** tab → **Output** section
 
 The **Output** section in the [Render tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#render-tab) provides controls for where and how files are saved. For detailed information about output templates, folder structures, and file naming, see the dedicated [Output](Output.md) page.
 
@@ -93,6 +97,8 @@ For more details about folder structure and file naming, see [Output](Output.md)
 ---
 
 ## Render Actions
+
+> **Location in add-on**: **Render** tab → **Render Actions** section
 
 The **Render Actions** section contains the main buttons for rendering and testing:
 

@@ -6,6 +6,8 @@ This page explains how to configure cameras inside the **Sprite Render Tool**. F
 
 ## Camera Creation Presets
 
+> **Location in add-on**: **Setup** tab → **Camera Creation** section
+
 The **Camera Creation** panel provides a quick way to set up cameras using predefined presets:
 
 - **8 Preset Configurations Available**:
@@ -35,6 +37,8 @@ The **Camera Creation** panel provides a quick way to set up cameras using prede
 
 ## Lens Settings
 
+> **Location in add-on**: **Cameras** tab → **Lens Settings** section
+
 The **Lens Settings** section in the **Cameras** panel provides synchronized controls for camera properties:
 
 - **Camera Type**: Perspective or Orthographic projection
@@ -49,6 +53,8 @@ The **Lens Settings** section in the **Cameras** panel provides synchronized con
   - When button is **pressed** (desynced): each camera can have individual shift values for that axis (shown in the Camera List)
 - **Clip Start / End**: Near and far clipping distances
 
+![Lens Settings Expanded](/_static/images/SRT_LensSettings_Expanded.png)
+
 All lens settings are automatically applied to cameras when:
 - Cameras are created via presets
 - Cameras are detected using the **Detect Cameras** button
@@ -57,6 +63,8 @@ All lens settings are automatically applied to cameras when:
 ---
 
 ## Camera List
+
+> **Location in add-on**: **Cameras** tab → **Camera List** section (collapsible)
 
 The camera system is backed by the `CameraItem` property group:
 - `name`: camera object name in Blender.
@@ -80,9 +88,13 @@ In the **Cameras** panel you will see (in this order):
 
 When you change `Camera Count`, the list of `CameraItem` entries is automatically grown or shrunk to match.
 
+![Camera List Expanded](/_static/images/SRT_CameraList_Expanded.png)
+
 ---
 
 ## Detecting Cameras Automatically
+
+> **Location in add-on**: **Cameras** tab → **Detect Cameras** button (located below Camera List)
 
 The **Detect Cameras** button (`sprite_render.autofill_light_rotation`) scans the current **View Layer** for active cameras and fills the add‑on camera list:
 - Only cameras that are:
