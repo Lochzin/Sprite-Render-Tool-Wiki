@@ -50,6 +50,14 @@ Certifique-se de que você está na View Layer correta e que as câmeras estão 
 - A ferramenta lê de `bpy.data.actions` e preenche a lista.
 - Se ainda estiver vazia, confirme que Actions existem no seu arquivo e não estão armazenadas em um arquivo blend diferente ou biblioteca.
 
+**P: Actions são detectadas mas nada acontece quando tento visualizar ou renderizá-las.**  
+**R:** Isso geralmente é causado pela configuração de Action da armadura. Certifique-se de que:
+- Selecione sua **Target Armature** na 3D Viewport.
+- Vá para o painel **Properties** → **Object Properties** → seção **Animation**.
+- Na área **Sub Actions**, defina o **Action Slot** como **Legacy Slot**.
+- Isso é necessário para que Actions funcionem corretamente com o Sprite Render Tool.
+- Após definir isso, tente **Preview Action** ou **Detect Actions** novamente.
+
 **P: NLA strips não são detectadas.**  
 **R:** No modo **NLA**:
 - Defina uma **Target Armature** válida.

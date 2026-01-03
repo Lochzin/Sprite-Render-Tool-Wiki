@@ -40,6 +40,12 @@ When `Animation Mode` changes to **NLA**, the add‑on:
 
 > **Location in add-on**: **Animations** tab → **ACTIONS** mode selected
 
+> **⚠️ Important Setup Requirement**: For Actions to work properly with the Sprite Render Tool, you must configure the armature's Action slot:
+> - Select your **Target Armature** in the 3D Viewport.
+> - Go to **Properties** panel → **Object Properties** → **Animation** section.
+> - In the **Sub Actions** area, set the **Action Slot** to **Legacy Slot**.
+> - Without this setting, Actions may be detected but won't play during preview or rendering.
+
 ### Actions List
 
 The **Actions** mode uses a custom list (`actions: CollectionProperty(type=ActionItem)`):
@@ -213,9 +219,11 @@ Use this mode for:
 - **Preview NLA Strip** (`sprite_render.test_nla_strip`):
   - Ensures the armature has `animation_data` and NLA enabled.
   - Mutes all strips, then unmutes only the selected one.
-  - Sets frame range to the strip’s start and end.
+  - Sets frame range to the strip's start and end.
   - Forces a view layer update.
   - Sets `is_previewing = True` and starts playback.
+
+![Preview NLA Strip](/_static/images/SRT_PreviewNLA.gif)
 
 - **Stop Preview** (`sprite_render.stop_preview`):
   - Stops timeline playback if it is running.
@@ -223,6 +231,9 @@ Use this mode for:
 
 The test panel also exposes:
 - Frame navigator buttons (first, previous, next, last).
+
+![Frame Navigation Controls](/_static/images/SRT_FrameControls.gif)
+
 - `Custom FPS` + **Apply FPS** (`sprite_render.apply_fps`), which sets:
   - `scene.render.fps = custom_fps`
   - `scene.render.fps_base = 1.0`
@@ -231,6 +242,7 @@ The test panel also exposes:
 
 ## Tips and Best Practices
 
+- **Before using ACTIONS mode**: Ensure your **Target Armature** has its **Action Slot** set to **Legacy Slot** in the **Properties** panel → **Object Properties** → **Animation** section → **Sub Actions**. This is required for Actions to work properly.
 - Keep your **Action** and **NLA** names descriptive (e.g. `walk_front`, `idle_side`, `attack_back`) to generate meaningful filenames.
 - In **ACTIONS** mode, disable any actions you do not want to render to reduce total render time.
 - In **NLA** mode, use the curated `nla_strips` list when you want fine‑grained control over which strips are included, independent of their mute state in your working file.

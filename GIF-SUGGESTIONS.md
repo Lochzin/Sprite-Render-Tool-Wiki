@@ -139,6 +139,30 @@ As seguintes imagens já foram adicionadas à documentação:
 
 ---
 
+## 🎬 GIFs ANIMADOS — Demonstrações Dinâmicas
+
+### ✅ GIFs Já Adicionados
+
+Os seguintes GIFs já foram adicionados à documentação:
+
+#### 1. **SRT_PreviewNLA.gif** ✅
+- **Onde está**: `docs/_static/images/SRT_PreviewNLA.gif`
+- **Onde usada**: 
+  - `docs/en/Animations.md` - Na seção "Animation Test Panel" > "Preview NLA Strip"
+  - `docs/pt/Animations.md` - Na seção "Painel de Teste de Animações" > "Preview NLA Strip"
+- **O que mostra**: NLA strip sendo previewed com animação rodando no viewport
+- **Status**: ✅ Adicionada e referenciada
+
+#### 2. **SRT_FrameControls.gif** ✅
+- **Onde está**: `docs/_static/images/SRT_FrameControls.gif`
+- **Onde usada**: 
+  - `docs/en/Animations.md` - Na seção "Animation Test Panel" > "Frame navigator buttons"
+  - `docs/pt/Animations.md` - Na seção "Painel de Teste de Animações" > "Botões de navegação de frame"
+- **O que mostra**: Controles de frame navegando pela animação (First, Previous, Next, Last)
+- **Status**: ✅ Adicionada e referenciada
+
+---
+
 ## 🎯 PRIORIDADE ALTA — GIFs Essenciais
 
 > **Nota**: Com as imagens estáticas já adicionadas (Sidebar, todas as tabs, Lens Settings, Camera List, Animation Test), alguns GIFs que apenas mostravam a interface estática foram removidos ou tiveram prioridade reduzida. Os GIFs abaixo focam em **ações dinâmicas** que não podem ser demonstradas com imagens estáticas.
@@ -199,7 +223,7 @@ As seguintes imagens já foram adicionadas à documentação:
 - **Onde colocar**: Na seção "Animation Test Panel"
 - **Razão**: Essencial - mostra a animação em ação, não apenas a interface
 
-#### GIF 5: Preview NLA Strip
+#### GIF 5: Preview NLA Strip ✅
 - **O que mostrar**: NLA strip sendo previewed com animação rodando
 - **Duração**: ~10-15 segundos
 - **Ações**:
@@ -208,9 +232,13 @@ As seguintes imagens já foram adicionadas à documentação:
   - Mostrar a animação rodando no viewport
   - Mostrar timeline avançando
 - **Onde colocar**: Na seção "Animation Test Panel"
-- **Razão**: Essencial - demonstra funcionalidade dinâmica
+- **Onde está**: `docs/_static/images/SRT_PreviewNLA.gif`
+- **Onde usada**: 
+  - `docs/en/Animations.md` - Na seção "Animation Test Panel" > "Preview NLA Strip"
+  - `docs/pt/Animations.md` - Na seção "Painel de Teste de Animações" > "Preview NLA Strip"
+- **Status**: ✅ Adicionada e referenciada
 
-#### GIF 6: Navegação de Frames
+#### GIF 6: Navegação de Frames ✅
 - **O que mostrar**: Controles de frame navegando pela animação
 - **Duração**: ~8-10 segundos
 - **Ações**:
@@ -219,7 +247,11 @@ As seguintes imagens já foram adicionadas à documentação:
   - Clicar em "Previous" → volta frames
   - Clicar em "Last" → mostra último frame (personagem em pose final)
 - **Onde colocar**: Na seção "Animation Test Panel"
-- **Razão**: Mostra navegação dinâmica que não pode ser demonstrada com imagem estática
+- **Onde está**: `docs/_static/images/SRT_FrameControls.gif`
+- **Onde usada**: 
+  - `docs/en/Animations.md` - Na seção "Animation Test Panel" > "Frame navigator buttons"
+  - `docs/pt/Animations.md` - Na seção "Painel de Teste de Animações" > "Botões de navegação de frame"
+- **Status**: ✅ Adicionada e referenciada
 
 #### GIF 7: Detect Actions Preenchendo Lista
 - **O que mostrar**: Botão detectando Actions automaticamente
@@ -515,8 +547,8 @@ As seguintes imagens já foram adicionadas à documentação:
 7. **Open Output Folder** (GIF 15) - Mostra ação dinâmica
 
 ### 🟡 Muito Úteis (Segunda Fase)
-8. **Preview NLA Strip** (GIF 5) - Demonstra funcionalidade NLA
-9. **Navegação de frames** (GIF 6) - Mostra controles em ação
+8. **Preview NLA Strip** (GIF 5) ✅ - Demonstra funcionalidade NLA
+9. **Navegação de frames** (GIF 6) ✅ - Mostra controles em ação
 10. **Detect Actions preenchendo lista** (GIF 7) - Mostra ação automática
 11. **Detect NLA Strips preenchendo lista** (GIF 20) - Mostra ação automática
 12. **Shift Individual vs Sincronizado** (GIF 11) - Mostra diferença visual

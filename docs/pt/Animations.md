@@ -36,6 +36,12 @@ Quando `Animation Mode` muda para **NLA**, o add-on:
 
 ## Modo ACTIONS
 
+> **⚠️ Requisito de Configuração Importante**: Para que Actions funcionem corretamente com o Sprite Render Tool, você deve configurar o slot de Action da armadura:
+> - Selecione sua **Target Armature** na 3D Viewport.
+> - Vá para o painel **Properties** → **Object Properties** → seção **Animation**.
+> - Na área **Sub Actions**, defina o **Action Slot** como **Legacy Slot**.
+> - Sem essa configuração, Actions podem ser detectadas mas não tocarão durante a visualização ou renderização.
+
 ### Lista de Actions
 
 O modo **Actions** usa uma lista personalizada (`actions: CollectionProperty(type=ActionItem)`):
@@ -213,12 +219,17 @@ Os modos **ACTIONS** e **NLA** incluem um subpainel **Animations Test**, control
   - Força uma atualização da view layer.
   - Define `is_previewing = True` e inicia a reprodução.
 
+![Preview NLA Strip](/_static/images/SRT_PreviewNLA.gif)
+
 - **Stop Preview** (`sprite_render.stop_preview`):
   - Para a reprodução da timeline se estiver em execução.
   - Define `is_previewing = False`.
 
 O painel de teste também expõe:
 - Botões de navegação de frame (primeiro, anterior, próximo, último).
+
+![Controles de Navegação de Frame](/_static/images/SRT_FrameControls.gif)
+
 - `Custom FPS` + **Apply FPS** (`sprite_render.apply_fps`), que define:
   - `scene.render.fps = custom_fps`
   - `scene.render.fps_base = 1.0`
@@ -227,6 +238,7 @@ O painel de teste também expõe:
 
 ## Dicas e Melhores Práticas
 
+- **Antes de usar o modo ACTIONS**: Certifique-se de que sua **Target Armature** tem seu **Action Slot** definido como **Legacy Slot** no painel **Properties** → **Object Properties** → seção **Animation** → **Sub Actions**. Isso é necessário para que Actions funcionem corretamente.
 - Mantenha os nomes de suas **Action** e **NLA** descritivos (ex.: `walk_front`, `idle_side`, `attack_back`) para gerar nomes de arquivos significativos.
 - No modo **ACTIONS**, desabilite quaisquer actions que você não deseja renderizar para reduzir o tempo total de renderização.
 - No modo **NLA**, use a lista curada `nla_strips` quando quiser controle refinado sobre quais strips são incluídas, independente do estado de mute no seu arquivo de trabalho.
