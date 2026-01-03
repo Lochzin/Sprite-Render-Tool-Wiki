@@ -56,6 +56,9 @@ O modo **Actions** usa uma lista personalizada (`actions: CollectionProperty(typ
 - Limpa a lista atual.
 - Itera sobre todas as `bpy.data.actions`.
 - Adiciona um `ActionItem` por Action, com intervalo baseado em `action.frame_range`.
+- **Nota**: Este operador também pode ser usado no modo **NLA** para detectar Actions que podem ser usadas como NLA strips.
+
+![Detect Actions](/_static/images/SRT_DetectActions.gif)
 
 Você também pode:
 - Adicionar itens com **Add Action**.
@@ -102,6 +105,8 @@ Cada `NLAItem` armazena:
 - Itera por todas as tracks e strips NLA.
 - Adiciona itens para strips que têm uma `action`.
 - Define `enabled` com base em se a track e a strip estão mutadas.
+
+**Alternativa**: Você também pode usar **Detect Actions** no modo **NLA** para detectar Actions que podem ser usadas como NLA strips.
 
 Você também pode:
 - Adicionar itens manualmente com **Add NLA Strip**.
@@ -218,6 +223,7 @@ Os modos **ACTIONS** e **NLA** incluem um subpainel **Animations Test**, control
   - Define o intervalo de frames para o início e fim da strip.
   - Força uma atualização da view layer.
   - Define `is_previewing = True` e inicia a reprodução.
+  - **Nota**: Funciona da mesma forma que **Preview Action** - usa a mesma funcionalidade para visualizar animações.
 
 ![Preview NLA Strip](/_static/images/SRT_PreviewNLA.gif)
 

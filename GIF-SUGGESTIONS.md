@@ -161,6 +161,14 @@ Os seguintes GIFs já foram adicionados à documentação:
 - **O que mostra**: Controles de frame navegando pela animação (First, Previous, Next, Last)
 - **Status**: ✅ Adicionada e referenciada
 
+#### 3. **SRT_DetectActions.gif** ✅
+- **Onde está**: `docs/_static/images/SRT_DetectActions.gif`
+- **Onde usada**: 
+  - `docs/en/Animations.md` - Na seção "ACTIONS Mode" > "Actions List" > "Detect Actions"
+  - `docs/pt/Animations.md` - Na seção "Modo ACTIONS" > "Lista de Actions" > "Detect Actions"
+- **O que mostra**: Botão Detect Actions preenchendo a lista automaticamente com Actions detectadas
+- **Status**: ✅ Adicionada e referenciada
+
 ---
 
 ## 🎯 PRIORIDADE ALTA — GIFs Essenciais
@@ -253,7 +261,7 @@ Os seguintes GIFs já foram adicionados à documentação:
   - `docs/pt/Animations.md` - Na seção "Painel de Teste de Animações" > "Botões de navegação de frame"
 - **Status**: ✅ Adicionada e referenciada
 
-#### GIF 7: Detect Actions Preenchendo Lista
+#### GIF 7: Detect Actions Preenchendo Lista ✅
 - **O que mostrar**: Botão detectando Actions automaticamente
 - **Duração**: ~5-8 segundos
 - **Ações**:
@@ -262,7 +270,11 @@ Os seguintes GIFs já foram adicionados à documentação:
   - Mostrar a lista sendo preenchida automaticamente
   - Mostrar frame_start e frame_end sendo preenchidos
 - **Onde colocar**: Na seção "ACTIONS Mode" > "Actions List"
-- **Razão**: Mostra ação automática que não pode ser demonstrada com imagem estática
+- **Onde está**: `docs/_static/images/SRT_DetectActions.gif`
+- **Onde usada**: 
+  - `docs/en/Animations.md` - Na seção "ACTIONS Mode" > "Actions List" > "Detect Actions"
+  - `docs/pt/Animations.md` - Na seção "Modo ACTIONS" > "Lista de Actions" > "Detect Actions"
+- **Status**: ✅ Adicionada e referenciada
 
 ---
 
@@ -549,7 +561,7 @@ Os seguintes GIFs já foram adicionados à documentação:
 ### 🟡 Muito Úteis (Segunda Fase)
 8. **Preview NLA Strip** (GIF 5) ✅ - Demonstra funcionalidade NLA
 9. **Navegação de frames** (GIF 6) ✅ - Mostra controles em ação
-10. **Detect Actions preenchendo lista** (GIF 7) - Mostra ação automática
+10. **Detect Actions preenchendo lista** (GIF 7) ✅ - Mostra ação automática
 11. **Detect NLA Strips preenchendo lista** (GIF 20) - Mostra ação automática
 12. **Shift Individual vs Sincronizado** (GIF 11) - Mostra diferença visual
 13. **Comparação Luzes Dentro vs Fora do Pivot** (GIF 13) - Mostra estratégia avançada

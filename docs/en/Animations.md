@@ -60,6 +60,9 @@ The **Actions** mode uses a custom list (`actions: CollectionProperty(type=Actio
 - Clears the current list.
 - Loops over all `bpy.data.actions`.
 - Adds one `ActionItem` per Action, with range based on `action.frame_range`.
+- **Note**: This operator can also be used in **NLA** mode to detect Actions that can be used as NLA strips.
+
+![Detect Actions](/_static/images/SRT_DetectActions.gif)
 
 You can also:
 - Add items with **Add Action**.
@@ -106,6 +109,8 @@ Each `NLAItem` stores:
 - Loops through all NLA tracks and strips.
 - Adds items for strips that have an `action`.
 - Sets `enabled` based on whether the track and strip are muted.
+
+**Alternative**: You can also use **Detect Actions** in **NLA** mode to detect Actions that can be used as NLA strips.
 
 You can also:
 - Add items manually with **Add NLA Strip**.
@@ -222,6 +227,7 @@ Use this mode for:
   - Sets frame range to the strip's start and end.
   - Forces a view layer update.
   - Sets `is_previewing = True` and starts playback.
+  - **Note**: This works the same way as **Preview Action** - it uses the same functionality to preview animations.
 
 ![Preview NLA Strip](/_static/images/SRT_PreviewNLA.gif)
 
