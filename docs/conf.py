@@ -49,6 +49,9 @@ myst_enable_extensions = [
 # This ensures images are copied to the output directory
 myst_url_schemes = ["http", "https", "mailto"]
 
+# Generate anchors for headings up to level 3 so links like Guides.md#basic-guide work
+myst_heading_anchors = 3
+
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 

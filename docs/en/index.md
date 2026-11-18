@@ -2,6 +2,8 @@
 
 Add-on for **Blender** focused on generating 2D sprites from 3D animations, with **multi‑camera support**, **automatic animation detection** (Actions and NLA), and **highly customizable file naming**, ideal for 2D games and sprite pipelines.
 
+> **New here?** Start with **[Guides and Workflows](Guides.md)**: a step-by-step basic guide and seven tested workflows (8 directions, game-engine sets, Mixamo, NLA, Frame Ranges, two armatures, Light Pivot).
+
 ---
 
 ## Overview
@@ -123,33 +125,16 @@ If Blender's language is Portuguese (Brazil or Portugal), the panels, tooltips a
 
 ## Basic Guide
 
-A short step-by-step to render your first sprites. The names below are the real buttons and tabs of the add-on.
+A short summary of how to render your first sprites. The step-by-step version, with a picture for each step, the generated folder and **seven ready-made workflows** (8 directions, game-engine sets, Mixamo, NLA, Frame Ranges, two armatures and Light Pivot) is on the **[Guides and Workflows](Guides.md)** page.
 
-1. **Prepare the scene**
-   - Set up your character / armature and its Actions or NLA strips.
-   - Optionally create a **Light Pivot** (an Empty) and put your lights inside it.
-   - Save the .blend file if you want to use a `//` relative output folder.
+1. **Light Pivot**: create an Empty at the character's center, make the light a **child** of it and, in **Setup > Light Pivot**, tick `Enable Light Pivot` and choose it as `Object`.
+2. **Cameras** tab: **Create Cameras** (choose a `Preset`) or **Detect Cameras**.
+3. **Animations** tab: pick `Animation Mode` and `Armature`, then **Detect Actions** / **Detect NLA Strips** (or `+` for a frame range); keep only the animations you want enabled.
+4. **Setup** tab, **Project & Output**: set `Project Name`, `Object Name` and `Output Folder`, and check "First image will be saved as:".
+5. **Render** tab: read the checklist (use the **Fix** buttons) and set the resolution.
+6. **Render All** (top of the panel), check the dialog and click **Render**. **ESC** or **Cancel Render** stops after the current frame.
 
-2. **Cameras** (**Cameras** tab)
-   - Click **Create Cameras** to create a preset (choose `Preset`, `Elevation`, `Distance`), or **Detect Cameras** to add the cameras you already have.
-   - Check the camera list. Reorder it with the arrows (list order is the render order) and use **Test Cameras** (**Render** tab) to look through them.
-
-3. **Animations** (**Animations** tab)
-   - Choose the `Animation Mode`. In Actions and NLA modes pick the `Armature` first.
-   - Click **Detect Actions** or **Detect NLA Strips** (or `+` for a frame range), and keep only the animations you want enabled.
-
-4. **Output** (**Setup** tab, **Project & Output** section)
-   - Set `Project Name`, `Object Name` and the `Output Folder`.
-   - Adjust the `Output Name` and the **Create Folders** options. Check "First image will be saved as:".
-   - Optional: in the **Light Pivot** section, enable the Light Pivot and pick the pivot `Object`.
-
-5. **Check** (**Render** tab)
-   - Read the checklist and use the **Fix** buttons. Set the resolution and, if needed, **Frame Step**.
-
-6. **Render**
-   - Click **Render All** (top of the panel), check the summary dialog and click **Render**.
-   - Watch the progress at the top of the panel. Press **ESC** or **Cancel Render** to stop (after the current frame).
-   - When it ends, your scene is put back as it was (see [Render](Render.md)).
+See [Guides and Workflows](Guides.md#basic-guide) for the full guide.
 
 ---
 

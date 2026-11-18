@@ -143,8 +143,8 @@ To completely remove the add-on:
 
 After successful installation:
 
-1. **Configure Your Project**
-   - Read the [Basic Guide](index.md#basic-guide) on the main page
+1. **Render your first sprites**
+   - Follow the [Guides and Workflows](Guides.md) page: a step-by-step basic guide and seven ready-made workflows
    - Configure Project Name and Object Name in the **Setup** tab → **Project & Output** section
 
 2. **Explore the Documentation**
