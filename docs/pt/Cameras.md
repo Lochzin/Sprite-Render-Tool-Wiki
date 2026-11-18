@@ -26,6 +26,9 @@ O painel **Camera Creation** fornece uma forma rápida de configurar câmeras us
 - Clique em **Create Cameras** para gerar câmeras baseadas no preset
 - As câmeras são automaticamente posicionadas ao redor do objeto pivô de luz (ou origem da cena) e orientadas para apontar para o centro
 - O addon automaticamente rastreia e substitui câmeras criadas por presets anteriores, preservando câmeras criadas manualmente
+- A lista de câmeras do add-on é substituída pelas novas câmeras
+
+> **⚠️ Aviso**: as câmeras dos presets têm nomes fixos (`Camera_Front`, `Camera_Right`, `Camera_Back`, `Camera_Left`, `Camera_FrontRight`, `Camera_BackRight`, `Camera_BackLeft`, `Camera_FrontLeft`). Se sua cena **já tiver um objeto com um desses nomes** (por exemplo uma `Camera_Front` sua), o Create Cameras o reutiliza, move e rotaciona, e passa a rastreá-lo como criado pelo add-on. Na próxima vez que você clicar em Create Cameras, ele é **apagado** sem confirmação. Renomeie suas próprias câmeras para evitar isso.
 
 **Benefícios:**
 - Configure rapidamente arranjos comuns de câmeras sem posicionamento manual
@@ -86,7 +89,7 @@ No painel **Cameras** você verá (nesta ordem):
     - `Light Rotation`:
       - ou um único valor Z, ou uma rotação XYZ completa, dependendo de **Enable Full Rotation (XYZ)**.
 
-Quando você altera `Camera Count`, a lista de entradas `CameraItem` é automaticamente expandida ou reduzida para corresponder.
+Quando você altera `Camera Count`, a lista de entradas `CameraItem` é automaticamente expandida ou reduzida para corresponder. As novas entradas são adicionadas **em branco** (`Name` vazio) e diminuir o número remove entradas do fim da lista. Um nome em branco conta como render com falha ("Camera '' not found"), então preencha todos os nomes ou use **Detect Cameras**.
 
 ![Camera List Expanded](/_static/images/SRT_CameraList_Expanded.png)
 
@@ -105,11 +108,12 @@ são consideradas.
 
 Para cada câmera detectada ele:
 - Define `name` e `output_name` para o nome da câmera do Blender.
-- Calcula uma rotação Z automática para `light_rotation` baseada na posição relativa entre a câmera e o **light pivot** (se configurado).
+- Calcula uma rotação Z automática para `light_rotation` baseada na posição relativa entre a câmera e o **light pivot** (quando `Enable Light Pivot` está ligado e há um objeto de pivot definido). Com `Enable Light Pivot` desligado, `light_rotation` é definido como 0.
 - Atribui `render_order` sequencialmente (0, 1, 2, ...).
 - Aplica configurações de lente (distância focal, shift, resolução, etc.) da seção Lens Settings.
+- Substitui a lista de câmeras inteira: nomes, nomes de saída, ordens de render e rotações de luz que você digitou são perdidos.
 
-> **Importante**: O objeto **Light Pivot** deve ser definido na seção **Light Pivot** se você quiser o cálculo automático de rotação de luz; caso contrário, o operador cancelará com um erro.
+> **Importante**: Um objeto **Light Pivot** é **necessário apenas quando `Enable Light Pivot` está ligado**. Se estiver ligado e nenhum objeto estiver definido, o operador cancela com o erro "Light pivot object is not set". Com `Enable Light Pivot` desligado, nenhum pivot é necessário. O pivot não é preciso para *detectar* as câmeras, apenas para obter rotações de luz com sentido.
 
 ### Limitações da Detecção Automática
 

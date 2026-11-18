@@ -38,7 +38,7 @@ A interface do addon usa um **sistema de navegação lateral** com interface de 
 ### Navegação Lateral
 
 A sidebar esquerda contém botões de ícone para navegação fácil entre as tabs:
-- **📋 Info** (INFO): Versão, autor, documentação e progresso de renderização
+- **📋 Info** (INFO): Versão, autor, links de documentação (é a tab aberta por padrão)
 - **⚙️ Setup** (SETTINGS): Project, Light Pivot, Armature, Camera Creation
 - **📷 Cameras** (CAMERA_DATA): Lens Settings, Camera Options, Camera List
 - **🦴 Animations** (ARMATURE_DATA): Modo de animação, configuração Actions/NLA, testes
@@ -90,7 +90,7 @@ Cada botão de tab mostra um tooltip ao passar o mouse com uma descrição espec
   - `Desync Shift X` / `Desync Shift Y`: botões toggle independentes (pressionado = dessincronizado, não pressionado = sincronizado)
   - `Shift X` / `Shift Y`: valores de shift da câmera (sincronizados ou individuais por câmera)
   - `Clip Start` / `Clip End`: distâncias de clipping
-- `Camera Count`: número de câmeras na lista interna
+- `Camera Count`: número de câmeras na lista interna (as novas entradas são adicionadas em branco; preencha os nomes ou use **Detect Cameras**)
 - `Custom Output Names`: usa nomes diferentes dos nomes dos objetos de câmera para saída de arquivos
 - `Enable Full Rotation (XYZ)`: controla se o pivô rotaciona em XYZ ou apenas ao redor de Z
 - **📋 Camera List** (colapsável):
@@ -102,7 +102,7 @@ Cada botão de tab mostra um tooltip ao passar o mouse com uma descrição espec
     - `Light Rotation`: rotação da luz/pivô (apenas Z ou XYZ)
 - Botão **Detect Cameras** (`sprite_render.autofill_light_rotation`):
   - Detecta câmeras visíveis na View Layer atual
-  - Preenche a lista com nomes, contagem e rotação Z baseada no objeto pivô
+  - Substitui a lista pelas câmeras detectadas (nomes, contagem, ordem de render) e define a rotação Z da luz com base no objeto pivô; o pivô só é necessário quando `Enable Light Pivot` está ligado (desligado, as rotações ficam em 0)
 - Botão pequeno de documentação no cabeçalho da seção
 
 ![Camera Tab](/_static/images/SRT_CameraTab.png)
@@ -180,7 +180,7 @@ Cada botão de tab mostra um tooltip ao passar o mouse com uma descrição espec
   - Para informações detalhadas sobre configurações de renderização, configuração de saída e ações de renderização, veja a página dedicada [Renderização](Render.md).
 - **🚀 Seção Render Actions**:
   - `🚀 Render All` (`sprite_render.render_all`):
-    - Inicia a renderização de todas as animações e câmeras (versão assíncrona usando um timer)
+    - Inicia a renderização de todas as animações e câmeras, uma imagem por vez conduzida por um timer (a UI atualiza entre os frames, mas o Blender fica ocupado enquanto cada frame renderiza)
   - `🎯 Test Cameras` (`sprite_render.test_cameras`):
     - Percorre as câmeras configuradas para visualização
 

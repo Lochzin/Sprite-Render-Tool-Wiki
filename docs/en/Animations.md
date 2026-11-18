@@ -34,6 +34,8 @@ When `Animation Mode` changes to **NLA**, the add‑on:
 - Clears the current `action` from `target_armature.animation_data` (if any).
 - Ensures `use_nla` is enabled, so NLA is active.
 
+> **⚠️ Warning**: an Action that was assigned to the armature and is neither used by an NLA strip nor protected with a **Fake User** (shield icon) ends up with no users after this change, and Blender discards it when you save and reopen the file. Before switching to **NLA** mode, make sure the Action is in a strip or has Fake User enabled.
+
 ---
 
 ## ACTIONS Mode
@@ -54,13 +56,13 @@ The **Actions** mode uses a custom list (`actions: CollectionProperty(type=Actio
   - `frame_start`, `frame_end`: frame range to render.
   - `enabled`: whether this action should be included in renders.
   - `sync_secondary`, `secondary_armature`, `secondary_action`:
-    - Designed to sync a second armature; partially implemented and marked as “not implemented” in the UI for now.
+    - Designed to sync a second armature. The UI shows them with the label "Sync Secondary: Not implemented". Only **Preview Action** uses them; **Render All ignores them**, so a preview with a secondary armature will not match the final render.
 
 **Detect Actions** (`sprite_render.detect_actions`):
-- Clears the current list.
-- Loops over all `bpy.data.actions`.
+- Clears the current list (any ranges or enabled flags you edited are lost).
+- Loops over all `bpy.data.actions`, including Actions that are not for armatures (lights, materials, other characters). Remove or disable the ones you don't want.
 - Adds one `ActionItem` per Action, with range based on `action.frame_range`.
-- **Note**: This operator can also be used in **NLA** mode to detect Actions that can be used as NLA strips.
+- The button is only shown in **ACTIONS** mode. In **NLA** mode use **Detect NLA Strips**.
 
 ![Detect Actions](/_static/images/SRT_DetectActions.gif)
 
@@ -77,13 +79,14 @@ The `actions_index` property:
 When `Render All` is launched in **ACTIONS** mode:
 - The operator collects animations from the `actions` list:
   - Only those with `enabled == True`.
-- For each action:
-  - Looks up the Action in `bpy.data.actions` using its name.
-  - Assigns it to `target_armature.animation_data.action`.
-  - Ensures `use_nla` is disabled, so the Action drives the pose directly.
-- It then iterates over all frames from `frame_start` to `frame_end` and over all configured cameras.
+- For each action it iterates over all configured cameras and all frames from `frame_start` to `frame_end`.
+- The Action is looked up in `bpy.data.actions` by its name, assigned to `target_armature.animation_data.action`, and `use_nla` is disabled so the Action drives the pose directly.
 
-The asynchronous render path (`invoke` + timer) uses the same logic when initializing each new animation.
+> **⚠️ Known issue in the current version**: this assignment happens only when the render **switches to the second and later cameras** of an animation. For the **first camera** of each animation the Action is **not** assigned: the armature keeps whatever Action it already had. In practice:
+> - With a **single camera**, the add-on never assigns the Action. The render uses the Action that was last selected in the list (selecting an item in the list assigns it to the armature) or that was already on the armature.
+> - With several animations, the first camera of animation N can render with the Action of animation N-1 (with the frame range of animation N).
+>
+> Until this is fixed: before **Render All**, select in the list the Action you want to render first, and check the first camera's images of each animation. The **NLA** mode is not affected (the strip is activated for every frame).
 
 ---
 
@@ -110,7 +113,7 @@ Each `NLAItem` stores:
 - Adds items for strips that have an `action`.
 - Sets `enabled` based on whether the track and strip are muted.
 
-**Alternative**: You can also use **Detect Actions** in **NLA** mode to detect Actions that can be used as NLA strips.
+**Detect NLA Strips** includes strips from muted tracks as well (they are just added as disabled).
 
 You can also:
 - Add items manually with **Add NLA Strip**.

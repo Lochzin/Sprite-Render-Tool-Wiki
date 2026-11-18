@@ -32,6 +32,8 @@ Quando `Animation Mode` muda para **NLA**, o add-on:
 - Limpa a `action` atual de `target_armature.animation_data` (se houver).
 - Garante que `use_nla` está habilitado, para que o NLA esteja ativo.
 
+> **⚠️ Aviso**: uma Action que estava atribuída à armadura e que não é usada por nenhuma NLA strip nem está protegida com **Fake User** (ícone de escudo) fica sem usuários após essa mudança, e o Blender a descarta quando você salva e reabre o arquivo. Antes de trocar para o modo **NLA**, confirme que a Action está em uma strip ou com Fake User habilitado.
+
 ---
 
 ## Modo ACTIONS
@@ -50,13 +52,13 @@ O modo **Actions** usa uma lista personalizada (`actions: CollectionProperty(typ
   - `frame_start`, `frame_end`: intervalo de frames para renderizar.
   - `enabled`: se esta action deve ser incluída nas renderizações.
   - `sync_secondary`, `secondary_armature`, `secondary_action`:
-    - Projetado para sincronizar uma segunda armadura; parcialmente implementado e marcado como "não implementado" na UI por enquanto.
+    - Projetado para sincronizar uma segunda armadura. A UI os mostra com o rótulo "Sync Secondary: Not implemented". Somente a **Preview Action** os usa; o **Render All os ignora**, então uma preview com armadura secundária não será igual ao render final.
 
 **Detect Actions** (`sprite_render.detect_actions`):
-- Limpa a lista atual.
-- Itera sobre todas as `bpy.data.actions`.
+- Limpa a lista atual (intervalos ou flags de habilitado que você editou são perdidos).
+- Itera sobre todas as `bpy.data.actions`, incluindo Actions que não são de armaduras (luzes, materiais, outros personagens). Remova ou desabilite as que você não quer.
 - Adiciona um `ActionItem` por Action, com intervalo baseado em `action.frame_range`.
-- **Nota**: Este operador também pode ser usado no modo **NLA** para detectar Actions que podem ser usadas como NLA strips.
+- O botão só é exibido no modo **ACTIONS**. No modo **NLA**, use **Detect NLA Strips**.
 
 ![Detect Actions](/_static/images/SRT_DetectActions.gif)
 
@@ -73,13 +75,14 @@ A propriedade `actions_index`:
 Quando `Render All` é iniciado no modo **ACTIONS**:
 - O operador coleta animações da lista `actions`:
   - Apenas aquelas com `enabled == True`.
-- Para cada action:
-  - Procura a Action em `bpy.data.actions` usando seu nome.
-  - Atribui-a a `target_armature.animation_data.action`.
-  - Garante que `use_nla` está desabilitado, para que a Action dirija a pose diretamente.
-- Em seguida, itera sobre todos os frames de `frame_start` a `frame_end` e sobre todas as câmeras configuradas.
+- Para cada action, itera sobre todas as câmeras configuradas e sobre todos os frames de `frame_start` a `frame_end`.
+- A Action é procurada em `bpy.data.actions` pelo nome, atribuída a `target_armature.animation_data.action`, e `use_nla` é desabilitado para que a Action dirija a pose diretamente.
 
-O caminho de renderização assíncrono (`invoke` + timer) usa a mesma lógica ao inicializar cada nova animação.
+> **⚠️ Problema conhecido na versão atual**: essa atribuição só acontece quando o render **passa para a segunda câmera e as seguintes** de uma animação. Para a **primeira câmera** de cada animação a Action **não** é atribuída: a armadura mantém a Action que já tinha. Na prática:
+> - Com **uma única câmera**, o add-on nunca atribui a Action. O render usa a Action que foi selecionada por último na lista (selecionar um item na lista a atribui à armadura) ou que já estava na armadura.
+> - Com várias animações, a primeira câmera da animação N pode renderizar com a Action da animação N-1 (com o intervalo de frames da animação N).
+>
+> Enquanto isso não for corrigido: antes do **Render All**, selecione na lista a Action que será renderizada primeiro e confira as imagens da primeira câmera de cada animação. O modo **NLA** não é afetado (a strip é ativada a cada frame).
 
 ---
 
@@ -106,7 +109,7 @@ Cada `NLAItem` armazena:
 - Adiciona itens para strips que têm uma `action`.
 - Define `enabled` com base em se a track e a strip estão mutadas.
 
-**Alternativa**: Você também pode usar **Detect Actions** no modo **NLA** para detectar Actions que podem ser usadas como NLA strips.
+**Detect NLA Strips** inclui também strips de tracks mutadas (elas apenas são adicionadas como desabilitadas).
 
 Você também pode:
 - Adicionar itens manualmente com **Add NLA Strip**.

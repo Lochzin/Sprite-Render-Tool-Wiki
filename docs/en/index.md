@@ -38,7 +38,7 @@ The addon interface uses a **sidebar navigation system** with tabbed interface. 
 ### Sidebar Navigation
 
 The left sidebar contains icon buttons for easy navigation between tabs:
-- **📋 Info** (INFO): Version, author, documentation, and render progress
+- **📋 Info** (INFO): Version, author, documentation links (this is the tab that is open by default)
 - **⚙️ Setup** (SETTINGS): Project, Light Pivot, Armature, Camera Creation
 - **📷 Cameras** (CAMERA_DATA): Lens Settings, Camera Options, Camera List
 - **🦴 Animations** (ARMATURE_DATA): Animation mode, Actions/NLA configuration, testing
@@ -90,7 +90,7 @@ Each tab button shows a tooltip on hover with a specific description.
   - `Desync Shift X` / `Desync Shift Y`: independent toggle buttons (pressed = desynced, unpressed = synced)
   - `Shift X` / `Shift Y`: camera shift values (synchronized or individual per camera)
   - `Clip Start` / `Clip End`: clipping distances
-- `Camera Count`: number of cameras in the internal list
+- `Camera Count`: number of cameras in the internal list (new entries are added blank; fill in their names or use **Detect Cameras**)
 - `Custom Output Names`: use names different from the camera object names for file output
 - `Enable Full Rotation (XYZ)`: controls whether the pivot rotates in XYZ or only around Z
 - **📋 Camera List** (collapsible):
@@ -102,7 +102,7 @@ Each tab button shows a tooltip on hover with a specific description.
     - `Light Rotation`: light/pivot rotation (Z only or XYZ)
 - **Detect Cameras** button (`sprite_render.autofill_light_rotation`):
   - Detects visible cameras in the current View Layer
-  - Fills the list with names, count, and Z rotation based on the pivot object
+  - Replaces the list with the detected cameras (names, count, render order) and sets the Z light rotation based on the pivot object; the pivot is only required when `Enable Light Pivot` is on (with it off, rotations are set to 0)
 - Small documentation button in section header
 
 ![Camera Tab](/_static/images/SRT_CameraTab.png)
@@ -180,7 +180,7 @@ Each tab button shows a tooltip on hover with a specific description.
   - For detailed information about render settings, output configuration, and render actions, see the dedicated [Render](Render.md) page.
 - **🚀 Render Actions Section**:
   - `🚀 Render All` (`sprite_render.render_all`):
-    - Starts rendering all animations and cameras (asynchronous version using a timer)
+    - Starts rendering all animations and cameras, one image at a time driven by a timer (the UI updates between frames, but Blender is busy while each frame renders)
   - `🎯 Test Cameras` (`sprite_render.test_cameras`):
     - Cycles through the configured cameras for preview
 
@@ -215,7 +215,7 @@ This initial guide presents the basic workflow to get started with the Sprite Re
     - Adjust `frame_start` and `frame_end` for each action and enable only the ones you want to render.
   - **NLA**:
     - Select a `Target Armature`.
-    - Click **Detect NLA Strips`.
+    - Click **Detect NLA Strips**.
   - **STATIC**:
     - The add-on uses the current frame to render; useful for thumbnails or poses.
 

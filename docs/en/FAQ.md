@@ -33,13 +33,13 @@ This page lists common questions about using the **Sprite Render Tool** and how 
 - Use the **Test Cameras** button to cycle through cameras and check console logs for rotation values being applied.
 
 **Q: The Detect Cameras button does nothing. Why?**  
-**A:** The **Auto-fill Light Rotations** operator requires:
-- A valid **Light Pivot** object (otherwise it cancels with an error).
+**A:** The **Detect Cameras** button (operator `sprite_render.autofill_light_rotation`) requires:
+- A **Light Pivot** object **only if `Enable Light Pivot` is turned on**. With the pivot enabled but no object set, it cancels with the error "Light pivot object is not set". With `Enable Light Pivot` turned off, no pivot is needed and every camera gets a light rotation of 0.
 - At least one camera that is:
   - of type `CAMERA`
   - not hidden in viewport
   - not hidden for render  
-Make sure you are on the correct View Layer and that the cameras are visible.
+Make sure you are on the correct View Layer and that the cameras are visible. If no camera qualifies, it shows a warning and leaves the list unchanged. When it works, it **replaces the whole camera list** (names, output names and light rotations you typed are lost).
 
 ---
 
@@ -106,17 +106,20 @@ Check the **Output** section and your Render Properties to know exactly where fi
 - Uses `os.path.basename` on the template output to avoid nested paths in a single filename.
 If you see extra `_`, it is likely sanitizing characters or removing accidental slashes in the template.
 
+> **⚠️ Known issue**: this cleaning is applied to the **file name only**. Folder names (Project, Object, Animation and Camera) are used as typed. Names with `|`, `:`, `?`, `*` or `"` (for example Mixamo Actions such as `Armature|mixamo.com|Layer0`), or ending in a dot/space, can make folder creation fail on Windows, and a `/` in a name creates extra subfolders. Rename those Actions/cameras/objects before rendering.
+
 ---
 
 ## Performance and Stability
 
 **Q: Blender freezes while rendering. Is this normal?**  
-**A:** The **synchronous** path (`execute`) will block the UI, especially on long batches. Use:
-- The default **Render All** from the panel, which starts the **async** timer‑based flow, updating UI between frames and allowing cancellation.
+**A:** Yes, to a degree. **Render All** renders one image at a time using Blender's own render, which blocks the interface while each image is being rendered. The panel (progress, **Cancel Render**) and the **ESC** key are only handled **between** frames, so with heavy scenes Blender can look frozen for a few seconds at a time. It is not really frozen: wait for the current frame to finish.
+- Lower the render samples / resolution, or use **Frame Step**, to speed up long batches.
+- Do not click **Render All** again and avoid Ctrl+Z while a batch is running.
 
 **Q: How can I stop a long render batch?**  
 **A:** You can cancel rendering in two ways:
-- **Cancel Render button**: Click the **Cancel Render** button in the **Render Progress** section.
+- **Cancel Render button**: Click the **Cancel Render** button in the **Render Progress** section (**Render** tab, shown only while rendering).
 - **ESC key**: Press the **ESC** key at any time during rendering.
 - Both methods set a cancellation flag, and rendering stops gracefully after the current frame is finished.
 
@@ -128,7 +131,7 @@ If you see extra `_`, it is likely sanitizing characters or removing accidental 
 **A:** GPL compliance allows certain code redistributions under specific conditions, but:
 - The **Commercial Distribution Terms** forbid redistributing the **purchased file as a commercial product**.
 - Third‑party redistributions do **not** receive support or guaranteed updates.
-Always read the `LICENSE.md` and **Licenca.md** page before redistributing anything.
+Always read the `LICENSE.md` and the [License](License.md) page before redistributing anything.
 
 **Q: Do my users need to buy the add‑on if I use it in my studio?**  
 **A:** It depends on your license:

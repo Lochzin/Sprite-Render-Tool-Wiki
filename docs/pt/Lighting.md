@@ -70,7 +70,7 @@ Detalhes técnicos:
 
 Ao usar o botão **Detect Cameras**, o add-on calcula automaticamente uma rotação Z para cada câmera baseada na posição relativa entre a câmera e o light pivot.
 
-> **Importante**: O objeto **Light Pivot** deve ser definido na seção **Light Pivot** antes de usar o Detect Cameras; caso contrário, o operador cancelará com um erro.
+> **Importante**: O objeto **Light Pivot** só é exigido pelo Detect Cameras quando `Enable Light Pivot` está ligado; se estiver ligado e nenhum objeto estiver definido, o operador cancela com um erro. Com `Enable Light Pivot` desligado, o Detect Cameras funciona normalmente e define todos os `light_rotation` como 0.
 
 #### Limitações da Detecção Automática
 

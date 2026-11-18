@@ -32,13 +32,13 @@ Esta página lista perguntas comuns sobre o uso do **Sprite Render Tool** e como
 - Certifique-se de que `Enable Light Pivot` está habilitado na seção **Light Pivot**.
 
 **P: O botão Detect Cameras não faz nada. Por quê?**  
-**R:** O operador **Auto-fill Light Rotations** requer:
-- Um objeto **Light Pivot** válido (caso contrário, cancela com um erro).
+**R:** O botão **Detect Cameras** (operador `sprite_render.autofill_light_rotation`) requer:
+- Um objeto **Light Pivot** **somente se `Enable Light Pivot` estiver ligado**. Com o pivot habilitado mas sem objeto definido, ele cancela com o erro "Light pivot object is not set". Com `Enable Light Pivot` desligado, nenhum pivot é necessário e todas as câmeras recebem rotação de luz 0.
 - Pelo menos uma câmera que seja:
   - do tipo `CAMERA`
   - não oculta no viewport
   - não oculta para renderização  
-Certifique-se de que você está na View Layer correta e que as câmeras estão visíveis.
+Certifique-se de que você está na View Layer correta e que as câmeras estão visíveis. Se nenhuma câmera servir, mostra um aviso e deixa a lista como estava. Quando funciona, ele **substitui a lista de câmeras inteira** (nomes, nomes de saída e rotações de luz que você digitou são perdidos).
 
 ---
 
@@ -105,17 +105,20 @@ Verifique a seção **Output** e suas Render Properties para saber exatamente on
 - Usa `os.path.basename` na saída do template para evitar caminhos aninhados em um único nome de arquivo.
 Se você vir `_` extras, provavelmente está sanitizando caracteres ou removendo barras acidentais no template.
 
+> **⚠️ Problema conhecido**: essa limpeza é aplicada **somente ao nome do arquivo**. Os nomes de pasta (Project, Object, Animation e Camera) são usados como foram digitados. Nomes com `|`, `:`, `?`, `*` ou `"` (por exemplo Actions do Mixamo como `Armature|mixamo.com|Layer0`), ou terminados em ponto/espaço, podem fazer a criação de pastas falhar no Windows, e uma `/` em um nome cria subpastas extras. Renomeie essas Actions/câmeras/objetos antes de renderizar.
+
 ---
 
 ## Performance e Estabilidade
 
 **P: O Blender congela durante a renderização. Isso é normal?**  
-**R:** O caminho **síncrono** (`execute`) bloqueará a UI, especialmente em lotes longos. Use:
-- O **Render All** padrão do painel, que inicia o fluxo **assíncrono** baseado em timer, atualizando a UI entre frames e permitindo cancelamento.
+**R:** Sim, até certo ponto. O **Render All** renderiza uma imagem por vez usando o render do próprio Blender, que bloqueia a interface enquanto cada imagem é renderizada. O painel (progresso, **Cancel Render**) e a tecla **ESC** só são tratados **entre** os frames, então com cenas pesadas o Blender pode parecer congelado por alguns segundos seguidos. Ele não está realmente travado: aguarde o frame atual terminar.
+- Reduza as samples / a resolução do render, ou use o **Frame Step**, para acelerar lotes longos.
+- Não clique em **Render All** de novo e evite Ctrl+Z enquanto um lote está em andamento.
 
 **P: Como posso parar um lote de renderização longo?**  
 **R:** Você pode cancelar a renderização de duas formas:
-- **Botão Cancel Render**: Clique no botão **Cancel Render** na seção **Render Progress**.
+- **Botão Cancel Render**: Clique no botão **Cancel Render** na seção **Render Progress** (tab **Render**, exibida somente durante a renderização).
 - **Tecla ESC**: Pressione a tecla **ESC** a qualquer momento durante a renderização.
 - Ambos os métodos definem uma flag de cancelamento, e a renderização para graciosamente após o frame atual terminar.
 
@@ -127,7 +130,7 @@ Se você vir `_` extras, provavelmente está sanitizando caracteres ou removendo
 **R:** A conformidade GPL permite certas redistribuições de código sob condições específicas, mas:
 - Os **Termos de Distribuição Comercial** proíbem redistribuir o **arquivo comprado como um produto comercial**.
 - Redistribuições de terceiros **não** recebem suporte ou atualizações garantidas.
-Sempre leia o `LICENSE.md` e a página **License.md** antes de redistribuir qualquer coisa.
+Sempre leia o `LICENSE.md` e a página [License](License.md) antes de redistribuir qualquer coisa.
 
 **P: Meus usuários precisam comprar o add-on se eu usá-lo no meu estúdio?**  
 **R:** Depende da sua licença:
