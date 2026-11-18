@@ -1,12 +1,12 @@
 # Render
 
-Esta página explica o painel **5. Render Settings** (checklist, resolução, Frame Step, Test Cameras) e como o **Render All** funciona. Pastas de saída e nomes de arquivo estão em [Output](Output.md).
+Esta página explica a aba **Render** (checklist, resolução, Frame Step, Test Cameras) e como o **Render All** funciona. Pastas de saída e nomes de arquivo estão em [Output](Output.md).
 
 ---
 
 ## Checklist (Ready to render?)
 
-> **Localização no add-on**: painel **5. Render Settings**, no topo
+> **Localização no add-on**: aba **Render**, no topo
 
 O add-on confere sua configuração o tempo todo e lista os problemas aqui. O cabeçalho diz **Ready to render?** (Pronto para renderizar?) ou **Fix these before rendering** (Corrija antes de renderizar). Muitos problemas têm um botão **Fix** que resolve com um clique.
 
@@ -44,7 +44,7 @@ No final, o checklist mostra `N image(s): A anim x C cam` e, depois que um rende
 
 ## Render Settings
 
-> **Localização no add-on**: painel **5. Render Settings**
+> **Localização no add-on**: aba **Render**
 
 ### Resolution
 
@@ -94,7 +94,7 @@ Clique em **Render** para iniciar, ou feche o diálogo para cancelar.
 
 ### Durante o render
 
-- O botão **Render All** é trocado por uma barra de progresso (`Rendering atual/total (porcentagem%)`), uma linha de status (`'animação' frame N, camera 'nome' (~tempo restante)`) e **Cancel Render**. Eles aparecem com qualquer sub-painel aberto.
+- O botão **Render All** é trocado por uma barra de progresso (`Rendering atual/total (porcentagem%)`), uma linha de status (`'animação' frame N, camera 'nome' (~tempo restante)`) e **Cancel Render**. Eles aparecem com qualquer aba aberta.
 - O tempo restante estimado aparece depois que a primeira imagem termina.
 - **O Blender continua ocupado enquanto cada imagem renderiza**: o painel é atualizado *entre* as imagens, então com cenas pesadas ele pode parecer travado por alguns segundos. Reduza samples ou resolução, ou use o Frame Step, para acelerar lotes longos.
 - **ESC** ou **Cancel Render** param o render **depois da imagem atual**. Se o cancelamento chegar depois da última imagem, o render conta como completo.
@@ -132,8 +132,8 @@ Se o painel mostra "renderizando" mas nenhum render está rodando (por exemplo d
 ## Dicas de Fluxo de Trabalho
 
 1. **Antes de renderizar:**
-   - Siga o **Start Here**, depois leia o checklist e use os botões **Fix**
-   - Confira "First image will be saved as:" em **1. Project & Output**
+   - Crie ou detecte câmeras e animações, depois leia o checklist (aba **Render**) e use os botões **Fix**
+   - Confira "First image will be saved as:" na aba **Setup** (seção **Project & Output**)
    - Use **Test Cameras** e o **Animation Test**
    - Use o **Test Frame Count** se usar Frame Step
 

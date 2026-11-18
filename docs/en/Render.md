@@ -1,12 +1,12 @@
 # Render
 
-This page explains the **5. Render Settings** panel (checklist, resolution, Frame Step, Test Cameras) and how **Render All** works. Output folders and file names are in [Output](Output.md).
+This page explains the **Render** tab (checklist, resolution, Frame Step, Test Cameras) and how **Render All** works. Output folders and file names are in [Output](Output.md).
 
 ---
 
 ## Checklist (Ready to render?)
 
-> **Location in add-on**: **5. Render Settings** panel, at the top
+> **Location in add-on**: **Render** tab, at the top
 
 The add-on checks your setup all the time and lists the problems here. The header says **Ready to render?** or **Fix these before rendering**. Many problems have a **Fix** button that solves them in one click.
 
@@ -44,7 +44,7 @@ At the bottom, the checklist shows `N image(s): A anim x C cam` and, once a rend
 
 ## Render Settings
 
-> **Location in add-on**: **5. Render Settings** panel
+> **Location in add-on**: **Render** tab
 
 ### Resolution
 
@@ -94,7 +94,7 @@ Click **Render** to start, or close the dialog to cancel.
 
 ### While rendering
 
-- The **Render All** button is replaced by a progress bar (`Rendering current/total (percent%)`), a status line (`'animation' frame N, camera 'name' (~time left)`) and **Cancel Render**. They are visible with any sub-panel open.
+- The **Render All** button is replaced by a progress bar (`Rendering current/total (percent%)`), a status line (`'animation' frame N, camera 'name' (~time left)`) and **Cancel Render**. They are visible with any tab open.
 - The estimated time left appears after the first image is finished.
 - **Blender is still busy while each image renders**: the panel is updated *between* images, so with heavy scenes it may look frozen for a few seconds at a time. Lower the samples or resolution, or use Frame Step, to speed up long batches.
 - **ESC** or **Cancel Render** stop the render **after the current image**. If the cancel arrives after the last image, the render counts as complete.
@@ -132,8 +132,8 @@ If the panel shows "rendering" but no render is running (for example after a cra
 ## Workflow Tips
 
 1. **Before rendering:**
-   - Follow **Start Here**, then read the checklist and use the **Fix** buttons
-   - Check "First image will be saved as:" in **1. Project & Output**
+   - Create or detect cameras and animations, then read the checklist (**Render** tab) and use the **Fix** buttons
+   - Check "First image will be saved as:" in the **Setup** tab (**Project & Output** section)
    - Use **Test Cameras** and **Animation Test**
    - Use **Test Frame Count** if you use Frame Step
 

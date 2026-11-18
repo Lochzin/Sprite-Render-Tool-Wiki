@@ -2,7 +2,7 @@
 
 Esta página explica como o **Sprite Render Tool** monta a estrutura de pastas e os nomes de arquivo dos seus sprites renderizados.
 
-> **Localização no add-on**: painel **1. Project & Output**
+> **Localização no add-on**: aba **Setup** → seção **Project & Output**
 
 ---
 

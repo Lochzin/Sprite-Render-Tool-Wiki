@@ -11,7 +11,7 @@ Esta página lista perguntas comuns sobre o uso do **Sprite Render Tool** e como
 
 **P: Onde encontro o painel Sprite Render Tool?**  
 **R:** Depois de ativar o add-on nas Preferências, vá em:  
-`3D Viewport > Sidebar (N) > Sprite Render`. É um painel principal com os sub-painéis 1. Project & Output, 2. Character & Animations, 3. Cameras, 4. Light, 5. Render Settings e Info.
+`3D Viewport > Sidebar (N) > Sprite Render`. É um painel principal com o **Render All** no topo e botões laterais de abas (Info, Setup, Cameras, Animations, Render).
 
 **P: Posso usar o add-on em português?**  
 **R:** Sim. Coloque o idioma do Blender em português (`Edit > Preferences > Interface > Language`) e os painéis, tooltips e mensagens aparecem em português. Os botões de documentação continuam abrindo a wiki em inglês.
@@ -28,7 +28,7 @@ Esta página lista perguntas comuns sobre o uso do **Sprite Render Tool** e como
 
 **P: A luz não gira por câmera, ou parece errada. Como investigar?**  
 **R:** Verifique:
-- Em **4. Light**, `Enable Light Pivot` está ligado e um `Object` pivô está definido.
+- Na aba **Setup** (seção **Light Pivot**), `Enable Light Pivot` está ligado e um `Object` pivô está definido.
 - `Enable Full Rotation (XYZ)` está correto: desligado usa só Z, ligado usa o `Light Rotation` XYZ completo da câmera.
 - Clique em **Test Cameras** (com o viewport em shading **Rendered**) e veja o pivô girar; os valores de rotação são escritos no editor Info do Blender.
 - A rotação de luz automática é só em Z; ajuste à mão para câmeras em outras alturas (veja [Lighting](Lighting.md)).
@@ -51,7 +51,7 @@ Quando funciona, ele **adiciona** as câmeras novas e mantém as linhas existent
 **R:** No modo **ACTIONS** clique em **Detect Actions** (ou em `+` e escolha a Action pelo nome). Ele adiciona as Actions do arquivo que podem animar objetos (não luzes nem materiais). Se continuar vazio, confirme que existem Actions no arquivo e que elas não estão numa biblioteca.
 
 **P: As Actions são detectadas mas nada acontece ao tentar visualizar ou renderizar.**  
-**R:** Confira se há uma `Armature` definida em **2. Character & Animations** e se a linha está habilitada e não está vermelha. O add-on atribui a Action (e um Action Slot adequado) por você; se ainda assim não tocar, confira o **Action Slot** da armadura em **Properties** → **Object Properties** → **Animation**.
+**R:** Confira se há uma `Armature` definida na aba **Animations** e se a linha está habilitada e não está vermelha. O add-on atribui a Action (e um Action Slot adequado) por você; se ainda assim não tocar, confira o **Action Slot** da armadura em **Properties** → **Object Properties** → **Animation**.
 
 **P: As NLA strips não são detectadas.**  
 **R:** No modo **NLA** defina uma `Armature` com NLA tracks e clique em **Detect NLA Strips**. Só strips com Action são adicionadas; strips de tracks mutadas entram desabilitadas.
@@ -70,7 +70,7 @@ Quando funciona, ele **adiciona** as câmeras novas e mantém as linhas existent
 ## Render
 
 **P: O Render All está cinza. Por quê?**  
-**R:** O checklist em **5. Render Settings** tem pelo menos um erro (ou um render já está rodando). Passe o mouse sobre o botão para ver o primeiro erro e use os botões **Fix**.
+**R:** O checklist na aba **Render** tem pelo menos um erro (ou um render já está rodando). Passe o mouse sobre o botão para ver o primeiro erro e use os botões **Fix**.
 
 **P: O que o diálogo antes do render me mostra?**  
 **R:** O número de animações, câmeras e imagens, a pasta de destino, o tempo estimado (só depois que um render terminou nesta sessão do Blender), quantos arquivos existentes serão sobrescritos e os avisos. Clique em **Render** para iniciar.
@@ -94,7 +94,7 @@ Quando funciona, ele **adiciona** as câmeras novas e mantém as linhas existent
 ## Output e Arquivos
 
 **P: Onde minhas imagens estão sendo salvas?**  
-**R:** Veja **First image will be saved as:** em **1. Project & Output**. O caminho é a `Output Folder` (padrão `//sprites/`, criada automaticamente; relativa ao arquivo .blend, então salve o arquivo antes), mais as pastas opcionais (**Project / Object / Animation / Camera**), mais o nome do arquivo vindo do `Output Name`.
+**R:** Veja **First image will be saved as:** na aba **Setup** (seção **Project & Output**). O caminho é a `Output Folder` (padrão `//sprites/`, criada automaticamente; relativa ao arquivo .blend, então salve o arquivo antes), mais as pastas opcionais (**Project / Object / Animation / Camera**), mais o nome do arquivo vindo do `Output Name`.
 
 **P: O Render All diz que meu Output Name não tem `$frame`.**  
 **R:** Sem `$frame` cada frame sobrescreveria o mesmo arquivo. Clique em **Add $frame** no checklist, ou adicione com o botão `frame` abaixo do campo `Output Name`.

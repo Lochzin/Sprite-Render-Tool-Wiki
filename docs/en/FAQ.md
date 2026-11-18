@@ -11,7 +11,7 @@ This page lists common questions about using the **Sprite Render Tool** and how 
 
 **Q: Where do I find the Sprite Render Tool panel?**  
 **A:** After enabling the add‑on in Preferences, go to:  
-`3D Viewport > Sidebar (N) > Sprite Render`. It is one main panel with the sub-panels 1. Project & Output, 2. Character & Animations, 3. Cameras, 4. Light, 5. Render Settings and Info.
+`3D Viewport > Sidebar (N) > Sprite Render`. It is one main panel with **Render All** at the top and side tab buttons (Info, Setup, Cameras, Animations, Render).
 
 **Q: Can I use the add-on in Portuguese?**  
 **A:** Yes. Set Blender's language to Portuguese (`Edit > Preferences > Interface > Language`) and the panels, tooltips and messages are shown in Portuguese. The documentation buttons still open the English wiki.
@@ -28,7 +28,7 @@ This page lists common questions about using the **Sprite Render Tool** and how 
 
 **Q: Light does not rotate per camera, or looks wrong. How can I troubleshoot this?**  
 **A:** Check the following:
-- In **4. Light**, `Enable Light Pivot` is on and a pivot `Object` is set.
+- In the **Setup** tab (**Light Pivot** section), `Enable Light Pivot` is on and a pivot `Object` is set.
 - `Enable Full Rotation (XYZ)` is set correctly: off uses only Z, on uses the full XYZ `Light Rotation` of the camera.
 - Click **Test Cameras** (with the viewport in **Rendered** shading) and watch the pivot rotate; the rotation values are written to Blender's Info editor.
 - Automatic light rotation is Z only; adjust it by hand for cameras at other heights (see [Lighting](Lighting.md)).
@@ -51,7 +51,7 @@ When it works it **adds** the new cameras and keeps your existing rows (order, `
 **A:** In **ACTIONS** mode click **Detect Actions** (or `+` and pick the Action by name). It adds the Actions of the file that can animate objects (not lights or materials). If it is still empty, confirm that Actions exist in your file and are not stored in a library.
 
 **Q: Actions are detected but nothing happens when I try to preview or render them.**  
-**A:** Check that an `Armature` is set in **2. Character & Animations** and that the row is enabled and not red. The add-on assigns the Action (and a suitable Action Slot) for you; if it still does not play, check the **Action Slot** of the armature in **Properties** → **Object Properties** → **Animation**.
+**A:** Check that an `Armature` is set in the **Animations** tab and that the row is enabled and not red. The add-on assigns the Action (and a suitable Action Slot) for you; if it still does not play, check the **Action Slot** of the armature in **Properties** → **Object Properties** → **Animation**.
 
 **Q: NLA strips are not detected.**  
 **A:** In **NLA** mode set an `Armature` with NLA tracks and click **Detect NLA Strips**. Only strips with an Action are added; strips of muted tracks come in as disabled.
@@ -70,7 +70,7 @@ When it works it **adds** the new cameras and keeps your existing rows (order, `
 ## Render
 
 **Q: Render All is greyed out. Why?**  
-**A:** The checklist in **5. Render Settings** has at least one error (or a render is already running). Hover over the button to see the first error, then use the **Fix** buttons.
+**A:** The checklist in the **Render** tab has at least one error (or a render is already running). Hover over the button to see the first error, then use the **Fix** buttons.
 
 **Q: What does the dialog before the render tell me?**  
 **A:** The number of animations, cameras and images, the destination folder, the estimated time (only after a render has finished in this Blender session), how many existing files will be overwritten and any warnings. Click **Render** to start.
@@ -94,7 +94,7 @@ When it works it **adds** the new cameras and keeps your existing rows (order, `
 ## Output and Files
 
 **Q: Where are my images being saved?**  
-**A:** Look at **First image will be saved as:** in **1. Project & Output**. The path is the `Output Folder` (default `//sprites/`, created automatically; relative to the .blend file, so save the file first), plus the optional folders (**Project / Object / Animation / Camera**), plus the file name from `Output Name`.
+**A:** Look at **First image will be saved as:** in the **Setup** tab (**Project & Output** section). The path is the `Output Folder` (default `//sprites/`, created automatically; relative to the .blend file, so save the file first), plus the optional folders (**Project / Object / Animation / Camera**), plus the file name from `Output Name`.
 
 **Q: Render All says my Output Name has no `$frame`.**  
 **A:** Without `$frame` every frame would overwrite the same file. Click **Add $frame** in the checklist, or add it with the `frame` button below the `Output Name` field.

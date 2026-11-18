@@ -6,7 +6,7 @@ This page explains how the **Sprite Render Tool** handles animations in the four
 
 ## Animation Modes
 
-> **Location in add-on**: **2. Character & Animations** panel
+> **Location in add-on**: **Animations** tab
 
 Choose the mode with `Animation Mode`:
 - **Use Actions** (ACTIONS, default): render from a list of Actions.
@@ -20,9 +20,9 @@ Choose the mode with `Animation Mode`:
 
 ## Common Settings
 
-> **Location in add-on**: **2. Character & Animations** panel, below `Animation Mode`
+> **Location in add-on**: **Animations** tab, below `Animation Mode`
 
-- `Armature` (`target_armature`): the armature whose animations are rendered. It is set only here, and is shown in **ACTIONS**, **NLA** and **FRAME_RANGES** modes (it is required in the first two, where the checklist reports an error without it; in FRAME_RANGES it is only used to warn about its active Action). Only armature objects can be picked.
+- `Armature` (`target_armature`): the armature whose animations are rendered. It can be set here or in the **Setup** tab (**Armature** section; it is the same setting), and is shown in **ACTIONS**, **NLA** and **FRAME_RANGES** modes (it is required in the first two, where the checklist reports an error without it; in FRAME_RANGES it is only used to warn about its active Action). Only armature objects can be picked.
 - `Preview FPS` + **Apply** (`sprite_render.apply_fps`): sets `scene.render.fps` to the value and `scene.render.fps_base` to 1.0. It only affects playback speed in the viewport, not which frames are rendered.
 
 ---
@@ -40,7 +40,7 @@ The three lists work the same way:
 
 ## ACTIONS Mode
 
-> **Location in add-on**: **2. Character & Animations** → `Animation Mode` = **Use Actions**
+> **Location in add-on**: **Animations** tab → `Animation Mode` = **Use Actions**
 
 Each row (`ActionItem`) has:
 - `Action`: the Action name, chosen with a searchable field of the Actions of the file.
@@ -48,7 +48,7 @@ Each row (`ActionItem`) has:
 - Enabled checkbox.
 - `Sync Secondary Armature`, `Secondary Armature`, `Secondary Action`: **not implemented**. The panel shows "Sync Secondary: not implemented". Only **Preview Action** plays the secondary action; **Render All ignores it**, and the checklist shows a warning if it is on (with a **Turn off** button).
 
-**Detect Actions** (`sprite_render.detect_actions`, also in **Start Here**):
+**Detect Actions** (`sprite_render.detect_actions`):
 - **Adds** the Actions of the file that are not in the list yet. Existing rows keep their frame range and enabled state.
 - Skips Actions that cannot animate an object (lights, materials, shape keys...). With slotted Actions (Blender 4.4+) an Action is kept when at least one of its slots targets an object.
 - **Static poses are added disabled**: an Action of 1 to 2 frames (for example the T-pose that comes with an FBX) is listed with start = end and unchecked. Tick it if you really want to render it.
@@ -71,14 +71,14 @@ When **Render All** runs in ACTIONS mode:
 
 ## NLA Mode
 
-> **Location in add-on**: **2. Character & Animations** → `Animation Mode` = **Use NLA**
+> **Location in add-on**: **Animations** tab → `Animation Mode` = **Use NLA**
 
 Each row (`NLAItem`) has:
 - `Strip Name`: the name of the NLA strip.
 - `Track Name`: the track that holds it (optional; it tells apart strips with the same name).
 - `Start Frame`, `End Frame`, enabled checkbox.
 
-**Detect NLA Strips** (`sprite_render.detect_nla_strips`, also in **Start Here**):
+**Detect NLA Strips** (`sprite_render.detect_nla_strips`):
 - Requires an `Armature` with NLA tracks.
 - **Adds** the strips (that have an Action) that are not in the list yet, including strips of muted tracks (added as disabled when the track or the strip is muted). Existing rows keep their range and enabled state.
 - Range: start rounded down, end rounded up.
@@ -96,7 +96,7 @@ At the start of every animation / camera pair:
 
 ## STATIC Mode
 
-> **Location in add-on**: **2. Character & Animations** → `Animation Mode` = **Static Render**
+> **Location in add-on**: **Animations** tab → `Animation Mode` = **Static Render**
 
 - There is no animation list and no armature is needed.
 - The add-on renders **only the current frame** of the scene.
@@ -108,7 +108,7 @@ Use this mode for thumbnails, key poses and single-frame renders.
 
 ## FRAME_RANGES Mode
 
-> **Location in add-on**: **2. Character & Animations** → `Animation Mode` = **Frame Ranges**
+> **Location in add-on**: **Animations** tab → `Animation Mode` = **Frame Ranges**
 
 Renders specific frame ranges without armature or animation data. **It renders the scene as it is**: no Action or NLA strip is applied, so whatever is active on the armature plays in every range. If the `Armature` has an active Action, the checklist shows a warning with its name.
 
@@ -122,7 +122,7 @@ Renders specific frame ranges without armature or animation data. **It renders t
 
 ## Animation Test
 
-> **Location in add-on**: **2. Character & Animations** → **Animation Test** (collapsible; ACTIONS and NLA modes only)
+> **Location in add-on**: **Animations** tab → **Animation Test** (collapsible; ACTIONS and NLA modes only)
 
 Use it to check an animation before rendering. Select a row first.
 
@@ -147,4 +147,4 @@ Use it to check an animation before rendering. Select a row first.
 - Keep your **Action** and **NLA** names descriptive (e.g. `walk_front`, `idle_side`, `attack_back`) to generate meaningful file names. Characters invalid in file names (like the `|` of Mixamo names) are replaced by `_`.
 - In **ACTIONS** mode, disable the Actions you do not want to render to reduce render time.
 - In **NLA** mode, use the list when you want to choose strips independently of their mute state in your working file.
-- Use the **Animation Test** to check frame ranges and speed before long batches, and read the checklist in **5. Render Settings** before rendering.
+- Use the **Animation Test** to check frame ranges and speed before long batches, and read the checklist in the **Render** tab before rendering.

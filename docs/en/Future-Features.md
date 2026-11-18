@@ -21,7 +21,7 @@ This page lists planned features and improvements for the **Sprite Render Tool**
 
 ### UI/UX Improvements
 
-- **Contextual Help Links**: every property and operator already has a tooltip, and the sub-panels have a help button. Still planned:
+- **Contextual Help Links**: every property and operator already has a tooltip, and the Project & Output, Light Pivot, Cameras, Animations and Render Settings sections have a help button. Still planned:
   - Help buttons that open the exact section of the documentation
   - Documentation buttons that open the wiki in the language of Blender's interface (today they always open English)
 

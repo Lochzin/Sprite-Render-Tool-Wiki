@@ -2,7 +2,7 @@
 
 This page explains how the **Sprite Render Tool** builds folder structures and file names for your rendered sprites.
 
-> **Location in add-on**: **1. Project & Output** panel
+> **Location in add-on**: **Setup** tab → **Project & Output** section
 
 ---
 

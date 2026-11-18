@@ -14,7 +14,7 @@ This standardized lighting approach helps maintain uniform illumination across a
 
 ## Light Pivot Object
 
-> **Location in add-on**: **4. Light** panel
+> **Location in add-on**: **Setup** tab → **Light Pivot** section
 
 The **Light Pivot** is a Blender object that acts as a control point for lighting rotation. You can use any Blender object as the pivot, though typically an **empty object** is used (mesh objects can also work, but empty objects are preferred for their simplicity).
 
@@ -40,7 +40,7 @@ This allows you to temporarily disable light rotation without removing the light
 
 ## Light Rotation
 
-> **Location in add-on**: `Enable Full Rotation (XYZ)` in the **4. Light** panel; the rotation of each camera in the selected row of the **Cameras (render order)** list (**3. Cameras** panel)
+> **Location in add-on**: `Enable Full Rotation (XYZ)` in the **Light Pivot** section of the **Setup** tab; the rotation of each camera in the selected row of the **Cameras (render order)** list (**Cameras** tab)
 
 Each camera in the add-on has a `light_rotation` property (Euler rotation XYZ) that controls how the light pivot is rotated for that specific camera angle.
 

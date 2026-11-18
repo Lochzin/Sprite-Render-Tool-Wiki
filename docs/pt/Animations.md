@@ -6,7 +6,7 @@ Esta página explica como o **Sprite Render Tool** trata animações nos quatro 
 
 ## Modos de Animação
 
-> **Localização no add-on**: painel **2. Character & Animations**
+> **Localização no add-on**: aba **Animations**
 
 Escolha o modo em `Animation Mode`:
 - **Use Actions** (ACTIONS, padrão): renderiza a partir de uma lista de Actions.
@@ -20,9 +20,9 @@ Escolha o modo em `Animation Mode`:
 
 ## Configurações Comuns
 
-> **Localização no add-on**: painel **2. Character & Animations**, abaixo de `Animation Mode`
+> **Localização no add-on**: aba **Animations**, abaixo de `Animation Mode`
 
-- `Armature` (`target_armature`): a armadura cujas animações são renderizadas. É definida só aqui e aparece nos modos **ACTIONS**, **NLA** e **FRAME_RANGES** (é obrigatória nos dois primeiros, onde o checklist acusa erro sem ela; em FRAME_RANGES só serve para avisar sobre a Action ativa dela). Só objetos do tipo armadura podem ser escolhidos.
+- `Armature` (`target_armature`): a armadura cujas animações são renderizadas. Pode ser definida aqui ou na aba **Setup** (seção **Armature**; é a mesma configuração) e aparece nos modos **ACTIONS**, **NLA** e **FRAME_RANGES** (é obrigatória nos dois primeiros, onde o checklist acusa erro sem ela; em FRAME_RANGES só serve para avisar sobre a Action ativa dela). Só objetos do tipo armadura podem ser escolhidos.
 - `Preview FPS` + **Apply** (`sprite_render.apply_fps`): define `scene.render.fps` com o valor e `scene.render.fps_base` como 1.0. Afeta só a velocidade de reprodução no viewport, não quais frames são renderizados.
 
 ---
@@ -40,7 +40,7 @@ As três listas funcionam do mesmo jeito:
 
 ## Modo ACTIONS
 
-> **Localização no add-on**: **2. Character & Animations** → `Animation Mode` = **Use Actions**
+> **Localização no add-on**: aba **Animations** → `Animation Mode` = **Use Actions**
 
 Cada linha (`ActionItem`) tem:
 - `Action`: o nome da Action, escolhido com um campo com busca entre as Actions do arquivo.
@@ -48,7 +48,7 @@ Cada linha (`ActionItem`) tem:
 - Caixa de habilitado.
 - `Sync Secondary Armature`, `Secondary Armature`, `Secondary Action`: **não implementado**. O painel mostra "Sync Secondary: not implemented". Só o **Preview Action** toca a Action secundária; o **Render All a ignora**, e o checklist mostra um aviso se estiver ligado (com o botão **Turn off**).
 
-**Detect Actions** (`sprite_render.detect_actions`, também no **Start Here**):
+**Detect Actions** (`sprite_render.detect_actions`):
 - **Adiciona** as Actions do arquivo que ainda não estão na lista. Linhas existentes mantêm o intervalo de frames e o estado de habilitado.
 - Ignora Actions que não podem animar um objeto (luzes, materiais, shape keys...). Com Actions com slots (Blender 4.4+), a Action é mantida quando pelo menos um dos slots aponta para um objeto.
 - **Poses estáticas entram desabilitadas**: uma Action de 1 a 2 frames (por exemplo a T-pose que vem com um FBX) é listada com início = fim e desmarcada. Marque se realmente quiser renderizá-la.
@@ -71,14 +71,14 @@ Quando o **Render All** roda no modo ACTIONS:
 
 ## Modo NLA
 
-> **Localização no add-on**: **2. Character & Animations** → `Animation Mode` = **Use NLA**
+> **Localização no add-on**: aba **Animations** → `Animation Mode` = **Use NLA**
 
 Cada linha (`NLAItem`) tem:
 - `Strip Name`: o nome da NLA strip.
 - `Track Name`: a track que a contém (opcional; diferencia strips com o mesmo nome).
 - `Start Frame`, `End Frame`, caixa de habilitado.
 
-**Detect NLA Strips** (`sprite_render.detect_nla_strips`, também no **Start Here**):
+**Detect NLA Strips** (`sprite_render.detect_nla_strips`):
 - Exige uma `Armature` com NLA tracks.
 - **Adiciona** as strips (que têm Action) que ainda não estão na lista, incluindo strips de tracks mutadas (adicionadas como desabilitadas quando a track ou a strip está mutada). Linhas existentes mantêm intervalo e estado de habilitado.
 - Intervalo: início arredondado para baixo, fim para cima.
@@ -96,7 +96,7 @@ No início de cada par animação / câmera:
 
 ## Modo STATIC
 
-> **Localização no add-on**: **2. Character & Animations** → `Animation Mode` = **Static Render**
+> **Localização no add-on**: aba **Animations** → `Animation Mode` = **Static Render**
 
 - Não há lista de animações e não é preciso armadura.
 - O add-on renderiza **apenas o frame atual** da cena.
@@ -108,7 +108,7 @@ Use este modo para thumbnails, poses-chave e renders de um único frame.
 
 ## Modo FRAME_RANGES
 
-> **Localização no add-on**: **2. Character & Animations** → `Animation Mode` = **Frame Ranges**
+> **Localização no add-on**: aba **Animations** → `Animation Mode` = **Frame Ranges**
 
 Renderiza intervalos de frames específicos sem armadura nem dados de animação. **Ele renderiza a cena como ela está**: nenhuma Action ou NLA strip é aplicada, então o que estiver ativo na armadura toca em todos os intervalos. Se a `Armature` tiver uma Action ativa, o checklist mostra um aviso com o nome dela.
 
@@ -122,7 +122,7 @@ Renderiza intervalos de frames específicos sem armadura nem dados de animação
 
 ## Animation Test
 
-> **Localização no add-on**: **2. Character & Animations** → **Animation Test** (recolhível; só modos ACTIONS e NLA)
+> **Localização no add-on**: aba **Animations** → **Animation Test** (recolhível; só modos ACTIONS e NLA)
 
 Use para conferir uma animação antes de renderizar. Selecione uma linha primeiro.
 
@@ -147,4 +147,4 @@ Use para conferir uma animação antes de renderizar. Selecione uma linha primei
 - Mantenha os nomes de **Action** e **NLA** descritivos (ex.: `walk_front`, `idle_side`, `attack_back`) para gerar nomes de arquivo úteis. Caracteres inválidos em nomes de arquivo (como o `|` dos nomes do Mixamo) viram `_`.
 - No modo **ACTIONS**, desabilite as Actions que você não quer renderizar para reduzir o tempo de render.
 - No modo **NLA**, use a lista quando quiser escolher strips independentemente do estado de mute no seu arquivo de trabalho.
-- Use o **Animation Test** para conferir intervalos de frames e velocidade antes de lotes longos, e leia o checklist em **5. Render Settings** antes de renderizar.
+- Use o **Animation Test** para conferir intervalos de frames e velocidade antes de lotes longos, e leia o checklist na aba **Render** antes de renderizar.

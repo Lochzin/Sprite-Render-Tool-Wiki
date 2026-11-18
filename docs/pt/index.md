@@ -35,52 +35,49 @@ Para instruções detalhadas de instalação, atualização e solução de probl
 
 ## Painel Principal (UI)
 
-O add-on fica em `3D Viewport > Sidebar (N) > Sprite Render`. É **um painel principal com sub-painéis**, na ordem do fluxo de trabalho (não há abas). Os sub-painéis com o ícone de ajuda (?) no cabeçalho abrem a página correspondente desta wiki (sempre em inglês).
+O add-on fica em `3D Viewport > Sidebar (N) > Sprite Render`. É **um painel principal** com duas partes:
 
-Com o Blender em português, os nomes aparecem traduzidos. Esta wiki usa os nomes em inglês, com o nome em português entre parênteses na primeira vez.
+- **No topo**: o botão **Render All**. Durante o render ele é trocado pela barra de progresso, a linha de status e o **Cancel Render**. Essa parte aparece em todas as abas.
+- **Abaixo**: uma coluna de **botões laterais só com ícone** (as abas) à esquerda, e o conteúdo da aba selecionada à direita. A aba selecionada fica destacada, e cada botão mostra um tooltip ao passar o mouse. A aba aberta por padrão é **Setup**.
 
-| Ordem | Painel | Função |
+| Ícone | Aba | Conteúdo |
 | --- | --- | --- |
-| – | **Sprite Render** (principal) | Render All, progresso, guia Start Here |
-| 1 | **1. Project & Output** (1. Projeto e Saída) | nomes, pasta de saída, modelo do nome do arquivo, pastas |
-| 2 | **2. Character & Animations** (2. Personagem e Animações) | modo de animação, armadura, listas de animações, preview |
-| 3 | **3. Cameras** (3. Câmeras) | criar / detectar câmeras, lente, lista de câmeras |
-| 4 | **4. Light** (4. Luz) | Pivô de Luz |
-| 5 | **5. Render Settings** (5. Configurações de Render) | checklist, resolução, Frame Step, Test Cameras |
-| – | **Info** (Informações; fechado por padrão) | versão, autor, documentação |
+| Info (i) | **Info** (Informações) | versão, autor, links de documentação |
+| Engrenagem | **Setup** (Configuração) | seções **Project & Output**, **Light Pivot** e **Armature** |
+| Câmera | **Cameras** (Câmeras) | criar / detectar câmeras, lente, lista de câmeras |
+| Armadura | **Animations** (Animações) | modo de animação, listas de animações, preview |
+| Render still | **Render** | seção **Render Settings**: checklist, resolução, Frame Step, Test Cameras |
 
-### Sprite Render (painel principal)
+As abas, de cima para baixo, são: Info, Setup, Cameras, Animations, Render. As seções com um pequeno ícone de ajuda (?) no cabeçalho (Project & Output, Light Pivot, Cameras, Animations, Render Settings) abrem a página correspondente desta wiki (sempre em inglês).
+
+Com o Blender em português, os nomes aparecem traduzidos. Esta wiki usa os nomes em inglês.
+
+![Sidebar](/_static/images/SRT_Sidebar.png)
+
+### Render All e progresso (topo do painel)
 
 - **Render All**: inicia o render. Fica desabilitado (cinza) enquanto o checklist tiver erros (o tooltip mostra o primeiro). Antes de iniciar, abre um diálogo de confirmação (veja [Render](Render.md)).
-- **Durante o render**: o botão é trocado pela barra de progresso nativa do Blender (`Rendering atual/total (porcentagem%)`), uma linha de status (animação, frame, câmera e tempo restante estimado) e um botão vermelho **Cancel Render**. Isso aparece com qualquer sub-painel aberto. **ESC** também cancela.
-- **Start Here** (Comece Aqui; só até existirem câmeras e animações, e nunca durante o render):
-  1. **Cameras**: **Create** (cria o preset de câmeras) e **Detect** (adiciona as câmeras visíveis da cena). Aparece com um check quando a lista já tem câmeras.
-  2. **Animations**: **Detect Actions**, **Detect NLA Strips** ou **Add Frame Range**, conforme o Animation Mode. No modo **STATIC** este passo já conta como feito.
-  3. Defina a pasta de saída (Project & Output).
-  4. Clique em Render All.
+- **Durante o render**: o botão é trocado pela barra de progresso nativa do Blender (`Rendering atual/total (porcentagem%)`), uma linha de status (animação, frame, câmera e tempo restante estimado) e um botão vermelho **Cancel Render**. **ESC** também cancela.
 
-### 1. Project & Output
+### Aba Info
 
-- `Project Name`, `Object Name`
-- `Output Folder` (padrão `//sprites/`) e, ao lado, um botão que abre uma pasta no explorador de arquivos. Deixe o campo vazio para usar o Output Path da cena (comportamento legado)
-- Modelo `Output Name` (padrão `$objectName_$animation_$frame`), botões que acrescentam `projectName`, `objectName`, `animation`, `camera`, `frame`, e os modelos prontos **Default** e **Per camera**
-- **First image will be saved as:** o caminho real da primeira imagem, com avisos do modelo e colisões de nomes
-- **Available Placeholders** (recolhível): variáveis e uma prévia do nome
-- **Create Folders**: `Project`, `Object`, `Animation`, `Camera`, mais `Clean Action Names` e `Restart Frame Numbering Per Camera` (ambos desligados por padrão)
+Versão (lida do próprio add-on), autor, **Open Documentation**, **Changelog**, **Future Features** e **License**.
 
-Veja [Output](Output.md).
+### Aba Setup
 
-### 2. Character & Animations
+- Seção **Project & Output**:
+  - `Project Name`, `Object Name`
+  - `Output Folder` (padrão `//sprites/`) e, ao lado, um botão que abre uma pasta no explorador de arquivos. Deixe o campo vazio para usar o Output Path da cena (comportamento legado)
+  - Modelo `Output Name` (padrão `$objectName_$animation_$frame`), botões que acrescentam `projectName`, `objectName`, `animation`, `camera`, `frame`, e os modelos prontos **Default** e **Per camera**
+  - **First image will be saved as:** o caminho real da primeira imagem, com avisos do modelo e colisões de nomes
+  - **Available Placeholders** (recolhível): variáveis e uma prévia do nome
+  - **Create Folders**: `Project`, `Object`, `Animation`, `Camera`, mais `Clean Action Names` e `Restart Frame Numbering Per Camera` (ambos desligados por padrão)
+- Seção **Light Pivot**: `Enable Light Pivot`, `Object` (o pivô, mostrado quando habilitado) e `Enable Full Rotation (XYZ)`
+- Seção **Armature**: `Armature`, a armadura alvo. É a mesma configuração do campo `Armature` da aba Animations
 
-- `Animation Mode`: **Use Actions** (padrão), **Use NLA**, **Static Render**, **Frame Ranges**
-- `Armature`: a armadura alvo (obrigatória nos modos Actions e NLA; no modo Frame Ranges só serve para avisar sobre a Action ativa dela)
-- A lista do modo atual, com botões `+` / `-`, os campos do item selecionado, **Enable All** / **Disable All** e o botão **Detect**
-- `Preview FPS` + **Apply**
-- **Animation Test** (recolhível, modos Actions e NLA): **Preview Action** / **Preview NLA Strip**, **Stop Preview** (ou **Restore Scene** quando a reprodução já parou), contador de frames e botões primeiro / anterior / próximo / último
+Veja [Output](Output.md) e [Lighting](Lighting.md).
 
-Veja [Animations](Animations.md).
-
-### 3. Cameras
+### Aba Cameras
 
 - Caixa **Create Cameras**: `Preset`, `Cameras` (só no preset Custom), `Elevation`, `Target Height`, `Distance`, **Create Cameras**
 - **Detect Cameras**
@@ -90,22 +87,25 @@ Veja [Animations](Animations.md).
 
 Veja [Cameras](Cameras.md).
 
-### 4. Light
+### Aba Animations
 
-`Enable Light Pivot`, `Object` (o pivô, mostrado quando habilitado) e `Enable Full Rotation (XYZ)`. Veja [Lighting](Lighting.md).
+- `Animation Mode`: **Use Actions** (padrão), **Use NLA**, **Static Render**, **Frame Ranges**
+- `Armature` (modos Actions, NLA e Frame Ranges; obrigatória nos dois primeiros, no Frame Ranges só serve para avisar sobre a Action ativa dela)
+- A lista do modo atual, com botões `+` / `-`, os campos do item selecionado, **Enable All** / **Disable All** e o botão **Detect**
+- `Preview FPS` + **Apply**
+- **Animation Test** (recolhível, modos Actions e NLA): **Preview Action** / **Preview NLA Strip**, **Stop Preview** (ou **Restore Scene** quando a reprodução já parou), contador de frames e botões primeiro / anterior / próximo / último
 
-### 5. Render Settings
+Veja [Animations](Animations.md).
 
+### Aba Render
+
+Seção **Render Settings**:
 - **Checklist** ("Ready to render?"): problemas com botões **Fix** e o resumo de imagens / tempo
 - **Resolution** X / Y
 - **Frame Step**: `Enable Frame Step`, `Step`, **Test Frame Count**
 - **Test Cameras**
 
 Veja [Render](Render.md).
-
-### Info
-
-Versão (lida do próprio add-on), autor, **Open Documentation**, **Changelog**, **Future Features** e **License**.
 
 ### Idioma
 
@@ -115,31 +115,33 @@ Se o idioma do Blender for português (Brasil ou Portugal), os painéis, tooltip
 
 ## Guia Básico
 
-- **1. Prepare a cena**
-  - Monte seu personagem / armadura e suas Actions ou NLA strips.
-  - Opcionalmente crie um **Light Pivot** (um Empty) e coloque suas luzes dentro dele.
-  - Salve o arquivo .blend se quiser usar uma pasta de saída relativa `//`.
+Um passo a passo curto para renderizar seus primeiros sprites. Os nomes abaixo são os botões e abas reais do add-on.
 
-- **2. Siga o Start Here (painel principal)**
-  - **Create** um preset de câmeras (ou **Detect** as câmeras que você já tem).
-  - **Detect Actions** / **Detect NLA Strips** (ou adicione intervalos de frames). Nos modos Actions e NLA defina a `Armature` em **2. Character & Animations**.
+1. **Prepare a cena**
+   - Monte seu personagem / armadura e suas Actions ou NLA strips.
+   - Opcionalmente crie um **Light Pivot** (um Empty) e coloque suas luzes dentro dele.
+   - Salve o arquivo .blend se quiser usar uma pasta de saída relativa `//`.
 
-- **3. Project & Output**
-  - Defina `Project Name`, `Object Name` e a `Output Folder`.
-  - Ajuste o `Output Name` e as opções de `Create Folders`. Confira "First image will be saved as:".
+2. **Câmeras** (aba **Cameras**)
+   - Clique em **Create Cameras** para criar um preset (escolha `Preset`, `Elevation`, `Distance`), ou em **Detect Cameras** para adicionar as câmeras que você já tem.
+   - Confira a lista de câmeras. Reordene com as setas (a ordem da lista é a ordem de render) e use **Test Cameras** (aba **Render**) para olhar por elas.
 
-- **4. Cameras e Light** (ajustes opcionais)
-  - Reordene as câmeras, defina `Output Name`s, `Elevation`, lente e shift.
-  - Habilite o Light Pivot e defina o objeto pivô.
+3. **Animações** (aba **Animations**)
+   - Escolha o `Animation Mode`. Nos modos Actions e NLA escolha primeiro a `Armature`.
+   - Clique em **Detect Actions** ou **Detect NLA Strips** (ou em `+` para um intervalo de frames) e deixe habilitadas só as animações que quiser.
 
-- **5. Render Settings**
-  - Leia o checklist e use os botões **Fix**. Defina a resolução e, se precisar, o Frame Step.
-  - Use **Test Cameras** e o **Animation Test** para conferir enquadramento e animação.
+4. **Saída** (aba **Setup**, seção **Project & Output**)
+   - Defina `Project Name`, `Object Name` e a `Output Folder`.
+   - Ajuste o `Output Name` e as opções de **Create Folders**. Confira "First image will be saved as:".
+   - Opcional: na seção **Light Pivot**, habilite o Light Pivot e escolha o `Object` pivô.
 
-- **6. Render**
-  - Clique em **Render All**, confira o diálogo de resumo e clique em **Render**.
-  - Acompanhe o progresso no painel principal. Pressione **ESC** ou **Cancel Render** para parar (depois do frame atual).
-  - Quando terminar, a cena volta ao que era (veja [Render](Render.md)).
+5. **Conferir** (aba **Render**)
+   - Leia o checklist e use os botões **Fix**. Defina a resolução e, se precisar, o **Frame Step**.
+
+6. **Renderizar**
+   - Clique em **Render All** (topo do painel), confira o diálogo de resumo e clique em **Render**.
+   - Acompanhe o progresso no topo do painel. Pressione **ESC** ou **Cancel Render** para parar (depois do frame atual).
+   - Quando terminar, a cena volta ao que era (veja [Render](Render.md)).
 
 ---
 

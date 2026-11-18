@@ -2,13 +2,13 @@
 
 This page explains how to configure cameras inside the **Sprite Render Tool**. For information about lighting and the Light Pivot system, see [Lighting](Lighting.md).
 
-Everything on this page is in the **3. Cameras** panel, except the resolution, which is in **5. Render Settings**.
+Everything on this page is in the **Cameras** tab, except the resolution, which is in the **Render** tab.
 
 ---
 
 ## Camera Creation Presets
 
-> **Location in add-on**: **3. Cameras** panel → **Create Cameras** box (also the **Create** button of **Start Here**)
+> **Location in add-on**: **Cameras** tab → **Create Cameras** box
 
 The **Create Cameras** box creates cameras from a preset:
 
@@ -38,7 +38,7 @@ The **Create Cameras** box creates cameras from a preset:
 
 ## Lens Settings
 
-> **Location in add-on**: **3. Cameras** panel → **Lens Settings** box
+> **Location in add-on**: **Cameras** tab → **Lens Settings** box
 
 Synchronized controls for all cameras of the list:
 
@@ -55,13 +55,13 @@ The values are applied to every camera of the list when you change them, when yo
 
 ![Lens Settings Expanded](/_static/images/SRT_LensSettings_Expanded.png)
 
-The **resolution** (`Resolution X / Y`) is in **5. Render Settings**; see [Render](Render.md).
+The **resolution** (`Resolution X / Y`) is in the **Render** tab; see [Render](Render.md).
 
 ---
 
 ## Camera List
 
-> **Location in add-on**: **3. Cameras** panel → **Cameras (render order)** box
+> **Location in add-on**: **Cameras** tab → **Cameras (render order)** box
 
 Below the **Custom Output Names** toggle you find the list of cameras:
 
@@ -74,7 +74,7 @@ The selected row shows:
 - `Camera`: the camera object (searchable field)
 - `Output Name`: name used in files and folders (only when **Custom Output Names** is on)
 - `Shift X` / `Y`: individual shift (only for the axes with **Desync Shift** pressed)
-- `Light Rotation Z` or `Light Rotation (XYZ)`: the rotation given to the Light Pivot for this camera (XYZ when **Enable Full Rotation (XYZ)** in **4. Light** is on)
+- `Light Rotation Z` or `Light Rotation (XYZ)`: the rotation given to the Light Pivot for this camera (XYZ when **Enable Full Rotation (XYZ)** in the **Light Pivot** section of the **Setup** tab is on)
 
 > The render checks the list before it starts: blank or missing cameras are an error in the checklist (with a **Remove them** button). See [Render](Render.md).
 
@@ -84,7 +84,7 @@ The selected row shows:
 
 ## Detecting Cameras Automatically
 
-> **Location in add-on**: **3. Cameras** panel → **Detect Cameras** button (also **Detect** in **Start Here**)
+> **Location in add-on**: **Cameras** tab → **Detect Cameras** button
 
 **Detect Cameras** (`sprite_render.autofill_light_rotation`) **adds** the cameras of the scene to the list. It never replaces what you already have:
 
@@ -136,7 +136,7 @@ Turn on **Custom Output Names** (below the lens settings) and fill `Output Name`
 
 ## Testing Cameras
 
-The **Test Cameras** button (`sprite_render.test_cameras`, in **5. Render Settings**) helps you preview your camera setup:
+The **Test Cameras** button (`sprite_render.test_cameras`, in the **Render** tab) helps you preview your camera setup:
 - It finds the current scene camera in the add-on list.
 - Selects the **next** camera in the list (cyclically) and makes it the scene camera.
 - Switches the 3D Viewport to camera view.

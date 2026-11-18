@@ -61,7 +61,7 @@ Após a instalação, você pode verificar se o add-on foi instalado corretament
 - **No 3D Viewport:**
   - Abra a sidebar pressionando `N` no 3D Viewport
   - Procure pela aba **Sprite Render**
-  - Você deve ver o painel principal e seus sub-painéis (1. Project & Output, 2. Character & Animations, 3. Cameras, 4. Light, 5. Render Settings, Info)
+  - Você deve ver o painel principal com o **Render All** no topo e os botões laterais de abas (Info, Setup, Cameras, Animations, Render)
 
 ---
 
@@ -141,7 +141,7 @@ Após a instalação bem-sucedida:
 
 1. **Configure seu Projeto**
    - Leia o [Guia Básico](index.md#guia-básico) na página principal
-   - Configure o Project Name e Object Name no painel **1. Project & Output**
+   - Configure o Project Name e Object Name na aba **Setup** (seção **Project & Output**)
 
 2. **Explore a Documentação**
    - [Câmeras](Cameras.md) - Como configurar câmeras

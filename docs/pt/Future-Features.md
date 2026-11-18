@@ -21,7 +21,7 @@ Esta página lista funcionalidades planejadas e melhorias para o **Sprite Render
 
 ### Melhorias de UI/UX
 
-- **Links de Ajuda Contextual**: toda propriedade e operador já tem um tooltip, e os sub-painéis têm um botão de ajuda. Ainda planejado:
+- **Links de Ajuda Contextual**: toda propriedade e operador já tem um tooltip, e as seções Project & Output, Light Pivot, Cameras, Animations e Render Settings têm um botão de ajuda. Ainda planejado:
   - Botões de ajuda que abrem a seção exata da documentação
   - Botões de documentação que abrem a wiki no idioma da interface do Blender (hoje sempre abrem o inglês)
 
