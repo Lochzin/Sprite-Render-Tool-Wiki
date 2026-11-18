@@ -50,7 +50,20 @@ Cada linha (`ActionItem`) tem:
 - `Action`: o nome da Action, escolhido com um campo com busca entre as Actions do arquivo.
 - `Start Frame`, `End Frame`.
 - Caixa de habilitado.
-- `Sync Secondary Armature`, `Secondary Armature`, `Secondary Action`: **não implementado**. O painel mostra "Sync Secondary: not implemented". Só o **Preview Action** toca a Action secundária; o **Render All a ignora**, e o checklist mostra um aviso se estiver ligado (com o botão **Turn off**).
+- `Sync Secondary Armature`: toca também uma segunda Action em outra armadura (por exemplo o cavaleiro de um cavalo), no preview **e no Render All**. Quando está marcado:
+  - `Armature (optional)`: a armadura secundária deste item. Vazio = o `Armature` da caixa **Sync Secondary** (abaixo).
+  - `Secondary Action`: a Action tocada pela armadura secundária. Ela precisa ter **os mesmos frames** da Action principal (não há loop nem clamp).
+  - Uma linha vermelha diz o que falta (sem armadura, sem Action, armadura secundária igual à principal, Action sem slot de objeto).
+
+### Caixa Sync Secondary
+
+> **Local no add-on**: aba **Animations** → **Use Actions** → abaixo do **Detect Actions**
+
+- `Armature`: a armadura secundária usada por todo item que não tem armadura própria (um campo para o caso comum de um cavaleiro; o campo por item serve só para cenas com várias armaduras secundárias).
+- `Prefix` / `Suffix`: a regra para achar a Action secundária de um item: **nome da secundária = prefixo + nome da principal + sufixo**. Prefixo `Rider`: `Idle` → `RiderIdle`, `Gallop` → `RiderGallop`. Sufixo `_Rider`: `Gallop` → `Gallop_Rider`.
+  - Primeiro tenta o nome exato. Se ele não existir, os nomes são comparados depois das regras do **Clean Action Names** (o prefixo `Armature|` / `Armature.001|` e o sufixo `|mixamo.com|Layer0` de FBX/Mixamo são ignorados, espaços = `_`), então `Armature|Gallop` encontra `Armature.001|RiderGallop|mixamo.com|Layer0`. Essa segunda comparação só vale se exatamente uma Action casar.
+- `Auto-fill on Detect Actions` (desligado por padrão): quando o **Detect Actions** roda, todo item cuja Action secundária for encontrada recebe `Sync Secondary Armature` ligado e essa `Secondary Action`. Os itens que são eles mesmos Actions secundárias (`RiderGallop`...) são **desabilitados**, porque renderizá-los na armadura principal não faz sentido. Itens sem correspondência ficam como estão.
+- **Match Secondary Actions** (`sprite_render.fill_secondary_actions`): faz o mesmo autopreenchimento agora, na lista como ela está (só habilitado com prefixo ou sufixo).
 
 **Detect Actions** (`sprite_render.detect_actions`):
 - **Adiciona** as Actions do arquivo que ainda não estão na lista. Linhas existentes mantêm o intervalo de frames e o estado de habilitado.
@@ -70,6 +83,7 @@ Quando o **Render All** roda no modo ACTIONS:
 - No início de **cada** par animação / câmera, a Action é atribuída à `Armature` e `use_nla` é desligado, para que a Action controle a pose. Isso inclui a primeira câmera de cada animação e configurações com uma única câmera.
 - Com as Actions com slots do Blender, se a armadura ficar sem Action Slot após a atribuição, o primeiro slot adequado é usado.
 - Uma Action que não existe é reportada como aviso e suas imagens contam como falhas (normalmente o checklist impede isso antes do render começar).
+- **Sync Secondary**: num item com ele ligado, a `Secondary Action` é atribuída à armadura secundária no início de cada par animação / câmera (o slot é escolhido como acima, e o `use_nla` dela é desligado). Um item sem Sync Secondary renderiza a armadura secundária como você a deixou (ela é reposta se uma animação anterior a mudou). Se a Action secundária não puder ser usada (sem armadura, sem Action, sem slot de objeto), o render mostra um aviso para aquela animação e a renderiza sem a Action secundária. As duas armaduras são restauradas no fim. Sync Secondary só é usado no modo **Use Actions** (para NLA, veja o workflow do cavalo com cavaleiro nos Guias).
 
 > **Dica**: se uma Action é detectada mas não toca, confira o **Action Slot** da armadura em **Properties** → **Object Properties** → **Animation**.
 
@@ -133,7 +147,7 @@ Renderiza intervalos de frames específicos sem armadura nem dados de animação
 Use para conferir uma animação antes de renderizar. Selecione uma linha primeiro.
 
 - **Preview Action** (`sprite_render.test_action`):
-  - Atribui a Action selecionada à armadura, desliga o NLA, ajusta início / fim da timeline e o frame atual ao intervalo da linha, aplica a Action secundária se configurada e inicia a reprodução. Se a timeline já estiver tocando, visualizar outro item a mantém tocando (nunca alterna a reprodução para parada).
+  - Atribui a Action selecionada à armadura, desliga o NLA, ajusta início / fim da timeline e o frame atual ao intervalo da linha, aplica a Action secundária se o Sync Secondary estiver ligado (mesmas regras do render; uma linha sem ele mostra a armadura secundária como você a deixou) e inicia a reprodução. Se a timeline já estiver tocando, visualizar outro item a mantém tocando (nunca alterna a reprodução para parada).
 - **Preview NLA Strip** (`sprite_render.test_nla_strip`):
   - Liga o NLA, retira a Action ativa, muta todas as strips exceto a selecionada, ajusta o intervalo da timeline e inicia a reprodução.
 - **Stop Preview** (`sprite_render.stop_preview`):

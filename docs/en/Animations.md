@@ -50,7 +50,20 @@ Each row (`ActionItem`) has:
 - `Action`: the Action name, chosen with a searchable field of the Actions of the file.
 - `Start Frame`, `End Frame`.
 - Enabled checkbox.
-- `Sync Secondary Armature`, `Secondary Armature`, `Secondary Action`: **not implemented**. The panel shows "Sync Secondary: not implemented". Only **Preview Action** plays the secondary action; **Render All ignores it**, and the checklist shows a warning if it is on (with a **Turn off** button).
+- `Sync Secondary Armature`: also play a second Action on another armature (for example the rider of a horse), in the preview **and in Render All**. When it is ticked:
+  - `Armature (optional)`: the secondary armature of this entry. Empty = the `Armature` of the **Sync Secondary** box (below).
+  - `Secondary Action`: the Action played by the secondary armature. It must have **the same frames** as the main Action (no loop or clamp is done).
+  - A red line tells what is missing (no armature, no Action, the secondary armature is the main one, the Action has no object slot).
+
+### Sync Secondary box
+
+> **Location in add-on**: **Animations** tab → **Use Actions** → below **Detect Actions**
+
+- `Armature`: the secondary armature used by every entry that has no armature of its own (one field for the common case of one rider; the per-entry field is only for scenes with several secondary armatures).
+- `Prefix` / `Suffix`: the rule to find the secondary Action of an entry: **secondary name = prefix + main name + suffix**. Prefix `Rider`: `Idle` → `RiderIdle`, `Gallop` → `RiderGallop`. Suffix `_Rider`: `Gallop` → `Gallop_Rider`.
+  - The exact name is tried first. If it does not exist, the names are compared after the **Clean Action Names** rules (the `Armature|` / `Armature.001|` prefix and `|mixamo.com|Layer0` suffix of FBX/Mixamo are ignored, spaces = `_`), so `Armature|Gallop` finds `Armature.001|RiderGallop|mixamo.com|Layer0`. That second match is used only if exactly one Action fits.
+- `Auto-fill on Detect Actions` (off by default): when **Detect Actions** runs, every entry whose secondary Action is found gets `Sync Secondary Armature` on and that `Secondary Action`. The entries that are secondary Actions themselves (`RiderGallop`...) are **disabled**, since rendering them on the main armature makes no sense. Entries without a match are left as they are.
+- **Match Secondary Actions** (`sprite_render.fill_secondary_actions`): does the same auto-fill now, on the list as it is (enabled only when there is a prefix or a suffix).
 
 **Detect Actions** (`sprite_render.detect_actions`):
 - **Adds** the Actions of the file that are not in the list yet. Existing rows keep their frame range and enabled state.
@@ -70,6 +83,7 @@ When **Render All** runs in ACTIONS mode:
 - At the start of **every** animation / camera pair, the Action is assigned to the `Armature` and `use_nla` is turned off, so the Action drives the pose. This includes the first camera of each animation and setups with a single camera.
 - With Blender's slotted Actions, if the armature has no Action Slot after the assignment, the first suitable slot is used.
 - An Action that does not exist is reported as a warning and its images are counted as failed (the checklist normally stops this before the render starts).
+- **Sync Secondary**: for an entry with it on, the `Secondary Action` is assigned to the secondary armature at the start of every animation / camera pair (the slot is picked as above, and `use_nla` is turned off on it). An entry without Sync Secondary renders the secondary armature as you left it (it is put back if a previous animation changed it). If the secondary Action cannot be used (no armature, no Action, no object slot) the render shows one warning for that animation and renders it without the secondary Action. Both armatures are restored at the end. Sync Secondary is only used in **Use Actions** mode (for NLA, see the horse-and-rider workflow in the Guides).
 
 > **Tip**: if an Action is detected but does not play, check the **Action Slot** of the armature in **Properties** → **Object Properties** → **Animation**.
 
@@ -133,7 +147,7 @@ Renders specific frame ranges without armature or animation data. **It renders t
 Use it to check an animation before rendering. Select a row first.
 
 - **Preview Action** (`sprite_render.test_action`):
-  - Assigns the selected Action to the armature, turns off NLA, sets the timeline start / end and current frame to the row's range, applies the secondary Action if configured, and starts playback. If the timeline is already playing, previewing another item keeps it playing (it never toggles playback off).
+  - Assigns the selected Action to the armature, turns off NLA, sets the timeline start / end and current frame to the row's range, applies the secondary Action if Sync Secondary is on (same rules as the render; a row without it shows the secondary armature as you left it), and starts playback. If the timeline is already playing, previewing another item keeps it playing (it never toggles playback off).
 - **Preview NLA Strip** (`sprite_render.test_nla_strip`):
   - Turns NLA on, takes the active Action off, mutes every strip except the selected one, sets the timeline range and starts playback.
 - **Stop Preview** (`sprite_render.stop_preview`):

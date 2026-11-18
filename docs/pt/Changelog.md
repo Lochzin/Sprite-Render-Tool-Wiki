@@ -7,8 +7,9 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 ## [0.3.12] - 2026
 
 ### Adicionado
+- **Sync Secondary no render** (modo Actions): um item com `Sync Secondary Armature` ligado agora anima também uma segunda armadura (por exemplo o cavaleiro de um cavalo) no **Render All**, não só no preview. A Action secundária precisa ter os mesmos frames da principal. Uma caixa **Sync Secondary** abaixo do Detect Actions tem um `Armature` global, uma regra de `Prefix` / `Suffix` (prefixo `Rider`: `Gallop` -> `RiderGallop`), **Auto-fill on Detect Actions** (desligado por padrão) e **Match Secondary Actions**; o checklist avisa sobre itens que não podem ser sincronizados. Veja [Animações](Animations.md)
 - **Validação antes de renderizar**: um checklist no topo de **5. Render Settings** ("Ready to render?" / "Fix these before rendering")
-  - Verifica: Target Armature (Actions/NLA), lista de animações vazia, nenhuma animação habilitada, Actions/NLA strips em branco ou inexistentes, frame final antes do inicial, sem câmeras, objetos de câmera em branco ou inexistentes, `$frame` ausente do Output Name, colisões de nomes de saída, pasta de saída (vazia, não é pasta, sem permissão de escrita, será criada), formato de imagem diferente de PNG, modo de cor diferente de RGBA, Film > Transparent desligado, Resolution % diferente de 100, Sync Secondary ligado (não implementado no render)
+  - Verifica: Target Armature (Actions/NLA), lista de animações vazia, nenhuma animação habilitada, Actions/NLA strips em branco ou inexistentes, frame final antes do inicial, sem câmeras, objetos de câmera em branco ou inexistentes, `$frame` ausente do Output Name, colisões de nomes de saída, pasta de saída (vazia, não é pasta, sem permissão de escrita, será criada), formato de imagem diferente de PNG, modo de cor diferente de RGBA, Film > Transparent desligado, Resolution % diferente de 100, problemas do Sync Secondary (sem armadura / Action / slot, duração diferente)
   - A maioria dos problemas tem um botão **Fix** de um clique (Add $frame, Remove them, Disable them, Swap start/end, Use PNG, Use RGBA, Turn on, Set 100%, Turn off)
   - Também mostra "N image(s): A anim x C cam" e uma estimativa de tempo
   - **O Render All fica desabilitado** (cinza, o tooltip mostra o primeiro problema) enquanto houver erros; avisos não bloqueiam
@@ -60,7 +61,7 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 - **Pasta de saída relativa sem `//`** (por exemplo `sprites`) era resolvida a partir da pasta de trabalho do Blender; agora é relativa ao arquivo .blend
 - **Caracteres inválidos na pasta de saída** no Windows (`< > : " | ? *`) agora são um erro no checklist
 - **Cancelar depois do último frame** agora conta como render completo
-- **Sync Secondary**: a UI e o checklist agora informam que ele só é usado pelo preview
+- **Segunda armadura não animada no render**: o Sync Secondary só era usado pelo preview; agora funciona no Render All (veja Adicionado)
 
 ### Detalhes Técnicos
 - `operators.py` foi dividido no pacote `sprite_render_tool/operators/` (`animations`, `cameras`, `docs`, `helpers`, `paths`, `preview`, `render`, `scene_state`, `validation`); os mesmos 36 operadores e os mesmos `bl_idname`. Os dez operadores de documentação são gerados por uma única função

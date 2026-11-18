@@ -29,7 +29,8 @@ O add-on confere sua configuração o tempo todo e lista os problemas aqui. O ca
 
 | Problema | Botão Fix |
 | --- | --- |
-| Sync Secondary ligado (o render não o usa) | **Turn off** |
+| Sync Secondary ligado, mas o item não tem armature secundário, o armature secundário é o próprio `Armature`, não há Action secundária ou essa Action não tem slot de objeto (o item renderiza sem a Action secundária) | **Turn off** (só nesses itens) |
+| A Action secundária não tem o mesmo número de frames da principal | – |
 | Variável desconhecida no `Output Name` (ela é mantida como texto) | – |
 | Modo **Frame Ranges** com uma Action ativa na `Armature`: ela tocará em todos os intervalos | – |
 | Modo de cor diferente de RGBA (o PNG fica sem alfa) | **Use RGBA** |

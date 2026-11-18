@@ -29,7 +29,8 @@ The add-on checks your setup all the time and lists the problems here. The heade
 
 | Problem | Fix button |
 | --- | --- |
-| Sync Secondary is on (it is not used by the render) | **Turn off** |
+| Sync Secondary is on but the entry has no secondary armature, the secondary armature is the `Armature` itself, there is no secondary Action, or that Action has no object slot (the entry renders without the secondary Action) | **Turn off** (only those entries) |
+| The secondary Action does not have the same number of frames as the main one | – |
 | Unknown placeholder in the `Output Name` (it is kept as text) | – |
 | **Frame Ranges** mode with an active Action on the `Armature`: it will play in every range | – |
 | Color mode is not RGBA (the PNG has no alpha) | **Use RGBA** |

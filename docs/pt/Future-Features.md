@@ -10,8 +10,6 @@ Esta página lista funcionalidades planejadas e melhorias para o **Sprite Render
 
 - **Modo Sub-Actions**: Suporte para a funcionalidade de sub-actions do Blender (introduzida no Blender 4.4). Este novo modo de animação permitirá que os usuários trabalhem com sub-actions, que fornecem uma forma de organizar e gerenciar hierarquias de animação complexas dentro de uma única action. Esta funcionalidade complementará os modos existentes ACTIONS, NLA, STATIC e FRAME_RANGES, fornecendo mais flexibilidade para fluxos de trabalho de animação avançados.
 
-- **Sincronização de Armadura Secundária**: Implementação completa da funcionalidade de sincronização de armadura secundária. Atualmente, a UI tem placeholders para `sync_secondary`, `secondary_armature` e `secondary_action`, mas a funcionalidade ainda não está totalmente implementada.
-
 ### Funcionalidades de Configuração de Câmeras
 
 - **Presets de Câmeras Salvos**: o add-on já tem os presets prontos, o preset Custom (N câmeras em 360 graus) e `Elevation` / `Target Height` / `Distance`. Ainda planejado:

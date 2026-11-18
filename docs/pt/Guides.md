@@ -380,11 +380,32 @@ Linhas: `Spin` (front), `Bounce` (front) e as 4 imagens de `Test` (front, right,
 
 **Quando usar.** Montarias, veículos com motorista, personagem com arma ou pet em outro rig.
 
-**O que o add-on faz com dois armatures.** O add-on aplica Actions/strips só ao armature do campo `Armature`. O segundo armature fica com o que já tinha. (A opção **Sync Secondary** da lista de Actions aparece como *not implemented*; só é usada na pré-visualização.) Três fatos conferidos na cena de teste (`Horse_Armature` + `Rider_Armature`):
+**O que o add-on faz com dois armatures.** O add-on aplica Actions/strips ao armature do campo `Armature`. Sem mais nada, o segundo armature fica com o que já tinha: no modo **Use Actions** com `Armature` = `Horse_Armature`, o cavalo galopa mas o cavaleiro **mantém sua própria Action ativa (`RiderIdle`)** em todos os frames. Duas formas de mover os dois:
 
-- **Detect Actions lista todas as Actions de objeto do arquivo inteiro**: `Gallop`, `GallopFast`, `Idle` do cavalo **e** `RiderGallop`, `RiderGallopFast`, `RiderIdle` do cavaleiro. Desmarque as que não quer (**Disable All** e depois marque as certas, ou o botão `-`).
-- No modo **Use Actions** com `Armature` = `Horse_Armature`, o cavalo galopa mas o cavaleiro **mantém sua própria Action ativa (`RiderIdle`)** em todos os frames. Não fica sincronizado.
-- A solução confiável é o **modo NLA** com os dois armatures organizados igualmente na timeline.
+- **Opção A (a mais simples): Use Actions + Sync Secondary.** Cada Action do cavalo tem uma Action do cavaleiro com os mesmos frames (`Gallop` + `RiderGallop`...). O add-on atribui as duas no início de cada animação.
+- **Opção B: modo NLA**, com os dois armatures organizados igualmente na timeline.
+
+### Opção A: Use Actions + Sync Secondary
+
+Requisito: **a Action do cavaleiro tem exatamente os mesmos frames da Action do cavalo** (mesmo início e fim). Os nomes seguem uma regra: Action do cavaleiro = prefixo + Action do cavalo (`Rider` + `Gallop` = `RiderGallop`).
+
+| Onde | Campo | Valor |
+| --- | --- | --- |
+| Aba **Animations** | `Animation Mode` / `Armature` | `Use Actions` / `Horse_Armature` (o **cavalo**) |
+| Aba **Animations** > caixa **Sync Secondary** | `Armature` | `Rider_Armature` |
+| Aba **Animations** > caixa **Sync Secondary** | `Prefix` / `Suffix` | `Rider` / vazio |
+| Aba **Animations** > caixa **Sync Secondary** | `Auto-fill on Detect Actions` | marcado |
+| Aba **Animations** | **Detect Actions** | lista as seis Actions; `Gallop`, `GallopFast`, `Idle` recebem Sync Secondary com `RiderGallop`, `RiderGallopFast`, `RiderIdle`, e os três itens `Rider…` ficam **desabilitados** |
+
+A mensagem diz, por exemplo, *Sync Secondary: 3 filled, 0 without a secondary action, 3 secondary action entries disabled.* Se a lista já existe, use **Match Secondary Actions** em vez do Detect Actions. Também dá para configurar à mão: selecione um item, marque `Sync Secondary Armature` e escolha a `Secondary Action` (o campo `Armature (optional)` substitui o `Armature` da caixa só para aquele item).
+
+Conferido na cena de teste (Blender 5.1.2, 2 câmeras, `Gallop` + `GallopFast`, frame step 4): com Sync Secondary o cavaleiro se inclina para a frente e segura as rédeas numa pose diferente a cada frame; sem ele o cavaleiro fica ereto na mesma pose de idle. Depois do render, os dois armatures voltaram com a Action e o slot originais (`Idle` / `RiderIdle`) e a timeline não mudou.
+
+O checklist avisa (com **Turn off** para os itens com problema) quando um item não tem armature secundário, quando ele é o mesmo do `Armature`, quando não há Action secundária, quando essa Action não tem slot de objeto e quando as duas Actions têm números de frames diferentes.
+
+### Opção B: modo NLA
+
+- **Detect Actions lista todas as Actions de objeto do arquivo inteiro**: `Gallop`, `GallopFast`, `Idle` do cavalo **e** `RiderGallop`, `RiderGallopFast`, `RiderIdle` do cavaleiro (no modo NLA você não precisa dessa lista).
 
 **Configuração no Blender (editor NLA).** Dê aos **dois** armatures as mesmas strips nos mesmos frames, numa track cada, e limpe a Action ativa dos dois (push down das Actions):
 
@@ -428,7 +449,7 @@ Linhas 1–2: o primeiro frame de `Gallop` em cada direção. Linha 3: `GallopFa
 **Dicas e armadilhas**
 
 - **Sempre limpe a Action ativa do cavaleiro** quando usar NLA. Se o cavaleiro mantém uma Action ativa (`RiderIdle`) junto das suas NLA strips, a Action ativa é avaliada por cima e o cavaleiro fica na pose de idle (medido no teste: a pose do cavaleiro no frame 5 é a de idle, não a de galope).
-- As strips dos dois armatures precisam começar nos mesmos frames: o cavaleiro não é controlado pelo add-on, ele só segue a timeline enquanto o add-on move as strips do cavalo.
+- No modo NLA as strips dos dois armatures precisam começar nos mesmos frames: o cavaleiro não é controlado pelo add-on, ele só segue a timeline enquanto o add-on move as strips do cavalo. (Sync Secondary só funciona no modo **Use Actions**.)
 - Detect NLA Strips só lê o armature **alvo**. Escolha o que tem as strips que você quer listar.
 - Se você só precisa do cavalo (ou o cavaleiro fica numa pose só), **Use Actions** basta: `Armature` = `Horse_Armature`, desmarque as três Actions `Rider…`.
 - Os dois armatures são restaurados quando o render termina (no teste os dois voltaram com as strips e sem Actions ativas exatamente como antes).
