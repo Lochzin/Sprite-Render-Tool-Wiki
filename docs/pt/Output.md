@@ -18,6 +18,8 @@ O ponto de partida é o campo **Output Folder** (`output_dir`, padrão `//sprite
 - O campo é usado exatamente como digitado (não é "limpo").
 - No Windows, caracteres que o sistema não aceita em um caminho (`< > : " | ? *`, exceto o `:` da unidade) são um erro no checklist.
 
+![Pasta de saída, modelo de nome, prévia da primeira imagem e opções de pastas](/_static/images/SRT_OutputFolder.png)
+
 ### Modo legado (Output Folder vazio)
 
 Se você deixar `Output Folder` **vazio**, o add-on usa o **Output Path** da cena (Output Properties > `scene.render.filepath`; ele aparece no painel como um segundo campo). Neste modo valem as regras antigas de limpeza, e a pasta precisa já existir:

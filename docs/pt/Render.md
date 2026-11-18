@@ -40,11 +40,17 @@ Uma linha de **informação** aparece quando a pasta de saída ainda não existe
 
 No final, o checklist mostra `N image(s): A anim x C cam` e, depois que um render terminou nesta sessão do Blender, o `~tempo estimado`.
 
+![Checklist com um erro que bloqueia o Render All](/_static/images/SRT_RenderChecklist_Error.png)
+
+![Checklist com um aviso e o botão de correção Turn on](/_static/images/SRT_RenderChecklist_Warning.png)
+
 ---
 
 ## Render Settings
 
 > **Localização no add-on**: aba **Render**
+
+![Aba Render: checklist, resolução e Frame Step](/_static/images/SRT_RenderTab.png)
 
 ### Resolution
 
@@ -92,6 +98,8 @@ Clicar em **Render All** abre um resumo antes de renderizar qualquer coisa:
 
 Clique em **Render** para iniciar, ou feche o diálogo para cancelar.
 
+![Diálogo de confirmação do Render All (imagens, destino, tempo estimado)](/_static/images/SRT_ConfirmDialog.png)
+
 ### Durante o render
 
 - O botão **Render All** é trocado por uma barra de progresso (`Rendering atual/total (porcentagem%)`), uma linha de status (`'animação' frame N, camera 'nome' (~tempo restante)`) e **Cancel Render**. Eles aparecem com qualquer aba aberta.
@@ -100,6 +108,8 @@ Clique em **Render** para iniciar, ou feche o diálogo para cancelar.
 - **ESC** ou **Cancel Render** param o render **depois da imagem atual**. Se o cancelamento chegar depois da última imagem, o render conta como completo.
 - **Ctrl+Z fica bloqueado** durante o render. Só um render roda por vez.
 - Se você fechar a janela ou carregar outro arquivo, o render termina e a cena é restaurada.
+
+![Barra de progresso e linha de status durante o render](/_static/images/SRT_RenderProgress.png)
 
 ### Como funciona
 

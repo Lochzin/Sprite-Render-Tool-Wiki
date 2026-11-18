@@ -43,6 +43,8 @@ Quando funciona, ele **adiciona** as câmeras novas e mantém as linhas existent
 **P: O Create Cameras pergunta "Replace cameras?". Ele vai apagar minhas câmeras?**  
 **R:** Não. Ele só apaga as câmeras que o add-on criou numa execução anterior. Suas próprias câmeras nunca são apagadas, mesmo com nome parecido (a nova câmera ganha o sufixo `.001`).
 
+![Cinco câmeras criadas em volta do personagem com o preset de 5 câmeras](/_static/images/SRT_Scene_Cameras.png)
+
 ---
 
 ## Animações
@@ -88,6 +90,8 @@ Quando funciona, ele **adiciona** as câmeras novas e mantém as linhas existent
 
 **P: O painel diz "renderizando" mas nada está renderizando.**  
 **R:** Clique em **Cancel Render** para zerar o estado. O estado também é zerado quando o add-on é ativado e quando um arquivo é carregado.
+
+![Checklist com um erro que bloqueia o Render All](/_static/images/SRT_RenderChecklist_Error.png)
 
 ---
 

@@ -6,6 +6,38 @@ Este documento lista todas as sugestões de GIFs animados e imagens estáticas q
 
 ## 📸 IMAGENS ESTÁTICAS — Screenshots da Interface
 
+### 🆕 Atualização de prints (UI do add-on 0.3.12, Blender 5.1.2, tema e idioma padrão)
+
+Todos os PNG abaixo foram recapturados da interface real do add-on (cena de teste: cavalo + cavaleiro, 5 câmeras, 3 actions). Os caminhos mostrados são neutros (`S:\Sprites\Render`, `D:\Sprites\Render`).
+
+**Substituídos (mesmo conteúdo, UI nova):** `SRT_Sidebar.png`, `SRT_InfoTab.png`, `SRT_SetupTab.png`, `SRT_CameraTab.png`, `SRT_AnimationTab.png`, `SRT_RenderTab.png`, `SRT_LensSettings_Expanded.png`, `SRT_CameraList_Expanded.png`, `SRT_AnimationTest_Expanded.png`.
+
+**Novos (✅ feitos e referenciados em `docs/en` e `docs/pt`):**
+
+| Imagem | Mostra | Usada em |
+| --- | --- | --- |
+| `SRT_AddonPref_Enabled.png` | Add-on 0.3.12 ativado em Preferences → Add-ons | Installation |
+| `SRT_OutputFolder.png` | Project & Output: pasta, modelo, prévia da 1ª imagem, pastas, *Clean Action Names*, *Restart Frame Numbering* | Output |
+| `SRT_RenderChecklist_Error.png` | Checklist com erro que bloqueia o Render All | Render, FAQ |
+| `SRT_RenderChecklist_Warning.png` | Checklist com aviso e botão de correção | Render |
+| `SRT_ConfirmDialog.png` | Diálogo do Render All (imagens, destino, ETA, sobrescrita) | Render |
+| `SRT_RenderProgress.png` | Barra de progresso, status e Cancel Render | Render |
+| `SRT_CreateCameras.png` | Caixa Create Cameras (preset, elevação, altura, distância) | Cameras |
+| `SRT_Scene_Cameras.png` | Viewport com as 5 câmeras em volta do personagem | Cameras, FAQ |
+| `SRT_ActionsList.png` | Lista de actions após Detect Actions | Animations |
+| `SRT_LightPivot.png` | Seção Light Pivot da aba Setup | Lighting |
+
+As imagens de aba (`InfoTab`, `SetupTab`, `CameraTab`, `AnimationTab`, `RenderTab`) agora também aparecem em `index.md` (en/pt) e no início de `Cameras.md`, `Animations.md` (e `RenderTab` em `Render.md`).
+
+**Mantido de propósito:** `SRT_AddonPref.png` continua sendo o print anotado (números 1–6) da v0.3.11, porque a legenda de `Installation.md` depende dos números; só a versão exibida (0.3.11) está defasada. Para atualizar, regravar com os mesmos números.
+
+**Ainda pendentes:** `SRT_OutputPlaceholders_Expanded.png` e `SRT_AdditionalResources_Expanded.png` (prioridade baixa, não capturados).
+
+**GIFs que podem estar desatualizados** (não regravados; gravados antes da reorganização da UI, conferir layout, ícones das abas e botões):
+- `SRT_DetectActions.gif` — o botão e a lista mudaram de posição/aparência.
+- `SRT_FrameControls.gif` — o bloco *Frame Control* agora fica dentro de *Animation Test*.
+- `SRT_PreviewNLA.gif` — *Preview NLA Strip* / *Stop Preview* / *Restore Scene* foram reescritos.
+
 ### ✅ Imagens Já Adicionadas
 
 As seguintes imagens já foram adicionadas à documentação:

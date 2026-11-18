@@ -40,11 +40,17 @@ An **info** line appears when the output folder does not exist yet and will be c
 
 At the bottom, the checklist shows `N image(s): A anim x C cam` and, once a render has finished in this Blender session, `~estimated time`.
 
+![Checklist with an error that blocks Render All](/_static/images/SRT_RenderChecklist_Error.png)
+
+![Checklist with a warning and the Turn on fix button](/_static/images/SRT_RenderChecklist_Warning.png)
+
 ---
 
 ## Render Settings
 
 > **Location in add-on**: **Render** tab
+
+![Render tab: checklist, resolution and Frame Step](/_static/images/SRT_RenderTab.png)
 
 ### Resolution
 
@@ -92,6 +98,8 @@ Clicking **Render All** opens a summary before anything is rendered:
 
 Click **Render** to start, or close the dialog to cancel.
 
+![Render All confirmation dialog (images, destination, ETA)](/_static/images/SRT_ConfirmDialog.png)
+
 ### While rendering
 
 - The **Render All** button is replaced by a progress bar (`Rendering current/total (percent%)`), a status line (`'animation' frame N, camera 'name' (~time left)`) and **Cancel Render**. They are visible with any tab open.
@@ -100,6 +108,8 @@ Click **Render** to start, or close the dialog to cancel.
 - **ESC** or **Cancel Render** stop the render **after the current image**. If the cancel arrives after the last image, the render counts as complete.
 - **Ctrl+Z is blocked** during the render. Only one render can run at a time.
 - If you close the window or load another file, the render ends and the scene is restored.
+
+![Progress bar and status line while rendering](/_static/images/SRT_RenderProgress.png)
 
 ### How it works
 

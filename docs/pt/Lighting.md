@@ -27,6 +27,8 @@ Detalhes técnicos:
 - A rotação do pivô é restaurada quando o render termina
 ```
 
+![Seção Light Pivot da aba Setup](/_static/images/SRT_LightPivot.png)
+
 ### Toggle Enable Light Pivot
 
 O add-on inclui uma propriedade booleana `enable_light_pivot` para controlar a funcionalidade de pivô de luz:

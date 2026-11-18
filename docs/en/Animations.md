@@ -2,6 +2,8 @@
 
 This page explains how the **Sprite Render Tool** handles animations in the four modes: **ACTIONS**, **NLA**, **STATIC**, and **FRAME_RANGES**.
 
+![Animations tab with the action list](/_static/images/SRT_AnimationTab.png)
+
 ---
 
 ## Animation Modes
@@ -56,6 +58,8 @@ Each row (`ActionItem`) has:
 - A message reports how many were added (and how many static poses were added disabled) and warns if some rows point to Actions that no longer exist.
 
 ![Detect Actions](/_static/images/SRT_DetectActions.gif)
+
+![Action list after Detect Actions](/_static/images/SRT_ActionsList.png)
 
 ### Rendering in ACTIONS Mode
 
@@ -139,6 +143,8 @@ Use it to check an animation before rendering. Select a row first.
 ![Preview NLA Strip](/_static/images/SRT_PreviewNLA.gif)
 
 ![Frame Navigation Controls](/_static/images/SRT_FrameControls.gif)
+
+![Animation Test expanded with Preview Action and Frame Control](/_static/images/SRT_AnimationTest_Expanded.png)
 
 ---
 

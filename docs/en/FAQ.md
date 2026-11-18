@@ -43,6 +43,8 @@ When it works it **adds** the new cameras and keeps your existing rows (order, `
 **Q: Create Cameras asks "Replace cameras?". Will it delete my cameras?**  
 **A:** No. It only deletes the cameras that the add-on created in a previous run. Your own cameras are never deleted, even if they have a similar name (the new camera gets a `.001` suffix instead).
 
+![Five cameras created around the character with the 5-camera preset](/_static/images/SRT_Scene_Cameras.png)
+
 ---
 
 ## Animations
@@ -88,6 +90,8 @@ When it works it **adds** the new cameras and keeps your existing rows (order, `
 
 **Q: The panel says "rendering" but nothing is rendering.**  
 **A:** Click **Cancel Render** to reset the state. The state is also reset when the add-on is enabled and when a file is loaded.
+
+![Checklist with an error that blocks Render All](/_static/images/SRT_RenderChecklist_Error.png)
 
 ---
 

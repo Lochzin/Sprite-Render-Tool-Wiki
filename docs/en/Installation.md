@@ -63,6 +63,10 @@ After installation, you can verify that the add-on was installed correctly:
   - Look for the **Sprite Render** tab
   - You should see the main panel with **Render All** at the top and the side tab buttons (Info, Setup, Cameras, Animations, Render)
 
+![Sprite Render Tool enabled in Preferences → Add-ons (v0.3.12)](/_static/images/SRT_AddonPref_Enabled.png)
+
+![Sprite Render panel: Render All and the icon tabs](/_static/images/SRT_Sidebar.png)
+
 ---
 
 ## Updating the Add-on

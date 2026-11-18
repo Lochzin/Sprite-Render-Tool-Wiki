@@ -4,6 +4,8 @@ This page explains how to configure cameras inside the **Sprite Render Tool**. F
 
 Everything on this page is in the **Cameras** tab, except the resolution, which is in the **Render** tab.
 
+![Cameras tab: Create Cameras, Lens Settings and camera list](/_static/images/SRT_CameraTab.png)
+
 ---
 
 ## Camera Creation Presets
@@ -33,6 +35,10 @@ The **Create Cameras** box creates cameras from a preset:
 - The add-on remembers which cameras it created (they are marked internally). The next time you click **Create Cameras**, **only those cameras are deleted and recreated**, and Blender asks you to confirm first ("Replace cameras?"). Cameras you made yourself are never deleted
 
 > **Name conflicts**: preset cameras are named `Camera_Front`, `Camera_Right`, `Camera_Back`, `Camera_Left`, `Camera_FrontRight`, `Camera_BackRight`, `Camera_BackLeft` and `Camera_FrontLeft`. If your scene already has an object with one of these names, **it is left untouched** and Blender names the new camera with a suffix (for example `Camera_Front.001`). The list and the file names use the real name of the new camera.
+
+![Create Cameras box with preset, elevation, target height and distance](/_static/images/SRT_CreateCameras.png)
+
+![Five cameras created around the character with the 5-camera preset](/_static/images/SRT_Scene_Cameras.png)
 
 ---
 

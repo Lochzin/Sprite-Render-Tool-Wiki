@@ -61,6 +61,8 @@ The tabs, from top to bottom, are: Info, Setup, Cameras, Animations, Render. The
 
 Version (read from the add-on), author, **Open Documentation**, **Changelog**, **Future Features** and **License**.
 
+![Info tab](/_static/images/SRT_InfoTab.png)
+
 ### Setup tab
 
 - **Project & Output** section:
@@ -75,6 +77,8 @@ Version (read from the add-on), author, **Open Documentation**, **Changelog**, *
 
 See [Output](Output.md) and [Lighting](Lighting.md).
 
+![Setup tab: Project & Output, Light Pivot and Armature](/_static/images/SRT_SetupTab.png)
+
 ### Cameras tab
 
 - **Create Cameras** box: `Preset`, `Cameras` (only for the Custom preset), `Elevation`, `Target Height`, `Distance`, **Create Cameras**
@@ -84,6 +88,8 @@ See [Output](Output.md) and [Lighting](Lighting.md).
 - **Cameras (render order)**: the list with `+`, `-`, move up / down and a "view through camera" icon per row; the selected camera has `Camera`, `Output Name` (when Custom Output Names is on), per-camera Shift (when desynced) and `Light Rotation`
 
 See [Cameras](Cameras.md).
+
+![Cameras tab: Create Cameras, Lens Settings and camera list](/_static/images/SRT_CameraTab.png)
 
 ### Animations tab
 
@@ -95,6 +101,8 @@ See [Cameras](Cameras.md).
 
 See [Animations](Animations.md).
 
+![Animations tab with the action list](/_static/images/SRT_AnimationTab.png)
+
 ### Render tab
 
 **Render Settings** section:
@@ -104,6 +112,8 @@ See [Animations](Animations.md).
 - **Test Cameras**
 
 See [Render](Render.md).
+
+![Render tab: checklist, resolution and Frame Step](/_static/images/SRT_RenderTab.png)
 
 ### Language
 

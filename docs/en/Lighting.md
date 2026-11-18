@@ -27,6 +27,8 @@ Technical details:
 - The pivot rotation is restored when the render ends
 ```
 
+![Light Pivot section of the Setup tab](/_static/images/SRT_LightPivot.png)
+
 ### Enable Light Pivot Toggle
 
 The add-on includes an `enable_light_pivot` boolean property to control the light pivot feature:

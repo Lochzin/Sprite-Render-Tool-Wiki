@@ -63,6 +63,8 @@ Com o Blender em português, os nomes aparecem traduzidos. Esta wiki usa os nome
 
 Versão (lida do próprio add-on), autor, **Open Documentation**, **Changelog**, **Future Features** e **License**.
 
+![Aba Info](/_static/images/SRT_InfoTab.png)
+
 ### Aba Setup
 
 - Seção **Project & Output**:
@@ -77,6 +79,8 @@ Versão (lida do próprio add-on), autor, **Open Documentation**, **Changelog**,
 
 Veja [Output](Output.md) e [Lighting](Lighting.md).
 
+![Aba Setup: Project & Output, Light Pivot e Armature](/_static/images/SRT_SetupTab.png)
+
 ### Aba Cameras
 
 - Caixa **Create Cameras**: `Preset`, `Cameras` (só no preset Custom), `Elevation`, `Target Height`, `Distance`, **Create Cameras**
@@ -86,6 +90,8 @@ Veja [Output](Output.md) e [Lighting](Lighting.md).
 - **Cameras (render order)**: a lista com `+`, `-`, mover para cima / baixo e um ícone "ver pela câmera" em cada linha; a câmera selecionada mostra `Camera`, `Output Name` (com Custom Output Names ligado), Shift individual (quando dessincronizado) e `Light Rotation`
 
 Veja [Cameras](Cameras.md).
+
+![Aba Cameras: Create Cameras, Lens Settings e lista de câmeras](/_static/images/SRT_CameraTab.png)
 
 ### Aba Animations
 
@@ -97,6 +103,8 @@ Veja [Cameras](Cameras.md).
 
 Veja [Animations](Animations.md).
 
+![Aba Animations com a lista de actions](/_static/images/SRT_AnimationTab.png)
+
 ### Aba Render
 
 Seção **Render Settings**:
@@ -106,6 +114,8 @@ Seção **Render Settings**:
 - **Test Cameras**
 
 Veja [Render](Render.md).
+
+![Aba Render: checklist, resolução e Frame Step](/_static/images/SRT_RenderTab.png)
 
 ### Idioma
 

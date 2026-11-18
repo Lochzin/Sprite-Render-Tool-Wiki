@@ -18,6 +18,8 @@ The starting point is the **Output Folder** field (`output_dir`, default `//spri
 - The field is used exactly as typed (it is not "cleaned").
 - On Windows, characters that the system does not allow in a path (`< > : " | ? *`, except the drive colon) are an error in the checklist.
 
+![Output folder, name template, first-image preview and folder options](/_static/images/SRT_OutputFolder.png)
+
 ### Legacy mode (empty Output Folder)
 
 If you leave `Output Folder` **empty**, the add-on uses the scene's **Output Path** (Output Properties > `scene.render.filepath`; it is shown in the panel as a second field). In this mode the old cleaning rules apply, and the folder must already exist:
