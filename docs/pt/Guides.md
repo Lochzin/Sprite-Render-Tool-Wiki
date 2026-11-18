@@ -41,8 +41,8 @@ O botão **Render All** fica sempre no topo do painel. A coluna de ícones à es
 
 O Light Pivot faz a luz girar junto com as câmeras, para que todas as direções sejam iluminadas do mesmo jeito. Faça isso **antes** de criar as câmeras.
 
-1. Adicione um **Empty** no centro do personagem (o teste usa `LightPivot` na origem, onde o personagem fica).
-2. Faça a sua luz (`Sun`) **filha** do Empty: selecione a luz, depois o Empty (ativo), `Ctrl+P` > **Object (Keep Transform)**. Aponte a luz como quiser para a câmera **front**.
+1. Adicione um **Empty** na **mesma posição do personagem**. O recomendado é que ambos fiquem no **centro do mundo** (origem, `0, 0, 0`); o teste usa `LightPivot` na origem, onde o personagem fica.
+2. Faça a sua luz (`Sun`) **filha** do Empty: selecione a luz, depois o Empty (ativo), `Ctrl+P` > **Object (Keep Transform)**. Aponte a luz como quiser para a câmera **front**. Você pode ter **quantas luzes quiser** como filhas do mesmo Empty; todas giram juntas com as câmeras.
 3. Aba **Setup** > seção **Light Pivot**: marque `Enable Light Pivot` e escolha `Object` = `LightPivot`.
 
 ![Aba Setup, seção Light Pivot](/_static/images/SRT_LightPivot.png)

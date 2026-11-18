@@ -41,8 +41,8 @@ The **Render All** button is always at the top of the panel. The icon column on 
 
 The Light Pivot makes the light turn together with the cameras, so every direction is lit the same way. Do this **before** creating the cameras.
 
-1. Add an **Empty** at the center of the character (the test uses `LightPivot` at the origin, where the character stands).
-2. Make your light (`Sun`) a **child** of the Empty: select the light, then the Empty (active), `Ctrl+P` > **Object (Keep Transform)**. Aim the light as you want it for the **front** camera.
+1. Add an **Empty** at the **same position as the character**. It is recommended that both sit at the **world center** (origin, `0, 0, 0`); the test uses `LightPivot` at the origin, where the character stands.
+2. Make your light (`Sun`) a **child** of the Empty: select the light, then the Empty (active), `Ctrl+P` > **Object (Keep Transform)**. Aim the light as you want it for the **front** camera. You can add **as many lights as you want** as children of the same Empty; they all turn together with the cameras.
 3. **Setup** tab > **Light Pivot** section: tick `Enable Light Pivot` and choose `Object` = `LightPivot`.
 
 ![Setup tab, Light Pivot section](/_static/images/SRT_LightPivot.png)
