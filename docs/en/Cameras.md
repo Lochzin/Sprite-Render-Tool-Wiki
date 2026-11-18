@@ -26,6 +26,8 @@ The **Create Cameras** box creates cameras from a preset:
   - **Custom - N cameras in 360 Degrees**: N cameras evenly spaced around the target, starting at the front. The `Cameras` field (default 8) appears only for this preset. The cameras are named `Camera_000`, `Camera_045`, ... (the angle in degrees)
 - `Elevation`: angle of the cameras above the horizontal plane (-89° to 89°, default 0°). **0° = level**; **30-45° gives a 3/4 or isometric-style view**. The distance to the target stays the same
 - `Target Height`: height above the pivot (or the origin) that the cameras look at (default 0)
+- `Rotation Offset`: rotates the whole camera ring around the pivot (default 0°). Use it when the character is rotated, so the `front` camera looks at the character's front
+- `Elevation`, `Target Height`, `Distance` and `Rotation Offset` move the cameras created by **Create Cameras** in real time, no need to create them again
 - `Distance`: distance from the pivot (or the origin) to the cameras (default 10)
 
 **How it works:**

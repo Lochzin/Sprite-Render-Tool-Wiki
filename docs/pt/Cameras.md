@@ -26,6 +26,8 @@ A caixa **Create Cameras** cria câmeras a partir de um preset:
   - **Custom - N cameras in 360 Degrees**: N câmeras distribuídas uniformemente ao redor do alvo, começando pela frente. O campo `Cameras` (padrão 8) aparece só neste preset. As câmeras se chamam `Camera_000`, `Camera_045`, ... (o ângulo em graus)
 - `Elevation`: ângulo das câmeras acima do plano horizontal (-89° a 89°, padrão 0°). **0° = na altura do alvo**; **30-45° dá uma visão 3/4 ou isométrica**. A distância até o alvo continua a mesma
 - `Target Height`: altura acima do pivô (ou da origem) para onde as câmeras olham (padrão 0)
+- `Rotation Offset`: gira todo o anel de câmeras em torno do pivô (padrão 0°). Use quando o personagem estiver rotacionado, para que a câmera `front` olhe para a frente dele
+- `Elevation`, `Target Height`, `Distance` e `Rotation Offset` movem em tempo real as câmeras criadas por **Create Cameras**, sem precisar criá-las de novo
 - `Distance`: distância do pivô (ou da origem) até as câmeras (padrão 10)
 
 **Como funciona:**
