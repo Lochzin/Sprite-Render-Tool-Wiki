@@ -64,14 +64,14 @@ The add-on lives in `3D Viewport > Sidebar (N) > Sprite Render`. It is **one mai
 - `Output Name` template (default `$objectName_$animation_$frame`), buttons to append `projectName`, `objectName`, `animation`, `camera`, `frame`, and the template presets **Default** and **Per camera**
 - **First image will be saved as:** the real path of the first image, with template warnings and name collisions
 - **Available Placeholders** (collapsible): variables and a name preview
-- **Create Folders**: `Project`, `Object`, `Animation`, `Camera`
+- **Create Folders**: `Project`, `Object`, `Animation`, `Camera`, plus `Clean Action Names` and `Restart Frame Numbering Per Camera` (both off by default)
 
 See [Output](Output.md).
 
 ### 2. Character & Animations
 
 - `Animation Mode`: **Use Actions** (default), **Use NLA**, **Static Render**, **Frame Ranges**
-- `Armature`: the target armature (Actions and NLA modes only)
+- `Armature`: the target armature (required in Actions and NLA modes; in Frame Ranges mode it is only used to warn about its active Action)
 - The list of the current mode, with `+` / `-` buttons, the fields of the selected item, **Enable All** / **Disable All** and the **Detect** button
 - `Preview FPS` + **Apply**
 - **Animation Test** (collapsible, Actions and NLA modes): **Preview Action** / **Preview NLA Strip**, **Stop Preview** (or **Restore Scene** when playback already stopped), frame counter and first / previous / next / last buttons

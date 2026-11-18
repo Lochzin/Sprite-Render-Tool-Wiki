@@ -11,10 +11,12 @@ This page explains how the **Sprite Render Tool** builds folder structures and f
 The starting point is the **Output Folder** field (`output_dir`, default `//sprites/`).
 
 - The folder is **created automatically** (with its parents) when you render, so it does not need to exist.
+- A folder typed **without** `//` and without a drive or leading `/` (for example `sprites`) is also relative to the `.blend` file, never to Blender's working directory.
 - Paths starting with `//` are relative to the `.blend` file. **Save the file first**: with an unsaved file, the add-on reports an error asking you to save it or to choose an absolute folder.
 - `~` is expanded to your home folder.
 - Absolute paths work on Windows (`D:\Sprites`, UNC `\\server\share\sprites`), Linux and macOS (`/home/user/sprites`).
 - The field is used exactly as typed (it is not "cleaned").
+- On Windows, characters that the system does not allow in a path (`< > : " | ? *`, except the drive colon) are an error in the checklist.
 
 ### Legacy mode (empty Output Folder)
 
@@ -55,6 +57,8 @@ If `$camera` is **not** in the template, `$frame` is a **per-animation sequentia
 
 If `$camera` **is** in the template, `$frame` is the real timeline frame number, usually giving one sequence per camera.
 
+**Restart Frame Numbering Per Camera** (off by default): when on, the counter also restarts at 1 for each camera, so every camera folder starts at `0001`. It only has an effect when **Camera Folder** is on and `$camera` is not in the template (otherwise it is greyed out / ignored).
+
 ---
 
 ## Folder Structure (Create Folders)
@@ -64,6 +68,8 @@ If `$camera` **is** in the template, `$frame` is the real timeline frame number,
 2. Object Name (default on)
 3. Animation name (default on)
 4. Camera name (default on)
+
+**Clean Action Names** (off by default, below the folder options): uses readable animation names in folders and files. It removes the `Armature|` (or `Armature.001|`) prefix and the `|mixamo.com|Layer0` suffix added by the FBX importer, and turns spaces into `_`: `Armature|Running|mixamo.com|Layer0` becomes `Running` and `Strafe Left|mixamo.com|Layer0` becomes `Strafe_Left`. It applies to `$animation` and to the Animation folder; the Action itself is not renamed.
 
 Example with all four on: `D:/Sprites/` becomes `D:/Sprites/MyGame/Hero/walk/front/`.
 

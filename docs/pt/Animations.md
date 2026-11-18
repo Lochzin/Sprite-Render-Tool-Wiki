@@ -22,7 +22,7 @@ Escolha o modo em `Animation Mode`:
 
 > **Localização no add-on**: painel **2. Character & Animations**, abaixo de `Animation Mode`
 
-- `Armature` (`target_armature`): a armadura cujas animações são renderizadas. É definida só aqui e aparece apenas nos modos **ACTIONS** e **NLA** (é obrigatória neles; o checklist acusa erro sem ela). Só objetos do tipo armadura podem ser escolhidos.
+- `Armature` (`target_armature`): a armadura cujas animações são renderizadas. É definida só aqui e aparece nos modos **ACTIONS**, **NLA** e **FRAME_RANGES** (é obrigatória nos dois primeiros, onde o checklist acusa erro sem ela; em FRAME_RANGES só serve para avisar sobre a Action ativa dela). Só objetos do tipo armadura podem ser escolhidos.
 - `Preview FPS` + **Apply** (`sprite_render.apply_fps`): define `scene.render.fps` com o valor e `scene.render.fps_base` como 1.0. Afeta só a velocidade de reprodução no viewport, não quais frames são renderizados.
 
 ---
@@ -50,9 +50,10 @@ Cada linha (`ActionItem`) tem:
 
 **Detect Actions** (`sprite_render.detect_actions`, também no **Start Here**):
 - **Adiciona** as Actions do arquivo que ainda não estão na lista. Linhas existentes mantêm o intervalo de frames e o estado de habilitado.
-- Ignora Actions que não podem animar um objeto (luzes, materiais, shape keys...).
+- Ignora Actions que não podem animar um objeto (luzes, materiais, shape keys...). Com Actions com slots (Blender 4.4+), a Action é mantida quando pelo menos um dos slots aponta para um objeto.
+- **Poses estáticas entram desabilitadas**: uma Action de 1 a 2 frames (por exemplo a T-pose que vem com um FBX) é listada com início = fim e desmarcada. Marque se realmente quiser renderizá-la.
 - O intervalo vem de `action.frame_range` (início arredondado para baixo, fim para cima).
-- Uma mensagem informa quantas foram adicionadas e avisa se alguma linha aponta para Actions que não existem mais.
+- Uma mensagem informa quantas foram adicionadas (e quantas poses estáticas entraram desabilitadas) e avisa se alguma linha aponta para Actions que não existem mais.
 
 ![Detect Actions](/_static/images/SRT_DetectActions.gif)
 
@@ -109,7 +110,8 @@ Use este modo para thumbnails, poses-chave e renders de um único frame.
 
 > **Localização no add-on**: **2. Character & Animations** → `Animation Mode` = **Frame Ranges**
 
-Renderiza intervalos de frames específicos sem armadura nem dados de animação:
+Renderiza intervalos de frames específicos sem armadura nem dados de animação. **Ele renderiza a cena como ela está**: nenhuma Action ou NLA strip é aplicada, então o que estiver ativo na armadura toca em todos os intervalos. Se a `Armature` tiver uma Action ativa, o checklist mostra um aviso com o nome dela.
+
 - Cada linha (`FrameRangeItem`) tem um nome editável (também na lista), frame inicial, frame final e uma caixa de seleção.
 - **Add** (`+`) cria uma linha chamada `Range N`, com o intervalo de frames da cena como padrão. **Remove** (`-`) apaga a selecionada.
 - O frame final nunca fica menor que o inicial: alterar um empurra o outro junto.
@@ -125,7 +127,7 @@ Renderiza intervalos de frames específicos sem armadura nem dados de animação
 Use para conferir uma animação antes de renderizar. Selecione uma linha primeiro.
 
 - **Preview Action** (`sprite_render.test_action`):
-  - Atribui a Action selecionada à armadura, desliga o NLA, ajusta início / fim da timeline e o frame atual ao intervalo da linha, aplica a Action secundária se configurada e inicia a reprodução.
+  - Atribui a Action selecionada à armadura, desliga o NLA, ajusta início / fim da timeline e o frame atual ao intervalo da linha, aplica a Action secundária se configurada e inicia a reprodução. Se a timeline já estiver tocando, visualizar outro item a mantém tocando (nunca alterna a reprodução para parada).
 - **Preview NLA Strip** (`sprite_render.test_nla_strip`):
   - Liga o NLA, retira a Action ativa, muta todas as strips exceto a selecionada, ajusta o intervalo da timeline e inicia a reprodução.
 - **Stop Preview** (`sprite_render.stop_preview`):

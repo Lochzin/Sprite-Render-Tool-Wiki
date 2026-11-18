@@ -23,6 +23,10 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 - **Auxiliares do Output Name**: botões que acrescentam `projectName`, `objectName`, `animation`, `camera`, `frame` ao modelo, e os modelos prontos `Default` / `Per camera`
 - **Interface em português (PT-BR)**: painéis, propriedades, tooltips e mensagens são traduzidos quando o idioma do Blender é português (`pt_BR` ou `pt_PT`)
 - **Tooltips**: toda propriedade e operador agora tem uma descrição
+- **Restart Frame Numbering Per Camera** (abaixo de Create Folders, desligado por padrão): sem `$camera` no Output Name e com a Camera Folder ligada, a numeração dos arquivos reinicia em 0001 a cada câmera
+- **Clean Action Names** (desligado por padrão): nomes de animação legíveis em pastas e arquivos (`Armature|Running|mixamo.com|Layer0` vira `Running`, espaços viram `_`)
+- **Detect Actions deixa as poses estáticas desmarcadas**: Actions de 1-2 frames (como a T-pose de um FBX) entram desabilitadas, e a mensagem informa quantas
+- **Aviso no Frame Ranges**: o checklist avisa quando a `Armature` tem uma Action ativa, pois ela tocará em todos os intervalos (o campo `Armature` agora também aparece neste modo, e o texto do painel diz "Renders the scene as it is: no action or NLA strip is applied")
 - **Testes**: testes `pytest` em `tests/` para caminhos e nomes de arquivo, validação antes do render e cobertura da tradução (rodam fora do Blender)
 
 ### Alterado
@@ -52,6 +56,11 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 - **Estado de render preso** após um crash ou ao carregar um arquivo salvo durante um render
 - **Segundo render** iniciado com um já em andamento, e undo durante o render
 - **Test Frame Count** agora funciona no modo FRAME_RANGES
+- **Filtro do Detect Actions** (achado em um teste real no Blender 5.1): as Actions agora são filtradas pelo alvo dos slots, já que `id_root` não existe mais no Blender 5.x
+- **O Preview parava a reprodução** ao visualizar outro item com a timeline tocando
+- **Pasta de saída relativa sem `//`** (por exemplo `sprites`) era resolvida a partir da pasta de trabalho do Blender; agora é relativa ao arquivo .blend
+- **Caracteres inválidos na pasta de saída** no Windows (`< > : " | ? *`) agora são um erro no checklist
+- **Cancelar depois do último frame** agora conta como render completo
 - **Sync Secondary**: a UI e o checklist agora informam que ele só é usado pelo preview
 
 ### Detalhes Técnicos

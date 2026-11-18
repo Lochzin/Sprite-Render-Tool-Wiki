@@ -66,14 +66,14 @@ Com o Blender em português, os nomes aparecem traduzidos. Esta wiki usa os nome
 - Modelo `Output Name` (padrão `$objectName_$animation_$frame`), botões que acrescentam `projectName`, `objectName`, `animation`, `camera`, `frame`, e os modelos prontos **Default** e **Per camera**
 - **First image will be saved as:** o caminho real da primeira imagem, com avisos do modelo e colisões de nomes
 - **Available Placeholders** (recolhível): variáveis e uma prévia do nome
-- **Create Folders**: `Project`, `Object`, `Animation`, `Camera`
+- **Create Folders**: `Project`, `Object`, `Animation`, `Camera`, mais `Clean Action Names` e `Restart Frame Numbering Per Camera` (ambos desligados por padrão)
 
 Veja [Output](Output.md).
 
 ### 2. Character & Animations
 
 - `Animation Mode`: **Use Actions** (padrão), **Use NLA**, **Static Render**, **Frame Ranges**
-- `Armature`: a armadura alvo (somente nos modos Actions e NLA)
+- `Armature`: a armadura alvo (obrigatória nos modos Actions e NLA; no modo Frame Ranges só serve para avisar sobre a Action ativa dela)
 - A lista do modo atual, com botões `+` / `-`, os campos do item selecionado, **Enable All** / **Disable All** e o botão **Detect**
 - `Preview FPS` + **Apply**
 - **Animation Test** (recolhível, modos Actions e NLA): **Preview Action** / **Preview NLA Strip**, **Stop Preview** (ou **Restore Scene** quando a reprodução já parou), contador de frames e botões primeiro / anterior / próximo / último

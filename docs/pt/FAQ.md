@@ -108,6 +108,15 @@ Quando funciona, ele **adiciona** as câmeras novas e mantém as linhas existent
 **P: Os nomes de arquivo têm sublinhados inesperados.**  
 **R:** Caracteres inválidos em sistemas de arquivos comuns (`< > : " / \ | ? *`) viram `_` em **nomes de arquivo e de pasta** (por exemplo `Armature|mixamo.com|Layer0` vira `Armature_mixamo.com_Layer0`), e nomes reservados do Windows ganham o prefixo `_`. Veja [Output](Output.md).
 
+**P: Minhas Actions do Mixamo / FBX têm nomes como `Armature|Running|mixamo.com|Layer0`. Dá para ter nomes de pasta limpos?**  
+**R:** Sim. Ligue **Clean Action Names** (abaixo de **Create Folders**): os nomes de pasta e de arquivo ficam `Running`. As Actions não são renomeadas.
+
+**P: Cada câmera continua a numeração da anterior. Dá para cada uma começar em 0001?**  
+**R:** Sim. Sem `$camera` no `Output Name`, ligue **Camera Folder** e **Restart Frame Numbering Per Camera**.
+
+**P: O Detect Actions adicionou uma Action mas deixou desmarcada.**  
+**R:** Actions de 1 a 2 frames (poses estáticas como a T-pose do FBX) entram desabilitadas. Marque a linha se quiser.
+
 **P: Posso renderizar para um caminho absoluto do Linux / macOS ou um caminho de rede?**  
 **R:** Sim. Caminhos absolutos (`/home/usuario/sprites`) e caminhos UNC (`\\servidor\compartilhamento`) são suportados.
 

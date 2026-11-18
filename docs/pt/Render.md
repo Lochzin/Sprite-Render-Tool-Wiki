@@ -22,7 +22,7 @@ O add-on confere sua configuração o tempo todo e lista os problemas aqui. O ca
 | Sem câmeras, ou objetos de câmera em branco / inexistentes na lista | **Remove them** (para as em branco / inexistentes) |
 | `Output Name` sem `$frame` | **Add $frame** |
 | Colisões de nomes de saída (dois pares animação / câmera gravariam os mesmos arquivos) | – (adicione `$animation` / `$camera` ou habilite as pastas) |
-| Pasta de saída vazia, que não é pasta, ou sem permissão de escrita | – |
+| Pasta de saída vazia, que não é pasta, sem permissão de escrita, ou (Windows) com caracteres como `< > : " | ? *` | – |
 | Formato de imagem diferente de PNG | **Use PNG** (também define RGBA) |
 
 **Avisos** (não bloqueiam):
@@ -31,6 +31,7 @@ O add-on confere sua configuração o tempo todo e lista os problemas aqui. O ca
 | --- | --- |
 | Sync Secondary ligado (o render não o usa) | **Turn off** |
 | Variável desconhecida no `Output Name` (ela é mantida como texto) | – |
+| Modo **Frame Ranges** com uma Action ativa na `Armature`: ela tocará em todos os intervalos | – |
 | Modo de cor diferente de RGBA (o PNG fica sem alfa) | **Use RGBA** |
 | **Film > Transparent** desligado (fundo opaco) | **Turn on** |
 | `Resolution %` do Output Properties diferente de 100 | **Set 100%** |
@@ -96,7 +97,7 @@ Clique em **Render** para iniciar, ou feche o diálogo para cancelar.
 - O botão **Render All** é trocado por uma barra de progresso (`Rendering atual/total (porcentagem%)`), uma linha de status (`'animação' frame N, camera 'nome' (~tempo restante)`) e **Cancel Render**. Eles aparecem com qualquer sub-painel aberto.
 - O tempo restante estimado aparece depois que a primeira imagem termina.
 - **O Blender continua ocupado enquanto cada imagem renderiza**: o painel é atualizado *entre* as imagens, então com cenas pesadas ele pode parecer travado por alguns segundos. Reduza samples ou resolução, ou use o Frame Step, para acelerar lotes longos.
-- **ESC** ou **Cancel Render** param o render **depois da imagem atual**.
+- **ESC** ou **Cancel Render** param o render **depois da imagem atual**. Se o cancelamento chegar depois da última imagem, o render conta como completo.
 - **Ctrl+Z fica bloqueado** durante o render. Só um render roda por vez.
 - Se você fechar a janela ou carregar outro arquivo, o render termina e a cena é restaurada.
 

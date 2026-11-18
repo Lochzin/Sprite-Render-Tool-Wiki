@@ -23,6 +23,10 @@ This page tracks changes to the **Sprite Render Tool** over time.
 - **Output Name helpers**: buttons that append `projectName`, `objectName`, `animation`, `camera`, `frame` to the template, and `Default` / `Per camera` template presets
 - **Portuguese (PT-BR) interface**: panels, properties, tooltips and messages are translated when Blender's language is Portuguese (`pt_BR` or `pt_PT`)
 - **Tooltips**: every property and operator now has a description
+- **Restart Frame Numbering Per Camera** (below Create Folders, off by default): without `$camera` in the Output Name and with the Camera Folder on, the file numbers restart at 0001 for each camera
+- **Clean Action Names** (off by default): readable animation names in folders and files (`Armature|Running|mixamo.com|Layer0` becomes `Running`, spaces become `_`)
+- **Detect Actions leaves static poses unchecked**: Actions of 1-2 frames (like the T-pose of an FBX) are added disabled, and the message says how many
+- **Frame Ranges warning**: the checklist warns when the `Armature` has an active Action, because it will play in every range (the `Armature` field now also shows in this mode, and the panel text says "Renders the scene as it is: no action or NLA strip is applied")
 - **Tests**: `pytest` tests in `tests/` for paths and file names, pre-render validation and translation coverage (they run outside Blender)
 
 ### Changed
@@ -52,6 +56,11 @@ This page tracks changes to the **Sprite Render Tool** over time.
 - **Stuck render state** after a crash or after loading a file saved during a render
 - **Second render** started while one was running, and undo during a render
 - **Test Frame Count** now works in FRAME_RANGES mode
+- **Detect Actions filter** (found in a real Blender 5.1 test): Actions are now filtered by the target of their slots, since `id_root` no longer exists in Blender 5.x
+- **Preview stopped the playback** when previewing another item while the timeline was playing
+- **Relative output folder without `//`** (for example `sprites`) was resolved against Blender's working directory; it is now relative to the .blend file
+- **Invalid characters in the output folder** on Windows (`< > : " | ? *`) are now an error in the checklist
+- **Cancel after the last frame** now counts as a complete render
 - **Sync Secondary**: the UI and the checklist now state that it is only used by the preview
 
 ### Technical Details

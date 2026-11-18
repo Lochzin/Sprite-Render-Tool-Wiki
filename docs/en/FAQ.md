@@ -108,6 +108,15 @@ When it works it **adds** the new cameras and keeps your existing rows (order, `
 **Q: Filenames contain unexpected underscores.**  
 **A:** Characters that are invalid on common file systems (`< > : " / \ | ? *`) are replaced by `_` in **file and folder names** (for example `Armature|mixamo.com|Layer0` becomes `Armature_mixamo.com_Layer0`), and Windows reserved names get a `_` prefix. See [Output](Output.md).
 
+**Q: My Mixamo / FBX Actions have names like `Armature|Running|mixamo.com|Layer0`. Can I get clean folder names?**  
+**A:** Yes. Turn on **Clean Action Names** (below **Create Folders**): the folder and file names become `Running`. The Actions are not renamed.
+
+**Q: Each camera continues the numbering of the previous one. Can each start at 0001?**  
+**A:** Yes. Without `$camera` in the `Output Name`, turn on **Camera Folder** and **Restart Frame Numbering Per Camera**.
+
+**Q: Detect Actions added an Action but left it unchecked.**  
+**A:** Actions of 1 to 2 frames (static poses such as the FBX T-pose) are added disabled. Tick the row if you want it.
+
 **Q: Can I render to a Linux / macOS absolute path or a network path?**  
 **A:** Yes. Absolute paths (`/home/user/sprites`) and UNC paths (`\\server\share`) are supported.
 

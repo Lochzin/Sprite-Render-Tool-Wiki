@@ -22,7 +22,7 @@ The add-on checks your setup all the time and lists the problems here. The heade
 | No cameras, or blank / missing camera objects in the list | **Remove them** (for blank / missing ones) |
 | `Output Name` without `$frame` | **Add $frame** |
 | Output name collisions (two animation / camera pairs would write the same files) | – (add `$animation` / `$camera` or enable the folders) |
-| Output folder empty, not a folder, or not writable | – |
+| Output folder empty, not a folder, not writable, or (Windows) with characters such as `< > : " | ? *` | – |
 | Image format is not PNG | **Use PNG** (also sets RGBA) |
 
 **Warnings** (they do not block):
@@ -31,6 +31,7 @@ The add-on checks your setup all the time and lists the problems here. The heade
 | --- | --- |
 | Sync Secondary is on (it is not used by the render) | **Turn off** |
 | Unknown placeholder in the `Output Name` (it is kept as text) | – |
+| **Frame Ranges** mode with an active Action on the `Armature`: it will play in every range | – |
 | Color mode is not RGBA (the PNG has no alpha) | **Use RGBA** |
 | **Film > Transparent** is off (opaque background) | **Turn on** |
 | `Resolution %` in Output Properties is not 100 | **Set 100%** |
@@ -96,7 +97,7 @@ Click **Render** to start, or close the dialog to cancel.
 - The **Render All** button is replaced by a progress bar (`Rendering current/total (percent%)`), a status line (`'animation' frame N, camera 'name' (~time left)`) and **Cancel Render**. They are visible with any sub-panel open.
 - The estimated time left appears after the first image is finished.
 - **Blender is still busy while each image renders**: the panel is updated *between* images, so with heavy scenes it may look frozen for a few seconds at a time. Lower the samples or resolution, or use Frame Step, to speed up long batches.
-- **ESC** or **Cancel Render** stop the render **after the current image**.
+- **ESC** or **Cancel Render** stop the render **after the current image**. If the cancel arrives after the last image, the render counts as complete.
 - **Ctrl+Z is blocked** during the render. Only one render can run at a time.
 - If you close the window or load another file, the render ends and the scene is restored.
 

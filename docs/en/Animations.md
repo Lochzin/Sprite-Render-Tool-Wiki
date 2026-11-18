@@ -22,7 +22,7 @@ Choose the mode with `Animation Mode`:
 
 > **Location in add-on**: **2. Character & Animations** panel, below `Animation Mode`
 
-- `Armature` (`target_armature`): the armature whose animations are rendered. It is set only here, and is shown only in **ACTIONS** and **NLA** modes (it is required there; the checklist reports an error without it). Only armature objects can be picked.
+- `Armature` (`target_armature`): the armature whose animations are rendered. It is set only here, and is shown in **ACTIONS**, **NLA** and **FRAME_RANGES** modes (it is required in the first two, where the checklist reports an error without it; in FRAME_RANGES it is only used to warn about its active Action). Only armature objects can be picked.
 - `Preview FPS` + **Apply** (`sprite_render.apply_fps`): sets `scene.render.fps` to the value and `scene.render.fps_base` to 1.0. It only affects playback speed in the viewport, not which frames are rendered.
 
 ---
@@ -50,9 +50,10 @@ Each row (`ActionItem`) has:
 
 **Detect Actions** (`sprite_render.detect_actions`, also in **Start Here**):
 - **Adds** the Actions of the file that are not in the list yet. Existing rows keep their frame range and enabled state.
-- Skips Actions that cannot animate an object (lights, materials, shape keys...).
+- Skips Actions that cannot animate an object (lights, materials, shape keys...). With slotted Actions (Blender 4.4+) an Action is kept when at least one of its slots targets an object.
+- **Static poses are added disabled**: an Action of 1 to 2 frames (for example the T-pose that comes with an FBX) is listed with start = end and unchecked. Tick it if you really want to render it.
 - The range comes from `action.frame_range` (start rounded down, end rounded up).
-- A message reports how many were added and warns if some rows point to Actions that no longer exist.
+- A message reports how many were added (and how many static poses were added disabled) and warns if some rows point to Actions that no longer exist.
 
 ![Detect Actions](/_static/images/SRT_DetectActions.gif)
 
@@ -109,7 +110,8 @@ Use this mode for thumbnails, key poses and single-frame renders.
 
 > **Location in add-on**: **2. Character & Animations** → `Animation Mode` = **Frame Ranges**
 
-Renders specific frame ranges without armature or animation data:
+Renders specific frame ranges without armature or animation data. **It renders the scene as it is**: no Action or NLA strip is applied, so whatever is active on the armature plays in every range. If the `Armature` has an active Action, the checklist shows a warning with its name.
+
 - Each row (`FrameRangeItem`) has an editable name (also in the list), start frame, end frame and a checkbox.
 - **Add** (`+`) creates a row named `Range N`, with the scene's frame range as the default range. **Remove** (`-`) deletes the selected one.
 - The end frame is never lower than the start frame: changing one pushes the other along.
@@ -125,7 +127,7 @@ Renders specific frame ranges without armature or animation data:
 Use it to check an animation before rendering. Select a row first.
 
 - **Preview Action** (`sprite_render.test_action`):
-  - Assigns the selected Action to the armature, turns off NLA, sets the timeline start / end and current frame to the row's range, applies the secondary Action if configured, and starts playback.
+  - Assigns the selected Action to the armature, turns off NLA, sets the timeline start / end and current frame to the row's range, applies the secondary Action if configured, and starts playback. If the timeline is already playing, previewing another item keeps it playing (it never toggles playback off).
 - **Preview NLA Strip** (`sprite_render.test_nla_strip`):
   - Turns NLA on, takes the active Action off, mutes every strip except the selected one, sets the timeline range and starts playback.
 - **Stop Preview** (`sprite_render.stop_preview`):

@@ -11,10 +11,12 @@ Esta página explica como o **Sprite Render Tool** monta a estrutura de pastas e
 O ponto de partida é o campo **Output Folder** (`output_dir`, padrão `//sprites/`).
 
 - A pasta é **criada automaticamente** (com as pastas-pai) quando você renderiza, então não precisa existir.
+- Uma pasta digitada **sem** `//` e sem letra de unidade ou `/` inicial (por exemplo `sprites`) também é relativa ao arquivo `.blend`, nunca à pasta de trabalho do Blender.
 - Caminhos que começam com `//` são relativos ao arquivo `.blend`. **Salve o arquivo antes**: com o arquivo sem salvar, o add-on mostra um erro pedindo para salvar ou escolher uma pasta absoluta.
 - `~` é expandido para a sua pasta pessoal.
 - Caminhos absolutos funcionam no Windows (`D:\Sprites`, UNC `\\servidor\compartilhamento\sprites`), no Linux e no macOS (`/home/usuario/sprites`).
 - O campo é usado exatamente como digitado (não é "limpo").
+- No Windows, caracteres que o sistema não aceita em um caminho (`< > : " | ? *`, exceto o `:` da unidade) são um erro no checklist.
 
 ### Modo legado (Output Folder vazio)
 
@@ -55,6 +57,8 @@ Se `$camera` **não** está no modelo, `$frame` é um **contador sequencial por 
 
 Se `$camera` **está** no modelo, `$frame` é o número real do frame da timeline, normalmente gerando uma sequência por câmera.
 
+**Restart Frame Numbering Per Camera** (desligado por padrão): quando ligado, o contador também reinicia em 1 a cada câmera, então a pasta de cada câmera começa em `0001`. Só tem efeito com **Camera Folder** ligado e sem `$camera` no modelo (caso contrário fica cinza / é ignorado).
+
 ---
 
 ## Estrutura de Pastas (Create Folders)
@@ -64,6 +68,8 @@ Se `$camera` **está** no modelo, `$frame` é o número real do frame da timelin
 2. Object Name (padrão ligado)
 3. Nome da animação (padrão ligado)
 4. Nome da câmera (padrão ligado)
+
+**Clean Action Names** (desligado por padrão, abaixo das opções de pasta): usa nomes de animação legíveis em pastas e arquivos. Remove o prefixo `Armature|` (ou `Armature.001|`) e o sufixo `|mixamo.com|Layer0` colocados pelo importador de FBX, e troca espaços por `_`: `Armature|Running|mixamo.com|Layer0` vira `Running` e `Strafe Left|mixamo.com|Layer0` vira `Strafe_Left`. Vale para `$animation` e para a pasta Animation; a Action em si não é renomeada.
 
 Exemplo com os quatro ligados: `D:/Sprites/` vira `D:/Sprites/MyGame/Hero/walk/front/`.
 
