@@ -50,20 +50,28 @@ Cada linha (`ActionItem`) tem:
 - `Action`: o nome da Action, escolhido com um campo com busca entre as Actions do arquivo.
 - `Start Frame`, `End Frame`.
 - Caixa de habilitado.
-- `Sync Secondary Armature`: toca também uma segunda Action em outra armadura (por exemplo o cavaleiro de um cavalo), no preview **e no Render All**. Quando está marcado:
-  - `Armature (optional)`: a armadura secundária deste item. Vazio = o `Armature` da caixa **Sync Secondary** (abaixo).
+- Com o **Sync Secondary Armature** ligado (veja abaixo), cada linha também tem:
+  - `Sync Secondary`: toca a Action secundária durante esta animação.
+  - `Secondary Armature`: só com **Different Armature per Animation** ligado (vazio = o `Armature` compartilhado).
   - `Secondary Action`: a Action tocada pela armadura secundária. Ela precisa ter **os mesmos frames** da Action principal (não há loop nem clamp).
   - Uma linha vermelha diz o que falta (sem armadura, sem Action, armadura secundária igual à principal, Action sem slot de objeto).
 
-### Caixa Sync Secondary
+### Sync Secondary Armature
 
-> **Local no add-on**: aba **Animations** → **Use Actions** → abaixo do **Detect Actions**
+> **Local no add-on**: aba **Animations** → **Use Actions** → checkbox abaixo do `Armature`
 
-- `Armature`: a armadura secundária usada por todo item que não tem armadura própria (um campo para o caso comum de um cavaleiro; o campo por item serve só para cenas com várias armaduras secundárias).
-- `Prefix` / `Suffix`: a regra para achar a Action secundária de um item: **nome da secundária = prefixo + nome da principal + sufixo**. Prefixo `Rider`: `Idle` → `RiderIdle`, `Gallop` → `RiderGallop`. Sufixo `_Rider`: `Gallop` → `Gallop_Rider`.
+Uma segunda armadura (por exemplo o cavaleiro de um cavalo) toca a própria Action junto com a principal, no preview e no Render All. O checkbox vem desmarcado; ao marcá-lo, as opções aparecem:
+
+- `Armature`: a armadura secundária, **a mesma para todas as animações**.
+- `Prefix`: a regra para achar a Action secundária de cada linha: **nome da secundária = prefixo + nome da principal**. Prefixo `Rider`: `Idle` → `RiderIdle`, `Gallop` → `RiderGallop`.
   - Primeiro tenta o nome exato. Se ele não existir, os nomes são comparados depois das regras do **Clean Action Names** (o prefixo `Armature|` / `Armature.001|` e o sufixo `|mixamo.com|Layer0` de FBX/Mixamo são ignorados, espaços = `_`), então `Armature|Gallop` encontra `Armature.001|RiderGallop|mixamo.com|Layer0`. Essa segunda comparação só vale se exatamente uma Action casar.
-- `Auto-fill on Detect Actions` (desligado por padrão): quando o **Detect Actions** roda, todo item cuja Action secundária for encontrada recebe `Sync Secondary Armature` ligado e essa `Secondary Action`. Os itens que são eles mesmos Actions secundárias (`RiderGallop`...) são **desabilitados**, porque renderizá-los na armadura principal não faz sentido. Itens sem correspondência ficam como estão.
-- **Match Secondary Actions** (`sprite_render.fill_secondary_actions`): faz o mesmo autopreenchimento agora, na lista como ela está (só habilitado com prefixo ou sufixo).
+- `Different Armature per Animation` (desligado por padrão): esconde o `Armature` compartilhado e mostra um campo `Secondary Armature` em cada linha, para cenas em que as animações não usam todas a mesma armadura secundária.
+
+Com o checkbox marcado, o **Detect Actions faz tudo de uma vez**: adiciona as Actions e, em toda linha cuja Action secundária for encontrada, liga o `Sync Secondary` e define a `Secondary Action`. As linhas que são elas mesmas Actions secundárias (`RiderGallop`...) são **desabilitadas**, porque renderizá-las na armadura principal não faz sentido. Linhas sem correspondência ficam como estão. Rodar o Detect Actions de novo numa lista que já existe também a preenche.
+
+Com o checkbox desmarcado, o render e o preview ignoram o Sync Secondary (as linhas guardam suas configurações).
+
+![Sync Secondary Armature marcado: Armature secundário, Prefix e o Sync Secondary / Secondary Action da linha](/_static/images/SRT_AnimationTab_SyncSecondary.png)
 
 **Detect Actions** (`sprite_render.detect_actions`):
 - **Adiciona** as Actions do arquivo que ainda não estão na lista. Linhas existentes mantêm o intervalo de frames e o estado de habilitado.

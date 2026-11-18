@@ -10,7 +10,7 @@ This page explains how the **Sprite Render Tool** builds folder structures and f
 
 The starting point is the **Output Folder** field (`output_dir`, default `//sprites/`).
 
-- The folder is **created automatically** (with its parents) when you render, so it does not need to exist.
+- The folder is **created automatically** (with its parents) when you render, so it does not need to exist. The field is not drawn in red while the folder is missing (Blender treats it as an output path, like the scene's Output Path).
 - A folder typed **without** `//` and without a drive or leading `/` (for example `sprites`) is also relative to the `.blend` file, never to Blender's working directory.
 - Paths starting with `//` are relative to the `.blend` file. **Save the file first**: with an unsaved file, the add-on reports an error asking you to save it or to choose an absolute folder.
 - `~` is expanded to your home folder.

@@ -7,7 +7,12 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 ## [0.3.12] - 2026
 
 ### Adicionado
-- **Sync Secondary no render** (modo Actions): um item com `Sync Secondary Armature` ligado agora anima também uma segunda armadura (por exemplo o cavaleiro de um cavalo) no **Render All**, não só no preview. A Action secundária precisa ter os mesmos frames da principal. Uma caixa **Sync Secondary** abaixo do Detect Actions tem um `Armature` global, uma regra de `Prefix` / `Suffix` (prefixo `Rider`: `Gallop` -> `RiderGallop`), **Auto-fill on Detect Actions** (desligado por padrão) e **Match Secondary Actions**; o checklist avisa sobre itens que não podem ser sincronizados. Veja [Animações](Animations.md)
+- **Sync Secondary no render** (modo Actions): com o checkbox `Sync Secondary Armature` marcado, um item com `Sync Secondary` ligado agora anima também uma segunda armadura (por exemplo o cavaleiro de um cavalo) no **Render All**, não só no preview. No início de cada par animação/câmera a `Secondary Action` é atribuída à armadura secundária (slot escolhido automaticamente, NLA desligado nela); animações sem Sync Secondary renderizam a armadura secundária como você a deixou, e tudo é restaurado no fim. A Action secundária deve ter os mesmos frames da principal (sem loop / clamp)
+  - Checkbox **Sync Secondary Armature** abaixo do campo `Armature` (aba Animations, Use Actions). Ao marcá-lo, as opções aparecem: `Armature` (a armadura secundária, a mesma para todas as animações), `Prefix` (nome da Action secundária = prefixo + nome da principal, por exemplo `Rider`: `Gallop` -> `RiderGallop`; nomes de FBX/Mixamo também casam depois das regras do Clean Action Names) e **Different Armature per Animation** (desligado por padrão; ligado, cada animação da lista ganha o próprio campo `Secondary Armature` em vez do compartilhado)
+  - Com o checkbox marcado, o **Detect Actions** preenche tudo de uma vez: liga o `Sync Secondary` e define a `Secondary Action` de todo item cuja Action secundária for encontrada, e desabilita na lista as próprias Actions secundárias (`RiderGallop`...). Itens sem correspondência ficam como estão. Com o checkbox desmarcado, o render e o preview ignoram o Sync Secondary
+  - Avisos no checklist (com **Turn off** só para os itens com problema): sem armadura secundária, armadura secundária = armadura principal, sem Action secundária, Action secundária sem slot de objeto, Action secundária com número de frames diferente
+- **Preview ao vivo**: com um preview rodando, selecionar outra Action / NLA Strip troca o preview, e editar o Start/End Frame dela atualiza a timeline na hora
+- **Rotation Offset** (Create Cameras): gira todo o anel de câmeras em torno do pivô, para personagens que não estão olhando para a frente. `Elevation`, `Target Height`, `Distance` e `Rotation Offset` agora movem as câmeras feitas pelo Create Cameras **em tempo real** (a Light Rotation de cada câmera também é recalculada)
 - **Validação antes de renderizar**: um checklist no topo de **5. Render Settings** ("Ready to render?" / "Fix these before rendering")
   - Verifica: Target Armature (Actions/NLA), lista de animações vazia, nenhuma animação habilitada, Actions/NLA strips em branco ou inexistentes, frame final antes do inicial, sem câmeras, objetos de câmera em branco ou inexistentes, `$frame` ausente do Output Name, colisões de nomes de saída, pasta de saída (vazia, não é pasta, sem permissão de escrita, será criada), formato de imagem diferente de PNG, modo de cor diferente de RGBA, Film > Transparent desligado, Resolution % diferente de 100, problemas do Sync Secondary (sem armadura / Action / slot, duração diferente)
   - A maioria dos problemas tem um botão **Fix** de um clique (Add $frame, Remove them, Disable them, Swap start/end, Use PNG, Use RGBA, Turn on, Set 100%, Turn off)
@@ -61,16 +66,18 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 - **Pasta de saída relativa sem `//`** (por exemplo `sprites`) era resolvida a partir da pasta de trabalho do Blender; agora é relativa ao arquivo .blend
 - **Caracteres inválidos na pasta de saída** no Windows (`< > : " | ? *`) agora são um erro no checklist
 - **Cancelar depois do último frame** agora conta como render completo
-- **Segunda armadura não animada no render**: o Sync Secondary só era usado pelo preview; agora funciona no Render All (veja Adicionado)
+- **Output Folder em vermelho** enquanto a pasta ainda não existia (por exemplo a padrão `//sprites/`); ela é criada pelo render, então agora é desenhada como o Output Path da cena
+- **Segunda armadura não animada no render** (W7): o Sync Secondary só era usado pelo preview; agora funciona no Render All (veja Adicionado)
 
 ### Detalhes Técnicos
 - `operators.py` foi dividido no pacote `sprite_render_tool/operators/` (`animations`, `cameras`, `docs`, `helpers`, `paths`, `preview`, `render`, `scene_state`, `validation`); os mesmos 36 operadores e os mesmos `bl_idname`. Os dez operadores de documentação são gerados por uma única função
 - `render.py`: `build_segments()` monta a fila; `_RenderSession` guarda só nomes e valores simples (nunca ponteiros RNA) e busca a cena de novo a cada tick; `SPRITE_RENDER_OT_RenderAll` tem uma propriedade oculta `skip_confirm` (definida pelo diálogo); `execute()` (scripts) roda a mesma fila em um laço bloqueante; `SPRITE_RENDER_OT_ESCModal` está obsoleto e só pede o cancelamento
 - Novos operadores: `sprite_render.render_confirm`, `sprite_render.fix_issue`, `sprite_render.camera_add`, `sprite_render.camera_remove`, `sprite_render.camera_move`, `sprite_render.camera_view`, `sprite_render.list_set_enabled`, `sprite_render.insert_placeholder`, `sprite_render.set_template_preset`
 - Novos módulos: `operators/validation.py` (checagens puras + integração com o Blender), `operators/scene_state.py` (captura/restauração), `operators/paths.py`, `translations.py`; `utils.py` guarda as funções puras de caminho/nome
-- Novas propriedades: `output_dir`, `camera_preset_elevation`, `camera_preset_target_height`, `camera_preset_custom_count`, lista de câmeras (`SPRITE_RENDER_UL_cameras`)
+- Novas propriedades: `use_secondary`, `secondary_armature`, `secondary_prefix`, `secondary_per_item` (configurações da cena), `output_dir`, `camera_preset_elevation`, `camera_preset_target_height`, `camera_preset_custom_count`, lista de câmeras (`SPRITE_RENDER_UL_cameras`)
 - `main_panel_tab` e os operadores `set_main_tab_*` são mantidos só por compatibilidade; a UI não os usa mais
 - Rode os testes com `pytest tests` (não precisa do Blender)
+- **Nota de release**: o número da versão fica só em `sprite_render_tool/__init__.py` (`bl_info["version"]`); ele precisa estar em `(0, 3, 12)` nesta versão
 
 ---
 

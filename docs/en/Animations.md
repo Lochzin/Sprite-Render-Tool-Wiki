@@ -50,20 +50,28 @@ Each row (`ActionItem`) has:
 - `Action`: the Action name, chosen with a searchable field of the Actions of the file.
 - `Start Frame`, `End Frame`.
 - Enabled checkbox.
-- `Sync Secondary Armature`: also play a second Action on another armature (for example the rider of a horse), in the preview **and in Render All**. When it is ticked:
-  - `Armature (optional)`: the secondary armature of this entry. Empty = the `Armature` of the **Sync Secondary** box (below).
+- When **Sync Secondary Armature** is on (see below), each row also has:
+  - `Sync Secondary`: play the secondary Action during this animation.
+  - `Secondary Armature`: only with **Different Armature per Animation** on (empty = the shared `Armature`).
   - `Secondary Action`: the Action played by the secondary armature. It must have **the same frames** as the main Action (no loop or clamp is done).
   - A red line tells what is missing (no armature, no Action, the secondary armature is the main one, the Action has no object slot).
 
-### Sync Secondary box
+### Sync Secondary Armature
 
-> **Location in add-on**: **Animations** tab → **Use Actions** → below **Detect Actions**
+> **Location in add-on**: **Animations** tab → **Use Actions** → checkbox below `Armature`
 
-- `Armature`: the secondary armature used by every entry that has no armature of its own (one field for the common case of one rider; the per-entry field is only for scenes with several secondary armatures).
-- `Prefix` / `Suffix`: the rule to find the secondary Action of an entry: **secondary name = prefix + main name + suffix**. Prefix `Rider`: `Idle` → `RiderIdle`, `Gallop` → `RiderGallop`. Suffix `_Rider`: `Gallop` → `Gallop_Rider`.
+A second armature (for example the rider of a horse) plays its own Action together with the main one, in the preview and in Render All. The checkbox is off by default; ticking it opens its settings:
+
+- `Armature`: the secondary armature, **the same for every animation**.
+- `Prefix`: the rule to find the secondary Action of each row: **secondary name = prefix + main name**. Prefix `Rider`: `Idle` → `RiderIdle`, `Gallop` → `RiderGallop`.
   - The exact name is tried first. If it does not exist, the names are compared after the **Clean Action Names** rules (the `Armature|` / `Armature.001|` prefix and `|mixamo.com|Layer0` suffix of FBX/Mixamo are ignored, spaces = `_`), so `Armature|Gallop` finds `Armature.001|RiderGallop|mixamo.com|Layer0`. That second match is used only if exactly one Action fits.
-- `Auto-fill on Detect Actions` (off by default): when **Detect Actions** runs, every entry whose secondary Action is found gets `Sync Secondary Armature` on and that `Secondary Action`. The entries that are secondary Actions themselves (`RiderGallop`...) are **disabled**, since rendering them on the main armature makes no sense. Entries without a match are left as they are.
-- **Match Secondary Actions** (`sprite_render.fill_secondary_actions`): does the same auto-fill now, on the list as it is (enabled only when there is a prefix or a suffix).
+- `Different Armature per Animation` (off by default): hides the shared `Armature` and shows a `Secondary Armature` field on each row instead, for scenes where the animations do not all use the same secondary armature.
+
+With the checkbox on, **Detect Actions does everything at once**: it adds the Actions and, for every row whose secondary Action is found, turns `Sync Secondary` on and sets the `Secondary Action`. The rows that are secondary Actions themselves (`RiderGallop`...) are **disabled**, since rendering them on the main armature makes no sense. Rows without a match are left as they are. Running Detect Actions again on an existing list fills it too.
+
+With the checkbox off, the render and the preview ignore Sync Secondary (the rows keep their settings).
+
+![Sync Secondary Armature ticked: secondary Armature, Prefix, and the row's Sync Secondary / Secondary Action](/_static/images/SRT_AnimationTab_SyncSecondary.png)
 
 **Detect Actions** (`sprite_render.detect_actions`):
 - **Adds** the Actions of the file that are not in the list yet. Existing rows keep their frame range and enabled state.

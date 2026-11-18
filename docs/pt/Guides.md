@@ -392,12 +392,14 @@ Requisito: **a Action do cavaleiro tem exatamente os mesmos frames da Action do 
 | Onde | Campo | Valor |
 | --- | --- | --- |
 | Aba **Animations** | `Animation Mode` / `Armature` | `Use Actions` / `Horse_Armature` (o **cavalo**) |
-| Aba **Animations** > caixa **Sync Secondary** | `Armature` | `Rider_Armature` |
-| Aba **Animations** > caixa **Sync Secondary** | `Prefix` / `Suffix` | `Rider` / vazio |
-| Aba **Animations** > caixa **Sync Secondary** | `Auto-fill on Detect Actions` | marcado |
+| Aba **Animations** | `Sync Secondary Armature` | marcado (abre os campos abaixo) |
+| Aba **Animations** > **Sync Secondary Armature** | `Armature` / `Prefix` | `Rider_Armature` / `Rider` |
+| Aba **Animations** > **Sync Secondary Armature** | `Different Armature per Animation` | desmarcado (o cavaleiro é o mesmo em todas as animações) |
 | Aba **Animations** | **Detect Actions** | lista as seis Actions; `Gallop`, `GallopFast`, `Idle` recebem Sync Secondary com `RiderGallop`, `RiderGallopFast`, `RiderIdle`, e os três itens `Rider…` ficam **desabilitados** |
 
-A mensagem diz, por exemplo, *Sync Secondary: 3 filled, 0 without a secondary action, 3 secondary action entries disabled.* Se a lista já existe, use **Match Secondary Actions** em vez do Detect Actions. Também dá para configurar à mão: selecione um item, marque `Sync Secondary Armature` e escolha a `Secondary Action` (o campo `Armature (optional)` substitui o `Armature` da caixa só para aquele item).
+A mensagem diz, por exemplo, *Sync Secondary: 3 filled, 0 without a secondary action, 3 secondary action entries disabled.* Se a lista já existe, aperte **Detect Actions** de novo: ele preenche as linhas que já estão lá. Também dá para configurar à mão: selecione uma linha, marque `Sync Secondary` e escolha a `Secondary Action`.
+
+![Sync Secondary Armature marcado: Armature secundário, Prefix e o Sync Secondary / Secondary Action da linha](/_static/images/SRT_AnimationTab_SyncSecondary.png)
 
 Conferido na cena de teste (Blender 5.1.2, 2 câmeras, `Gallop` + `GallopFast`, frame step 4): com Sync Secondary o cavaleiro se inclina para a frente e segura as rédeas numa pose diferente a cada frame; sem ele o cavaleiro fica ereto na mesma pose de idle. Depois do render, os dois armatures voltaram com a Action e o slot originais (`Idle` / `RiderIdle`) e a timeline não mudou.
 

@@ -10,7 +10,7 @@ Esta página explica como o **Sprite Render Tool** monta a estrutura de pastas e
 
 O ponto de partida é o campo **Output Folder** (`output_dir`, padrão `//sprites/`).
 
-- A pasta é **criada automaticamente** (com as pastas-pai) quando você renderiza, então não precisa existir.
+- A pasta é **criada automaticamente** (com as pastas-pai) quando você renderiza, então não precisa existir. O campo não fica vermelho enquanto a pasta não existe (o Blender o trata como caminho de saída, como o Output Path da cena).
 - Uma pasta digitada **sem** `//` e sem letra de unidade ou `/` inicial (por exemplo `sprites`) também é relativa ao arquivo `.blend`, nunca à pasta de trabalho do Blender.
 - Caminhos que começam com `//` são relativos ao arquivo `.blend`. **Salve o arquivo antes**: com o arquivo sem salvar, o add-on mostra um erro pedindo para salvar ou escolher uma pasta absoluta.
 - `~` é expandido para a sua pasta pessoal.

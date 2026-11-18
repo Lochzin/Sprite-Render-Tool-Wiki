@@ -99,6 +99,7 @@ Veja [Cameras](Cameras.md).
 
 - `Animation Mode`: **Use Actions** (padrão), **Use NLA**, **Static Render**, **Frame Ranges**
 - `Armature` (modos Actions, NLA e Frame Ranges; obrigatória nos dois primeiros, no Frame Ranges só serve para avisar sobre a Action ativa dela)
+- Checkbox **Sync Secondary Armature** (Use Actions): quando marcado, mostra o `Armature` secundário, o `Prefix` e **Different Armature per Animation**, para que uma segunda armadura (um cavaleiro, por exemplo) toque a própria Action junto com a principal; o Detect Actions então preenche as Actions secundárias
 - A lista do modo atual, com botões `+` / `-`, os campos do item selecionado, **Enable All** / **Disable All** e o botão **Detect**
 - `Preview FPS` + **Apply**
 - **Animation Test** (recolhível, modos Actions e NLA): **Preview Action** / **Preview NLA Strip**, **Stop Preview** (ou **Restore Scene** quando a reprodução já parou), contador de frames e botões primeiro / anterior / próximo / último
