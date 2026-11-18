@@ -16,7 +16,9 @@ Escolha o modo em `Animation Mode`:
 - **Static Render** (STATIC): renderiza apenas o frame atual.
 - **Frame Ranges** (FRAME_RANGES): renderiza intervalos de frames específicos sem rig ou animação.
 
-**Trocar o modo, ou selecionar um item de uma lista, nunca altera a sua cena.** A cena só é tocada pelos botões de **Preview** e pelo Render All, e os dois a devolvem ao estado original depois (veja [Render](Render.md)).
+**Trocar o modo, ou selecionar um item de uma lista, não altera a sua cena** enquanto nenhum preview está ativo. A cena só é tocada pelos botões de **Preview** e pelo Render All, e os dois a devolvem ao estado original depois (veja [Render](Render.md)).
+
+**Preview ao vivo.** Com um preview ativo, selecionar outra Action / NLA Strip na lista troca o preview na hora, e editar o `Start Frame` / `End Frame` do item selecionado atualiza o início / fim da timeline instantaneamente (o frame atual é mantido dentro do novo intervalo).
 
 ---
 

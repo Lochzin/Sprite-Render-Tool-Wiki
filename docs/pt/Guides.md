@@ -51,9 +51,14 @@ Conferido no teste: com a luz presa, o pivô gira de câmera em câmera (`0°, 9
 
 ### 2. Câmeras (aba **Cameras**)
 
-1. Na caixa **Create Cameras** escolha `Preset` = `4 Cameras - Front, Right, Back, Left`.
-2. Defina `Elevation` = `10°`, `Target Height` = `0.85`, `Distance` = `3.2`.
-3. Clique em **Create Cameras**. Quatro câmeras (`Camera_Front`, `Camera_Right`, `Camera_Back`, `Camera_Left`) aparecem na cena e na lista **Cameras (render order)**.
+1. Na caixa **Create Cameras** escolha o `Preset` que combina com o seu jogo (quantas direções você precisa). O teste usa `4 Cameras - Front, Right, Back, Left`.
+2. Ajuste `Elevation`, `Rotation Offset`, `Target Height` e `Distance` conforme o seu personagem e o seu estilo de câmera. O teste usa `10°`, `0°`, `0.85` e `3.2`.
+   - `Elevation`: inclinação da câmera (`0°` = na altura do personagem; `30°`–`45°` = visão 3/4 ou isométrica).
+   - `Rotation Offset`: gira o anel de câmeras em torno do pivô. Se o seu personagem está rotacionado, use este valor para que a câmera `Front` olhe para a frente dele.
+   - `Target Height`: altura do ponto para onde as câmeras olham (mire no meio do corpo do personagem).
+   - `Distance`: distância das câmeras até o pivô.
+3. Clique em **Create Cameras**. As câmeras do preset (no teste, `Camera_Front`, `Camera_Right`, `Camera_Back`, `Camera_Left`) aparecem na cena e na lista **Cameras (render order)**.
+4. Depois de criadas, mexer em `Elevation`, `Rotation Offset`, `Target Height` e `Distance` **move as câmeras em tempo real**: ajuste olhando pelo viewport, sem precisar criar de novo.
 
 As câmeras olham para o Light Pivot (elevado por `Target Height`); sem pivô elas olhariam para a origem do mundo. Cada câmera também recebe seu `Light Rotation` (`0°, 90°, 180°, 270°` aqui), que é o que gira o pivô. Os nomes das câmeras são **direções do mundo** (front = a câmera do lado `-Y`), não a direção para onde o personagem olha.
 
@@ -64,7 +69,8 @@ As câmeras olham para o Light Pivot (elevado por `Target Height`); sem pivô el
 1. `Animation Mode` = `Use Actions` (padrão).
 2. `Armature` = o armature do seu personagem.
 3. Clique em **Detect Actions**. Todas as Actions do arquivo são listadas com seu intervalo de frames. Poses estáticas (1–2 frames, como a T-pose de um FBX) entram na lista **desmarcadas**.
-4. Deixe só `Running` marcada (frames `1` a `22` no teste). Use **Disable All** e depois marque as que quiser.
+4. Marque só as animações que você quer renderizar (no teste, `Running`, frames `1` a `22`). Use **Disable All** e depois marque as que quiser. Use os nomes das Actions do **seu** modelo.
+5. Opcional: ative **Preview Action** para ver a animação no viewport. Com o preview ligado, **selecionar outra animação na lista** troca o preview na hora, e editar o `Start Frame` / `End Frame` da animação selecionada atualiza a timeline instantaneamente.
 
 ![Aba Animations](/_static/images/SRT_AnimationTab.png)
 

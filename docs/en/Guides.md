@@ -51,9 +51,14 @@ Checked in the test: with the light attached, the pivot turns from camera to cam
 
 ### 2. Cameras (**Cameras** tab)
 
-1. In the **Create Cameras** box choose `Preset` = `4 Cameras - Front, Right, Back, Left`.
-2. Set `Elevation` = `10°`, `Target Height` = `0.85`, `Distance` = `3.2`.
-3. Click **Create Cameras**. Four cameras (`Camera_Front`, `Camera_Right`, `Camera_Back`, `Camera_Left`) appear in the scene and in the list **Cameras (render order)**.
+1. In the **Create Cameras** box choose the `Preset` that fits your game (how many directions you need). The test uses `4 Cameras - Front, Right, Back, Left`.
+2. Adjust `Elevation`, `Rotation Offset`, `Target Height` and `Distance` for your character and your camera style. The test uses `10°`, `0°`, `0.85` and `3.2`.
+   - `Elevation`: camera tilt (`0°` = level with the character; `30°`–`45°` = 3/4 or isometric view).
+   - `Rotation Offset`: turns the camera ring around the pivot. If your character is rotated, use this value so the `Front` camera looks at the character's front.
+   - `Target Height`: height of the point the cameras look at (aim at the middle of the character's body).
+   - `Distance`: distance from the cameras to the pivot.
+3. Click **Create Cameras**. The preset's cameras (in the test, `Camera_Front`, `Camera_Right`, `Camera_Back`, `Camera_Left`) appear in the scene and in the list **Cameras (render order)**.
+4. Once created, changing `Elevation`, `Rotation Offset`, `Target Height` and `Distance` **moves the cameras in real time**: adjust while looking at the viewport, no need to create them again.
 
 The cameras look at the Light Pivot (raised by `Target Height`); without a pivot they would look at the world origin. Each camera also gets its `Light Rotation` (`0°, 90°, 180°, 270°` here), which is what turns the pivot. The camera names are **world directions** (front = the camera on the `-Y` side), not the direction your character faces.
 
@@ -64,7 +69,8 @@ The cameras look at the Light Pivot (raised by `Target Height`); without a pivot
 1. `Animation Mode` = `Use Actions` (default).
 2. `Armature` = your character's armature.
 3. Click **Detect Actions**. Every Action of the file is listed with its frame range. Static poses (1–2 frames, such as the T-pose of an FBX) are listed **disabled**.
-4. Keep only `Running` ticked (frames `1` to `22` in the test). Use **Disable All**, then tick the ones you want.
+4. Tick only the animations you want to render (in the test, `Running`, frames `1` to `22`). Use **Disable All**, then tick the ones you want. Use the Action names of **your** model.
+5. Optional: turn on **Preview Action** to see the animation in the viewport. With the preview on, **selecting another animation in the list** switches the preview at once, and editing the selected animation's `Start Frame` / `End Frame` updates the timeline instantly.
 
 ![Animations tab](/_static/images/SRT_AnimationTab.png)
 

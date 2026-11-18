@@ -16,7 +16,9 @@ Choose the mode with `Animation Mode`:
 - **Static Render** (STATIC): render only the current frame.
 - **Frame Ranges** (FRAME_RANGES): render specific frame ranges without rig or animation.
 
-**Changing the mode, or selecting an item in a list, never changes your scene.** The scene is only touched by the **Preview** buttons and by Render All, and both put it back afterwards (see [Render](Render.md)).
+**Changing the mode, or selecting an item in a list, does not change your scene** while no preview is active. The scene is only touched by the **Preview** buttons and by Render All, and both put it back afterwards (see [Render](Render.md)).
+
+**Live preview.** While a preview is active, selecting another Action / NLA Strip in the list switches the preview at once, and editing the selected item's `Start Frame` / `End Frame` updates the timeline start / end instantly (the current frame is kept inside the new range).
 
 ---
 
