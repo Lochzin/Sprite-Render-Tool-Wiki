@@ -10,117 +10,109 @@ Esta página lista perguntas comuns sobre o uso do **Sprite Render Tool** e como
 **R:** O `bl_info` no add-on especifica Blender **5.0.0** como a versão mínima. Ele é projetado para Blender 5.x e posteriores. O add-on foi inicialmente desenvolvido para Blender 4.0, então é possível que funcione (talvez até completamente bem) em versões anteriores, mas isso não foi testado e não é oficialmente suportado.
 
 **P: Onde encontro o painel Sprite Render Tool?**  
-**R:** Após habilitar o add-on em Preferences, vá para:  
-`3D Viewport > Sidebar (N) > Sprite Render`.
+**R:** Depois de ativar o add-on nas Preferências, vá em:  
+`3D Viewport > Sidebar (N) > Sprite Render`. É um painel principal com os sub-painéis 1. Project & Output, 2. Character & Animations, 3. Cameras, 4. Light, 5. Render Settings e Info.
+
+**P: Posso usar o add-on em português?**  
+**R:** Sim. Coloque o idioma do Blender em português (`Edit > Preferences > Interface > Language`) e os painéis, tooltips e mensagens aparecem em português. Os botões de documentação continuam abrindo a wiki em inglês.
 
 ---
 
 ## Câmeras e Iluminação
 
-**P: Minhas renderizações parecem estar vindo da câmera errada. O que devo verificar?**  
-**R:** Certifique-se de que:
-- A lista **Cameras** tem os valores `Name` corretos (eles devem corresponder a objetos de câmera existentes).
-- Na 3D Viewport, use **Test Cameras** para percorrer as câmeras configuradas e confirmar qual está ativa.
-- A câmera da cena está sendo definida corretamente pelo add-on (você deve ver a câmera mudar ao percorrer).
+**P: Meus renders parecem vir da câmera errada. O que devo verificar?**  
+**R:** Confirme que:
+- A lista **Cameras (render order)** tem as câmeras certas. Linhas em vermelho são câmeras que não existem (o checklist oferece **Remove them**).
+- Use **Test Cameras**, ou o ícone de câmera de uma linha, para ver através de uma câmera configurada.
+- Lembre que a ordem da lista é a ordem de render.
 
-**P: A luz não rotaciona por câmera, ou parece errada. Como posso depurar isso?**  
-**R:** Verifique o seguinte:
-- Certifique-se de que um objeto **Light Pivot** está definido na seção **Light Pivot**.
-- Verifique se `Enable Full Rotation (XYZ)` está definido corretamente:
-  - Desligado: apenas o eixo Z é usado.
-  - Ligado: XYZ completo do `light_rotation` da câmera é aplicado.
-- Certifique-se de que `Enable Light Pivot` está habilitado na seção **Light Pivot**.
+**P: A luz não gira por câmera, ou parece errada. Como investigar?**  
+**R:** Verifique:
+- Em **4. Light**, `Enable Light Pivot` está ligado e um `Object` pivô está definido.
+- `Enable Full Rotation (XYZ)` está correto: desligado usa só Z, ligado usa o `Light Rotation` XYZ completo da câmera.
+- Clique em **Test Cameras** (com o viewport em shading **Rendered**) e veja o pivô girar; os valores de rotação são escritos no editor Info do Blender.
+- A rotação de luz automática é só em Z; ajuste à mão para câmeras em outras alturas (veja [Lighting](Lighting.md)).
 
 **P: O botão Detect Cameras não faz nada. Por quê?**  
-**R:** O botão **Detect Cameras** (operador `sprite_render.autofill_light_rotation`) requer:
-- Um objeto **Light Pivot** **somente se `Enable Light Pivot` estiver ligado**. Com o pivot habilitado mas sem objeto definido, ele cancela com o erro "Light pivot object is not set". Com `Enable Light Pivot` desligado, nenhum pivot é necessário e todas as câmeras recebem rotação de luz 0.
-- Pelo menos uma câmera que seja:
-  - do tipo `CAMERA`
-  - não oculta no viewport
-  - não oculta para renderização  
-Certifique-se de que você está na View Layer correta e que as câmeras estão visíveis. Se nenhuma câmera servir, mostra um aviso e deixa a lista como estava. Quando funciona, ele **substitui a lista de câmeras inteira** (nomes, nomes de saída e rotações de luz que você digitou são perdidos).
+**R:** O **Detect Cameras** precisa de:
+- Um objeto **Light Pivot** **só se `Enable Light Pivot` estiver ligado**. Com o pivô habilitado e nenhum objeto definido, ele cancela com "Light pivot object is not set". Com ele desligado, não precisa de pivô e toda rotação de luz fica 0.
+- Pelo menos uma câmera da View Layer atual que não esteja oculta no viewport nem desabilitada no viewport ou para render. Se nenhuma servir, mostra um aviso e deixa a lista como está.
+
+Quando funciona, ele **adiciona** as câmeras novas e mantém as linhas existentes (ordem, `Output Name`, shift). A rotação de luz das câmeras detectadas é recalculada.
+
+**P: O Create Cameras pergunta "Replace cameras?". Ele vai apagar minhas câmeras?**  
+**R:** Não. Ele só apaga as câmeras que o add-on criou numa execução anterior. Suas próprias câmeras nunca são apagadas, mesmo com nome parecido (a nova câmera ganha o sufixo `.001`).
 
 ---
 
 ## Animações
 
-**P: Actions não aparecem na lista.**  
-**R:** No modo **ACTIONS**:
-- Clique em **Detect Actions**.
-- A ferramenta lê de `bpy.data.actions` e preenche a lista.
-- Se ainda estiver vazia, confirme que Actions existem no seu arquivo e não estão armazenadas em um arquivo blend diferente ou biblioteca.
+**P: As Actions não aparecem na lista.**  
+**R:** No modo **ACTIONS** clique em **Detect Actions** (ou em `+` e escolha a Action pelo nome). Ele adiciona as Actions do arquivo que podem animar objetos (não luzes nem materiais). Se continuar vazio, confirme que existem Actions no arquivo e que elas não estão numa biblioteca.
 
-**P: Actions são detectadas mas nada acontece quando tento visualizar ou renderizá-las.**  
-**R:** Isso geralmente é causado pela configuração de Action da armadura. Certifique-se de que:
-- Selecione sua **Target Armature** na 3D Viewport.
-- Vá para o painel **Properties** → **Object Properties** → seção **Animation**.
-- Na área **Sub Actions**, defina o **Action Slot** como **Legacy Slot**.
-- Isso é necessário para que Actions funcionem corretamente com o Sprite Render Tool.
-- Após definir isso, tente **Preview Action** ou **Detect Actions** novamente.
+**P: As Actions são detectadas mas nada acontece ao tentar visualizar ou renderizar.**  
+**R:** Confira se há uma `Armature` definida em **2. Character & Animations** e se a linha está habilitada e não está vermelha. O add-on atribui a Action (e um Action Slot adequado) por você; se ainda assim não tocar, confira o **Action Slot** da armadura em **Properties** → **Object Properties** → **Animation**.
 
-**P: NLA strips não são detectadas.**  
-**R:** No modo **NLA**:
-- Defina uma **Target Armature** válida.
-- Certifique-se de que a armadura tem `animation_data` com tracks e strips NLA.
-- Clique em **Detect NLA Strips**.
-- Se ainda estiver vazia, verifique se suas NLA strips estão na armadura escolhida e realmente têm Actions atribuídas.
+**P: As NLA strips não são detectadas.**  
+**R:** No modo **NLA** defina uma `Armature` com NLA tracks e clique em **Detect NLA Strips**. Só strips com Action são adicionadas; strips de tracks mutadas entram desabilitadas.
 
-**P: A animação errada toca durante a renderização.**  
-**R:** Possíveis causas:
-- No modo **ACTIONS**:
-  - Verifique se a Action correta está habilitada na lista.
-  - Confirme que seu `frame_start` e `frame_end` cobrem o intervalo pretendido.
-- No modo **NLA**:
-  - Verifique se a NLA strip selecionada na lista corresponde à strip que você espera.
-  - Use **Preview NLA Strip** para ver se apenas essa strip está ativa antes de renderizar.
+**P: A animação errada toca durante o render.**  
+**R:** A Action ou strip é aplicada em cada animação e câmera. Confira se as linhas certas estão habilitadas, se os intervalos de frames estão corretos e se o checklist não tem problemas. Use **Preview Action / Preview NLA Strip** para ver uma animação sozinha.
 
-**P: Preview Action / Preview NLA Strip não parece tocar.**  
-**R:** Verifique:
-- Reprodução da timeline:
-  - Certifique-se de que a timeline não está pausada por algum outro operador modal.
-- Estado `is_previewing`:
-  - Quando a visualização começa, o add-on chama `bpy.ops.screen.animation_play()`.
-  - Use **Stop Preview** se a reprodução ficou travada ou se outra visualização estiver em execução.
+**P: Preview Action / Preview NLA Strip parece não tocar.**  
+**R:** Confira se a timeline não está pausada por outro operador modal. Se a reprodução parou (Space / ESC), o botão vira **Restore Scene**: clique nele para devolver a cena e inicie o preview de novo.
+
+**P: Usei um preview e agora minha armadura está com outra Action.**  
+**R:** Clique em **Stop Preview** / **Restore Scene**. Ele restaura a Action, os estados de mute do NLA, o intervalo da timeline, o frame atual, a resolução e os shifts das câmeras de antes do primeiro preview.
+
+---
+
+## Render
+
+**P: O Render All está cinza. Por quê?**  
+**R:** O checklist em **5. Render Settings** tem pelo menos um erro (ou um render já está rodando). Passe o mouse sobre o botão para ver o primeiro erro e use os botões **Fix**.
+
+**P: O que o diálogo antes do render me mostra?**  
+**R:** O número de animações, câmeras e imagens, a pasta de destino, o tempo estimado (só depois que um render terminou nesta sessão do Blender), quantos arquivos existentes serão sobrescritos e os avisos. Clique em **Render** para iniciar.
+
+**P: O render altera minha cena?**  
+**R:** Ele altera coisas enquanto roda e as devolve quando termina, é cancelado ou falha: Action ativa e slot, `use_nla`, estados de mute do NLA, intervalo da timeline, frame atual, resolução (X, Y e %), shifts das câmeras, câmera da cena, caminho de saída e rotação do Light Pivot. Veja [Render](Render.md).
+
+**P: O Blender trava durante o render. Isso é normal?**  
+**R:** Até certo ponto. O **Render All** renderiza uma imagem por vez com o render do próprio Blender, que bloqueia a interface enquanto cada imagem renderiza. A barra de progresso, o **Cancel Render** e o **ESC** são tratados **entre** as imagens. Ele não está realmente travado: espere a imagem atual terminar.
+- Reduza os samples / a resolução, ou use o **Frame Step**, para acelerar lotes longos.
+- O Ctrl+Z fica bloqueado durante o render e só um render roda por vez.
+
+**P: Como paro um lote de render longo?**  
+**R:** Pressione **ESC** ou clique em **Cancel Render** (painel principal, visível durante o render). O render para depois da imagem atual e a cena é restaurada.
+
+**P: O painel diz "renderizando" mas nada está renderizando.**  
+**R:** Clique em **Cancel Render** para zerar o estado. O estado também é zerado quando o add-on é ativado e quando um arquivo é carregado.
 
 ---
 
 ## Output e Arquivos
 
 **P: Onde minhas imagens estão sendo salvas?**  
-**R:** O caminho final é construído a partir de:
-- `scene.render.filepath` (limpo pelo add-on), mais
-- Níveis de pasta opcionais (**Project/Object/Animation/Camera**), mais
-- Nome do arquivo de `output_template` com placeholders:
-  - `$projectName`, `$objectName`, `$animation`, `$camera`, `$frame`  
-Verifique a seção **Output** e suas Render Properties para saber exatamente onde os arquivos vão.
+**R:** Veja **First image will be saved as:** em **1. Project & Output**. O caminho é a `Output Folder` (padrão `//sprites/`, criada automaticamente; relativa ao arquivo .blend, então salve o arquivo antes), mais as pastas opcionais (**Project / Object / Animation / Camera**), mais o nome do arquivo vindo do `Output Name`.
 
-**P: Alterei `Project Name` ou `Object Name` mas imagens antigas ainda estão na pasta anterior.**  
-**R:** O add-on não move ou exclui renderizações antigas:
-- Novas renderizações usam suas novas configurações para construir novas pastas/nomes de arquivos.
-- Você pode precisar limpar diretórios antigos manualmente se quiser evitar duplicatas.
+**P: O Render All diz que meu Output Name não tem `$frame`.**  
+**R:** Sem `$frame` cada frame sobrescreveria o mesmo arquivo. Clique em **Add $frame** no checklist, ou adicione com o botão `frame` abaixo do campo `Output Name`.
 
-**P: Nomes de arquivos parecem estranhos ou contêm underscores inesperados.**  
-**R:** O add-on:
-- Substitui caracteres que são inválidos em sistemas de arquivos comuns: `<>:"|?*\/` com `_`.
-- Usa `os.path.basename` na saída do template para evitar caminhos aninhados em um único nome de arquivo.
-Se você vir `_` extras, provavelmente está sanitizando caracteres ou removendo barras acidentais no template.
+**P: O checklist informa uma colisão de nomes de saída.**  
+**R:** Dois pares animação / câmera gravariam os mesmos arquivos. Adicione `$animation` e `$camera` ao `Output Name`, ou ligue **Animation Folder** / **Camera Folder**.
 
-> **⚠️ Problema conhecido**: essa limpeza é aplicada **somente ao nome do arquivo**. Os nomes de pasta (Project, Object, Animation e Camera) são usados como foram digitados. Nomes com `|`, `:`, `?`, `*` ou `"` (por exemplo Actions do Mixamo como `Armature|mixamo.com|Layer0`), ou terminados em ponto/espaço, podem fazer a criação de pastas falhar no Windows, e uma `/` em um nome cria subpastas extras. Renomeie essas Actions/câmeras/objetos antes de renderizar.
+**P: Mudei o `Project Name` ou `Object Name` mas as imagens antigas continuam na pasta anterior.**  
+**R:** O add‑on não move nem apaga renders antigos. Novos renders usam as novas configurações. Limpe as pastas antigas manualmente se necessário.
 
----
+**P: Os nomes de arquivo têm sublinhados inesperados.**  
+**R:** Caracteres inválidos em sistemas de arquivos comuns (`< > : " / \ | ? *`) viram `_` em **nomes de arquivo e de pasta** (por exemplo `Armature|mixamo.com|Layer0` vira `Armature_mixamo.com_Layer0`), e nomes reservados do Windows ganham o prefixo `_`. Veja [Output](Output.md).
 
-## Performance e Estabilidade
+**P: Posso renderizar para um caminho absoluto do Linux / macOS ou um caminho de rede?**  
+**R:** Sim. Caminhos absolutos (`/home/usuario/sprites`) e caminhos UNC (`\\servidor\compartilhamento`) são suportados.
 
-**P: O Blender congela durante a renderização. Isso é normal?**  
-**R:** Sim, até certo ponto. O **Render All** renderiza uma imagem por vez usando o render do próprio Blender, que bloqueia a interface enquanto cada imagem é renderizada. O painel (progresso, **Cancel Render**) e a tecla **ESC** só são tratados **entre** os frames, então com cenas pesadas o Blender pode parecer congelado por alguns segundos seguidos. Ele não está realmente travado: aguarde o frame atual terminar.
-- Reduza as samples / a resolução do render, ou use o **Frame Step**, para acelerar lotes longos.
-- Não clique em **Render All** de novo e evite Ctrl+Z enquanto um lote está em andamento.
-
-**P: Como posso parar um lote de renderização longo?**  
-**R:** Você pode cancelar a renderização de duas formas:
-- **Botão Cancel Render**: Clique no botão **Cancel Render** na seção **Render Progress** (tab **Render**, exibida somente durante a renderização).
-- **Tecla ESC**: Pressione a tecla **ESC** a qualquer momento durante a renderização.
-- Ambos os métodos definem uma flag de cancelamento, e a renderização para graciosamente após o frame atual terminar.
+**P: O checklist reclama do formato de imagem.**  
+**R:** O add-on sempre grava `.png`. Use **File Format = PNG** e **Color = RGBA** no Output Properties, **Film > Transparent** no Render Properties e `Resolution %` = 100. Cada item tem um botão **Fix**.
 
 ---
 

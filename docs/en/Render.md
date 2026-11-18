@@ -1,197 +1,155 @@
 # Render
 
-This page explains the **Render** tab functionality, which includes render settings, output configuration, and render actions.
+This page explains the **5. Render Settings** panel (checklist, resolution, Frame Step, Test Cameras) and how **Render All** works. Output folders and file names are in [Output](Output.md).
+
+---
+
+## Checklist (Ready to render?)
+
+> **Location in add-on**: **5. Render Settings** panel, at the top
+
+The add-on checks your setup all the time and lists the problems here. The header says **Ready to render?** or **Fix these before rendering**. Many problems have a **Fix** button that solves them in one click.
+
+**Errors** (they block Render All; the button is greyed out and its tooltip shows the first error):
+
+| Problem | Fix button |
+| --- | --- |
+| ACTIONS / NLA mode without an `Armature` | – |
+| The animation list is empty, or no animation is enabled | – |
+| Enabled rows with an empty name | **Disable them** |
+| Enabled Actions / NLA strips that do not exist | **Disable them** |
+| End frame before the start frame | **Swap start/end** |
+| No cameras, or blank / missing camera objects in the list | **Remove them** (for blank / missing ones) |
+| `Output Name` without `$frame` | **Add $frame** |
+| Output name collisions (two animation / camera pairs would write the same files) | – (add `$animation` / `$camera` or enable the folders) |
+| Output folder empty, not a folder, or not writable | – |
+| Image format is not PNG | **Use PNG** (also sets RGBA) |
+
+**Warnings** (they do not block):
+
+| Problem | Fix button |
+| --- | --- |
+| Sync Secondary is on (it is not used by the render) | **Turn off** |
+| Unknown placeholder in the `Output Name` (it is kept as text) | – |
+| Color mode is not RGBA (the PNG has no alpha) | **Use RGBA** |
+| **Film > Transparent** is off (opaque background) | **Turn on** |
+| `Resolution %` in Output Properties is not 100 | **Set 100%** |
+
+An **info** line appears when the output folder does not exist yet and will be created.
+
+At the bottom, the checklist shows `N image(s): A anim x C cam` and, once a render has finished in this Blender session, `~estimated time`.
 
 ---
 
 ## Render Settings
 
-> **Location in add-on**: **Render** tab → **Render Settings** section
-
-The **Render Settings** section provides controls for resolution, frame stepping, and playback speed:
+> **Location in add-on**: **5. Render Settings** panel
 
 ### Resolution
 
-- **Resolution X / Y**: Render resolution shared by all cameras
-  - The values are written to the Blender scene render settings (`Resolution X/Y`) when you change them (as long as the camera list contains at least one existing camera), and when you use **Create Cameras** or **Detect Cameras**
-  - **Render All does not apply the resolution again** before rendering: the resolution used is whatever is in the scene's **Output Properties** at that moment
-  - If you change the resolution in Output Properties by hand, the values shown here no longer match the real render. Edit the values here again (or check Output Properties) before rendering
-  - `Resolution %` in Output Properties is not touched: keep it at **100%**, or the sprites will come out at a different size
+- **Resolution X / Y**: resolution shared by all cameras.
+- The values are written to the scene (`Resolution X / Y` of Output Properties) when you change them, and when you use **Create Cameras** or **Detect Cameras**.
+- **Render All applies the resolution again** at the start of every animation / camera pair, so the render always uses the values shown here.
+- `Resolution %` is not changed by the add-on: keep it at **100%** (the checklist warns and offers **Set 100%**).
 
 ### Frame Step
 
-The **Frame Step** feature allows you to render every Nth frame instead of all frames:
+Render every Nth frame instead of every frame:
 
-- **Enable Frame Step**: Toggle to enable/disable frame stepping
-- **Step**: Step value (1-100)
-  - When set to 1: renders all frames (normal behavior)
-  - Counting starts at the first frame of each animation (its `frame_start`)
-  - When set to 2 (animation starting at frame 1): renders frames 1, 3, 5, 7... (skips every other frame)
-  - When set to 3 (animation starting at frame 1): renders frames 1, 4, 7, 10... (skips 2 frames between each rendered frame)
-  - And so on...
+- **Enable Frame Step**: turns it on.
+- **Step**: value from 1 to 100 (default 2). 1 renders every frame.
+- Counting starts at the first frame of each animation (`frame_start`):
+  - Step 2 on an animation starting at frame 1: frames 1, 3, 5, 7...
+  - Step 3: frames 1, 4, 7, 10...
+- A line shows "Renders every N frame(s)".
 
-**Use cases:**
-- Animations made for higher FPS (60, 30 fps) that need to be rendered at lower intervals
-- Creating sprite sheets with fewer frames for performance optimization
-- Testing render settings without rendering all frames
+Use cases: animations made for a higher FPS (60, 30), sprite sheets with fewer frames, quick tests.
 
-**🧪 Test Frame Count** button:
-- Appears when Frame Step is enabled
-- Calculates and displays total frames that will be rendered without actually rendering
-- Shows detailed breakdown per animation with and without step applied
-- Helps verify frame step configuration before starting a full render batch
-- > **Note**: it works in **ACTIONS**, **NLA** and **STATIC** modes. In **FRAME_RANGES** mode it does not count the ranges and reports "No animations found" (known limitation of the current version)
+**Test Frame Count** (shown when Frame Step is on) reports in Blender's Info / status bar the number of animations, the frames with and without step, the total of renders (frames x cameras) and the frames of each animation, without rendering. It works in every animation mode.
 
-### Playback Speed
+### Test Cameras
 
-- **FPS**: Custom frames per second setting
-- **Apply** button: Applies the FPS setting to the Blender scene
-  - This affects animation playback speed in the viewport
-  - Useful for previewing animations at different speeds
-  - Does not affect the actual frame rendering (frames are still rendered at their original frame numbers)
+**Test Cameras** cycles through the cameras of the list (scene camera + camera view in the viewport + light rotation). See [Cameras](Cameras.md).
 
 ---
 
-## Output Configuration
+## Render All
 
-> **Location in add-on**: **Render** tab → **Output** section
-
-The **Output** section in the [Render tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#render-tab) provides controls for where and how files are saved. For detailed information about output templates, folder structures, and file naming, see the dedicated [Output](Output.md) page.
-
-### Output Path
-
-- **Output Path**: Base folder where all rendered files will be created
-  - This uses the Blender scene render settings (`scene.render.filepath`)
-  - Can use Blender relative paths (starting with `//`)
-  - The add-on automatically converts relative paths to absolute paths
-  - The folder **must already exist** when you click Render All (the add-on creates the Project/Object/Animation/Camera subfolders, but not the base folder). Blender's default value for this field may point to a folder that does not exist on your system
-  - > **⚠️ Known issue (Linux / macOS)**: in the current version, absolute paths such as `/home/user/sprites` lose the leading `/` when the add-on processes them and are treated as relative paths, so the render may fail with "Output path does not exist" or save files in the wrong place. Windows paths with a drive letter (`D:\Sprites`) work. UNC network paths (`\\server\share`) are not supported either. Paths relative to the `.blend` file (`//`) are converted to absolute paths first, so they are affected too. Until this is fixed, Render All is only reliable on Windows
-- **📂 Open Output Folder** button: Opens the folder written in **Output Path** in your system's file explorer
-  - Automatically creates the folder if it doesn't exist
-  - Works on Windows, macOS and Linux (uses the system's default file manager)
-  - It opens the base folder only (not the Project/Object/Animation/Camera subfolders created by the render)
-
-> **Before rendering, check the image settings in Blender's Output Properties.** The add-on always names the files `.png`, but it does **not** force the image format: use **File Format = PNG**, **Color = RGBA** and, for transparent sprites, enable **Film → Transparent** in Render Properties. Other formats (JPEG, EXR...) can make the render count as failed or produce files that don't match the `.png` extension.
-
-### Output Name Template
-
-- **Output Name** (`output_template`): Template string for generating file names
-  - Default template: `$objectName_$animation_$frame`
-  - See [Output](Output.md) for detailed information about templates and placeholders
-
-### Available Placeholders
-
-The **📋 Show Available Placeholders** section (collapsible) displays:
-- `$projectName`: Project name from settings
-- `$objectName`: Object/character name from settings
-- `$animation`: Animation/Action name
-- `$camera`: Camera name or output name
-- `$frame`: Frame number (formatted as 0001, 0002, etc.)
-
-The section also shows a live preview of what the output name would look like with sample values.
-
-### Create Folders
-
-Organize output files into a folder hierarchy:
-- **Project Folder**: Creates a folder with the project name
-- **Object Folder**: Creates a folder with the object name
-- **Animation Folder**: Creates a folder with the animation name
-- **Camera Folder**: Creates a folder with the camera name
-
-These folders are built in the order: `Project/Object/Animation/Camera/` (based on which options are enabled).
-
-For more details about folder structure and file naming, see [Output](Output.md).
-
----
-
-## Render Actions
-
-> **Location in add-on**: **Render** tab → **Render Actions** section
-
-The **Render Actions** section contains the main buttons for rendering and testing:
-
-### 🚀 Render All
+> **Location in add-on**: main panel (**Sprite Render**), at the top
 
 - **Operator**: `sprite_render.render_all`
-- **Functionality**: Starts rendering all enabled animations and cameras
-- **Mode**: Rendering driven by a timer, one image per step
-  - **Blender is busy while each image renders**: every frame is rendered with Blender's own (blocking) render, so the interface does not respond during that time. The panel, progress and the Cancel button only update **between** frames. With heavy scenes the UI may look frozen for a few seconds at a time; this is normal
-  - Progress tracking: see render progress in the **Render** tab, below **Render Actions** (it only appears while rendering and is only drawn in the Render tab)
-  - Cancellable: use **Cancel Render** button or press **ESC** to stop (it stops after the current frame finishes)
-  - Don't start Render All again while a render is running (the button stays clickable) and avoid undo (Ctrl+Z) during a render
+- The button is disabled while the checklist has errors, or while a render is already running.
 
-**How it works:**
-1. Checks that at least one camera is configured and that the output path exists
-2. Creates the output subfolders
-3. Renders each enabled animation (in **STATIC** mode: the current frame; in **FRAME_RANGES** mode: each enabled range)
-4. For each animation, renders all configured cameras, sorted by `Render Order`
-5. Applies frame step if enabled
-6. Saves each frame as a PNG image
-7. Shows progress in the [Render tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#render-tab) (below Render Actions section)
+### Confirmation dialog
 
-**Progress tracking:**
-- Current frame count: `[current/total]`
-- Percentage complete
-- Progress bar
-- Status message (current animation, camera, frame)
+Clicking **Render All** opens a summary before anything is rendered:
+- `A animation(s) x C camera(s), F frame(s) each set` and `= I image(s)`
+- **Destination**: the base output folder
+- **Estimated time**: `~X (from the last render)`. The estimate uses the speed of the last render finished in this Blender session; before that it says "unknown until the first frames finish"
+- `N existing file(s) will be overwritten`, when files with the same names already exist (existing files are overwritten without further warning)
+- The warnings of the checklist, if any
 
-**What the render changes in your file:**
-- Restored when the render ends (or is cancelled): output path (`Output Path`), scene camera, current frame and the rotation of the Light Pivot
-- **Not restored**: the Action assigned to the armature, NLA strips mute state, `use_nla`, the timeline start/end range and the scene resolution. The same happens when you select an item in the Actions/NLA lists or use the previews. Save a copy of your file before a long batch if you need the original state back
+Click **Render** to start, or close the dialog to cancel.
 
-**Things to check before rendering** (the add-on does not validate them for you in the current version):
-- The `Output Name` template should contain `$frame`; otherwise every frame overwrites the same file. Existing files are always overwritten without warning
-- If `$camera` is not in the template and the cameras have no camera folder, images from different cameras are numbered in sequence (see [Output](Output.md))
-- In **ACTIONS** and **NLA** modes, set a **Target Armature** and make sure every enabled item points to an existing Action/strip; an Action that does not exist is not applied (the armature keeps whatever pose it had) and a missing NLA strip is skipped with a warning
-- Do not leave blank camera names in the Camera List (an empty name counts as a failed render)
-- In **ACTIONS** mode, select the Action you want in the list before rendering: see the warning in [Animations](Animations.md) (section "Rendering in ACTIONS Mode")
+### While rendering
 
-### 🎯 Test Cameras
+- The **Render All** button is replaced by a progress bar (`Rendering current/total (percent%)`), a status line (`'animation' frame N, camera 'name' (~time left)`) and **Cancel Render**. They are visible with any sub-panel open.
+- The estimated time left appears after the first image is finished.
+- **Blender is still busy while each image renders**: the panel is updated *between* images, so with heavy scenes it may look frozen for a few seconds at a time. Lower the samples or resolution, or use Frame Step, to speed up long batches.
+- **ESC** or **Cancel Render** stop the render **after the current image**.
+- **Ctrl+Z is blocked** during the render. Only one render can run at a time.
+- If you close the window or load another file, the render ends and the scene is restored.
 
-- **Operator**: `sprite_render.test_cameras`
-- **Functionality**: Cycles through configured cameras for preview
-- **Use cases**:
-  - Quickly preview all camera angles
-  - Verify camera framing before rendering
-  - Check lighting setup with light pivot rotation
-  - Visualize light rotation in **Rendered** viewport shading mode
+### How it works
 
-**How it works:**
-1. Finds the current scene camera in the add-on camera list
-2. Selects the next camera in the list (cyclically)
-3. Sets the scene camera to that object
-4. Switches the 3D Viewport to camera view
-5. If a light pivot is set, applies the corresponding light rotation
+1. The setup is validated (same checks as the checklist), the output folders are created, and a preview that was playing is stopped and restored.
+2. The add-on builds the list of images: for each enabled animation (STATIC: the current frame; FRAME_RANGES: each enabled range), each camera in list order, each frame (with Frame Step).
+3. At the start of every animation / camera pair it applies again: the Action or NLA strip, the camera, the resolution, the camera shift and the Light Pivot rotation.
+4. Each image is saved as PNG. If one image fails, it is counted and the render goes on.
+5. When it ends, the status line shows a summary, for example `Render complete: 40 of 40 rendered (63.2 s).` or `Render cancelled: 12 of 40 rendered, 1 failed (20.1 s).`, and the scene is restored.
 
-> **Tip**: For detailed information about camera testing and light rotation visualization, see [Cameras](Cameras.md) and [Lighting](Lighting.md).
+From a script, `bpy.ops.sprite_render.render_all()` runs the same queue without the dialog, blocking until it finishes.
+
+### What is restored after the render
+
+When the render ends, is cancelled or fails, the add-on puts back:
+- the output path (`scene.render.filepath`), the scene camera and the current frame
+- the Light Pivot rotation
+- the active Action (and its slot) and `use_nla` of the armature(s), and the mute state of every NLA track and strip
+- the timeline start / end
+- the resolution (X, Y and %)
+- the camera shifts
+
+The Animation Test does the same with **Stop Preview** / **Restore Scene**. Choosing a mode or selecting a list item never changes the scene.
+
+### Cancelling a stuck state
+
+If the panel shows "rendering" but no render is running (for example after a crash), the **Cancel Render** button resets the state. The state is also reset when the add-on is enabled and when a file is loaded.
 
 ---
 
 ## Workflow Tips
 
 1. **Before rendering:**
-   - Set resolution in Render Settings
-   - Configure output path and template
-   - Enable/disable folder options as needed
-   - Use **Test Cameras** to verify camera setup
-   - Use **🧪 Test Frame Count** if using Frame Step
+   - Follow **Start Here**, then read the checklist and use the **Fix** buttons
+   - Check "First image will be saved as:" in **1. Project & Output**
+   - Use **Test Cameras** and **Animation Test**
+   - Use **Test Frame Count** if you use Frame Step
 
 2. **During rendering:**
-   - Monitor progress in the **Render** tab (Render Progress section)
-   - The interface only updates between frames; each frame blocks Blender while it renders, so avoid working on the scene during a batch
-   - Press **ESC** or click **Cancel Render** to stop (stops after current frame completes)
+   - Follow the progress in the main panel
+   - Avoid working on the scene during a batch
+   - Press **ESC** or **Cancel Render** to stop
 
 3. **After rendering:**
-   - Use **📂 Open Output Folder** to quickly access rendered files
-   - Check folder structure matches your expectations
-   - Verify file names follow your template
+   - Open the destination folder from the dialog or from "First image will be saved as:"
+   - Check the folder structure and file names
 
 ---
 
 ## Related Documentation
 
-- [Output](Output.md): Detailed information about output templates, folder structures, and file naming
-- [Cameras](Cameras.md): Camera configuration and testing
-- [Lighting](Lighting.md): Light pivot system and lighting strategies
-- [Animations](Animations.md): Animation modes and configuration
-
+- [Output](Output.md): output folder, templates, folders and file names
+- [Cameras](Cameras.md): camera configuration and testing
+- [Lighting](Lighting.md): Light Pivot system
+- [Animations](Animations.md): animation modes

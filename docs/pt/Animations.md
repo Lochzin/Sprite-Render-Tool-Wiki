@@ -1,255 +1,148 @@
 # Animações
 
-Esta página explica como o **Sprite Render Tool** lida com animações nos quatro modos: **ACTIONS**, **NLA**, **STATIC** e **FRAME_RANGES**.
+Esta página explica como o **Sprite Render Tool** trata animações nos quatro modos: **ACTIONS**, **NLA**, **STATIC** e **FRAME_RANGES**.
 
 ---
 
 ## Modos de Animação
 
-> **Localização no add-on**: Tab **Animations**
+> **Localização no add-on**: painel **2. Character & Animations**
 
-Na seção **Animations** do painel principal você escolhe o modo via `Animation Mode`:
-- **ACTIONS**: renderiza a partir de uma lista curada de Actions.
-- **NLA**: renderiza a partir de NLA strips na armadura alvo.
-- **STATIC**: renderiza apenas o frame atual.
-- **FRAME_RANGES**: renderiza intervalos de frames específicos sem rig ou animação.
+Escolha o modo em `Animation Mode`:
+- **Use Actions** (ACTIONS, padrão): renderiza a partir de uma lista de Actions.
+- **Use NLA** (NLA): renderiza a partir das NLA strips da armadura alvo.
+- **Static Render** (STATIC): renderiza apenas o frame atual.
+- **Frame Ranges** (FRAME_RANGES): renderiza intervalos de frames específicos sem rig ou animação.
 
-O modo selecionado controla como as animações são coletadas e como a armadura é preparada para reprodução.
+**Trocar o modo, ou selecionar um item de uma lista, nunca altera a sua cena.** A cena só é tocada pelos botões de **Preview** e pelo Render All, e os dois a devolvem ao estado original depois (veja [Render](Render.md)).
 
 ---
 
 ## Configurações Comuns
 
-Estas se aplicam em todos os modos:
-- `Target Armature` (`target_armature`):
-  - O objeto de armadura cujas animações serão renderizadas.
-- `is_previewing`:
-  - Flag interna usada para saber se uma visualização de animação está sendo reproduzida atualmente.
-- `custom_fps`:
-  - Usado por **Apply FPS** para sobrescrever o FPS da cena durante visualizações.
+> **Localização no add-on**: painel **2. Character & Animations**, abaixo de `Animation Mode`
 
-Quando `Animation Mode` muda para **NLA**, o add-on:
-- Limpa a `action` atual de `target_armature.animation_data` (se houver).
-- Garante que `use_nla` está habilitado, para que o NLA esteja ativo.
+- `Armature` (`target_armature`): a armadura cujas animações são renderizadas. É definida só aqui e aparece apenas nos modos **ACTIONS** e **NLA** (é obrigatória neles; o checklist acusa erro sem ela). Só objetos do tipo armadura podem ser escolhidos.
+- `Preview FPS` + **Apply** (`sprite_render.apply_fps`): define `scene.render.fps` com o valor e `scene.render.fps_base` como 1.0. Afeta só a velocidade de reprodução no viewport, não quais frames são renderizados.
 
-> **⚠️ Aviso**: uma Action que estava atribuída à armadura e que não é usada por nenhuma NLA strip nem está protegida com **Fake User** (ícone de escudo) fica sem usuários após essa mudança, e o Blender a descarta quando você salva e reabre o arquivo. Antes de trocar para o modo **NLA**, confirme que a Action está em uma strip ou com Fake User habilitado.
+---
+
+## Listas (Actions, NLA, Frame Ranges)
+
+As três listas funcionam do mesmo jeito:
+- Cada linha tem uma caixa de seleção (habilitado / desabilitado) e o nome. Só as linhas **habilitadas** são renderizadas. Cada linha mostra `início-fim (N)`, onde N é o número de frames.
+- `+` adiciona uma linha vazia, `-` remove a linha selecionada.
+- **Enable All** / **Disable All** alteram todas as linhas da lista.
+- Linhas que apontam para algo que não existe (uma Action ou NLA strip que não está no arquivo) aparecem em vermelho com um ícone de erro. O checklist oferece o botão **Disable them**.
+- A linha selecionada mostra seus campos: frame inicial e final, e os campos extras do modo.
 
 ---
 
 ## Modo ACTIONS
 
-> **⚠️ Requisito de Configuração Importante**: Para que Actions funcionem corretamente com o Sprite Render Tool, você deve configurar o slot de Action da armadura:
-> - Selecione sua **Target Armature** na 3D Viewport.
-> - Vá para o painel **Properties** → **Object Properties** → seção **Animation**.
-> - Na área **Sub Actions**, defina o **Action Slot** como **Legacy Slot**.
-> - Sem essa configuração, Actions podem ser detectadas mas não tocarão durante a visualização ou renderização.
+> **Localização no add-on**: **2. Character & Animations** → `Animation Mode` = **Use Actions**
 
-### Lista de Actions
+Cada linha (`ActionItem`) tem:
+- `Action`: o nome da Action, escolhido com um campo com busca entre as Actions do arquivo.
+- `Start Frame`, `End Frame`.
+- Caixa de habilitado.
+- `Sync Secondary Armature`, `Secondary Armature`, `Secondary Action`: **não implementado**. O painel mostra "Sync Secondary: not implemented". Só o **Preview Action** toca a Action secundária; o **Render All a ignora**, e o checklist mostra um aviso se estiver ligado (com o botão **Turn off**).
 
-O modo **Actions** usa uma lista personalizada (`actions: CollectionProperty(type=ActionItem)`):
-- Cada `ActionItem` tem:
-  - `name`: o nome da Action em `bpy.data.actions`.
-  - `frame_start`, `frame_end`: intervalo de frames para renderizar.
-  - `enabled`: se esta action deve ser incluída nas renderizações.
-  - `sync_secondary`, `secondary_armature`, `secondary_action`:
-    - Projetado para sincronizar uma segunda armadura. A UI os mostra com o rótulo "Sync Secondary: Not implemented". Somente a **Preview Action** os usa; o **Render All os ignora**, então uma preview com armadura secundária não será igual ao render final.
-
-**Detect Actions** (`sprite_render.detect_actions`):
-- Limpa a lista atual (intervalos ou flags de habilitado que você editou são perdidos).
-- Itera sobre todas as `bpy.data.actions`, incluindo Actions que não são de armaduras (luzes, materiais, outros personagens). Remova ou desabilite as que você não quer.
-- Adiciona um `ActionItem` por Action, com intervalo baseado em `action.frame_range`.
-- O botão só é exibido no modo **ACTIONS**. No modo **NLA**, use **Detect NLA Strips**.
+**Detect Actions** (`sprite_render.detect_actions`, também no **Start Here**):
+- **Adiciona** as Actions do arquivo que ainda não estão na lista. Linhas existentes mantêm o intervalo de frames e o estado de habilitado.
+- Ignora Actions que não podem animar um objeto (luzes, materiais, shape keys...).
+- O intervalo vem de `action.frame_range` (início arredondado para baixo, fim para cima).
+- Uma mensagem informa quantas foram adicionadas e avisa se alguma linha aponta para Actions que não existem mais.
 
 ![Detect Actions](/_static/images/SRT_DetectActions.gif)
 
-Você também pode:
-- Adicionar itens com **Add Action**.
-- Remover o item atualmente selecionado com **Remove Action**.
+### Renderizando no Modo ACTIONS
 
-A propriedade `actions_index`:
-- Rastreia qual item está selecionado na lista da UI.
-- Dispara `update_actions_index` quando alterado para aplicar a nova Action à armadura e atualizar o intervalo de frames da cena.
+Quando o **Render All** roda no modo ACTIONS:
+- Só as linhas habilitadas são renderizadas, cada uma por todas as câmeras da lista.
+- No início de **cada** par animação / câmera, a Action é atribuída à `Armature` e `use_nla` é desligado, para que a Action controle a pose. Isso inclui a primeira câmera de cada animação e configurações com uma única câmera.
+- Com as Actions com slots do Blender, se a armadura ficar sem Action Slot após a atribuição, o primeiro slot adequado é usado.
+- Uma Action que não existe é reportada como aviso e suas imagens contam como falhas (normalmente o checklist impede isso antes do render começar).
 
-### Renderização no Modo ACTIONS
-
-Quando `Render All` é iniciado no modo **ACTIONS**:
-- O operador coleta animações da lista `actions`:
-  - Apenas aquelas com `enabled == True`.
-- Para cada action, itera sobre todas as câmeras configuradas e sobre todos os frames de `frame_start` a `frame_end`.
-- A Action é procurada em `bpy.data.actions` pelo nome, atribuída a `target_armature.animation_data.action`, e `use_nla` é desabilitado para que a Action dirija a pose diretamente.
-
-> **⚠️ Problema conhecido na versão atual**: essa atribuição só acontece quando o render **passa para a segunda câmera e as seguintes** de uma animação. Para a **primeira câmera** de cada animação a Action **não** é atribuída: a armadura mantém a Action que já tinha. Na prática:
-> - Com **uma única câmera**, o add-on nunca atribui a Action. O render usa a Action que foi selecionada por último na lista (selecionar um item na lista a atribui à armadura) ou que já estava na armadura.
-> - Com várias animações, a primeira câmera da animação N pode renderizar com a Action da animação N-1 (com o intervalo de frames da animação N).
->
-> Enquanto isso não for corrigido: antes do **Render All**, selecione na lista a Action que será renderizada primeiro e confira as imagens da primeira câmera de cada animação. O modo **NLA** não é afetado (a strip é ativada a cada frame).
+> **Dica**: se uma Action é detectada mas não toca, confira o **Action Slot** da armadura em **Properties** → **Object Properties** → **Animation**.
 
 ---
 
 ## Modo NLA
 
-> **Localização no add-on**: Tab **Animations** → Modo **NLA** selecionado
+> **Localização no add-on**: **2. Character & Animations** → `Animation Mode` = **Use NLA**
 
-### Lista de NLA Strips
+Cada linha (`NLAItem`) tem:
+- `Strip Name`: o nome da NLA strip.
+- `Track Name`: a track que a contém (opcional; diferencia strips com o mesmo nome).
+- `Start Frame`, `End Frame`, caixa de habilitado.
 
-No modo **NLA**, o add-on pode:
-- Coletar automaticamente NLA strips diretamente da armadura, ou
-- Usar uma lista curada `nla_strips: CollectionProperty(type=NLAItem)`.
+**Detect NLA Strips** (`sprite_render.detect_nla_strips`, também no **Start Here**):
+- Exige uma `Armature` com NLA tracks.
+- **Adiciona** as strips (que têm Action) que ainda não estão na lista, incluindo strips de tracks mutadas (adicionadas como desabilitadas quando a track ou a strip está mutada). Linhas existentes mantêm intervalo e estado de habilitado.
+- Intervalo: início arredondado para baixo, fim para cima.
 
-Cada `NLAItem` armazena:
-- `name`: nome da strip.
-- `track_name`: nome da track NLA.
-- `frame_start`, `frame_end`: intervalo ao longo da timeline.
-- `enabled`: se esta strip deve ser renderizada.
+Se a lista NLA estiver vazia, o Render All coleta as strips direto das NLA tracks da armadura.
 
-**Detect NLA Strips** (`sprite_render.detect_nla_strips`):
-- Requer uma `Target Armature` válida com `animation_data` e tracks NLA.
-- Limpa a lista `nla_strips` existente.
-- Itera por todas as tracks e strips NLA.
-- Adiciona itens para strips que têm uma `action`.
-- Define `enabled` com base em se a track e a strip estão mutadas.
+### Renderizando no Modo NLA
 
-**Detect NLA Strips** inclui também strips de tracks mutadas (elas apenas são adicionadas como desabilitadas).
-
-Você também pode:
-- Adicionar itens manualmente com **Add NLA Strip**.
-- Remover o selecionado com **Remove NLA Strip**.
-
-A propriedade `nla_strips_index`:
-- Rastreia qual NLA strip está selecionada na lista.
-- Dispara `update_nla_strips_index` para:
-  - Mutar todas as tracks/strips.
-  - Desmutar apenas a strip selecionada e sua track.
-  - Atualizar o intervalo de frames da cena para o início/fim da strip.
-
-### Helper de Ativação NLA
-
-O helper estático:
-- `SPRITE_RENDER_OT_RenderAll.activate_nla_strip(obj, strip_name, track_name=None)`
-- Muta todas as strips, depois desmuta exatamente a strip com o nome fornecido (e track opcional).
-- Força uma atualização de objeto/view layer quando bem-sucedido.
-
-Esta função é usada tanto para:
-- Visualizações de teste (`test_nla_strip`), quanto
-- Renderização real no modo NLA.
-
-### Renderização no Modo NLA
-
-Quando `Render All` é executado com **NLA** selecionado:
-- As animações são coletadas via:
-  - `collect_nla_animations(obj, settings)`
-  - Ou da lista `nla_strips` configurada, ou do NLA da armadura se a lista estiver vazia.
-- Cada entrada de animação contém:
-  - `strip_name`, `frame_start`, `frame_end`, `track_name`.
-- Antes de renderizar frames para uma animação específica:
-  - O operador garante que `animation_data.use_nla = True`.
-  - Chama `activate_nla_strip` para desmutar apenas aquela strip.
-- Em seguida, como com Actions, itera sobre todos os frames e câmeras.
-
-O caminho de renderização assíncrono usa a mesma sequência via seu callback de timer (`_render_next_frame`).
+No início de cada par animação / câmera:
+- `use_nla` é ligado.
+- A Action que estava ativa na armadura é retirada durante o render (ela tocaria por cima do NLA) e **devolvida no final**.
+- Só a strip escolhida (e sua track) fica sem mute. Uma strip que não é encontrada é reportada como aviso e pulada.
 
 ---
 
 ## Modo STATIC
 
-> **Localização no add-on**: Tab **Animations** → Modo **STATIC** selecionado
+> **Localização no add-on**: **2. Character & Animations** → `Animation Mode` = **Static Render**
 
-No modo **STATIC**:
-- Não há lista de animações.
+- Não há lista de animações e não é preciso armadura.
 - O add-on renderiza **apenas o frame atual** da cena.
+- O nome da animação é `STATIC` (usável em `$animation` e na pasta Animation).
 
-Para criação de diretórios, o add-on trata o nome da animação como `"STATIC"`:
-- Isso ainda pode ser usado em `$animation` dentro do `output_template`.
-
-Use este modo para:
-- Thumbnails.
-- Poses-chave.
-- Visualizações de frame único de um personagem ou prop.
+Use este modo para thumbnails, poses-chave e renders de um único frame.
 
 ---
 
 ## Modo FRAME_RANGES
 
-> **Localização no add-on**: Tab **Animations** → Modo **FRAME_RANGES** selecionado
+> **Localização no add-on**: **2. Character & Animations** → `Animation Mode` = **Frame Ranges**
 
-### Lista de Frame Ranges
-
-O modo **FRAME_RANGES** permite renderizar intervalos de frames específicos sem precisar de armature ou dados de animação:
-- Cada `FrameRangeItem` tem:
-  - `name`: nome personalizável para o intervalo (ex.: "Test Frames", "Sequence 1-10")
-  - `frame_start`, `frame_end`: intervalo de frames para renderizar
-  - `enabled`: se este intervalo deve ser incluído nas renderizações
-- Permite renderizar múltiplos intervalos personalizados (ex.: frames 1-10, 20-30, 50-60)
-- Útil para renderizar sequências específicas ou frames de teste sem configurar animações
-
-**Gerenciamento de Frame Ranges**:
-- Você pode adicionar itens com **Add Frame Range**
-  - Um novo intervalo é criado com nome padrão "Range {número}" baseado no tamanho da lista
-  - Os valores padrão de `frame_start` e `frame_end` são baseados no intervalo de frames da cena (`scene.frame_start` e `scene.frame_end`)
-- Remover o item atualmente selecionado com **Remove Frame Range**
-- Validação automática garante `frame_end >= frame_start` para cada intervalo (corrige automaticamente se `frame_end < frame_start`)
-- A lista exibe cada intervalo mostrando o nome e o intervalo de frames no formato "frame_start-frame_end"
-
-### Renderização no Modo FRAME_RANGES
-
-Quando `Render All` é iniciado no modo **FRAME_RANGES**:
-- O operador coleta intervalos da lista `frame_ranges`:
-  - Apenas aqueles com `enabled == True`
-- Para cada intervalo:
-  - Itera sobre todos os frames de `frame_start` a `frame_end` e sobre todas as câmeras configuradas
-  - Não requer armature ou animação - renderiza frames estáticos da cena
-- O nome do intervalo pode ser usado em `$animation` dentro do `output_template`
-
-Use este modo para:
-- Renderizar sequências específicas de frames sem configurar animações
-- Testar frames individuais ou intervalos de frames
-- Renderizar frames estáticos de diferentes estados da cena
+Renderiza intervalos de frames específicos sem armadura nem dados de animação:
+- Cada linha (`FrameRangeItem`) tem um nome editável (também na lista), frame inicial, frame final e uma caixa de seleção.
+- **Add** (`+`) cria uma linha chamada `Range N`, com o intervalo de frames da cena como padrão. **Remove** (`-`) apaga a selecionada.
+- O frame final nunca fica menor que o inicial: alterar um empurra o outro junto.
+- O nome do intervalo é o valor de `$animation` (e o nome da pasta Animation).
+- **Test Frame Count** também funciona neste modo.
 
 ---
 
-## Painel de Teste de Animações
+## Animation Test
 
-Os modos **ACTIONS** e **NLA** incluem um subpainel **Animations Test**, controlado por `show_section_animations_test`. **Nota**: O modo **FRAME_RANGES** não possui painel de teste, pois não requer animação ou armature.
+> **Localização no add-on**: **2. Character & Animations** → **Animation Test** (recolhível; só modos ACTIONS e NLA)
 
-![Animation Test Expanded](/_static/images/SRT_AnimationTest_Expanded.png)
+Use para conferir uma animação antes de renderizar. Selecione uma linha primeiro.
 
 - **Preview Action** (`sprite_render.test_action`):
-  - Aplica a Action selecionada a `target_armature`.
-  - Desabilita o uso de NLA.
-  - Define `frame_start`, `frame_end` e frame atual.
-  - Se a sincronização secundária estiver habilitada e configurada, aplica a action secundária a outra armadura.
-  - Define `is_previewing = True` e inicia a reprodução da timeline (`bpy.ops.screen.animation_play()`).
-
+  - Atribui a Action selecionada à armadura, desliga o NLA, ajusta início / fim da timeline e o frame atual ao intervalo da linha, aplica a Action secundária se configurada e inicia a reprodução.
 - **Preview NLA Strip** (`sprite_render.test_nla_strip`):
-  - Garante que a armadura tem `animation_data` e NLA habilitado.
-  - Muta todas as strips, depois desmuta apenas a selecionada.
-  - Define o intervalo de frames para o início e fim da strip.
-  - Força uma atualização da view layer.
-  - Define `is_previewing = True` e inicia a reprodução.
-  - **Nota**: Funciona da mesma forma que **Preview Action** - usa a mesma funcionalidade para visualizar animações.
+  - Liga o NLA, retira a Action ativa, muta todas as strips exceto a selecionada, ajusta o intervalo da timeline e inicia a reprodução.
+- **Stop Preview** (`sprite_render.stop_preview`):
+  - Para a reprodução e **restaura a cena**: Action (e slot), `use_nla`, estados de mute do NLA, intervalo da timeline e frame atual, resolução e shifts das câmeras. Iniciar vários previews seguidos mantém o estado original de antes do primeiro.
+  - Se você parar a reprodução (Space / ESC), o botão vira **Restore Scene**; clique nele para devolver a cena.
+  - Iniciar o Render All com um preview ativo restaura a cena primeiro.
+- **Frame Control**: contador de frames (`Frame N (range início-fim)`) e botões primeiro / anterior / próximo / último.
 
 ![Preview NLA Strip](/_static/images/SRT_PreviewNLA.gif)
 
-- **Stop Preview** (`sprite_render.stop_preview`):
-  - Para a reprodução da timeline se estiver em execução.
-  - Define `is_previewing = False`.
-
-O painel de teste também expõe:
-- Botões de navegação de frame (primeiro, anterior, próximo, último).
-
-![Controles de Navegação de Frame](/_static/images/SRT_FrameControls.gif)
-
-- `Custom FPS` + **Apply FPS** (`sprite_render.apply_fps`), que define:
-  - `scene.render.fps = custom_fps`
-  - `scene.render.fps_base = 1.0`
+![Frame Navigation Controls](/_static/images/SRT_FrameControls.gif)
 
 ---
 
-## Dicas e Melhores Práticas
+## Dicas e Boas Práticas
 
-- **Antes de usar o modo ACTIONS**: Certifique-se de que sua **Target Armature** tem seu **Action Slot** definido como **Legacy Slot** no painel **Properties** → **Object Properties** → seção **Animation** → **Sub Actions**. Isso é necessário para que Actions funcionem corretamente.
-- Mantenha os nomes de suas **Action** e **NLA** descritivos (ex.: `walk_front`, `idle_side`, `attack_back`) para gerar nomes de arquivos significativos.
-- No modo **ACTIONS**, desabilite quaisquer actions que você não deseja renderizar para reduzir o tempo total de renderização.
-- No modo **NLA**, use a lista curada `nla_strips` quando quiser controle refinado sobre quais strips são incluídas, independente do estado de mute no seu arquivo de trabalho.
-- Use o painel **Animations Test** para verificar intervalos de frames e velocidade de reprodução de animações antes de iniciar lotes de renderização longos.
-
+- Mantenha os nomes de **Action** e **NLA** descritivos (ex.: `walk_front`, `idle_side`, `attack_back`) para gerar nomes de arquivo úteis. Caracteres inválidos em nomes de arquivo (como o `|` dos nomes do Mixamo) viram `_`.
+- No modo **ACTIONS**, desabilite as Actions que você não quer renderizar para reduzir o tempo de render.
+- No modo **NLA**, use a lista quando quiser escolher strips independentemente do estado de mute no seu arquivo de trabalho.
+- Use o **Animation Test** para conferir intervalos de frames e velocidade antes de lotes longos, e leia o checklist em **5. Render Settings** antes de renderizar.

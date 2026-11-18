@@ -8,23 +8,22 @@ Esta página lista funcionalidades planejadas e melhorias para o **Sprite Render
 
 ### Funcionalidades de Animação
 
-- **Modo Sub-Actions**: Suporte para a funcionalidade de sub-actions do Blender (introduzida no Blender 4.4). Este novo modo de animação permitirá que os usuários trabalhem com sub-actions, que fornecem uma forma de organizar e gerenciar hierarquias de animação complexas dentro de uma única action. Esta funcionalidade complementará os modos existentes ACTIONS, NLA e STATIC, fornecendo mais flexibilidade para fluxos de trabalho de animação avançados.
+- **Modo Sub-Actions**: Suporte para a funcionalidade de sub-actions do Blender (introduzida no Blender 4.4). Este novo modo de animação permitirá que os usuários trabalhem com sub-actions, que fornecem uma forma de organizar e gerenciar hierarquias de animação complexas dentro de uma única action. Esta funcionalidade complementará os modos existentes ACTIONS, NLA, STATIC e FRAME_RANGES, fornecendo mais flexibilidade para fluxos de trabalho de animação avançados.
 
 - **Sincronização de Armadura Secundária**: Implementação completa da funcionalidade de sincronização de armadura secundária. Atualmente, a UI tem placeholders para `sync_secondary`, `secondary_armature` e `secondary_action`, mas a funcionalidade ainda não está totalmente implementada.
 
 ### Funcionalidades de Configuração de Câmeras
 
-- **Presets de Câmeras Customizados**: Expansão do sistema de presets existente:
-  - Criação e salvamento de presets customizados para configurações de câmeras frequentemente usadas
-  - Funcionalidade de compartilhamento e importação/exportação de presets
-  - Isso agilizará o fluxo de trabalho para usuários que frequentemente trabalham com arranjos de câmeras personalizados além dos presets padrão
+- **Presets de Câmeras Salvos**: o add-on já tem os presets prontos, o preset Custom (N câmeras em 360 graus) e `Elevation` / `Target Height` / `Distance`. Ainda planejado:
+  - Criar e salvar seus próprios presets com ângulos de câmera livres para configurações usadas com frequência
+  - Compartilhamento e importação/exportação de presets
+  - Isso agilizará o fluxo de trabalho para usuários que frequentemente trabalham com arranjos de câmeras personalizados
 
 ### Melhorias de UI/UX
 
-- **Expansão de Botões de Ajuda Contextual**: Melhorias adicionais aos botões de documentação existentes:
-  - Integração mais profunda de tooltips contextuais com links diretos para seções específicas da documentação
-  - Botões de ajuda inline em campos de propriedade complexos
-  - Essas melhorias fornecerão acesso ainda mais instantâneo à documentação detalhada sem sair do Blender, melhorando a curva de aprendizado para novos usuários e servindo como referência rápida para usuários experientes
+- **Links de Ajuda Contextual**: toda propriedade e operador já tem um tooltip, e os sub-painéis têm um botão de ajuda. Ainda planejado:
+  - Botões de ajuda que abrem a seção exata da documentação
+  - Botões de documentação que abrem a wiki no idioma da interface do Blender (hoje sempre abrem o inglês)
 
 ### Funcionalidades de Saída
 

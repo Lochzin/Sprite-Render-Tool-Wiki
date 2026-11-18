@@ -1,197 +1,155 @@
-# Renderização
+# Render
 
-Esta página explica a funcionalidade da tab **Render**, que inclui configurações de renderização, configuração de saída e ações de renderização.
+Esta página explica o painel **5. Render Settings** (checklist, resolução, Frame Step, Test Cameras) e como o **Render All** funciona. Pastas de saída e nomes de arquivo estão em [Output](Output.md).
 
 ---
 
-## Configurações de Renderização
+## Checklist (Ready to render?)
 
-> **Localização no add-on**: Tab **Render** → Seção **Render Settings**
+> **Localização no add-on**: painel **5. Render Settings**, no topo
 
-A seção **Render Settings** fornece controles para resolução, frame stepping e velocidade de reprodução:
+O add-on confere sua configuração o tempo todo e lista os problemas aqui. O cabeçalho diz **Ready to render?** (Pronto para renderizar?) ou **Fix these before rendering** (Corrija antes de renderizar). Muitos problemas têm um botão **Fix** que resolve com um clique.
 
-### Resolução
+**Erros** (bloqueiam o Render All; o botão fica cinza e o tooltip mostra o primeiro erro):
 
-- **Resolution X / Y**: Resolução de renderização compartilhada por todas as câmeras
-  - Os valores são gravados nas configurações de renderização da cena do Blender (`Resolution X/Y`) quando você os altera (desde que a lista de câmeras tenha ao menos uma câmera existente) e quando você usa **Create Cameras** ou **Detect Cameras**
-  - O **Render All não aplica a resolução novamente** antes de renderizar: a resolução usada é a que estiver nas **Output Properties** da cena naquele momento
-  - Se você alterar a resolução nas Output Properties manualmente, os valores mostrados aqui deixam de corresponder ao render real. Edite os valores aqui de novo (ou confira as Output Properties) antes de renderizar
-  - O `Resolution %` das Output Properties não é alterado: mantenha em **100%**, ou os sprites sairão em outro tamanho
+| Problema | Botão Fix |
+| --- | --- |
+| Modo ACTIONS / NLA sem `Armature` | – |
+| A lista de animações está vazia, ou nenhuma animação está habilitada | – |
+| Linhas habilitadas com nome vazio | **Disable them** |
+| Actions / NLA strips habilitadas que não existem | **Disable them** |
+| Frame final antes do frame inicial | **Swap start/end** |
+| Sem câmeras, ou objetos de câmera em branco / inexistentes na lista | **Remove them** (para as em branco / inexistentes) |
+| `Output Name` sem `$frame` | **Add $frame** |
+| Colisões de nomes de saída (dois pares animação / câmera gravariam os mesmos arquivos) | – (adicione `$animation` / `$camera` ou habilite as pastas) |
+| Pasta de saída vazia, que não é pasta, ou sem permissão de escrita | – |
+| Formato de imagem diferente de PNG | **Use PNG** (também define RGBA) |
+
+**Avisos** (não bloqueiam):
+
+| Problema | Botão Fix |
+| --- | --- |
+| Sync Secondary ligado (o render não o usa) | **Turn off** |
+| Variável desconhecida no `Output Name` (ela é mantida como texto) | – |
+| Modo de cor diferente de RGBA (o PNG fica sem alfa) | **Use RGBA** |
+| **Film > Transparent** desligado (fundo opaco) | **Turn on** |
+| `Resolution %` do Output Properties diferente de 100 | **Set 100%** |
+
+Uma linha de **informação** aparece quando a pasta de saída ainda não existe e será criada.
+
+No final, o checklist mostra `N image(s): A anim x C cam` e, depois que um render terminou nesta sessão do Blender, o `~tempo estimado`.
+
+---
+
+## Render Settings
+
+> **Localização no add-on**: painel **5. Render Settings**
+
+### Resolution
+
+- **Resolution X / Y**: resolução compartilhada por todas as câmeras.
+- Os valores são gravados na cena (`Resolution X / Y` do Output Properties) quando você os altera, e quando usa **Create Cameras** ou **Detect Cameras**.
+- **O Render All aplica a resolução de novo** no início de cada par animação / câmera, então o render sempre usa os valores mostrados aqui.
+- O `Resolution %` não é alterado pelo add-on: mantenha em **100%** (o checklist avisa e oferece **Set 100%**).
 
 ### Frame Step
 
-O recurso **Frame Step** permite renderizar cada N-ésimo frame em vez de todos os frames:
+Renderiza um a cada N frames em vez de todos:
 
-- **Enable Frame Step**: Toggle para habilitar/desabilitar frame stepping
-- **Step**: Valor de step (1-100)
-  - Quando definido como 1: renderiza todos os frames (comportamento normal)
-  - A contagem começa no primeiro frame de cada animação (seu `frame_start`)
-  - Quando definido como 2 (animação começando no frame 1): renderiza frames 1, 3, 5, 7... (pula cada outro frame)
-  - Quando definido como 3 (animação começando no frame 1): renderiza frames 1, 4, 7, 10... (pula 2 frames entre cada frame renderizado)
-  - E assim por diante...
+- **Enable Frame Step**: liga o recurso.
+- **Step**: valor de 1 a 100 (padrão 2). 1 renderiza todos os frames.
+- A contagem começa no primeiro frame de cada animação (`frame_start`):
+  - Step 2 numa animação que começa no frame 1: frames 1, 3, 5, 7...
+  - Step 3: frames 1, 4, 7, 10...
+- Uma linha mostra "Renders every N frame(s)".
 
-**Casos de uso:**
-- Animações feitas para FPS mais altos (60, 30 fps) que precisam ser renderizadas em intervalos menores
-- Criar sprite sheets com menos frames para otimização de performance
-- Testar configurações de renderização sem renderizar todos os frames
+Usos: animações feitas para FPS maior (60, 30), sprite sheets com menos frames, testes rápidos.
 
-Botão **🧪 Test Frame Count**:
-- Aparece quando Frame Step está habilitado
-- Calcula e exibe total de frames que serão renderizados sem realmente renderizar
-- Mostra detalhamento por animação com e sem step aplicado
-- Ajuda a verificar configuração de frame step antes de iniciar um lote completo de renderização
-- > **Nota**: funciona nos modos **ACTIONS**, **NLA** e **STATIC**. No modo **FRAME_RANGES** ele não conta os intervalos e informa "No animations found" (limitação conhecida da versão atual)
+**Test Frame Count** (aparece com o Frame Step ligado) informa, na barra de status / editor Info do Blender, o número de animações, os frames com e sem step, o total de renders (frames x câmeras) e os frames de cada animação, sem renderizar. Funciona em todos os modos de animação.
 
-### Playback Speed
+### Test Cameras
 
-- **FPS**: Configuração personalizada de frames por segundo
-- Botão **Apply**: Aplica a configuração de FPS à cena do Blender
-  - Isso afeta a velocidade de reprodução da animação no viewport
-  - Útil para visualizar animações em velocidades diferentes
-  - Não afeta a renderização real dos frames (os frames ainda são renderizados em seus números de frame originais)
+**Test Cameras** percorre as câmeras da lista (câmera da cena + visão de câmera no viewport + rotação de luz). Veja [Cameras](Cameras.md).
 
 ---
 
-## Configuração de Saída
+## Render All
 
-> **Localização no add-on**: Tab **Render** → Seção **Output**
-
-A seção **Output** na [tab Render](https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/index.html#render-tab) fornece controles para onde e como os arquivos são salvos. Para informações detalhadas sobre templates de saída, estruturas de pastas e nomenclatura de arquivos, veja a página dedicada [Output](Output.md).
-
-### Output Path
-
-- **Output Path**: Pasta base onde todos os arquivos renderizados serão criados
-  - Isso usa as configurações de renderização da cena do Blender (`scene.render.filepath`)
-  - Pode usar caminhos relativos do Blender (começando com `//`)
-  - O add-on automaticamente converte caminhos relativos para caminhos absolutos
-  - A pasta **já deve existir** quando você clicar em Render All (o add-on cria as subpastas Project/Object/Animation/Camera, mas não a pasta base). O valor padrão desse campo no Blender pode apontar para uma pasta que não existe no seu sistema
-  - > **⚠️ Problema conhecido (Linux / macOS)**: na versão atual, caminhos absolutos como `/home/usuario/sprites` perdem a `/` inicial quando o add-on os processa e passam a ser tratados como caminhos relativos; o render pode falhar com "Output path does not exist" ou salvar os arquivos no lugar errado. Caminhos do Windows com letra de unidade (`D:\Sprites`) funcionam. Caminhos de rede UNC (`\\servidor\pasta`) também não são suportados. Caminhos relativos ao `.blend` (`//`) são convertidos primeiro em absolutos, então também são afetados. Até isso ser corrigido, o Render All só é confiável no Windows
-- Botão **📂 Open Output Folder**: Abre no explorador de arquivos do sistema a pasta escrita em **Output Path**
-  - Cria automaticamente a pasta se ela não existir
-  - Funciona no Windows, macOS e Linux (usa o gerenciador de arquivos padrão do sistema)
-  - Abre apenas a pasta base (não as subpastas Project/Object/Animation/Camera criadas pelo render)
-
-> **Antes de renderizar, confira as configurações de imagem nas Output Properties do Blender.** O add-on sempre nomeia os arquivos como `.png`, mas **não** força o formato de imagem: use **File Format = PNG**, **Color = RGBA** e, para sprites transparentes, ative **Film → Transparent** nas Render Properties. Outros formatos (JPEG, EXR...) podem fazer o render contar como falha ou gerar arquivos incompatíveis com a extensão `.png`.
-
-### Template de Nome de Saída
-
-- **Output Name** (`output_template`): String de template para gerar nomes de arquivos
-  - Template padrão: `$objectName_$animation_$frame`
-  - Veja [Output](Output.md) para informações detalhadas sobre templates e placeholders
-
-### Placeholders Disponíveis
-
-A seção **📋 Show Available Placeholders** (colapsável) exibe:
-- `$projectName`: Nome do projeto das configurações
-- `$objectName`: Nome do objeto/personagem das configurações
-- `$animation`: Nome da animação/action
-- `$camera`: Nome da câmera ou nome de saída
-- `$frame`: Número do frame (formatado como 0001, 0002, etc.)
-
-A seção também mostra uma prévia ao vivo de como o nome de saída ficaria com valores de exemplo.
-
-### Create Folders
-
-Organize arquivos de saída em uma hierarquia de pastas:
-- **Project Folder**: Cria uma pasta com o nome do projeto
-- **Object Folder**: Cria uma pasta com o nome do objeto
-- **Animation Folder**: Cria uma pasta com o nome da animação
-- **Camera Folder**: Cria uma pasta com o nome da câmera
-
-Essas pastas são construídas na ordem: `Project/Object/Animation/Camera/` (baseado em quais opções estão habilitadas).
-
-Para mais detalhes sobre estrutura de pastas e nomenclatura de arquivos, veja [Output](Output.md).
-
----
-
-## Ações de Renderização
-
-> **Localização no add-on**: Tab **Render** → Seção **Render Actions**
-
-A seção **Render Actions** contém os botões principais para renderização e teste:
-
-### 🚀 Render All
+> **Localização no add-on**: painel principal (**Sprite Render**), no topo
 
 - **Operador**: `sprite_render.render_all`
-- **Funcionalidade**: Inicia a renderização de todas as animações e câmeras habilitadas
-- **Modo**: Renderização conduzida por um timer, uma imagem por passo
-  - **O Blender fica ocupado enquanto cada imagem renderiza**: cada frame é renderizado com o render do próprio Blender (bloqueante), então a interface não responde nesse intervalo. O painel, o progresso e o botão Cancel só atualizam **entre** os frames. Com cenas pesadas a interface pode parecer travada por alguns segundos seguidos; isso é normal
-  - Rastreamento de progresso: veja o progresso na tab **Render**, abaixo de **Render Actions** (só aparece durante a renderização e só é desenhado na tab Render)
-  - Cancelável: use o botão **Cancel Render** ou pressione **ESC** para parar (para depois que o frame atual terminar)
-  - Não inicie o Render All de novo enquanto um render está em andamento (o botão continua clicável) e evite desfazer (Ctrl+Z) durante o render
+- O botão fica desabilitado enquanto o checklist tiver erros, ou enquanto um render já estiver rodando.
 
-**Como funciona:**
-1. Verifica se há ao menos uma câmera configurada e se o caminho de saída existe
-2. Cria as subpastas de saída
-3. Renderiza cada animação habilitada (no modo **STATIC**: o frame atual; no modo **FRAME_RANGES**: cada intervalo habilitado)
-4. Para cada animação, renderiza todas as câmeras configuradas, ordenadas por `Render Order`
-5. Aplica frame step se habilitado
-6. Salva cada frame como uma imagem PNG
-7. Mostra progresso na [tab Render](https://lochzin.github.io/Sprite-Render-Tool-Wiki/pt/index.html#render-tab) (abaixo da seção Render Actions)
+### Diálogo de confirmação
 
-**Rastreamento de progresso:**
-- Contagem de frames atual: `[atual/total]`
-- Porcentagem completa
-- Barra de progresso
-- Mensagem de status (animação atual, câmera, frame)
+Clicar em **Render All** abre um resumo antes de renderizar qualquer coisa:
+- `A animation(s) x C camera(s), F frame(s) each set` e `= I image(s)`
+- **Destination**: a pasta de saída base
+- **Estimated time**: `~X (from the last render)`. A estimativa usa a velocidade do último render concluído nesta sessão do Blender; antes disso diz "unknown until the first frames finish"
+- `N existing file(s) will be overwritten`, quando já existem arquivos com os mesmos nomes (arquivos existentes são sobrescritos sem outro aviso)
+- Os avisos do checklist, se houver
 
-**O que o render altera no seu arquivo:**
-- Restaurado quando o render termina (ou é cancelado): caminho de saída (`Output Path`), câmera da cena, frame atual e a rotação do Light Pivot
-- **Não restaurado**: a Action atribuída à armadura, o estado de mute das NLA strips, `use_nla`, o intervalo inicial/final da timeline e a resolução da cena. O mesmo acontece ao selecionar um item nas listas de Actions/NLA ou ao usar as previews. Salve uma cópia do arquivo antes de um lote longo se precisar do estado original de volta
+Clique em **Render** para iniciar, ou feche o diálogo para cancelar.
 
-**Coisas a conferir antes de renderizar** (na versão atual o add-on não valida isso por você):
-- O template `Output Name` deve conter `$frame`; caso contrário todo frame sobrescreve o mesmo arquivo. Arquivos existentes são sempre sobrescritos sem aviso
-- Se `$camera` não estiver no template e as câmeras não tiverem pasta de câmera, as imagens de câmeras diferentes são numeradas em sequência (veja [Output](Output.md))
-- Nos modos **ACTIONS** e **NLA**, defina uma **Target Armature** e confirme que todo item habilitado aponta para uma Action/strip existente; uma Action inexistente não é aplicada (a armadura mantém a pose que tinha) e uma NLA strip inexistente é pulada com um aviso
-- Não deixe nomes de câmera em branco na Camera List (um nome vazio conta como render com falha)
-- No modo **ACTIONS**, selecione na lista a Action desejada antes de renderizar: veja o aviso em [Animações](Animations.md) (seção "Renderização no Modo ACTIONS")
+### Durante o render
 
-### 🎯 Test Cameras
+- O botão **Render All** é trocado por uma barra de progresso (`Rendering atual/total (porcentagem%)`), uma linha de status (`'animação' frame N, camera 'nome' (~tempo restante)`) e **Cancel Render**. Eles aparecem com qualquer sub-painel aberto.
+- O tempo restante estimado aparece depois que a primeira imagem termina.
+- **O Blender continua ocupado enquanto cada imagem renderiza**: o painel é atualizado *entre* as imagens, então com cenas pesadas ele pode parecer travado por alguns segundos. Reduza samples ou resolução, ou use o Frame Step, para acelerar lotes longos.
+- **ESC** ou **Cancel Render** param o render **depois da imagem atual**.
+- **Ctrl+Z fica bloqueado** durante o render. Só um render roda por vez.
+- Se você fechar a janela ou carregar outro arquivo, o render termina e a cena é restaurada.
 
-- **Operador**: `sprite_render.test_cameras`
-- **Funcionalidade**: Percorre as câmeras configuradas para visualização
-- **Casos de uso**:
-  - Visualizar rapidamente todos os ângulos de câmera
-  - Verificar enquadramento da câmera antes de renderizar
-  - Verificar configuração de iluminação com rotação do light pivot
-  - Visualizar rotação de luz no modo de shading **Rendered** do viewport
+### Como funciona
 
-**Como funciona:**
-1. Encontra a câmera da cena atual na lista de câmeras do add-on
-2. Seleciona a próxima câmera na lista (ciclicamente)
-3. Define a câmera da cena para esse objeto
-4. Muda a 3D Viewport para a visualização da câmera
-5. Se um light pivot estiver definido, aplica a rotação de luz correspondente
+1. A configuração é validada (as mesmas checagens do checklist), as pastas de saída são criadas, e um preview que estava tocando é parado e restaurado.
+2. O add-on monta a lista de imagens: para cada animação habilitada (STATIC: o frame atual; FRAME_RANGES: cada intervalo habilitado), cada câmera na ordem da lista, cada frame (com Frame Step).
+3. No início de cada par animação / câmera ele aplica de novo: a Action ou NLA strip, a câmera, a resolução, o shift da câmera e a rotação do Light Pivot.
+4. Cada imagem é salva como PNG. Se uma imagem falhar, ela é contada e o render continua.
+5. Ao terminar, a linha de status mostra um resumo, por exemplo `Render complete: 40 of 40 rendered (63.2 s).` ou `Render cancelled: 12 of 40 rendered, 1 failed (20.1 s).`, e a cena é restaurada.
 
-> **Dica**: Para informações detalhadas sobre teste de câmeras e visualização de rotação de luz, veja [Câmeras](Cameras.md) e [Iluminação](Lighting.md).
+Em um script, `bpy.ops.sprite_render.render_all()` roda a mesma fila sem o diálogo, bloqueando até terminar.
+
+### O que é restaurado depois do render
+
+Quando o render termina, é cancelado ou falha, o add-on devolve:
+- o caminho de saída (`scene.render.filepath`), a câmera da cena e o frame atual
+- a rotação do Light Pivot
+- a Action ativa (e seu slot) e o `use_nla` da(s) armadura(s), e o estado de mute de cada NLA track e strip
+- o início / fim da timeline
+- a resolução (X, Y e %)
+- os shifts das câmeras
+
+O Animation Test faz o mesmo com **Stop Preview** / **Restore Scene**. Escolher um modo ou selecionar um item de lista nunca altera a cena.
+
+### Destravando um estado preso
+
+Se o painel mostra "renderizando" mas nenhum render está rodando (por exemplo depois de um crash), o botão **Cancel Render** zera o estado. O estado também é zerado quando o add-on é ativado e quando um arquivo é carregado.
 
 ---
 
 ## Dicas de Fluxo de Trabalho
 
 1. **Antes de renderizar:**
-   - Defina resolução em Render Settings
-   - Configure caminho de saída e template
-   - Habilite/desabilite opções de pasta conforme necessário
-   - Use **Test Cameras** para verificar configuração de câmeras
-   - Use **🧪 Test Frame Count** se estiver usando Frame Step
+   - Siga o **Start Here**, depois leia o checklist e use os botões **Fix**
+   - Confira "First image will be saved as:" em **1. Project & Output**
+   - Use **Test Cameras** e o **Animation Test**
+   - Use o **Test Frame Count** se usar Frame Step
 
-2. **Durante a renderização:**
-   - Monitore o progresso na tab **Render** (seção Render Progress)
-   - A interface só atualiza entre os frames; cada frame bloqueia o Blender enquanto renderiza, então evite mexer na cena durante um lote
-   - Pressione **ESC** ou clique em **Cancel Render** para parar (para após o frame atual completar)
+2. **Durante o render:**
+   - Acompanhe o progresso no painel principal
+   - Evite mexer na cena durante um lote
+   - Pressione **ESC** ou **Cancel Render** para parar
 
-3. **Após a renderização:**
-   - Use **📂 Open Output Folder** para acessar rapidamente os arquivos renderizados
-   - Verifique se a estrutura de pastas corresponde às suas expectativas
-   - Verifique se os nomes de arquivos seguem seu template
+3. **Depois do render:**
+   - Abra a pasta de destino a partir do diálogo ou de "First image will be saved as:"
+   - Confira a estrutura de pastas e os nomes de arquivo
 
 ---
 
 ## Documentação Relacionada
 
-- [Output](Output.md): Informações detalhadas sobre templates de saída, estruturas de pastas e nomenclatura de arquivos
-- [Câmeras](Cameras.md): Configuração de câmeras e testes
-- [Iluminação](Lighting.md): Sistema de light pivot e estratégias de iluminação
-- [Animações](Animations.md): Modos de animação e configuração
-
+- [Output](Output.md): pasta de saída, modelos, pastas e nomes de arquivo
+- [Cameras](Cameras.md): configuração e teste de câmeras
+- [Lighting](Lighting.md): sistema Light Pivot
+- [Animations](Animations.md): modos de animação

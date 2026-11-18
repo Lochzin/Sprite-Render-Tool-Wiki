@@ -11,7 +11,10 @@ This page lists common questions about using the **Sprite Render Tool** and how 
 
 **Q: Where do I find the Sprite Render Tool panel?**  
 **A:** After enabling the add‑on in Preferences, go to:  
-`3D Viewport > Sidebar (N) > Sprite Render`.
+`3D Viewport > Sidebar (N) > Sprite Render`. It is one main panel with the sub-panels 1. Project & Output, 2. Character & Animations, 3. Cameras, 4. Light, 5. Render Settings and Info.
+
+**Q: Can I use the add-on in Portuguese?**  
+**A:** Yes. Set Blender's language to Portuguese (`Edit > Preferences > Interface > Language`) and the panels, tooltips and messages are shown in Portuguese. The documentation buttons still open the English wiki.
 
 ---
 
@@ -19,109 +22,97 @@ This page lists common questions about using the **Sprite Render Tool** and how 
 
 **Q: My renders look like they are coming from the wrong camera. What should I check?**  
 **A:** Make sure:
-- The **Cameras** list has the correct `Name` values (they must match existing camera objects).
-- In the 3D Viewport, use **Test Cameras** to cycle through configured cameras and confirm which one is active.
-- The scene camera is being set correctly by the add‑on (you should see the camera change when cycling).
+- The **Cameras (render order)** list has the right cameras. Rows in red are cameras that do not exist (the checklist offers **Remove them**).
+- Use **Test Cameras**, or the camera icon of a row, to see through a configured camera.
+- Remember that the list order is the render order.
 
 **Q: Light does not rotate per camera, or looks wrong. How can I troubleshoot this?**  
 **A:** Check the following:
-- Ensure a **Light Pivot** object is set in the **Light Pivot** section.
-- Verify `Enable Light Pivot` is enabled in the **Light Pivot** section.
-- Verify `Enable Full Rotation (XYZ)` is set correctly:
-  - Off: only Z axis is used.
-  - On: full XYZ from the camera's `light_rotation` is applied.
-- Use the **Test Cameras** button to cycle through cameras and check console logs for rotation values being applied.
+- In **4. Light**, `Enable Light Pivot` is on and a pivot `Object` is set.
+- `Enable Full Rotation (XYZ)` is set correctly: off uses only Z, on uses the full XYZ `Light Rotation` of the camera.
+- Click **Test Cameras** (with the viewport in **Rendered** shading) and watch the pivot rotate; the rotation values are written to Blender's Info editor.
+- Automatic light rotation is Z only; adjust it by hand for cameras at other heights (see [Lighting](Lighting.md)).
 
 **Q: The Detect Cameras button does nothing. Why?**  
-**A:** The **Detect Cameras** button (operator `sprite_render.autofill_light_rotation`) requires:
-- A **Light Pivot** object **only if `Enable Light Pivot` is turned on**. With the pivot enabled but no object set, it cancels with the error "Light pivot object is not set". With `Enable Light Pivot` turned off, no pivot is needed and every camera gets a light rotation of 0.
-- At least one camera that is:
-  - of type `CAMERA`
-  - not hidden in viewport
-  - not hidden for render  
-Make sure you are on the correct View Layer and that the cameras are visible. If no camera qualifies, it shows a warning and leaves the list unchanged. When it works, it **replaces the whole camera list** (names, output names and light rotations you typed are lost).
+**A:** **Detect Cameras** needs:
+- A **Light Pivot** object **only if `Enable Light Pivot` is on**. With the pivot enabled but no object set, it cancels with "Light pivot object is not set". With it off, no pivot is needed and every light rotation is 0.
+- At least one camera of the current View Layer that is not hidden in the viewport and not disabled in the viewport or for render. If none qualifies, it shows a warning and leaves the list unchanged.
+
+When it works it **adds** the new cameras and keeps your existing rows (order, `Output Name`, shift). The light rotation of the detected cameras is recalculated.
+
+**Q: Create Cameras asks "Replace cameras?". Will it delete my cameras?**  
+**A:** No. It only deletes the cameras that the add-on created in a previous run. Your own cameras are never deleted, even if they have a similar name (the new camera gets a `.001` suffix instead).
 
 ---
 
 ## Animations
 
 **Q: Actions are not showing up in the list.**  
-**A:** In **ACTIONS** mode:
-- Click **Detect Actions**.
-- The tool reads from `bpy.data.actions` and fills the list.
-- If still empty, confirm that Actions exist in your file and are not stored in a different blend file or library.
+**A:** In **ACTIONS** mode click **Detect Actions** (or `+` and pick the Action by name). It adds the Actions of the file that can animate objects (not lights or materials). If it is still empty, confirm that Actions exist in your file and are not stored in a library.
 
 **Q: Actions are detected but nothing happens when I try to preview or render them.**  
-**A:** This is often caused by the armature's Action configuration. Make sure:
-- Select your **Target Armature** in the 3D Viewport.
-- Go to the **Properties** panel → **Object Properties** → **Animation** section.
-- In the **Sub Actions** area, set the **Action Slot** to **Legacy Slot**.
-- This is required for Actions to work properly with the Sprite Render Tool.
-- After setting this, try **Preview Action** or **Detect Actions** again.
+**A:** Check that an `Armature` is set in **2. Character & Animations** and that the row is enabled and not red. The add-on assigns the Action (and a suitable Action Slot) for you; if it still does not play, check the **Action Slot** of the armature in **Properties** → **Object Properties** → **Animation**.
 
 **Q: NLA strips are not detected.**  
-**A:** In **NLA** mode:
-- Set a valid **Target Armature**.
-- Make sure the armature has `animation_data` with NLA tracks and strips.
-- Click **Detect NLA Strips**.
-- If still empty, verify that your NLA strips are on the chosen armature and actually have Actions assigned.
+**A:** In **NLA** mode set an `Armature` with NLA tracks and click **Detect NLA Strips**. Only strips with an Action are added; strips of muted tracks come in as disabled.
 
 **Q: The wrong animation plays during render.**  
-**A:** Possible causes:
-- In **ACTIONS** mode:
-  - Check that the correct Action is enabled in the list.
-  - Confirm its `frame_start` and `frame_end` cover the intended range.
-- In **NLA** mode:
-  - Verify the selected NLA strip in the list matches the strip you expect.
-  - Use **Preview NLA Strip** to see if only that strip is active before rendering.
+**A:** The Action or strip is applied for every animation and camera. Check that the right rows are enabled, that their frame ranges are correct and that the checklist has no problems. Use **Preview Action / Preview NLA Strip** to see an animation alone.
 
-**Q: Preview Action / Preview NLA Strip doesn’t seem to play.**  
-**A:** Check:
-- Timeline playback:
-  - Make sure the timeline is not paused by some other modal operator.
-- `is_previewing` state:
-  - When preview starts, the add‑on calls `bpy.ops.screen.animation_play()`.
-  - Use **Stop Preview** if play got stuck or if another preview is running.
+**Q: Preview Action / Preview NLA Strip doesn't seem to play.**  
+**A:** Make sure the timeline is not paused by another modal operator. If playback stopped (Space / ESC) the button becomes **Restore Scene**: click it to put the scene back, then start the preview again.
+
+**Q: I used a preview and now my armature has another Action.**  
+**A:** Click **Stop Preview** / **Restore Scene**. It restores the Action, NLA mute states, timeline range, current frame, resolution and camera shifts of before the first preview.
+
+---
+
+## Render
+
+**Q: Render All is greyed out. Why?**  
+**A:** The checklist in **5. Render Settings** has at least one error (or a render is already running). Hover over the button to see the first error, then use the **Fix** buttons.
+
+**Q: What does the dialog before the render tell me?**  
+**A:** The number of animations, cameras and images, the destination folder, the estimated time (only after a render has finished in this Blender session), how many existing files will be overwritten and any warnings. Click **Render** to start.
+
+**Q: Does the render change my scene?**  
+**A:** It changes things while it runs, and puts them back when it ends, is cancelled or fails: active Action and slot, `use_nla`, NLA mute states, timeline range, current frame, resolution (X, Y and %), camera shifts, scene camera, output path and Light Pivot rotation. See [Render](Render.md).
+
+**Q: Blender freezes while rendering. Is this normal?**  
+**A:** To a degree. **Render All** renders one image at a time with Blender's own render, which blocks the interface while each image renders. The progress bar, **Cancel Render** and **ESC** are handled **between** images. It is not really frozen: wait for the current image to finish.
+- Lower the render samples / resolution, or use **Frame Step**, to speed up long batches.
+- Ctrl+Z is blocked during a render and only one render can run at a time.
+
+**Q: How can I stop a long render batch?**  
+**A:** Press **ESC** or click **Cancel Render** (main panel, visible while rendering). The render stops after the current image and the scene is restored.
+
+**Q: The panel says "rendering" but nothing is rendering.**  
+**A:** Click **Cancel Render** to reset the state. The state is also reset when the add-on is enabled and when a file is loaded.
 
 ---
 
 ## Output and Files
 
 **Q: Where are my images being saved?**  
-**A:** The final path is built from:
-- `scene.render.filepath` (cleaned by the add‑on), plus
-- Optional folder levels (**Project/Object/Animation/Camera**), plus
-- File name from `output_template` with placeholders:
-  - `$projectName`, `$objectName`, `$animation`, `$camera`, `$frame`  
-Check the **Output** section and your Render Properties to know exactly where files go.
+**A:** Look at **First image will be saved as:** in **1. Project & Output**. The path is the `Output Folder` (default `//sprites/`, created automatically; relative to the .blend file, so save the file first), plus the optional folders (**Project / Object / Animation / Camera**), plus the file name from `Output Name`.
+
+**Q: Render All says my Output Name has no `$frame`.**  
+**A:** Without `$frame` every frame would overwrite the same file. Click **Add $frame** in the checklist, or add it with the `frame` button below the `Output Name` field.
+
+**Q: The checklist reports an output name collision.**  
+**A:** Two animation / camera pairs would write the same files. Add `$animation` and `$camera` to the `Output Name`, or turn on **Animation Folder** / **Camera Folder**.
 
 **Q: I changed `Project Name` or `Object Name` but old images are still in the previous folder.**  
-**A:** The add‑on does not move or delete old renders:
-- New renders use your new settings to build new folders/filenames.
-- You may need to clean up old directories manually if you want to avoid duplicates.
+**A:** The add‑on does not move or delete old renders. New renders use the new settings. Clean up old folders manually if needed.
 
-**Q: Filenames look strange or contain unexpected underscores.**  
-**A:** The add‑on:
-- Replaces characters that are invalid on common file systems: `<>:"|?*\/` with `_`.
-- Uses `os.path.basename` on the template output to avoid nested paths in a single filename.
-If you see extra `_`, it is likely sanitizing characters or removing accidental slashes in the template.
+**Q: Filenames contain unexpected underscores.**  
+**A:** Characters that are invalid on common file systems (`< > : " / \ | ? *`) are replaced by `_` in **file and folder names** (for example `Armature|mixamo.com|Layer0` becomes `Armature_mixamo.com_Layer0`), and Windows reserved names get a `_` prefix. See [Output](Output.md).
 
-> **⚠️ Known issue**: this cleaning is applied to the **file name only**. Folder names (Project, Object, Animation and Camera) are used as typed. Names with `|`, `:`, `?`, `*` or `"` (for example Mixamo Actions such as `Armature|mixamo.com|Layer0`), or ending in a dot/space, can make folder creation fail on Windows, and a `/` in a name creates extra subfolders. Rename those Actions/cameras/objects before rendering.
+**Q: Can I render to a Linux / macOS absolute path or a network path?**  
+**A:** Yes. Absolute paths (`/home/user/sprites`) and UNC paths (`\\server\share`) are supported.
 
----
-
-## Performance and Stability
-
-**Q: Blender freezes while rendering. Is this normal?**  
-**A:** Yes, to a degree. **Render All** renders one image at a time using Blender's own render, which blocks the interface while each image is being rendered. The panel (progress, **Cancel Render**) and the **ESC** key are only handled **between** frames, so with heavy scenes Blender can look frozen for a few seconds at a time. It is not really frozen: wait for the current frame to finish.
-- Lower the render samples / resolution, or use **Frame Step**, to speed up long batches.
-- Do not click **Render All** again and avoid Ctrl+Z while a batch is running.
-
-**Q: How can I stop a long render batch?**  
-**A:** You can cancel rendering in two ways:
-- **Cancel Render button**: Click the **Cancel Render** button in the **Render Progress** section (**Render** tab, shown only while rendering).
-- **ESC key**: Press the **ESC** key at any time during rendering.
-- Both methods set a cancellation flag, and rendering stops gracefully after the current frame is finished.
+**Q: The checklist complains about the image format.**  
+**A:** The add-on always writes `.png`. Use **File Format = PNG** and **Color = RGBA** in Output Properties, **Film > Transparent** in Render Properties and `Resolution %` = 100. Each item has a **Fix** button.
 
 ---
 

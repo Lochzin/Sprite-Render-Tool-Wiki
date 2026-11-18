@@ -4,6 +4,68 @@ This page tracks changes to the **Sprite Render Tool** over time.
 
 ---
 
+## [0.3.12] - 2026
+
+### Added
+- **Pre-render validation**: a checklist at the top of **5. Render Settings** ("Ready to render?" / "Fix these before rendering")
+  - Checks: Target Armature (Actions/NLA), empty animation list, no enabled animations, blank or missing Actions/NLA strips, end frame before start frame, no cameras, blank or missing camera objects, `$frame` missing from the Output Name, output name collisions, output folder (empty, not a folder, not writable, will be created), image format not PNG, color mode not RGBA, Film > Transparent off, Resolution % different from 100, Sync Secondary enabled (not implemented in the render)
+  - Most problems have a one-click **Fix** button (Add $frame, Remove them, Disable them, Swap start/end, Use PNG, Use RGBA, Turn on, Set 100%, Turn off)
+  - Also shows "N image(s): A anim x C cam" and an estimated time
+  - **Render All is disabled** (greyed out, the tooltip shows the first problem) while there are errors; warnings do not block
+- **Confirmation dialog**: Render All now opens a summary before starting: animations x cameras, frames, total images, destination folder, estimated time (measured from the last render of the session), how many existing files will be overwritten and any warnings. The **Render** button of the dialog starts the render
+- **Start Here guide**: the main panel shows a 4-step guide (Cameras, Animations, output folder, Render All) with **Create** / **Detect** / **Detect Actions** / **Detect NLA Strips** / **Add Frame Range** shortcuts until cameras and animations exist
+- **Native progress bar**: the main panel shows Blender's own progress bar, the current image, the status line (animation, frame, camera, estimated time left) and a **Cancel Render** button while rendering, whichever sub-panel is open
+- **Camera list**: a real list with add (`+`), remove (`-`), move up/down (list order is the render order) and a "view through this camera" button per row; invalid cameras are highlighted. The selected camera shows its `Camera` (searchable), `Output Name`, per-camera Shift and Light Rotation
+- **Actions/NLA/Frame Ranges lists**: missing Actions/strips are highlighted; `Action` is picked with a searchable field; **Enable All** / **Disable All** buttons; each row shows `start-end (N)` with the number of frames
+- **Camera presets with elevation**: `Elevation` (-89 to 89 degrees; 0 = level, 30-45 = 3/4 or isometric-style view), `Target Height` and `Distance`; a new **Custom - N cameras in 360 Degrees** preset (`Cameras` field)
+- **Output Folder** (`Output Folder` field in **1. Project & Output**): base folder for the sprites, created automatically, default `//sprites/`; leave it empty to keep using the scene Output Path (legacy behavior)
+- **Output path preview**: "First image will be saved as:" shows the real path, built by the same functions as the render, plus template warnings and collisions
+- **Output Name helpers**: buttons that append `projectName`, `objectName`, `animation`, `camera`, `frame` to the template, and `Default` / `Per camera` template presets
+- **Portuguese (PT-BR) interface**: panels, properties, tooltips and messages are translated when Blender's language is Portuguese (`pt_BR` or `pt_PT`)
+- **Tooltips**: every property and operator now has a description
+- **Tests**: `pytest` tests in `tests/` for paths and file names, pre-render validation and translation coverage (they run outside Blender)
+
+### Changed
+- **Render pipeline**: **Render All** is now a single queue of jobs (animation x camera x frame) consumed by a modal operator driven by a timer
+  - Everything a frame depends on (Action or NLA strip, camera, resolution, shift, light pivot) is applied again at the start of every animation/camera pair
+  - The resolution set in the add-on is now applied at render time
+  - Only one render can run at a time
+  - Ctrl+Z is blocked while rendering
+  - ESC and **Cancel Render** stop the render after the current frame; closing the window or loading another file ends the session safely
+  - Blender is still busy while each image renders, so the panel only updates between frames
+- **Scene state is restored** when a render ends, is cancelled or fails: active Action (and slot), `use_nla`, NLA track/strip mute states, timeline range, current frame, resolution (X, Y and %), camera shifts, scene camera, output path and Light Pivot rotation. The Animation Test preview restores the same data when you press **Stop Preview** / **Restore Scene**
+- **Selecting an item** in the Actions/NLA lists and **switching Animation Mode** no longer change the scene (no more cleared Actions): only the Preview buttons do
+- **Panel layout**: the add-on is now one main panel (**Sprite Render**: Render All / progress / Start Here) with sub-panels in this order: **1. Project & Output**, **2. Character & Animations**, **3. Cameras**, **4. Light**, **5. Render Settings** and **Info** (closed by default). The tab navigation was removed. `Armature` is set once, in **2. Character & Animations**; `Preview FPS` moved there; **Test Cameras** and the Frame Step options stay in **5. Render Settings**
+- **Safe paths and names on Windows, Linux and macOS**: absolute paths keep their leading `/` and UNC paths are accepted; `//` paths resolve against the .blend file; invalid characters, reserved Windows names (CON, NUL, COM1...), trailing dots/spaces and over-long names are cleaned in **file and folder names** (for example `Armature|mixamo.com|Layer0` becomes `Armature_mixamo.com_Layer0`); a template without `$frame` is an error
+- **Detect Cameras / Detect Actions / Detect NLA Strips** now **merge** with the list instead of replacing it: existing entries keep their order, name, range, enabled state, shift and output name
+- **Create Cameras** asks for confirmation before replacing cameras created by a previous run, only deletes objects marked as created by the add-on, and never adopts an existing object with the same name (Blender appends `.001` to the new one). Cameras are listed from the front, in order of angle
+- **Light rotation**: Create Cameras and Detect Cameras use one formula (the light looks in the same direction as the camera; the pivot or the origin is the reference)
+- **Info** shows the version read from `bl_info` (single source of truth)
+- The render flags (`is_rendering`, `is_previewing`, progress) are reset when the add-on is enabled and when a file is loaded, so a crash no longer leaves the panel stuck in "rendering"
+
+### Fixed
+- **Wrong Action in the first camera**: the Action/NLA strip is now applied for every animation and camera, including the first camera of each animation and single-camera setups
+- **Resolution ignored by Render All** (see above)
+- **Linux / macOS output paths** losing the leading `/`
+- **Invalid characters in folder names** (Mixamo Actions with `|`) making folder creation fail
+- **Action lost on save**: switching to NLA mode cleared the armature's Action and could leave it with 0 users
+- **Stuck render state** after a crash or after loading a file saved during a render
+- **Second render** started while one was running, and undo during a render
+- **Test Frame Count** now works in FRAME_RANGES mode
+- **Sync Secondary**: the UI and the checklist now state that it is only used by the preview
+
+### Technical Details
+- `operators.py` was split into the `sprite_render_tool/operators/` package (`animations`, `cameras`, `docs`, `helpers`, `paths`, `preview`, `render`, `scene_state`, `validation`); same 36 operators and same `bl_idname`s. The ten documentation operators are generated by one function
+- `render.py`: `build_segments()` builds the queue; `_RenderSession` holds only names and plain values (never RNA pointers) and re-fetches the scene on every tick; `SPRITE_RENDER_OT_RenderAll` has a hidden `skip_confirm` property (set by the dialog); `execute()` (scripts) runs the same queue in a blocking loop; `SPRITE_RENDER_OT_ESCModal` is deprecated and only requests a cancel
+- New operators: `sprite_render.render_confirm`, `sprite_render.fix_issue`, `sprite_render.camera_add`, `sprite_render.camera_remove`, `sprite_render.camera_move`, `sprite_render.camera_view`, `sprite_render.list_set_enabled`, `sprite_render.insert_placeholder`, `sprite_render.set_template_preset`
+- New modules: `operators/validation.py` (pure checks + Blender glue), `operators/scene_state.py` (snapshot/restore), `operators/paths.py`, `translations.py`; `utils.py` holds the pure path/name functions
+- New properties: `output_dir`, `camera_preset_elevation`, `camera_preset_target_height`, `camera_preset_custom_count`, `CameraItem` list UI (`SPRITE_RENDER_UL_cameras`)
+- `main_panel_tab` and the `set_main_tab_*` operators are kept only for compatibility; the UI no longer uses them
+- Run the tests with `pytest tests` (no Blender needed)
+- **Release note**: the version number lives only in `sprite_render_tool/__init__.py` (`bl_info["version"]`); it must be set to `(0, 3, 12)` for this release
+
+---
+
 ## [0.3.11] - 2025
 
 ### Added

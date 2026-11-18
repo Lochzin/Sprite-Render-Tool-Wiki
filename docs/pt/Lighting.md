@@ -14,15 +14,17 @@ Esta abordagem de iluminação padronizada ajuda a manter uma iluminação unifo
 
 ## Objeto Light Pivot
 
-> **Localização no add-on**: Tab **Setup** → Seção **Light Pivot**
+> **Localização no add-on**: painel **4. Light**
 
 O **Light Pivot** é um objeto do Blender que atua como um ponto de controle para a rotação da iluminação. Você pode usar qualquer objeto do Blender como pivô, embora geralmente se use um **empty object** (objetos mesh também funcionam, mas empty objects são preferidos por sua simplicidade).
 
 ```python
 Detalhes técnicos:
 - O pivô é armazenado em SpriteRenderSettings.pivot_object
-- Antes de renderizar cada frame, o operador chama:
-  SPRITE_RENDER_OT_RenderAll.apply_light_rotation(...)
+- No início de cada par animação / câmera, o Render All chama
+  apply_light_rotation(...) (operators/helpers.py), o mesmo auxiliar usado pelo
+  Test Cameras e pelo botão de visão de câmera da lista de câmeras
+- A rotação do pivô é restaurada quando o render termina
 ```
 
 ### Toggle Enable Light Pivot
@@ -38,9 +40,7 @@ Isso permite que você desabilite temporariamente a rotação de luz sem remover
 
 ## Rotação de Luz
 
-> **Localização no add-on**: 
-> - **Enable Full Rotation (XYZ)**: Tab **Cameras** → Opção **Enable Full Rotation (XYZ)** (sempre visível, após Lens Settings)
-> - **Light Rotation por câmera**: Tab **Cameras** → Seção **Camera List** → Cada câmera individual
+> **Localização no add-on**: `Enable Full Rotation (XYZ)` no painel **4. Light**; a rotação de cada câmera na linha selecionada da lista **Cameras (render order)** (painel **3. Cameras**)
 
 Cada câmera no add-on tem uma propriedade `light_rotation` (rotação Euler XYZ) que controla como o light pivot é rotacionado para esse ângulo de câmera específico.
 
@@ -68,15 +68,15 @@ Detalhes técnicos:
 
 ### Rotação Automática de Luz
 
-Ao usar o botão **Detect Cameras**, o add-on calcula automaticamente uma rotação Z para cada câmera baseada na posição relativa entre a câmera e o light pivot.
+**Detect Cameras** e **Create Cameras** calculam automaticamente uma rotação Z para cada câmera, com a mesma fórmula: a luz olha na mesma direção da câmera (da câmera para o light pivot, ou para a origem da cena quando não há pivô). Uma câmera no eixo da frente (-Y) recebe 0°. **O Detect Cameras recalcula a rotação de todas as câmeras que detecta**, então um valor digitado à mão é substituído.
 
 > **Importante**: O objeto **Light Pivot** só é exigido pelo Detect Cameras quando `Enable Light Pivot` está ligado; se estiver ligado e nenhum objeto estiver definido, o operador cancela com um erro. Com `Enable Light Pivot` desligado, o Detect Cameras funciona normalmente e define todos os `light_rotation` como 0.
 
 #### Limitações da Detecção Automática
 
-O **Detect Cameras** tenta encontrar a rotação ideal do pivô de luz para cada ângulo de câmera, mas isso **só funciona corretamente para ângulos horizontais** (como em jogos boomer shooter em primeira pessoa, onde as câmeras estão todas no mesmo plano horizontal ao redor do personagem).
+A rotação automática é **apenas em Z**, então **só funciona corretamente para ângulos horizontais** (como em jogos boomer shooter em primeira pessoa, onde as câmeras estão todas no mesmo plano horizontal ao redor do personagem).
 
-Para renderizações que precisam ser feitas em **ângulos diferentes** (de cima, diagonalmente, ou em múltiplos planos), você precisará **ajustar manualmente** o ângulo de rotação do pivô (`Light Rotation`) para cada câmera após usar o Detect Cameras.
+Para renderizações que precisam ser feitas em **ângulos diferentes** (de cima, diagonalmente, ou em múltiplos planos), você precisará **ajustar manualmente** o ângulo de rotação do pivô (`Light Rotation`) para cada câmera após usar o Detect Cameras ou o Create Cameras (também nos presets com `Elevation`). Ligue `Enable Full Rotation (XYZ)` para editar os três eixos.
 
 ---
 

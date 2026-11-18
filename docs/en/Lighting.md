@@ -14,15 +14,17 @@ This standardized lighting approach helps maintain uniform illumination across a
 
 ## Light Pivot Object
 
-> **Location in add-on**: **Setup** tab → **Light Pivot** section
+> **Location in add-on**: **4. Light** panel
 
 The **Light Pivot** is a Blender object that acts as a control point for lighting rotation. You can use any Blender object as the pivot, though typically an **empty object** is used (mesh objects can also work, but empty objects are preferred for their simplicity).
 
 ```python
 Technical details:
 - The pivot is stored in SpriteRenderSettings.pivot_object
-- Before rendering each frame, the operator calls:
-  SPRITE_RENDER_OT_RenderAll.apply_light_rotation(...)
+- At the start of every animation / camera pair, Render All calls
+  apply_light_rotation(...) (operators/helpers.py), the same helper used by
+  Test Cameras and the camera-view button of the camera list
+- The pivot rotation is restored when the render ends
 ```
 
 ### Enable Light Pivot Toggle
@@ -37,6 +39,8 @@ This allows you to temporarily disable light rotation without removing the light
 ---
 
 ## Light Rotation
+
+> **Location in add-on**: `Enable Full Rotation (XYZ)` in the **4. Light** panel; the rotation of each camera in the selected row of the **Cameras (render order)** list (**3. Cameras** panel)
 
 Each camera in the add-on has a `light_rotation` property (Euler rotation XYZ) that controls how the light pivot is rotated for that specific camera angle.
 
@@ -64,15 +68,15 @@ Technical details:
 
 ### Automatic Light Rotation
 
-When using the **Detect Cameras** button, the add-on automatically calculates a Z rotation for each camera based on the relative position between the camera and the light pivot.
+**Detect Cameras** and **Create Cameras** automatically calculate a Z rotation for each camera, with the same formula: the light looks in the same direction as the camera (from the camera towards the light pivot, or towards the scene origin when there is no pivot). A camera on the front axis (-Y) gets 0°. **Detect Cameras recalculates the rotation of every camera it detects**, so a value you typed by hand is replaced.
 
 > **Important**: The **Light Pivot** object is only required by Detect Cameras when `Enable Light Pivot` is on; if it is on and no object is set, the operator cancels with an error. With `Enable Light Pivot` off, Detect Cameras still works and sets every `light_rotation` to 0.
 
 #### Automatic Detection Limitations
 
-**Detect Cameras** attempts to find the ideal light pivot rotation for each camera angle, but this **only works correctly for horizontal angles** (like in boomer shooter first-person games, where cameras are all on the same horizontal plane around the character).
+The automatic rotation is **around Z only**, so it **only works correctly for horizontal angles** (like in boomer shooter first-person games, where cameras are all on the same horizontal plane around the character).
 
-For renders that need to be done at **different angles** (from above, diagonally, or in multiple planes), you will need to **manually adjust** the pivot rotation angle (`Light Rotation`) for each camera after using Detect Cameras.
+For renders that need to be done at **different angles** (from above, diagonally, or in multiple planes), you will need to **manually adjust** the pivot rotation angle (`Light Rotation`) for each camera after using Detect Cameras or Create Cameras (also for presets with `Elevation`). Turn on `Enable Full Rotation (XYZ)` to edit all three axes.
 
 ---
 

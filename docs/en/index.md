@@ -13,7 +13,9 @@ Add-on for **Blender** focused on generating 2D sprites from 3D animations, with
 - **Generates organized output folders**: structures directories by project, object, animation, and camera.
 - **Provides an animation test panel**: preview Actions or NLA directly from the add-on.
 - **Shows progress and allows cancelling**: integrated progress bar, cancel button, and ESC key support while rendering.
-- **Quick output access**: button to open the output folder directly in your file explorer.
+- **Checks your setup before rendering**: a checklist with one-click **Fix** buttons and a confirmation dialog with image count and estimated time.
+- **Restores your scene**: Actions, NLA, timeline, resolution, camera and light are put back when the render ends.
+- **Portuguese interface**: panels and tooltips are translated when Blender is set to Portuguese.
 
 It works with Blender **5.0.0+**.
 
@@ -33,222 +35,122 @@ For detailed installation, update, and troubleshooting instructions, see the ded
 
 ## Main Panel (UI)
 
-The addon interface uses a **sidebar navigation system** with tabbed interface. All functionality is organized into a single main panel with 5 main tabs accessible via icon buttons in the left sidebar:
+The add-on lives in `3D Viewport > Sidebar (N) > Sprite Render`. It is **one main panel with sub-panels**, listed in workflow order (there are no tabs). Each sub-panel with a help icon (?) in its header opens the matching page of this wiki (always in English).
 
-### Sidebar Navigation
+| Order | Panel | Purpose |
+| --- | --- | --- |
+| – | **Sprite Render** (main) | Render All, progress, Start Here guide |
+| 1 | **1. Project & Output** | names, output folder, file name template, folders |
+| 2 | **2. Character & Animations** | animation mode, armature, animation lists, preview |
+| 3 | **3. Cameras** | create / detect cameras, lens, camera list |
+| 4 | **4. Light** | Light Pivot |
+| 5 | **5. Render Settings** | checklist, resolution, Frame Step, Test Cameras |
+| – | **Info** (closed by default) | version, author, documentation |
 
-The left sidebar contains icon buttons for easy navigation between tabs:
-- **📋 Info** (INFO): Version, author, documentation links (this is the tab that is open by default)
-- **⚙️ Setup** (SETTINGS): Project, Light Pivot, Armature, Camera Creation
-- **📷 Cameras** (CAMERA_DATA): Lens Settings, Camera Options, Camera List
-- **🦴 Animations** (ARMATURE_DATA): Animation mode, Actions/NLA configuration, testing
-- **🎬 Render** (RENDER_STILL): Render Settings, Output configuration, Render Actions
+### Sprite Render (main panel)
 
-![Sidebar](/_static/images/SRT_Sidebar.png)
+- **Render All**: starts the render. It is greyed out while the checklist has errors (the tooltip shows the first one). It opens a confirmation dialog first (see [Render](Render.md)).
+- **While rendering**: the button is replaced by Blender's progress bar (`Rendering current/total (percent%)`), a status line (animation, frame, camera and estimated time left) and a red **Cancel Render** button. This is visible whichever sub-panel is open. **ESC** also cancels.
+- **Start Here** (only until cameras and animations exist, and never while rendering):
+  1. **Cameras**: **Create** (creates the camera preset) and **Detect** (adds the visible cameras of the scene). Shown with a check mark when the list has cameras.
+  2. **Animations**: **Detect Actions**, **Detect NLA Strips** or **Add Frame Range**, depending on the Animation Mode. In **STATIC** mode this step is always done.
+  3. Set the output path (Project & Output).
+  4. Press Render All.
 
-Each tab button shows a tooltip on hover with a specific description.
+### 1. Project & Output
 
-### Tab Contents
+- `Project Name`, `Object Name`
+- `Output Folder` (default `//sprites/`) and a button next to it that opens a folder in the file explorer. Leave the field empty to use the scene's Output Path (legacy behavior)
+- `Output Name` template (default `$objectName_$animation_$frame`), buttons to append `projectName`, `objectName`, `animation`, `camera`, `frame`, and the template presets **Default** and **Per camera**
+- **First image will be saved as:** the real path of the first image, with template warnings and name collisions
+- **Available Placeholders** (collapsible): variables and a name preview
+- **Create Folders**: `Project`, `Object`, `Animation`, `Camera`
 
-#### 📋 Info Tab
-- Version information
-- Author information
-- Large **📖 Open Documentation** button
-- **📚 Additional Resources** (collapsible section):
-  - **Changelog** button: opens changelog documentation
-  - **Future Features** button: opens future features documentation
-  - **License** button: opens license documentation
-  - Section starts minimized by default
+See [Output](Output.md).
 
-![Info Tab](/_static/images/SRT_InfoTab.png)
+### 2. Character & Animations
 
-#### ⚙️ Setup Tab
-- **📁 Project Section**:
-  - `Project Name`
-  - `Object Name`
-- **💡 Light Pivot Section**:
-  - `Enable Light Pivot`: toggle to enable/disable light pivot rotation
-  - `Light Pivot Object`: object used as the light pivot for light rotation (visible when enabled)
-  - **💡 Tip**: You can place lights as children of the light pivot (they will rotate with cameras) and add fixed lights outside the light pivot to illuminate dark areas of the character.
-  - Small documentation button in section header
-  - For detailed information about lighting setup and strategies, see [Lighting](Lighting.md).
-- **🦴 Armature Section**:
-  - `Armature`: target armature selection (redundant with [Animations tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#animations-tab) for convenience)
-- **📷 Camera Creation Section**:
-  - `Preset`: dropdown to select camera preset configuration (1, 2, 3, 4, 5, or 8 cameras)
-  - `Distance`: slider to adjust camera distance from pivot point
-  - **Create Cameras** button: creates cameras based on selected preset
-  - Small documentation button in section header
-  - For more information about camera presets, see [Cameras](Cameras.md).
+- `Animation Mode`: **Use Actions** (default), **Use NLA**, **Static Render**, **Frame Ranges**
+- `Armature`: the target armature (Actions and NLA modes only)
+- The list of the current mode, with `+` / `-` buttons, the fields of the selected item, **Enable All** / **Disable All** and the **Detect** button
+- `Preview FPS` + **Apply**
+- **Animation Test** (collapsible, Actions and NLA modes): **Preview Action** / **Preview NLA Strip**, **Stop Preview** (or **Restore Scene** when playback already stopped), frame counter and first / previous / next / last buttons
 
-![Setup Tab](/_static/images/SRT_SetupTab.png)
+See [Animations](Animations.md).
 
-#### 📷 Cameras Tab
-- **📐 Lens Settings** (always visible):
-  - `Type`: Camera projection type (Perspective/Orthographic)
-  - `Focal Length / Orthographic Scale`: lens property (label changes based on camera type)
-  - `Desync Shift X` / `Desync Shift Y`: independent toggle buttons (pressed = desynced, unpressed = synced)
-  - `Shift X` / `Shift Y`: camera shift values (synchronized or individual per camera)
-  - `Clip Start` / `Clip End`: clipping distances
-- `Camera Count`: number of cameras in the internal list (new entries are added blank; fill in their names or use **Detect Cameras**)
-- `Custom Output Names`: use names different from the camera object names for file output
-- `Enable Full Rotation (XYZ)`: controls whether the pivot rotates in XYZ or only around Z
-- **📋 Camera List** (collapsible):
-  - For each camera (`Camera 1`, `Camera 2`, ...):
-    - `Name`: name of the camera object in the scene
-    - `Output Name`: name used in file names (if `Custom Output Names` is enabled)
-    - `Shift X` / `Shift Y`: individual shift values (visible when `Desync Shift X` or `Desync Shift Y` is enabled, respectively)
-    - `Render Order`: order in which this camera will be rendered
-    - `Light Rotation`: light/pivot rotation (Z only or XYZ)
-- **Detect Cameras** button (`sprite_render.autofill_light_rotation`):
-  - Detects visible cameras in the current View Layer
-  - Replaces the list with the detected cameras (names, count, render order) and sets the Z light rotation based on the pivot object; the pivot is only required when `Enable Light Pivot` is on (with it off, rotations are set to 0)
-- Small documentation button in section header
+### 3. Cameras
 
-![Camera Tab](/_static/images/SRT_CameraTab.png)
+- **Create Cameras** box: `Preset`, `Cameras` (only for the Custom preset), `Elevation`, `Target Height`, `Distance`, **Create Cameras**
+- **Detect Cameras**
+- **Lens Settings**: `Type`, `Focal Length` / `Orthographic Scale`, **Desync Shift X / Y**, `Shift X` / `Y`, `Clip Start` / `End`
+- `Custom Output Names`
+- **Cameras (render order)**: the list with `+`, `-`, move up / down and a "view through camera" icon per row; the selected camera has `Camera`, `Output Name` (when Custom Output Names is on), per-camera Shift (when desynced) and `Light Rotation`
 
-#### 🦴 Animations Tab
-- `Target Armature`: the armature to animate
-- `Animation Mode`:
-  - **NLA**: use NLA strips
-  - **ACTIONS**: use Actions listed inside the add-on
-  - **STATIC**: render only the current frame
-  - **FRAME_RANGES**: render specific frame ranges without rig or animation
+See [Cameras](Cameras.md).
 
-**ACTIONS Mode:**
-- `Actions` list:
-  - Each item has: `enabled`, `name`, `frame_start`, `frame_end`, and secondary sync options (not yet implemented)
-- Buttons:
-  - `Detect Actions`: reads `bpy.data.actions` and populates the list
-  - `Add`, `Remove`: manually manage the list
-- **🎬 Animations Test** (collapsible):
-  - `Preview Action` / `Stop Preview`
-  - Frame controls (first, previous, next, last)
-  - Frame counter display
+### 4. Light
 
-**NLA Mode:**
-- `NLA Strips` list:
-  - Each item: `enabled`, `name` (strip name), `track_name`, `frame_start`, `frame_end`
-- Buttons:
-  - `Detect NLA Strips`: reads NLA tracks from the target armature
-  - `Add`, `Remove`: manually manage the list
-- **🎬 Animations Test** (collapsible):
-  - `Preview NLA Strip` / `Stop Preview`
-  - Frame controls (first, previous, next, last)
-  - Frame counter display
+`Enable Light Pivot`, `Object` (the pivot, shown when enabled) and `Enable Full Rotation (XYZ)`. See [Lighting](Lighting.md).
 
-**FRAME_RANGES Mode:**
-- `Frame Ranges` list:
-  - Each item: `enabled`, `name` (range name), `frame_start`, `frame_end`
-  - Allows rendering multiple custom frame ranges (e.g., frames 1-10, 20-30, 50-60)
-  - No armature or animation data required - renders static frames only
-  - Useful for rendering specific sequences or test frames without setting up animations
-  - The list displays each range in the format "frame_start-frame_end"
-- Buttons:
-  - `Add`, `Remove`: manually manage the list
-  - When adding, default name is "Range {number}" and default values come from the scene's frame range
-- Automatic validation ensures `frame_end >= frame_start` for each range (automatically corrects if needed)
-- Informative message: "⚠️ No rig or animation required - Renders only the specified frame ranges"
+### 5. Render Settings
 
-![Animation Tab](/_static/images/SRT_AnimationTab.png)
+- **Checklist** ("Ready to render?"): problems with **Fix** buttons and the image / time summary
+- **Resolution** X / Y
+- **Frame Step**: `Enable Frame Step`, `Step`, **Test Frame Count**
+- **Test Cameras**
 
-#### 🎬 Render Tab
-- **⚙️ Render Settings Section**:
-  - **Resolution**:
-    - `Resolution X` / `Resolution Y`: resolution synchronized across all cameras
-  - **Frame Step**:
-    - `Enable Frame Step`: toggle to enable frame stepping
-    - `Step`: step value (1-100) - renders every Nth frame (e.g., step of 2 renders frames 1, 3, 5, 7...)
-    - **🧪 Test Frame Count** button: calculates and displays total frames without rendering (appears when Frame Step is enabled)
-  - **Playback Speed**:
-    - `FPS`: custom FPS setting with `Apply` button
-- **📤 Output Section**:
-  - `Output Path` (from the Blender scene render settings): base folder where everything will be created
-  - **📂 Open Output Folder** button: opens the output folder in your system's file explorer
-  - `Output Name` (`output_template`):
-    - Default template: `$objectName_$animation_$frame`
-  - **Available placeholders** (collapsible):
-    - `$projectName`: project name
-    - `$objectName`: object/character name
-    - `$animation`: Action or NLA Strip name
-    - `$camera`: camera name or `output_name`
-    - `$frame`: frame number formatted as `0001`, `0002`, etc.
-  - **Create Folders**:
-    - `Project Folder`, `Object Folder`, `Animation Folder`, `Camera Folder`
-    - Builds a folder hierarchy based on these levels
-  - Small documentation button in section header
-  - For detailed information about render settings, output configuration, and render actions, see the dedicated [Render](Render.md) page.
-- **🚀 Render Actions Section**:
-  - `🚀 Render All` (`sprite_render.render_all`):
-    - Starts rendering all animations and cameras, one image at a time driven by a timer (the UI updates between frames, but Blender is busy while each frame renders)
-  - `🎯 Test Cameras` (`sprite_render.test_cameras`):
-    - Cycles through the configured cameras for preview
+See [Render](Render.md).
 
-![Render Tab](/_static/images/SRT_RenderTab.png)
+### Info
+
+Version (read from the add-on), author, **Open Documentation**, **Changelog**, **Future Features** and **License**.
+
+### Language
+
+If Blender's language is Portuguese (Brazil or Portugal), the panels, tooltips and messages are shown in Portuguese. Any other language shows English.
 
 ---
 
 ## Basic Guide
 
-This initial guide presents the basic workflow to get started with the Sprite Render Tool. Follow these steps to set up and render your first sprites.
-
 - **1. Prepare the scene**
-  - Set up your character / armature.
-  - Create Actions or NLA strips for your animations.
-  - Create the cameras that will be used for sprites.
-  - Optionally create a **Light Pivot** object to control lighting rotation around the character.
+  - Set up your character / armature and its Actions or NLA strips.
+  - Optionally create a **Light Pivot** (an Empty) and put your lights inside it.
+  - Save the .blend file if you want to use a `//` relative output folder.
 
-- **2. Configure the Sprite Render panel**
-  - In **[Setup tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#setup-tab)**:
-    - Set `Project Name` and `Object Name` in the Project section.
-    - Enable `Enable Light Pivot` and set the `Light Pivot Object` in the Light Pivot section.
-    - (Optional) In Camera Creation section: use presets to quickly create cameras, or skip to manually add cameras.
-  - In **[Cameras tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#cameras-tab)**:
-    - Configure **Lens Settings** (focal length, shift, clip distances, etc.)
-    - Set `Camera Count`, `Custom Output Names`, and `Enable Full Rotation` as needed.
-    - Click **Detect Cameras** to auto-fill the list, or manually add cameras.
-    - Adjust `Render Order`, `Output Name`, and `Light Rotation` for each camera in the Camera List.
+- **2. Follow Start Here (main panel)**
+  - **Create** a camera preset (or **Detect** the cameras you already have).
+  - **Detect Actions** / **Detect NLA Strips** (or add frame ranges). In Actions and NLA modes set the `Armature` in **2. Character & Animations**.
 
-- **3. Choose the animation mode**
-  - **ACTIONS**:
-    - Click **Detect Actions** to import all Actions.
-    - Adjust `frame_start` and `frame_end` for each action and enable only the ones you want to render.
-  - **NLA**:
-    - Select a `Target Armature`.
-    - Click **Detect NLA Strips**.
-  - **STATIC**:
-    - The add-on uses the current frame to render; useful for thumbnails or poses.
+- **3. Project & Output**
+  - Set `Project Name`, `Object Name` and the `Output Folder`.
+  - Adjust the `Output Name` and the `Create Folders` options. Check "First image will be saved as:".
 
-- **4. Configure Render Settings and Output**
-  - In **[Render tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#render-tab)**:
-    - Set `Resolution X` and `Resolution Y` in Render Settings.
-    - (Optional) Enable `Frame Step` if you want to render every Nth frame.
-    - Adjust `output_template` if you want a different file naming pattern.
-    - Enable the `Create Folders` options according to how you want to organize files.
-    - In `Output Path`, choose the base folder where everything will be saved.
+- **4. Cameras and Light** (optional adjustments)
+  - Reorder cameras, set `Output Name`s, `Elevation`, lens and shift.
+  - Enable the Light Pivot and set the pivot object.
 
-- **5. Test before rendering everything**
-  - Use **Test Cameras** (in [Render tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#render-tab) → Render Actions) to check each camera.
-  - Use the **Animations Test** section (in [Animations tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#animations-tab)) to preview animations before rendering.
+- **5. Render Settings**
+  - Read the checklist and use the **Fix** buttons. Set the resolution and, if needed, Frame Step.
+  - Use **Test Cameras** and the **Animation Test** to check framing and animation.
 
 - **6. Render**
-  - Click **Render All** (in [Render tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#render-tab) → Render Actions).
-  - Monitor progress in the **[Render tab](https://lochzin.github.io/Sprite-Render-Tool-Wiki/en/index.html#render-tab)** → Render Progress section (appears below Render Actions while rendering).
-  - If needed, use **Cancel Render** button or press **ESC** to stop (it will stop after the current frame finishes).
+  - Click **Render All**, check the summary dialog and click **Render**.
+  - Watch the progress in the main panel. Press **ESC** or **Cancel Render** to stop (after the current frame).
+  - When it ends, your scene is put back as it was (see [Render](Render.md)).
 
 ---
 
 ## Generated File Structure
 
-The folder and file name logic works as follows:
-- **Base path**: the cleaned `scene.render.filepath` (`clean_base_path`) that strips file names and subfolders which could conflict with dynamically generated ones.
-- **Optional folder levels**: `Project`, `Object`, `Animation`, `Camera` (via `build_dir_parts`).
-- **File name**: based on `output_template`:
-  - Replaces `$projectName`, `$objectName`, `$animation`, `$camera`, `$frame`.
-  - Removes invalid characters for file names.
-  - Outputs `.png` images.
+- **Base folder**: the `Output Folder` (or, when empty, the folder part of the scene Output Path).
+- **Optional folder levels**: `Project`, `Object`, `Animation`, `Camera`.
+- **File name**: built from `Output Name`:
+  - replaces `$projectName`, `$objectName`, `$animation`, `$camera`, `$frame`;
+  - invalid characters are replaced by `_` in file **and** folder names;
+  - always `.png`.
 
-If **`$camera` is not present** in the template, the add-on uses a per‑animation sequential counter (instead of the timeline frame number) to avoid filename conflicts between cameras.
+If **`$camera` is not present** in the template, the add-on uses a per-animation sequential counter (instead of the timeline frame number) to avoid file name conflicts between cameras.
 
 ---
 

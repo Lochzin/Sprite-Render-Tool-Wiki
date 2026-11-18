@@ -8,23 +8,22 @@ This page lists planned features and improvements for the **Sprite Render Tool**
 
 ### Animation Features
 
-- **Sub-Actions Mode**: Support for Blender's sub-actions feature (introduced in Blender 4.4). This new animation mode will allow users to work with sub-actions, which provide a way to organize and manage complex animation hierarchies within a single action. This feature will complement the existing ACTIONS, NLA, and STATIC modes, providing more flexibility for advanced animation workflows.
+- **Sub-Actions Mode**: Support for Blender's sub-actions feature (introduced in Blender 4.4). This new animation mode will allow users to work with sub-actions, which provide a way to organize and manage complex animation hierarchies within a single action. This feature will complement the existing ACTIONS, NLA, STATIC, and FRAME_RANGES modes, providing more flexibility for advanced animation workflows.
 
 - **Secondary Armature Sync**: Complete implementation of the secondary armature synchronization feature. Currently, the UI has placeholders for `sync_secondary`, `secondary_armature`, and `secondary_action`, but the functionality is not yet fully implemented.
 
 ### Camera Setup Features
 
-- **Custom Camera Presets**: Expansion of the existing preset system:
-  - Custom preset creation and saving for frequently used camera setups
-  - Preset sharing and import/export functionality
-  - This will streamline the workflow for users who frequently work with custom camera arrangements beyond the standard presets
+- **Saved Camera Presets**: the add-on already has the ready-made presets, the Custom preset (N cameras in 360 degrees) and `Elevation` / `Target Height` / `Distance`. Still planned:
+  - Creating and saving your own presets with free camera angles for frequently used setups
+  - Preset sharing and import/export
+  - This will streamline the workflow for users who frequently work with custom camera arrangements
 
 ### UI/UX Improvements
 
-- **Expanded Contextual Help Buttons**: Additional improvements to existing documentation buttons:
-  - Deeper integration of contextual tooltips with direct links to specific documentation sections
-  - Inline help buttons in complex property fields
-  - These improvements will provide even more instant access to detailed documentation without leaving Blender, improving the learning curve for new users and serving as quick reference for experienced users
+- **Contextual Help Links**: every property and operator already has a tooltip, and the sub-panels have a help button. Still planned:
+  - Help buttons that open the exact section of the documentation
+  - Documentation buttons that open the wiki in the language of Blender's interface (today they always open English)
 
 ### Output Features
 
