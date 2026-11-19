@@ -128,9 +128,7 @@ Com **Camera Folder** ligado, cada câmera ainda ganha sua própria pasta, mas o
 
 ## Open Output Folder
 
-O botão de pasta ao lado de `Output Folder` abre uma pasta no seu explorador de arquivos (Windows Explorer, Finder do macOS ou o gerenciador de arquivos do Linux), criando-a se não existir.
-
-> **Limitação conhecida**: o botão abre o **Output Path** da cena (Output Properties), não o campo `Output Folder`. Eles só coincidem no modo legado (`Output Folder` vazio). Caso contrário use o caminho mostrado em "First image will be saved as:".
+O campo `Output Folder` é texto simples (não fica colorido, mesmo que a pasta ainda não exista; o render a cria). Ao lado dele, o botão **Browse** escolhe uma pasta e o botão de pasta abre no seu explorador de arquivos (Windows Explorer, Finder do macOS ou o gerenciador de arquivos do Linux) a pasta que o render vai usar, criando-a se não existir. No modo legado (`Output Folder` vazio) ele abre o **Output Path** da cena.
 
 ---
 

@@ -66,7 +66,9 @@ This page tracks changes to the **Sprite Render Tool** over time.
 - **Relative output folder without `//`** (for example `sprites`) was resolved against Blender's working directory; it is now relative to the .blend file
 - **Invalid characters in the output folder** on Windows (`< > : " | ? *`) are now an error in the checklist
 - **Cancel after the last frame** now counts as a complete render
-- **Output Folder shown in red** while the folder did not exist yet (for example the default `//sprites/`); it is created by the render, so it is now drawn like the scene's Output Path
+- **Output Folder shown in red** while the folder did not exist yet (for example the default `//sprites/`); it is created by the render, so it is now a plain text field (no colour), with a **Browse** button to pick the folder
+- **Open Output Folder** opened the scene's Output Path instead of the `Output Folder` field; it now opens the folder the render will use
+- **Light Rotation of the cameras** now follows the camera angle in real time (`Rotation Offset`) even without a Light Pivot object set
 - **Second armature not animated in the render** (W7): Sync Secondary was only used by the preview; it now works in Render All (see Added)
 
 ### Technical Details

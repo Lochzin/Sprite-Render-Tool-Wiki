@@ -66,7 +66,9 @@ Esta página rastreia mudanças no **Sprite Render Tool** ao longo do tempo.
 - **Pasta de saída relativa sem `//`** (por exemplo `sprites`) era resolvida a partir da pasta de trabalho do Blender; agora é relativa ao arquivo .blend
 - **Caracteres inválidos na pasta de saída** no Windows (`< > : " | ? *`) agora são um erro no checklist
 - **Cancelar depois do último frame** agora conta como render completo
-- **Output Folder em vermelho** enquanto a pasta ainda não existia (por exemplo a padrão `//sprites/`); ela é criada pelo render, então agora é desenhada como o Output Path da cena
+- **Output Folder em vermelho** enquanto a pasta ainda não existia (por exemplo a padrão `//sprites/`); ela é criada pelo render, então agora é um campo de texto simples (sem cor), com um botão **Browse** para escolher a pasta
+- **Open Output Folder** abria o Output Path da cena em vez do campo `Output Folder`; agora abre a pasta que o render vai usar
+- **Light Rotation das câmeras** agora acompanha o ângulo da câmera em tempo real (`Rotation Offset`), mesmo sem um objeto Light Pivot definido
 - **Segunda armadura não animada no render** (W7): o Sync Secondary só era usado pelo preview; agora funciona no Render All (veja Adicionado)
 
 ### Detalhes Técnicos

@@ -128,9 +128,7 @@ With **Camera Folder** on, each camera still gets its own folder, but the number
 
 ## Open Output Folder
 
-The folder button next to `Output Folder` opens a folder in your file explorer (Windows Explorer, macOS Finder or the Linux file manager), creating it if it does not exist.
-
-> **Known limitation**: the button opens the scene's **Output Path** (Output Properties), not the `Output Folder` field. They are the same only in legacy mode (empty `Output Folder`). Otherwise use the path shown in "First image will be saved as:".
+The `Output Folder` field is plain text (it is not coloured, even when the folder does not exist yet; the render creates it). Next to it, the **Browse** button picks a folder and the folder button opens the folder the render will use in your file explorer (Windows Explorer, macOS Finder or the Linux file manager), creating it if it does not exist. In legacy mode (empty `Output Folder`) it opens the scene's **Output Path**.
 
 ---
 
