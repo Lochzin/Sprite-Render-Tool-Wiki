@@ -23,6 +23,15 @@ Esta página lista funcionalidades planejadas e melhorias para o **Sprite Render
   - Botões de ajuda que abrem a seção exata da documentação
   - Botões de documentação que abrem a wiki no idioma da interface do Blender (hoje sempre abrem o inglês)
 
+### Exportadores de Spritesheet
+
+A aba Spritesheet já salva um PNG + um JSON genérico por sheet ([Spritesheets](Spritesheets.md)). Próximos passos pedidos, usando os mesmos dados de layout:
+
+- **Godot**: recurso `SpriteFrames` (`.tres`) com uma animação por animação/câmera e seu fps
+- **Unity**: metadados de fatiamento da sheet (retângulos e nomes dos sprites)
+- **Phaser / TexturePacker JSON** (formatos hash/array usados por Phaser, PixiJS e outros)
+- **GIF** de preview por animação/câmera
+
 ### Funcionalidades de Saída
 
 - **Renderização de Normal Maps**: Opção para renderizar normal maps simultaneamente com a renderização normal. Isso permitirá que os usuários gerem tanto as imagens de sprites padrão quanto seus normal maps correspondentes em uma única passada de renderização, garantindo alinhamento perfeito e iluminação consistente entre as duas saídas.

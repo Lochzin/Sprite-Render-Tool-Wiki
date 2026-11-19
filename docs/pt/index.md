@@ -17,6 +17,7 @@ Add-on para **Blender** focado em gerar sprites 2D a partir de animações 3D, c
 - **Mostra progresso e permite cancelamento**: barra de progresso integrada, botão de cancelar e suporte à tecla ESC durante a renderização.
 - **Verifica a configuração antes de renderizar**: um checklist com botões **Fix** de um clique e um diálogo de confirmação com número de imagens e tempo estimado.
 - **Restaura a cena**: Actions, NLA, timeline, resolução, câmera e luz voltam ao que eram quando o render termina.
+- **Monta spritesheets**: depois do render, a aba Spritesheet junta os frames em sheets (PNG + JSON com a posição de cada frame).
 - **Interface em português**: painéis e tooltips são traduzidos quando o Blender está em português.
 
 Funciona com Blender **5.0.0+**.
@@ -49,8 +50,9 @@ O add-on fica em `3D Viewport > Sidebar (N) > Sprite Render`. É **um painel pri
 | Câmera | **Cameras** (Câmeras) | criar / detectar câmeras, lente, lista de câmeras |
 | Armadura | **Animations** (Animações) | modo de animação, listas de animações, preview |
 | Render still | **Render** | seção **Render Settings**: checklist, resolução, Frame Step, Test Cameras |
+| Imagem | **Spritesheet** | seção **Spritesheets**: monta sheets (PNG + JSON) a partir dos frames renderizados (veja [Spritesheets](Spritesheets.md)) |
 
-As abas, de cima para baixo, são: Info, Setup, Cameras, Animations, Render. As seções com um pequeno ícone de ajuda (?) no cabeçalho (Project & Output, Light Pivot, Cameras, Animations, Render Settings) abrem a página correspondente desta wiki (sempre em inglês).
+As abas, de cima para baixo, são: Info, Setup, Cameras, Animations, Render, Spritesheet. As seções com um pequeno ícone de ajuda (?) no cabeçalho (Project & Output, Light Pivot, Cameras, Animations, Render Settings, Spritesheets) abrem a página correspondente desta wiki (sempre em inglês).
 
 Com o Blender em português, os nomes aparecem traduzidos. Esta wiki usa os nomes em inglês.
 

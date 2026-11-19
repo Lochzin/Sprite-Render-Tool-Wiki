@@ -17,6 +17,7 @@ Add-on for **Blender** focused on generating 2D sprites from 3D animations, with
 - **Shows progress and allows cancelling**: integrated progress bar, cancel button, and ESC key support while rendering.
 - **Checks your setup before rendering**: a checklist with one-click **Fix** buttons and a confirmation dialog with image count and estimated time.
 - **Restores your scene**: Actions, NLA, timeline, resolution, camera and light are put back when the render ends.
+- **Builds spritesheets**: after the render, the Spritesheet tab packs the frames into sheets (PNG + JSON with the position of every frame).
 - **Portuguese interface**: panels and tooltips are translated when Blender is set to Portuguese.
 
 It works with Blender **5.0.0+**.
@@ -49,8 +50,9 @@ The add-on lives in `3D Viewport > Sidebar (N) > Sprite Render`. It is **one mai
 | Camera | **Cameras** | create / detect cameras, lens settings, camera list |
 | Armature | **Animations** | animation mode, animation lists, preview |
 | Render still | **Render** | **Render Settings** section: checklist, resolution, Frame Step, Test Cameras |
+| Image | **Spritesheet** | **Spritesheets** section: build sheets (PNG + JSON) from the rendered frames (see [Spritesheets](Spritesheets.md)) |
 
-The tabs, from top to bottom, are: Info, Setup, Cameras, Animations, Render. The sections that have a small help icon (?) in their header (Project & Output, Light Pivot, Cameras, Animations, Render Settings) open the matching page of this wiki (always in English).
+The tabs, from top to bottom, are: Info, Setup, Cameras, Animations, Render, Spritesheet. The sections that have a small help icon (?) in their header (Project & Output, Light Pivot, Cameras, Animations, Render Settings, Spritesheets) open the matching page of this wiki (always in English).
 
 ![Sidebar](/_static/images/SRT_Sidebar.png)
 

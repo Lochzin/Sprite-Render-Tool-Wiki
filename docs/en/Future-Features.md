@@ -23,6 +23,15 @@ This page lists planned features and improvements for the **Sprite Render Tool**
   - Help buttons that open the exact section of the documentation
   - Documentation buttons that open the wiki in the language of Blender's interface (today they always open English)
 
+### Spritesheet Exporters
+
+The Spritesheet tab already saves a PNG + a generic JSON per sheet ([Spritesheets](Spritesheets.md)). Requested next steps, built on the same layout data:
+
+- **Godot**: `SpriteFrames` resource (`.tres`) with one animation per animation/camera and its fps
+- **Unity**: sprite slicing metadata for the sheet (sprite rects and names)
+- **Phaser / TexturePacker JSON** (hash/array formats used by Phaser, PixiJS and others)
+- **GIF** preview per animation/camera
+
 ### Output Features
 
 - **Normal Maps Rendering**: Option to render normal maps simultaneously with the regular render. This will allow users to generate both the standard sprite images and their corresponding normal maps in a single render pass, ensuring perfect alignment and consistent lighting between the two outputs.

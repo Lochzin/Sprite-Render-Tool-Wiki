@@ -156,6 +156,7 @@ If the panel shows "rendering" but no render is running (for example after a cra
 3. **After rendering:**
    - Open the destination folder from the dialog or from "First image will be saved as:"
    - Check the folder structure and file names
+   - Optional: click **Make Spritesheets** (under Render All) to pack the frames into spritesheets (PNG + JSON). See [Spritesheets](Spritesheets.md)
 
 ---
 
@@ -165,3 +166,4 @@ If the panel shows "rendering" but no render is running (for example after a cra
 - [Cameras](Cameras.md): camera configuration and testing
 - [Lighting](Lighting.md): Light Pivot system
 - [Animations](Animations.md): animation modes
+- [Spritesheets](Spritesheets.md): sheets (PNG + JSON) from the rendered frames

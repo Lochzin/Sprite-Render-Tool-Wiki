@@ -156,6 +156,7 @@ Se o painel mostra "renderizando" mas nenhum render está rodando (por exemplo d
 3. **Depois do render:**
    - Abra a pasta de destino a partir do diálogo ou de "First image will be saved as:"
    - Confira a estrutura de pastas e os nomes de arquivo
+   - Opcional: clique em **Make Spritesheets** (embaixo do Render All) para juntar os frames em spritesheets (PNG + JSON). Veja [Spritesheets](Spritesheets.md)
 
 ---
 
@@ -165,3 +166,4 @@ Se o painel mostra "renderizando" mas nenhum render está rodando (por exemplo d
 - [Cameras](Cameras.md): configuração e teste de câmeras
 - [Lighting](Lighting.md): sistema Light Pivot
 - [Animations](Animations.md): modos de animação
+- [Spritesheets](Spritesheets.md): sheets (PNG + JSON) a partir dos frames renderizados
